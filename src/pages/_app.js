@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import Head from "next/head";
+import "../config/firebaseClient";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -11,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <title>Bard Goblin</title>
+      </Head>
       <GlobalStyle />
       <Component {...pageProps} />
     </>
