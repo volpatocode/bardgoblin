@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
-import "../config/firebaseClient";
 
 const GlobalStyle = createGlobalStyle`
   *{
