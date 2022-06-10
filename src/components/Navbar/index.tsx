@@ -9,7 +9,7 @@ import {
 import Logo from "../Logo";
 import AvatarIcon from "../AvatarIcon";
 import { Stack } from "@mui/material";
-import SearchBar from "../SearchBar";
+import NavSearchBar from "../NavSearchBar";
 
 export type propsType = {};
 
@@ -19,7 +19,7 @@ export default function index() {
       <Navbar>
         <NavLeftSide>
           <Logo variant="horizontal" />
-          <SearchBar/>
+          <NavSearchBar />
         </NavLeftSide>
         <NavRightSide>
           <Stack
@@ -33,7 +33,7 @@ export default function index() {
             <TextButton>Tools</TextButton>
             <TextButton>About</TextButton>
             <ContainedButton>New Build / Quest</ContainedButton>
-            <AvatarIcon/>
+            <AvatarIcon />
           </Stack>
         </NavRightSide>
       </Navbar>

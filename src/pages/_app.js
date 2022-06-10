@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Head>
         <title>Bard Goblin</title>
+        <link rel="shortcut icon" href="/icon-logo.png" />
       </Head>
       <Component {...pageProps} />
     </>

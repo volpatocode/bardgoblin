@@ -1,14 +1,16 @@
 import React from "react";
-import { SearchBar, StyledInput, InputButton, SelectButton } from "./styles";
+import { HomeSearchBar, StyledInput, InputButton, SelectButton } from "./styles";
 import SearchIcon from "@mui/icons-material/Search";
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export type searchBarType = {};
 
 export default function index({}: searchBarType) {
   return (
-    <SearchBar>
+    <HomeSearchBar>
       <SelectButton>
         Side Quests
+    <ArrowDropDownIcon sx={{color:"#FF9900"}}/>
       </SelectButton>
       <form>
         <StyledInput type="text" placeholder="Search for Name, ND, System & More..." />
@@ -16,6 +18,6 @@ export default function index({}: searchBarType) {
       <InputButton type="submit">
         <SearchIcon />
       </InputButton>
-    </SearchBar>
+    </HomeSearchBar>
   );
 }
