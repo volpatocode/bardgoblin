@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 export const Navbar = styled(Box)`
   width: 100vw;
@@ -7,7 +7,8 @@ export const Navbar = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0.3rem 2.5rem 0rem 2.5rem;
+  min-height: 60px;
 `;
 
 export const NavLeftSide = styled(Box)`
@@ -15,8 +16,8 @@ export const NavLeftSide = styled(Box)`
   gap: 1rem;
   flex-direction: row;
   align-items: center;
-  width: 100%;
   height: 100%;
+  padding: 0.5rem 0;
 `;
 
 export const NavRightSide = styled(Box)`
@@ -24,6 +25,25 @@ export const NavRightSide = styled(Box)`
   gap: 1rem;
   flex-direction: row;
   align-items: center;
-  width: 100%;
   height: 100%;
+  padding: 0.5rem 0;
+`;
+
+export const TextButton = styled(Button)`
+  color: #fff;
+  text-transform: none;
+  :hover {
+    background: none;
+  }
+  padding: 4px 8px;
+`;
+
+export const ContainedButton = styled(Button)`
+  color: #fff;
+  text-transform: none;
+  background: #dd3e0e;
+  :hover {
+    background: #dd3e0e;
+  }
+  padding: 4px 8px;
 `;

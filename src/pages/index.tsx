@@ -1,14 +1,13 @@
-import { Button } from "@mui/material";
 import React from "react";
-import Navbar from "../components/Navbar";
+import Home from "./home/home";
 
 type propsType = {};
 
-export default function Home(): propsType {
+export default function index(): propsType {
 
   return (
     <>
-    <Navbar/>
+    <Home/>
     </>
   );
 }
