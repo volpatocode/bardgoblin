@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "../theme/theme";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -12,11 +14,13 @@ const GlobalStyle = createGlobalStyle`
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Head>
-        <title>Bard Goblin</title>
-      </Head>
-      <GlobalStyle />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Head>
+          <title>Bard Goblin</title>
+        </Head>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }
