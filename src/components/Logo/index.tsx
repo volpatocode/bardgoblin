@@ -1,16 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import { Logo } from "./styles";
 
 export type logoType = {
   variant: "horizontal" | "vertical" | "icon";
 };
 
 export default function index({ variant }: logoType) {
+  const logo = {
+    horizontal: "/horizontal-logo.png",
+    vertical: "/vertical-logo.png",
+    icon: "/icon-logo.png",
+  }
+
   return (
     <>
       <Link href="/">
-        <Logo variant={variant} />
+        <img src={logo[variant]}/>
       </Link>
     </>
   );

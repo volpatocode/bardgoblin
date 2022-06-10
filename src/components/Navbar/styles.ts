@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
-export const Navbar = styled.div`
-  height: 60px;
-  width: 100%;
+export const Navbar = styled(Box)`
+  width: 100vw;
   background: transparent;
   display: flex;
   justify-content: space-between;
@@ -16,6 +15,8 @@ export const NavLeftSide = styled(Box)`
   gap: 1rem;
   flex-direction: row;
   align-items: center;
+  width: 100%;
+  height: 100%;
 `;
 
 export const NavRightSide = styled(Box)`
@@ -23,4 +24,6 @@ export const NavRightSide = styled(Box)`
   gap: 1rem;
   flex-direction: row;
   align-items: center;
+  width: 100%;
+  height: 100%;
 `;

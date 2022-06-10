@@ -5,13 +5,15 @@ export const Logo = styled.div<logoType>`
   background: ${(props) => {
     switch (props.variant) {
       case "vertical":
-        return "/public/images/vertical-logo 1.png";
+        return "/public/vertical-logo.png";
       case "horizontal":
-        return "/public/images/horizontal-logo 2.png";
+        return "/public/horizontal-logo.png";
       case "icon":
-        return "/public/images/icon-logo.png";
+        return "/public/icon-logo.png";
       default:
-        "/public/images/icon-logo.png";
+        "/public/icon-logo.png";
     }
   }};
+  width: 100%;
+  height: 100%;
 `;
