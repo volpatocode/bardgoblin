@@ -10,6 +10,12 @@ const GlobalStyle = createGlobalStyle`
    body{
     background-color: #171717;
    }
+   @font-face {
+    font-family: 'The Wild Breath of Zelda';
+    font-weight: 400;
+    font-style: normal;
+    src: url("../../public/fonts/thewildbreathofzelda.otf") format("woff2");
+  }
   
 
 `;
@@ -21,6 +27,7 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Bard Goblin</title>
         <link rel="shortcut icon" href="/icon-logo.png" />
+        <link href="../../public/fonts/thewildbreathofzelda.otf" rel="stylesheet" />
       </Head>
       <Component {...pageProps} />
     </>
