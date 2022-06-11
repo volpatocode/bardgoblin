@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Select } from "@mui/material";
 
 export const HomeSearchBar = styled.div`
   display: flex;
@@ -40,7 +41,7 @@ export const InputButton = styled.button`
   cursor: pointer;
 `;
 
-export const SelectButton = styled.button`
+export const SelectButton = styled(Select)`
   border: none;
   padding: 15px 8px 15px 15px;
   font-size: 0.85rem;
@@ -54,4 +55,8 @@ export const SelectButton = styled.button`
   font-weight: 600;
   gap: 0.3rem;
   cursor: pointer;
+  :hover{
+    outline: none;
+    border: none;
+  }
 `;
