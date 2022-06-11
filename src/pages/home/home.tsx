@@ -1,7 +1,13 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import { HomeWrapper, HomeContent, HomeTitle, HomeSubtitle, WrittenContent } from "./styles";
+import {
+  HomeWrapper,
+  HomeContent,
+  HomeTitle,
+  HomeSubtitle,
+  WrittenContent,
+} from "./styles";
 import HomeSearchBar from "../../components/HomeSearchBar";
 
 export default function index() {
@@ -21,7 +27,6 @@ export default function index() {
         </HomeContent>
         <Footer />
       </HomeWrapper>
-     
     </>
   );
 }

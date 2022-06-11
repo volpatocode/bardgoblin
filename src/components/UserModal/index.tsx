@@ -8,13 +8,23 @@ import {
   UserModal,
   SelectButtonBox,
   SelectButton,
-  LogoBox,
+  BoxLogo,
+  InputTitle,
+  InputInfo,
+  BoxInfo,
+  BoxEmail,
+  BoxPassword,
+  AnchorInfo,
+  BoxButtons,
+  FinishButton,
+  BoxLogin,
+  BoxRegister,
+  BoxUser,
 } from "./styles";
 
 export default function index() {
   const [isOpen, setIsOpen] = useState(false);
   const handleChange = () => setIsOpen(!isOpen);
-
 
   const [isOnLogin, setIsOnLogin] = useState(true);
   const toggleLogin = () => {
@@ -25,9 +35,8 @@ export default function index() {
   const [isOnRegister, setIsOnRegister] = useState(false);
   const toggleRegister = () => {
     setIsOnRegister(true);
-    setIsOnLogin(false)
+    setIsOnLogin(false);
   };
-
 
   return (
     <UserModal>
@@ -43,14 +52,14 @@ export default function index() {
       >
         <Fade in={isOpen}>
           <BoxModal>
-            <LogoBox>
+            <BoxLogo>
               <Logo variant="vertical" />
-            </LogoBox>
+            </BoxLogo>
             <SelectButtonBox>
               <SelectButton
                 onClick={() => toggleLogin()}
                 sx={
-                  isOnLogin === true
+                  isOnLogin
                     ? { borderBottom: "2px solid #ff9900" }
                     : { borderBottom: "2px solid #dd3e0e" }
                 }
@@ -60,7 +69,7 @@ export default function index() {
               <SelectButton
                 onClick={() => toggleRegister()}
                 sx={
-                  isOnRegister === true
+                  isOnRegister
                     ? { borderBottom: "2px solid #ff9900" }
                     : { borderBottom: "2px solid #dd3e0e" }
                 }
@@ -68,6 +77,50 @@ export default function index() {
                 Register
               </SelectButton>
             </SelectButtonBox>
+            {isOnLogin && (
+              <BoxLogin>
+                <BoxInfo>
+                  <BoxEmail>
+                    <InputTitle>Email</InputTitle>
+                    <InputInfo type="text" />
+                  </BoxEmail>
+                  <BoxPassword>
+                    <InputTitle>Password</InputTitle>
+                    <InputInfo type="text" />
+                  </BoxPassword>
+                </BoxInfo>
+                <BoxButtons>
+                  <AnchorInfo href="/">Having trouble?</AnchorInfo>
+                  <FinishButton>Login</FinishButton>
+                </BoxButtons>
+              </BoxLogin>
+            )}
+            {isOnRegister && (
+              <BoxRegister>
+                <BoxInfo>
+                  <BoxUser>
+                    <InputTitle>User</InputTitle>
+                    <InputInfo type="text" />
+                  </BoxUser>
+                  <BoxEmail>
+                    <InputTitle>Email</InputTitle>
+                    <InputInfo type="text" />
+                  </BoxEmail>
+                  <BoxPassword>
+                    <InputTitle>Password</InputTitle>
+                    <InputInfo type="text" />
+                  </BoxPassword>
+                  <BoxPassword>
+                    <InputTitle>Confirm password</InputTitle>
+                    <InputInfo type="text" />
+                  </BoxPassword>
+                </BoxInfo>
+                <BoxButtons>
+                  <AnchorInfo onClick={() => toggleLogin()} >Already have an account?</AnchorInfo>
+                  <FinishButton>Register</FinishButton>
+                </BoxButtons>
+              </BoxRegister>
+            )}
           </BoxModal>
         </Fade>
       </Modal>

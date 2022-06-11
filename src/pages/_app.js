@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
   }
    body{
     background-color: #171717;
@@ -27,7 +28,10 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Bard Goblin</title>
         <link rel="shortcut icon" href="/icon-logo.png" />
-        <link href="../../public/fonts/thewildbreathofzelda.otf" rel="stylesheet" />
+        <link
+          href="../../public/fonts/thewildbreathofzelda.otf"
+          rel="stylesheet"
+        />
       </Head>
       <Component {...pageProps} />
     </>
