@@ -14,16 +14,17 @@ import AvatarIcon from "../AvatarIcon";
 
 import { Stack } from "@mui/material";
 
+export type navbarType = {
+  page: "home" | "results" ;
+};
 
-export type propsType = {};
-
-export default function index() {
+export default function index({page}: navbarType) {
   return (
     <>
-      <Navbar>
+      <Navbar page={page}>
         <NavLeftSide>
           <Logo variant="horizontal" />
-          <NavSearchBar />
+          {page != "home" && <NavSearchBar />}
         </NavLeftSide>
         <NavRightSide>
           <Stack

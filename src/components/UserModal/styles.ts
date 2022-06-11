@@ -10,7 +10,7 @@ export const BoxModal = styled(Box)`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 450px;
-  background-color: #1d1d1d;
+  background-color: #131313;
   display: flex;
   flex-direction: column;
   padding: 2.5rem 1rem;

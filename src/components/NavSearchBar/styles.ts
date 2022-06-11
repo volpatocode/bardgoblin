@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Select } from "@mui/material";
 
 export const NavSearchBar = styled.div`
   display: flex;
@@ -40,17 +41,22 @@ export const InputButton = styled.button`
   cursor: pointer;
 `;
 
-export const SelectButton = styled.button`
+export const SelectButton = styled(Select)`
   border: none;
-  padding: 10px 6px 10px 8px;
-  font-size: 0.7rem;
+  padding: 15px 4px 15px 4px;
+  font-size: 0.85rem;
   letter-spacing: 0.2px;
   background-color: #fff;
-  height: 40px;
   border-radius: 7.5px 0px 0px 7.5px;
   display: flex;
+  height: 40px;
   align-items: center;
   color: #4f4f4f;
   font-weight: 600;
+  gap: 0.3rem;
   cursor: pointer;
+  :hover {
+    outline: none;
+    border: none;
+  }
 `;

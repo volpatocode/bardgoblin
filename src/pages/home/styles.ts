@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 
 export const HomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const HomeMainContent = styled.div`
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -21,7 +26,7 @@ export const HomeContent = styled.div`
   align-items: center;
   gap: 1.3rem;
   padding-bottom: 10rem;
-  `;
+`;
 
 export const WrittenContent = styled.div`
   display: flex;
@@ -31,7 +36,7 @@ export const WrittenContent = styled.div`
 export const HomeTitle = styled.h1`
   font-size: 2.5rem;
   color: #fff;
-  font-family: 'The Wild Breath of Zelda';
+  font-family: "The Wild Breath of Zelda";
   text-transform: uppercase;
   letter-spacing: 0.2px;
   text-align: center;
@@ -44,4 +49,3 @@ export const HomeSubtitle = styled.h2`
   text-align: center;
   font-weight: 400;
 `;
-

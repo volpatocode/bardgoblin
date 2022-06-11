@@ -1,15 +1,12 @@
 import React from "react";
-import Home from "./home/home";
-import UserModal from "../components/UserModal";
+import Quest from "./quest/quest";
 
 type propsType = {};
 
 export default function index(): propsType {
 
   return (
-    <>
-    <Home/>
-    <UserModal/>
-    </>
+  <Quest/>
+   
   );
 }

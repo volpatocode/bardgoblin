@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Roboto","Helvetica","Arial",sans-serif;
   }
    body{
-    background-color: #171717;
+    background-color: #131313;
    }
    @font-face {
     font-family: 'The Wild Breath of Zelda';
