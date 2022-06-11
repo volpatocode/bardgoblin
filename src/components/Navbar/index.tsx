@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Navbar,
   NavLeftSide,
@@ -6,10 +7,13 @@ import {
   TextButton,
   ContainedButton,
 } from "./styles";
+
 import Logo from "../Logo";
-import AvatarIcon from "../AvatarIcon";
-import { Stack } from "@mui/material";
 import NavSearchBar from "../NavSearchBar";
+import AvatarIcon from "../AvatarIcon";
+
+import { Stack } from "@mui/material";
+
 
 export type propsType = {};
 

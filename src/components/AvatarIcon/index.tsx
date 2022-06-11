@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+
 import { AvatarIcon } from "./styles";
+
 import { IconButton, Menu, MenuItem } from "@mui/material";
 
 import AccountCircle from '@mui/icons-material/AccountCircle';

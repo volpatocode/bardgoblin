@@ -19,8 +19,9 @@ export default function index() {
           </WrittenContent>
           <HomeSearchBar />
         </HomeContent>
+        <Footer />
       </HomeWrapper>
-      <Footer />
+     
     </>
   );
 }

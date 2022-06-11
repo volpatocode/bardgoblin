@@ -9,6 +9,6 @@ flex-direction: row;
 flex-wrap: nowrap;
 align-items: center;
 gap: 1rem;
-padding: 0 2.5rem 0rem 2.5rem;
-min-height: 60px;
+padding: 0.7rem 2.5rem 0.7rem 2.5rem;
+width: 100%;
 `;

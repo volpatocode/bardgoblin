@@ -6,6 +6,10 @@ export const HomeWrapper = styled.div`
   min-height: 100vh;
   min-width: 100vw;
   background: url("/backgroundfull.png") no-repeat center center / cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const HomeContent = styled.div`
@@ -15,9 +19,9 @@ export const HomeContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 12rem;
   gap: 1.3rem;
-`;
+  padding-bottom: 10rem;
+  `;
 
 export const WrittenContent = styled.div`
   display: flex;
