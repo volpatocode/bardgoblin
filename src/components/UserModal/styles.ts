@@ -50,6 +50,9 @@ export const InputInfo = styled.input`
   border-radius: 5px;
   text-align: left;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   :focus {
     outline: none;

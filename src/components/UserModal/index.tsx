@@ -82,11 +82,11 @@ export default function index() {
                 <BoxInfo>
                   <BoxEmail>
                     <InputTitle>Email</InputTitle>
-                    <InputInfo type="text" />
+                    <InputInfo type="email" />
                   </BoxEmail>
                   <BoxPassword>
                     <InputTitle>Password</InputTitle>
-                    <InputInfo type="text" />
+                    <InputInfo type="password"/>
                   </BoxPassword>
                 </BoxInfo>
                 <BoxButtons>
@@ -104,15 +104,15 @@ export default function index() {
                   </BoxUser>
                   <BoxEmail>
                     <InputTitle>Email</InputTitle>
-                    <InputInfo type="text" />
+                    <InputInfo type="email" />
                   </BoxEmail>
                   <BoxPassword>
                     <InputTitle>Password</InputTitle>
-                    <InputInfo type="text" />
+                    <InputInfo type="password" />
                   </BoxPassword>
                   <BoxPassword>
                     <InputTitle>Confirm password</InputTitle>
-                    <InputInfo type="text" />
+                    <InputInfo type="password" />
                   </BoxPassword>
                 </BoxInfo>
                 <BoxButtons>
