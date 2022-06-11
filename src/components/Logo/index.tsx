@@ -16,7 +16,7 @@ export default function index({ variant }: logoType) {
 
   const logoWidth = {
     horizontal: "180px",
-    vertical: "100px",
+    vertical: "120px",
     icon: "30px",
     icon2: "25px",
   };

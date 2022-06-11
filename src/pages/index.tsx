@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./home/home";
-import UserPainel from "./userPainel/userPainel"
+import UserModal from "../components/UserModal";
 
 type propsType = {};
 
@@ -8,7 +8,8 @@ export default function index(): propsType {
 
   return (
     <>
-    <UserPainel/>
+    <Home/>
+    <UserModal/>
     </>
   );
 }
