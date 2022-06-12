@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
+import QueryTopic from "../../components/QueryTopic";
 
 import {
   Quest,
@@ -16,7 +17,7 @@ export default function index() {
     <>
       <Quest>
         <QuestHeader>
-          <Navbar page="results" />
+          <Navbar page="section" />
           <QuestContent>
             <QuestTitle>Side quests</QuestTitle>
             <QuestDescription>
@@ -26,7 +27,8 @@ export default function index() {
         </QuestHeader>
       </Quest>
       <QuestResults>
-        <ResultsListTitle>Looking for buscaaqui</ResultsListTitle>
+        <ResultsListTitle>You are looking for buscaaqui</ResultsListTitle>
+        <QueryTopic/>
       </QuestResults>
     </>
   );

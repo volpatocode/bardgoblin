@@ -15,7 +15,7 @@ import AvatarIcon from "../AvatarIcon";
 import { Stack } from "@mui/material";
 
 export type navbarType = {
-  page: "home" | "results" ;
+  page: "home" | "section" | "post";
 };
 
 export default function index({page}: navbarType) {
@@ -24,7 +24,7 @@ export default function index({page}: navbarType) {
       <Navbar page={page}>
         <NavLeftSide>
           <Logo variant="horizontal" />
-          {page != "home" && <NavSearchBar />}
+          {page === "post" && <NavSearchBar />}
         </NavLeftSide>
         <NavRightSide>
           <Stack

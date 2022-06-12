@@ -9,7 +9,7 @@ import {
   WrittenContent,
   HomeMainContent,
 } from "./styles";
-import HomeSearchBar from "../../components/HomeSearchBar";
+import MainSearchBar from "../../components/MainSearchBar";
 
 export default function index() {
   return (
@@ -25,7 +25,7 @@ export default function index() {
                 tabletop rpg
               </HomeSubtitle>
             </WrittenContent>
-            <HomeSearchBar />
+            <MainSearchBar/>
           </HomeContent>
           <Footer />
         </HomeMainContent>

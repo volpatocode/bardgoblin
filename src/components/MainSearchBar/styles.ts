@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
-import { Select } from "@mui/material";
+import { Button, Select } from "@mui/material";
 
-export const HomeSearchBar = styled.div`
+export const MainSearchBar = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -58,5 +58,27 @@ export const SelectButton = styled(Select)`
   :hover{
     outline: none;
     border: none;
+  }
+`;
+
+export const SectionButton = styled(Button)`
+  border: none;
+  padding: 15px 8px 15px 15px;
+  font-size: 0.85rem;
+  letter-spacing: 0.2px;
+  background-color: #fff;
+  border-radius: 7.5px 0px 0px 7.5px;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  color: #4f4f4f;
+  font-weight: 600;
+  gap: 0.3rem;
+  text-transform: none;
+  cursor: pointer;
+  :hover{
+    outline: none;
+    border: none;
+    background-color: #fff;
   }
 `;

@@ -11,10 +11,11 @@ export const Quest = styled(Box)`
 `;
 
 export const QuestHeader = styled(Box)`
-  background: linear-gradient(rgba(29, 29, 29, 0.9), rgba(29, 29, 29, 0.6)),
+  background: linear-gradient(rgba(29, 29, 29, 0.7), rgba(29, 29, 29, 0.7)),
     url("/quests.png") no-repeat center center / cover;
   width: 100vw;
   height: 65vh;
+  border-bottom: 1px solid rgba(29, 29, 29, 1);
 `;
 
 export const QuestContent = styled(Box)`
