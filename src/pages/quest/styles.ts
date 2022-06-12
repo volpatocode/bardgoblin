@@ -38,7 +38,7 @@ export const QuestTitle = styled.h1`
 
 export const QuestDescription = styled.h3`
   font-size: 1.25rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.75);
   letter-spacing: 0.2px;
   text-align: center;
   font-weight: 400;
