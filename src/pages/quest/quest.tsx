@@ -38,7 +38,6 @@ export default function index() {
           </TopicListTitle>
           <TopicFiltersWrapper>
             <TopicSearchBar />
-            <LabelSelector/>
           </TopicFiltersWrapper>
         </TopicQueryInfo>
 

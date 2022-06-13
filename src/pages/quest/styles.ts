@@ -7,7 +7,6 @@ export const Quest = styled(Box)`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 2rem;
 `;
 
 export const QuestHeader = styled(Box)`
@@ -49,6 +48,7 @@ export const QuestResults = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin: 2rem 0;
 `;
 
 export const TopicListTitle = styled.h4`
