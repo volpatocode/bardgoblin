@@ -1,5 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
+import { ThemeProvider} from "@mui/material";
+
+import { theme } from "../theme/theme.ts";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -17,11 +20,10 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
     src: url("../../public/fonts/thewildbreathofzelda.otf") format("woff2");
   }
-  
-
 `;
 
 export default function App({ Component, pageProps }) {
+  console.log(theme)
   return (
     <>
       <GlobalStyle />
@@ -33,7 +35,9 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }
