@@ -16,9 +16,6 @@ export const QueryTopic = styled(Box)`
   border-radius: 15px;
   cursor: pointer;
   transition: 200ms ease-in-out;
-  :hover {
-    transform: scale(1.005);
-  }
 `;
 
 export const LeftSideTopic = styled(Box)`
@@ -56,7 +53,9 @@ export const Label = styled(Button)`
   border-radius: 20px;
   font-size: 0.8rem;
   min-width: 0;
+  transition: 200ms ease-in-out;
   :hover {
     background: none;
+    color:#FF9900;
   }
 `;

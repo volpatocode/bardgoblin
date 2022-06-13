@@ -13,7 +13,7 @@ import SearchIcon from "@mui/icons-material/Search";
 export type searchBarType = {
 };
 
-export default function index({ page }: searchBarType) {
+export default function index({}: searchBarType) {
   const [searchBarSection, setSearchBarSection] = useState("Side Quests");
 
   const handleChange = (event: SelectChangeEvent) => {

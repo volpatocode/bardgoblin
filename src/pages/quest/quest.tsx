@@ -1,6 +1,9 @@
 import React from "react";
 import Navbar from "../../components/Navbar";
-import QueryTopic from "../../components/QueryTopic";
+import TopicListWrapper from "../../components/TopicListWrapper";
+import Footer from "../../components/Footer";
+import TopicSearchBar from "../../components/TopicSearchBar";
+import LabelSelector from "../../components/LabelSelector";
 
 import {
   Quest,
@@ -9,7 +12,9 @@ import {
   QuestTitle,
   QuestDescription,
   QuestResults,
-  ResultsListTitle,
+  TopicListTitle,
+  TopicQueryInfo,
+  TopicFiltersWrapper,
 } from "./styles";
 
 export default function index() {
@@ -27,9 +32,19 @@ export default function index() {
         </QuestHeader>
       </Quest>
       <QuestResults>
-        <ResultsListTitle>You are looking for buscaaqui</ResultsListTitle>
-        <QueryTopic/>
+        <TopicQueryInfo>
+          <TopicListTitle>
+            You are looking for buscaaqui
+          </TopicListTitle>
+          <TopicFiltersWrapper>
+            <TopicSearchBar />
+            <LabelSelector/>
+          </TopicFiltersWrapper>
+        </TopicQueryInfo>
+
+        <TopicListWrapper />
       </QuestResults>
+      <Footer />
     </>
   );
 }
