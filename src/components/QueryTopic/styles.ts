@@ -32,6 +32,11 @@ export const TopicContent = styled.p`
   text-align: left;
   font-weight: 400;
   display: flex;
+  transition: 200ms ease-in-out;
+  :hover {
+    color: #ff9900;
+    cursor: pointer;
+  }
 `;
 
 export const Labels = styled(Box)`
@@ -56,6 +61,6 @@ export const Label = styled(Button)`
   transition: 200ms ease-in-out;
   :hover {
     background: none;
-    color:#FF9900;
+    color: #ff9900;
   }
 `;

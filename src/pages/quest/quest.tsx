@@ -4,6 +4,7 @@ import TopicListWrapper from "../../components/TopicListWrapper";
 import Footer from "../../components/Footer";
 import TopicSearchBar from "../../components/TopicSearchBar";
 import LabelSelector from "../../components/LabelSelector";
+import TopicPagination from "../../components/TopicPagination";
 
 import {
   Quest,
@@ -24,7 +25,7 @@ export default function index() {
         <QuestHeader>
           <Navbar page="section" />
           <QuestContent>
-            <QuestTitle>Side quests</QuestTitle>
+            <QuestTitle>Side Quests</QuestTitle>
             <QuestDescription>
               Find the best answers to the most unexpected situations
             </QuestDescription>
@@ -33,15 +34,13 @@ export default function index() {
       </Quest>
       <QuestResults>
         <TopicQueryInfo>
-          <TopicListTitle>
-            You are looking for buscaaqui
-          </TopicListTitle>
+          <TopicListTitle>You are looking for buscaaqui</TopicListTitle>
           <TopicFiltersWrapper>
             <TopicSearchBar />
           </TopicFiltersWrapper>
         </TopicQueryInfo>
-
         <TopicListWrapper />
+        <TopicPagination/>
       </QuestResults>
       <Footer />
     </>
