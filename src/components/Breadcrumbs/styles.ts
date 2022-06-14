@@ -11,7 +11,7 @@ export const SectionButton = styled(Button)`
   color: #fff;
   text-transform: none;
   background: rgba(45, 43, 42, 1);
-  padding: 4px 8px 4px 8px;
+  padding: 4px 12px 4px 12px;
   gap: 0.35rem;
   border-radius: 20px;
   transition: 200ms ease-in-out;
