@@ -23,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export default function App({ Component, pageProps }) {
-  console.log(theme)
   return (
     <>
       <GlobalStyle />

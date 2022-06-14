@@ -43,8 +43,8 @@ export const SectionTitle = styled.h1`
   color: #fff;
   font-family: "The Wild Breath of Zelda";
   text-transform: uppercase;
-  letter-spacing: 0.2px;
   text-align: center;
+  max-width: 70%;
 `;
 
 export const SectionDescription = styled.h3`
