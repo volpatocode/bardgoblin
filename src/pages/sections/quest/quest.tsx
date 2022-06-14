@@ -17,6 +17,7 @@ import {
   TopicQueryInfo,
   TopicFiltersWrapper,
 } from "../../sectionStyles";
+import CommentBadge from "../../../components/CommentBadge";
 
 export default function index() {
   return (
