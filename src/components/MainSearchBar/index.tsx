@@ -29,6 +29,7 @@ export default function index({}: searchBarType) {
             value={searchBarSection}
             onChange={handleChange}
             sx={{ display: "flex", justifyContent: "center" }}
+            color="secondary"
           >
             <MenuItem value="Side Quests">Side Quests</MenuItem>
             <MenuItem value="Builds">Builds</MenuItem>
