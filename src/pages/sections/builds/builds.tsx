@@ -22,19 +22,19 @@ export default function index() {
   return (
     <>
       <SectionWrapper>
-        <SectionHeader section="quest">
+        <SectionHeader section="builds">
           <Navbar page="section" />
           <SectionContent>
-            <SectionTitle>Side Quests</SectionTitle>
+            <SectionTitle>Builds</SectionTitle>
             <SectionDescription>
-              Find the best answers to the most unexpected situations
+            Examples and combinations to explore your hidden creativity
             </SectionDescription>
           </SectionContent>
         </SectionHeader>
       </SectionWrapper>
       <SectionResults>
         <TopicQueryInfo>
-          <TopicListTitle>You are looking for "ssssa"</TopicListTitle>
+          <TopicListTitle>You are looking for "aaa"</TopicListTitle>
           <TopicFiltersWrapper>
             <TopicSearchBar />
           </TopicFiltersWrapper>

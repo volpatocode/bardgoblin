@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
-import {Box} from "@mui/material";
+import { Box } from "@mui/material";
+
+export type sectionType = {
+  section: "quest" | "builds";
+};
 
 export const SectionWrapper = styled(Box)`
   width: 100%;
@@ -9,9 +13,17 @@ export const SectionWrapper = styled(Box)`
   justify-content: flex-start;
 `;
 
-export const SectionHeader = styled(Box)`
-  background: linear-gradient(rgba(29, 29, 29, 0.7), rgba(29, 29, 29, 0.7)),
-    url("/quests.png") no-repeat center center / cover;
+export const SectionHeader = styled(Box)<sectionType>`
+  background: linear-gradient(rgba(29, 29, 29, 0.6), rgba(29, 29, 29, 0.6)), ${(props) => {
+    switch (props.section) {
+      case "quest":
+        return `url("/quests.png") no-repeat center center / cover`;
+      case "builds":
+        return `url("/builds.png") no-repeat center center / cover`;
+      default:
+        return `url("/background2.png") no-repeat center center / cover`;
+    }
+  }};
   width: 100vw;
   height: 65vh;
   border-bottom: 1px solid rgba(29, 29, 29, 1);
@@ -66,5 +78,3 @@ export const TopicQueryInfo = styled(Box)`
 `;
 
 export const TopicFiltersWrapper = styled(Box)``;
-
-
