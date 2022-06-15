@@ -13,8 +13,9 @@ import {
 import UserBadge from "../../components/UserBadge";
 import LikeBadge from "../../components/LikeBadge";
 import CommentBadge from "../../components/CommentBadge";
-import BreadcrumbsWrapper from "../../components/Breadcrumbs";
-import TopicIntroduction from "../../components/TopicIntroduction";
+import BreadcrumbsWrapper from "../../components/Topic/Breadcrumbs";
+import TopicIntroduction from "../../components/Topic/TopicIntroduction";
+import TopicModule from "../../components/Topic/TopicModule";
 
 export default function index() {
   return (
@@ -37,6 +38,7 @@ export default function index() {
       </TopicWrapper>
       <TopicContent>
         <TopicIntroduction/>
+        <TopicModule/>
       </TopicContent>
       <Footer />
     </>

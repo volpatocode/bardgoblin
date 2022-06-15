@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../../../components/Navbar";
-import TopicListWrapper from "../../../components/TopicListWrapper";
+import TopicListWrapper from "../../../components/Topic/TopicListWrapper";
 import Footer from "../../../components/Footer";
-import TopicSearchBar from "../../../components/TopicSearchBar";
+import TopicSearchBar from "../../../components/Topic/TopicSearchBar";
 import LabelSelector from "../../../components/LabelSelector";
-import TopicPagination from "../../../components/TopicPagination";
+import TopicPagination from "../../../components/Topic/TopicPagination";
 
 import {
   SectionWrapper,

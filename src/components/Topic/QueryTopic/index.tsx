@@ -1,5 +1,5 @@
 import React from "react";
-import UserBadge from "../UserBadge";
+import UserBadge from "../../UserBadge";
 import {
   QueryTopic,
   LeftSideTopic,
