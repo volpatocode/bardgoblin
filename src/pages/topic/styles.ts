@@ -17,7 +17,7 @@ export const TopicHeader = styled(Box)`
   border-bottom: 1px solid rgba(29, 29, 29, 1);
 `;
 
-export const TopicContent = styled(Box)`
+export const TopicHeaderContent = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,11 +35,19 @@ export const TopicTitle = styled.h1`
   max-width: 50%;
 `;
 
-export const TopicBadges= styled(Box)`
+export const TopicBadges = styled(Box)`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
+`;
+
+export const TopicContent = styled(Box)`
+  padding: 0 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
 `;

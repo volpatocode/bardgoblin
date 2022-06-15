@@ -9,7 +9,10 @@ type propsType = {};
 export default function index(): propsType {
   return (
     <>
-      <Topic/>
+      <Topic />
+      <Home />
+      <Quest />
+      <Builds />
     </>
   );
 }

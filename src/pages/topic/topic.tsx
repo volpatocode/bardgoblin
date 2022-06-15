@@ -5,14 +5,16 @@ import Footer from "../../components/Footer";
 import {
   TopicWrapper,
   TopicHeader,
-  TopicContent,
+  TopicHeaderContent,
   TopicTitle,
   TopicBadges,
+  TopicContent,
 } from "./styles";
 import UserBadge from "../../components/UserBadge";
 import LikeBadge from "../../components/LikeBadge";
 import CommentBadge from "../../components/CommentBadge";
 import BreadcrumbsWrapper from "../../components/Breadcrumbs";
+import TopicIntroduction from "../../components/TopicIntroduction";
 
 export default function index() {
   return (
@@ -20,7 +22,7 @@ export default function index() {
       <TopicWrapper>
         <TopicHeader>
           <Navbar page="topic" />
-          <TopicContent>
+          <TopicHeaderContent>
             <BreadcrumbsWrapper />
             <TopicTitle>
               O Labirinto de Tapista - Uma História de Tormenta 20
@@ -30,9 +32,12 @@ export default function index() {
               <LikeBadge />
               <CommentBadge />
             </TopicBadges>
-          </TopicContent>
+          </TopicHeaderContent>
         </TopicHeader>
       </TopicWrapper>
+      <TopicContent>
+        <TopicIntroduction/>
+      </TopicContent>
       <Footer />
     </>
   );
