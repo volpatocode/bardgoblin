@@ -48,6 +48,6 @@ export const TopicContent = styled(Box)`
   padding: 0 20%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   margin: 2rem 0;
 `;
