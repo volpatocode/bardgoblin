@@ -7,9 +7,9 @@ import {
   TopicModuleTitleWrapper,
 } from "./styles";
 
-export type introductionType = {};
+export type hiddenInfoType = {};
 
-export default function index({}: introductionType) {
+export default function index({}: hiddenInfoType) {
   return (
     <TopicModuleWrapper>
       <TopicModuleTitleWrapper>

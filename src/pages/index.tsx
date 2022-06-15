@@ -10,9 +10,6 @@ export default function index(): propsType {
   return (
     <>
       <Topic />
-      <Home />
-      <Quest />
-      <Builds />
     </>
   );
 }

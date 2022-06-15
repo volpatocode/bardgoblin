@@ -16,6 +16,7 @@ import CommentBadge from "../../components/CommentBadge";
 import BreadcrumbsWrapper from "../../components/Topic/Breadcrumbs";
 import TopicIntroduction from "../../components/Topic/TopicIntroduction";
 import TopicModule from "../../components/Topic/TopicModule";
+import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
 
 export default function index() {
   return (
@@ -39,6 +40,9 @@ export default function index() {
       <TopicContent>
         <TopicIntroduction/>
         <TopicModule/>
+        <TopicModule/>
+        <TopicHiddenInfo/>
+        
       </TopicContent>
       <Footer />
     </>
