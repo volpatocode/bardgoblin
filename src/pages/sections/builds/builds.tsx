@@ -16,6 +16,7 @@ import {
   TopicListTitle,
   TopicQueryInfo,
   TopicFiltersWrapper,
+  BorderDivider,
 } from "../../sectionStyles";
 
 export default function index() {
@@ -30,6 +31,7 @@ export default function index() {
             Examples and combinations to explore your hidden creativity
             </SectionDescription>
           </SectionContent>
+          <BorderDivider/>
         </SectionHeader>
       </SectionWrapper>
       <SectionResults>

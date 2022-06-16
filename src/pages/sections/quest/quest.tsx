@@ -16,8 +16,8 @@ import {
   TopicListTitle,
   TopicQueryInfo,
   TopicFiltersWrapper,
+  BorderDivider,
 } from "../../sectionStyles";
-import CommentBadge from "../../../components/CommentBadge";
 
 export default function index() {
   return (
@@ -31,6 +31,7 @@ export default function index() {
               Find the best answers to the most unexpected situations
             </SectionDescription>
           </SectionContent>
+          <BorderDivider/>
         </SectionHeader>
       </SectionWrapper>
       <SectionResults>

@@ -19,6 +19,8 @@ import TopicModule from "../../components/Topic/TopicModule";
 import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
 import OptionalQuestAccordion from "../../components/Topic/OptionalQuestAccordion";
 
+import {BorderDivider} from "../sectionStyles";
+
 export default function index() {
   return (
     <>
@@ -36,6 +38,7 @@ export default function index() {
               <CommentBadge />
             </TopicBadges>
           </TopicHeaderContent>
+          <BorderDivider/>
         </TopicHeader>
       </TopicHeaderWrapper>
       <TopicContent>

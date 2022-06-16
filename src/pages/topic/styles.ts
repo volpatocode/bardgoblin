@@ -14,7 +14,10 @@ export const TopicHeader = styled(Box)`
     url("/background2.png") no-repeat center center / cover;
   width: 100vw;
   height: 65vh;
-  border-bottom: 1px solid rgba(29, 29, 29, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const TopicHeaderContent = styled(Box)`
@@ -22,7 +25,6 @@ export const TopicHeaderContent = styled(Box)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80%;
   gap: 0.3rem;
 `;
 

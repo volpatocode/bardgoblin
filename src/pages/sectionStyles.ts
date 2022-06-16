@@ -26,7 +26,10 @@ export const SectionHeader = styled(Box)<sectionType>`
   }};
   width: 100vw;
   height: 65vh;
-  border-bottom: 1px solid rgba(29, 29, 29, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const SectionContent = styled(Box)`
@@ -34,7 +37,6 @@ export const SectionContent = styled(Box)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 70%;
   gap: 0.5rem;
 `;
 
@@ -44,7 +46,7 @@ export const SectionTitle = styled.h1`
   font-family: "The Wild Breath of Zelda";
   text-transform: uppercase;
   text-align: center;
-  max-width: 50%;
+  max-width: 70%;
 `;
 
 export const SectionDescription = styled.h3`
@@ -78,3 +80,8 @@ export const TopicQueryInfo = styled(Box)`
 `;
 
 export const TopicFiltersWrapper = styled(Box)``;
+
+export const BorderDivider = styled(Box)`
+  border-bottom: 1px solid rgba(29, 29, 29, 1);
+  width: 100%;
+`;
