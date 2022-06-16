@@ -70,13 +70,21 @@ export const BoxEmail = styled(Box)``;
 
 export const BoxPassword = styled(Box)``;
 
-export const AnchorInfo = styled.a`
+export const AnchorInfo = styled(Button)`
   color: #ff9900;
   text-decoration: none;
   font-size: 0.7rem;
   width: fit-content;
   cursor: pointer;
+  min-width: 0;
+`;
 
+export const ButtonInfo = styled(Button)`
+  color: #ff9900;
+  text-decoration: none;
+  font-size: 0.7rem;
+  width: fit-content;
+  cursor: pointer;
 `;
 
 export const BoxButtons = styled(Box)`

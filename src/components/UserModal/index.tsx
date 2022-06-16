@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Logo from "../Logo";
 
 import { useForm } from "react-hook-form";
@@ -17,6 +17,7 @@ import {
   BoxEmail,
   BoxPassword,
   AnchorInfo,
+  ButtonInfo,
   BoxButtons,
   FinishButton,
   BoxLogin,
@@ -26,11 +27,17 @@ import {
 import { UserFormData } from "../../types/user";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  sendPasswordResetEmail,
+} from "firebase/auth";
 import { auth } from "../../config/firebaseConfig";
 
 export default function index() {
   const { register, handleSubmit } = useForm();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     isOpen,
@@ -41,31 +48,46 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-
   async function createUser(data: UserFormData) {
+    setIsLoading(true);
     await createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((value) => {
         console.log("Cadastrado com sucesso!");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
   }
 
   async function loginUser(data: UserFormData) {
+    setIsLoading(true);
     await signInWithEmailAndPassword(auth, data.email, data.password)
       .then((value) => {
         console.log("Logado com sucesso!");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
   }
 
   async function logOut() {
+    setIsLoading(true);
     await signOut(auth)
-    .then(() => {
-      console.log("Deslogado com sucesso!");
-    })
-    .catch((error) => console.log(error));
+      .then(() => {
+        console.log("Deslogado com sucesso!");
+      })
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
   }
- 
+
+  async function forgotPassword(data: UserFormData) {
+    setIsLoading(true);
+    await sendPasswordResetEmail(auth, data.email)
+      .then((value) => {
+        console.log("Email enviado com sucesso!");
+      })
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
+  }
+
   return (
     <UserModal>
       <Modal
@@ -126,7 +148,7 @@ export default function index() {
                     </BoxPassword>
                   </BoxInfo>
                   <BoxButtons>
-                    <AnchorInfo href="/">Having trouble?</AnchorInfo>
+                    <ButtonInfo onClick={handleSubmit(forgotPassword)}>Forgot password?</ButtonInfo>
                     <FinishButton
                       type="submit"
                       onClick={handleSubmit(loginUser)}
