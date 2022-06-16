@@ -26,6 +26,8 @@ import {
 import { UserFormData } from "../../types/user";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../../config/firebaseConfig";
 
 export default function index() {
   const { register, handleSubmit } = useForm();
@@ -39,10 +41,31 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-  function onSubmit(data: UserFormData) {
-    console.log(data);
+
+  async function createUser(data: UserFormData) {
+    await createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((value) => {
+        console.log("Cadastrado com sucesso!");
+      })
+      .catch((error) => console.log(error));
   }
 
+  async function loginUser(data: UserFormData) {
+    await signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((value) => {
+        console.log("Logado com sucesso!");
+      })
+      .catch((error) => console.log(error));
+  }
+
+  async function logOut() {
+    await signOut(auth)
+    .then(() => {
+      console.log("Deslogado com sucesso!");
+    })
+    .catch((error) => console.log(error));
+  }
+ 
   return (
     <UserModal>
       <Modal
@@ -82,7 +105,7 @@ export default function index() {
               </SelectButton>
             </SelectButtonBox>
             {isOnLogin && (
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(loginUser)}>
                 <BoxLogin>
                   <BoxInfo>
                     <BoxEmail>
@@ -104,13 +127,18 @@ export default function index() {
                   </BoxInfo>
                   <BoxButtons>
                     <AnchorInfo href="/">Having trouble?</AnchorInfo>
-                    <FinishButton>Login</FinishButton>
+                    <FinishButton
+                      type="submit"
+                      onClick={handleSubmit(loginUser)}
+                    >
+                      Login
+                    </FinishButton>
                   </BoxButtons>
                 </BoxLogin>
               </form>
             )}
             {isOnRegister && (
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(createUser)}>
                 <BoxRegister>
                   <BoxInfo>
                     <BoxUser>
@@ -150,7 +178,12 @@ export default function index() {
                     <AnchorInfo onClick={() => toggleLogin()}>
                       Already have an account?
                     </AnchorInfo>
-                    <FinishButton>Register</FinishButton>
+                    <FinishButton
+                      type="submit"
+                      onClick={handleSubmit(createUser)}
+                    >
+                      Register
+                    </FinishButton>
                   </BoxButtons>
                 </BoxRegister>
               </form>
