@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 import {
-  TopicWrapper,
+  TopicHeaderWrapper,
   TopicHeader,
   TopicHeaderContent,
   TopicTitle,
@@ -22,7 +22,7 @@ import OptionalQuestAccordion from "../../components/Topic/OptionalQuestAccordio
 export default function index() {
   return (
     <>
-      <TopicWrapper>
+      <TopicHeaderWrapper>
         <TopicHeader>
           <Navbar page="topic" />
           <TopicHeaderContent>
@@ -37,14 +37,13 @@ export default function index() {
             </TopicBadges>
           </TopicHeaderContent>
         </TopicHeader>
-      </TopicWrapper>
+      </TopicHeaderWrapper>
       <TopicContent>
         <TopicIntroduction/>
         <TopicModule/>
         <TopicModule/>
         <TopicHiddenInfo/>
         <OptionalQuestAccordion/>
-        
       </TopicContent>
       <Footer />
     </>

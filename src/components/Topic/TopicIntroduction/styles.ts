@@ -13,7 +13,7 @@ export const TopicIntroduction = styled(Box)`
 export const IntroductionTitle = styled.h4`
   font-size: 1rem;
   color: #fff;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.4px;
   text-align: center;
 `;

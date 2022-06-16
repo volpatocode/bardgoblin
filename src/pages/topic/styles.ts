@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Button, Box } from "@mui/material";
 
-export const TopicWrapper = styled(Box)`
+export const TopicHeaderWrapper = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;

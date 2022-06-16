@@ -19,7 +19,7 @@ export const TopicModuleTitleWrapper = styled(Box)`
 export const TopicModuleTitle = styled.h4`
   font-size: 1rem;
   color: #f6f6f6;
-  font-weight: bolder;
+  font-weight: 400;
   letter-spacing: 0.4px;
   text-align: center;
 `;
