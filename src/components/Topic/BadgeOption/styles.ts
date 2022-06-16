@@ -11,6 +11,7 @@ export const BadgeOption = styled(Button)`
   transition: 200ms ease-in-out;
   min-width: 0;
   font-weight: 600;
+  line-height: normal;
   :hover {
     background: #FF9900;
   }

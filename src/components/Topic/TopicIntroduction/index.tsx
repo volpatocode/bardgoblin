@@ -12,7 +12,7 @@ export type introductionType = {};
 export default function index({}: introductionType) {
   return (
     <TopicIntroduction>
-      <IntroductionTitle>Introduction</IntroductionTitle>
+      <IntroductionTitle>• Introduction</IntroductionTitle>
       <TopicContent/>
       <IntroductionDivider />
     </TopicIntroduction>

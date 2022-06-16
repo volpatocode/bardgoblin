@@ -17,6 +17,7 @@ import BreadcrumbsWrapper from "../../components/Topic/Breadcrumbs";
 import TopicIntroduction from "../../components/Topic/TopicIntroduction";
 import TopicModule from "../../components/Topic/TopicModule";
 import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
+import OptionalQuestAccordion from "../../components/Topic/OptionalQuestAccordion";
 
 export default function index() {
   return (
@@ -42,6 +43,7 @@ export default function index() {
         <TopicModule/>
         <TopicModule/>
         <TopicHiddenInfo/>
+        <OptionalQuestAccordion/>
         
       </TopicContent>
       <Footer />
