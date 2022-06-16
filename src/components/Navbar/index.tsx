@@ -13,12 +13,13 @@ import NavSearchBar from "../NavSearchBar";
 import AvatarIcon from "../AvatarIcon";
 
 import { Stack } from "@mui/material";
+import { UserModalContextProvider } from "../../contexts/UserModalContext";
 
 export type navbarType = {
   page: "home" | "section" | "topic";
 };
 
-export default function index({page}: navbarType) {
+export default function index({ page }: navbarType) {
   return (
     <>
       <Navbar page={page}>
@@ -38,7 +39,7 @@ export default function index({page}: navbarType) {
             <TextButton>Tools</TextButton>
             <TextButton>About</TextButton>
             <ContainedButton>New Build / Quest</ContainedButton>
-            <AvatarIcon />
+              <AvatarIcon />
           </Stack>
         </NavRightSide>
       </Navbar>

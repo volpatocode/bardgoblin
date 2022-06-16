@@ -99,6 +99,7 @@ export const FinishButton = styled(Button)`
 
 export const BoxUser = styled(Box)``;
 
-export const BoxLogin = styled(Box)``;
+export const BoxLogin = styled(Box)`
+`;
 
 export const BoxRegister = styled(Box)``;

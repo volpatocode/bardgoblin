@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Logo from "../Logo";
+
+import { useForm } from "react-hook-form";
 
 import { Backdrop, Modal, Fade, Button } from "@mui/material";
 
@@ -21,29 +23,31 @@ import {
   BoxRegister,
   BoxUser,
 } from "./styles";
+import { UserFormData } from "../../types/user";
+import { UserModalContext } from "../../contexts/UserModalContext";
+
 
 export default function index() {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleChange = () => setIsOpen(!isOpen);
+  const { register, handleSubmit } = useForm();
 
-  const [isOnLogin, setIsOnLogin] = useState(true);
-  const toggleLogin = () => {
-    setIsOnLogin(true);
-    setIsOnRegister(false);
-  };
+  const {
+    isOpen,
+    handleUserModal,
+    isOnLogin,
+    isOnRegister,
+    toggleLogin,
+    toggleRegister,
+  } = useContext(UserModalContext);
 
-  const [isOnRegister, setIsOnRegister] = useState(false);
-  const toggleRegister = () => {
-    setIsOnRegister(true);
-    setIsOnLogin(false);
-  };
+  function onSubmit(data: UserFormData) {
+    console.log(data);
+  }
 
   return (
     <UserModal>
-      <Button onClick={handleChange}>Open modal</Button>
       <Modal
         open={isOpen}
-        onClose={handleChange}
+        onClose={handleUserModal}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -78,48 +82,78 @@ export default function index() {
               </SelectButton>
             </SelectButtonBox>
             {isOnLogin && (
-              <BoxLogin>
-                <BoxInfo>
-                  <BoxEmail>
-                    <InputTitle>Email</InputTitle>
-                    <InputInfo type="email" />
-                  </BoxEmail>
-                  <BoxPassword>
-                    <InputTitle>Password</InputTitle>
-                    <InputInfo type="password"/>
-                  </BoxPassword>
-                </BoxInfo>
-                <BoxButtons>
-                  <AnchorInfo href="/">Having trouble?</AnchorInfo>
-                  <FinishButton>Login</FinishButton>
-                </BoxButtons>
-              </BoxLogin>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <BoxLogin>
+                  <BoxInfo>
+                    <BoxEmail>
+                      <InputTitle>Email</InputTitle>
+                      <InputInfo
+                        {...register("email")}
+                        id="login-email"
+                        type="email"
+                      />
+                    </BoxEmail>
+                    <BoxPassword>
+                      <InputTitle>Password</InputTitle>
+                      <InputInfo
+                        {...register("password")}
+                        id="login-password"
+                        type="password"
+                      />
+                    </BoxPassword>
+                  </BoxInfo>
+                  <BoxButtons>
+                    <AnchorInfo href="/">Having trouble?</AnchorInfo>
+                    <FinishButton>Login</FinishButton>
+                  </BoxButtons>
+                </BoxLogin>
+              </form>
             )}
             {isOnRegister && (
-              <BoxRegister>
-                <BoxInfo>
-                  <BoxUser>
-                    <InputTitle>User</InputTitle>
-                    <InputInfo type="text" />
-                  </BoxUser>
-                  <BoxEmail>
-                    <InputTitle>Email</InputTitle>
-                    <InputInfo type="email" />
-                  </BoxEmail>
-                  <BoxPassword>
-                    <InputTitle>Password</InputTitle>
-                    <InputInfo type="password" />
-                  </BoxPassword>
-                  <BoxPassword>
-                    <InputTitle>Confirm password</InputTitle>
-                    <InputInfo type="password" />
-                  </BoxPassword>
-                </BoxInfo>
-                <BoxButtons>
-                  <AnchorInfo onClick={() => toggleLogin()} >Already have an account?</AnchorInfo>
-                  <FinishButton>Register</FinishButton>
-                </BoxButtons>
-              </BoxRegister>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <BoxRegister>
+                  <BoxInfo>
+                    <BoxUser>
+                      <InputTitle>Name</InputTitle>
+                      <InputInfo
+                        {...register("name")}
+                        id="register-name"
+                        type="text"
+                      />
+                    </BoxUser>
+                    <BoxEmail>
+                      <InputTitle>Email</InputTitle>
+                      <InputInfo
+                        {...register("email")}
+                        id="register-email"
+                        type="email"
+                      />
+                    </BoxEmail>
+                    <BoxPassword>
+                      <InputTitle>Password</InputTitle>
+                      <InputInfo
+                        {...register("password")}
+                        id="register-password"
+                        type="password"
+                      />
+                    </BoxPassword>
+                    <BoxPassword>
+                      <InputTitle>Confirm password</InputTitle>
+                      <InputInfo
+                        {...register("confirmPassword")}
+                        id="register-confirm-password"
+                        type="password"
+                      />
+                    </BoxPassword>
+                  </BoxInfo>
+                  <BoxButtons>
+                    <AnchorInfo onClick={() => toggleLogin()}>
+                      Already have an account?
+                    </AnchorInfo>
+                    <FinishButton>Register</FinishButton>
+                  </BoxButtons>
+                </BoxRegister>
+              </form>
             )}
           </BoxModal>
         </Fade>
