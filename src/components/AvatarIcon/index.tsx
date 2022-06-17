@@ -20,7 +20,8 @@ export default function index() {
     setAnchorEl(null);
   };
 
-  const { handleUserModal } = useContext(UserModalContext);
+  const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
+    useContext(UserModalContext);
 
   const { logOut, isAuthorized } = useContext(UserContext);
 
@@ -57,10 +58,19 @@ export default function index() {
           },
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        {isAuthorized && <MenuItem onClick={logOut}>Log out</MenuItem>}
-        <MenuItem onClick={handleUserModal}>Create an account</MenuItem>
+        {isAuthorized ? (
+          <>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleClose}>Reset password</MenuItem>
+            <MenuItem onClick={logOut}>Log out</MenuItem>
+          </>
+        ) : (
+          <>
+            <MenuItem onClick={handleUserModalLogin}>Login</MenuItem>
+            <MenuItem onClick={handleUserModalRegister}>Register</MenuItem>
+          </>
+        )}
+
         {handleUserModal && <UserModal />}
       </Menu>
     </AvatarIcon>

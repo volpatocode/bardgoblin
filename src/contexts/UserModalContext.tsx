@@ -5,22 +5,38 @@ type UserModalContextProps = {
 };
 
 type UserModalContextType = {
-    isOpen  : boolean;
-    setIsOpen : (newState: boolean) => void;
-    isOnLogin : boolean;
-    setIsOnLogin : (newState: boolean) => void;
-    isOnRegister : boolean;
-    setIsOnRegister : (newState: boolean) => void;
-    handleUserModal : () => void,
-    toggleLogin : () => void;
-    toggleRegister : () => void;
+  isOpen: boolean;
+  setIsOpen: (newState: boolean) => void;
+  isOnLogin: boolean;
+  setIsOnLogin: (newState: boolean) => void;
+  isOnRegister: boolean;
+  setIsOnRegister: (newState: boolean) => void;
+  handleUserModal: () => void;
+  handleUserModalLogin: () => void;
+  handleUserModalRegister: () => void;
+  toggleLogin: () => void;
+  toggleRegister: () => void;
 };
 
-export const UserModalContext = createContext<UserModalContextType>({} as UserModalContextType);
+export const UserModalContext = createContext<UserModalContextType>(
+  {} as UserModalContextType
+);
 
-export const UserModalContextProvider = ({ children }: UserModalContextProps) => {
+export const UserModalContextProvider = ({
+  children,
+}: UserModalContextProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
   const handleUserModal = () => setIsOpen(!isOpen);
+
+  const handleUserModalLogin = () => {
+    setIsOpen(!isOpen);
+    toggleLogin();
+  };
+  const handleUserModalRegister = () => {
+    setIsOpen(!isOpen);
+    toggleRegister();
+  };
 
   const [isOnLogin, setIsOnLogin] = useState(true);
   const toggleLogin = () => {
@@ -40,12 +56,14 @@ export const UserModalContextProvider = ({ children }: UserModalContextProps) =>
         isOpen,
         setIsOpen,
         handleUserModal,
+        handleUserModalLogin,
+        handleUserModalRegister,
         isOnLogin,
         setIsOnLogin,
         toggleLogin,
         isOnRegister,
         setIsOnRegister,
-        toggleRegister
+        toggleRegister,
       }}
     >
       {children}
