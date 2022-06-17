@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import {
   Navbar,
@@ -13,13 +13,15 @@ import NavSearchBar from "../NavSearchBar";
 import AvatarIcon from "../AvatarIcon";
 
 import { Stack } from "@mui/material";
-import { UserModalContextProvider } from "../../contexts/UserModalContext";
+import { UserContext } from "../../contexts/UserContext";
 
 export type navbarType = {
   page: "home" | "section" | "topic";
 };
 
 export default function index({ page }: navbarType) {
+  const { isAuthorized } = useContext(UserContext);
+
   return (
     <>
       <Navbar page={page}>
@@ -35,11 +37,13 @@ export default function index({ page }: navbarType) {
             spacing={1}
           >
             <TextButton>Builds</TextButton>
-            <TextButton>Side Quests/Supply</TextButton>
+            <TextButton>Side Quests</TextButton>
             <TextButton>Tools</TextButton>
             <TextButton>About</TextButton>
-            <ContainedButton>New Build / Quest</ContainedButton>
-              <AvatarIcon />
+            {isAuthorized && (
+              <ContainedButton>Create Build / Quest</ContainedButton>
+            )}
+            <AvatarIcon />
           </Stack>
         </NavRightSide>
       </Navbar>

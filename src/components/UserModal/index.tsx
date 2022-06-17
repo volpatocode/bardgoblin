@@ -46,7 +46,7 @@ export default function index() {
     createUser,
     loginUser,
     forgotPassword,
-    isAuthorized,
+    isLoading,
   } = useContext(UserContext);
 
 
@@ -116,6 +116,7 @@ export default function index() {
                     <FinishButton
                       type="submit"
                       onClick={handleSubmit(loginUser)}
+                      disabled={isLoading}
                     >
                       Login
                     </FinishButton>
