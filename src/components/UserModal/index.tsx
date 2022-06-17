@@ -24,20 +24,12 @@ import {
   BoxRegister,
   BoxUser,
 } from "./styles";
-import { UserFormData } from "../../types/user";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  sendPasswordResetEmail,
-} from "firebase/auth";
-import { auth } from "../../config/firebaseConfig";
+import { UserContext } from "../../contexts/userContext";
 
 export default function index() {
   const { register, handleSubmit } = useForm();
-  const [isLoading, setIsLoading] = useState(false);
 
   const {
     isOpen,
@@ -48,45 +40,8 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-  async function createUser(data: UserFormData) {
-    setIsLoading(true);
-    await createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((value) => {
-        console.log("Cadastrado com sucesso!");
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  }
-
-  async function loginUser(data: UserFormData) {
-    setIsLoading(true);
-    await signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((value) => {
-        console.log("Logado com sucesso!");
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  }
-
-  async function logOut() {
-    setIsLoading(true);
-    await signOut(auth)
-      .then(() => {
-        console.log("Deslogado com sucesso!");
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  }
-
-  async function forgotPassword(data: UserFormData) {
-    setIsLoading(true);
-    await sendPasswordResetEmail(auth, data.email)
-      .then((value) => {
-        console.log("Email enviado com sucesso!");
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  }
+  const { isLoading, createUser, loginUser, logOut, forgotPassword } =
+    useContext(UserContext);
 
   return (
     <UserModal>
@@ -148,7 +103,9 @@ export default function index() {
                     </BoxPassword>
                   </BoxInfo>
                   <BoxButtons>
-                    <ButtonInfo onClick={handleSubmit(forgotPassword)}>Forgot password?</ButtonInfo>
+                    <ButtonInfo onClick={handleSubmit(forgotPassword)}>
+                      Forgot password?
+                    </ButtonInfo>
                     <FinishButton
                       type="submit"
                       onClick={handleSubmit(loginUser)}
