@@ -5,18 +5,18 @@ import Builds from "./sections/builds/builds";
 import Topic from "./topic/topic";
 import UserModal from "../components/UserModal";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
-import { UserContextProvider } from "../contexts/userContext";
+import { UserContextProvider } from "../contexts/UserContext";
 
 type propsType = {};
 
 export default function index(): propsType {
   return (
     <>
-      <UserContextProvider>
-        <UserModalContextProvider>
+      <UserModalContextProvider>
+        <UserContextProvider>
           <Home />
-        </UserModalContextProvider>
-      </UserContextProvider>
+        </UserContextProvider>
+      </UserModalContextProvider>
     </>
   );
 }

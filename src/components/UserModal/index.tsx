@@ -26,7 +26,9 @@ import {
 } from "./styles";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
-import { UserContext } from "../../contexts/userContext";
+import { UserContext } from "../../contexts/UserContext";
+
+import { auth } from "../../config/firebaseConfig";
 
 export default function index() {
   const { register, handleSubmit } = useForm();
@@ -40,8 +42,13 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-  const { isLoading, createUser, loginUser, logOut, forgotPassword } =
-    useContext(UserContext);
+  const {
+    createUser,
+    loginUser,
+    forgotPassword,
+    isAuthorized,
+  } = useContext(UserContext);
+
 
   return (
     <UserModal>

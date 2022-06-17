@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 
 import { UserFormData } from "../types/user";
 
@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
 
@@ -15,20 +16,34 @@ type UserContextProps = {
 };
 
 type UserContextType = {
-  isLoading : boolean;
-  setIsLoading : (newState: boolean) => void;
+  isLoading: boolean;
+  setIsLoading: (newState: boolean) => void;
   createUser: (data: UserFormData) => void;
   loginUser: (data: UserFormData) => void;
   logOut: () => void;
   forgotPassword: (data: UserFormData) => void;
-
+  isAuthorized: boolean;
+  setIsAuthorized: (newState: boolean) => void;
 };
 
-export const UserContext = createContext<UserContextType>({} as UserContextType);
+export const UserContext = createContext<UserContextType>(
+  {} as UserContextType
+);
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-
   const [isLoading, setIsLoading] = useState(false);
+
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthorized(true);
+      } else {
+        setIsAuthorized(false);
+      }
+    });
+  }, []);
 
   async function createUser(data: UserFormData) {
     setIsLoading(true);
@@ -79,6 +94,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         loginUser,
         logOut,
         forgotPassword,
+        isAuthorized,
+        setIsAuthorized,
       }}
     >
       {children}
