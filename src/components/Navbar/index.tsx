@@ -16,7 +16,7 @@ import { Stack } from "@mui/material";
 import { UserContext } from "../../contexts/UserContext";
 
 export type navbarType = {
-  page: "home" | "section" | "topic";
+  page: "home" | "section" | "topic" | "forgotpassword";
 };
 
 export default function index({ page }: navbarType) {
@@ -36,8 +36,8 @@ export default function index({ page }: navbarType) {
             alignItems="center"
             spacing={1}
           >
-            <TextButton>Builds</TextButton>
-            <TextButton>Side Quests</TextButton>
+            <TextButton href="/sections/builds/builds">Builds</TextButton>
+            <TextButton href="/sections/quest/quest">Side Quests</TextButton>
             <TextButton>Tools</TextButton>
             <TextButton>About</TextButton>
             {isAuthorized && (

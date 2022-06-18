@@ -15,9 +15,9 @@ export const ForgotPasswordContent = styled(Box)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 60%;
+  width: 70%;
   height: 100%;
-  gap: 3rem;
+  gap: 5rem;
 `;
 
 export const ForgotPasswordBox = styled(Box)`

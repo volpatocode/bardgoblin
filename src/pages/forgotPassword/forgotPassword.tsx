@@ -25,10 +25,10 @@ export default function index() {
   const { forgotPassword } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
 
+
   return (
-    <>
       <ForgotPasswordWrapper>
-        <Navbar page="home" />
+        <Navbar page="forgotpassword" />
         <ForgotPasswordContent>
           <ForgotPasswordBox>
             <BoxLogo>
@@ -57,6 +57,5 @@ export default function index() {
         </ForgotPasswordContent>
         <Footer />
       </ForgotPasswordWrapper>
-    </>
   );
 }

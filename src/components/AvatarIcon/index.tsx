@@ -35,7 +35,7 @@ export default function index() {
         onClick={handleMenu}
         sx={{ color: "white" }}
       >
-        <AccountCircle />
+        <AccountCircle fontSize="large" />
       </IconButton>
       <Menu
         id="menu-appbar"

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const UserModal = styled(Box)``;
 
@@ -98,6 +99,9 @@ export const FinishButton = styled(Button)`
   color: #fff;
   text-transform: none;
   background: #dd3e0e;
+  :disabled{
+    background: #c3c3c3;
+  }
   :hover {
     background: #dd3e0e;
   }
@@ -111,3 +115,7 @@ export const BoxLogin = styled(Box)`
 `;
 
 export const BoxRegister = styled(Box)``;
+
+export const StyledCircularProgress = styled(CircularProgress)`
+  color: #fff;
+`;

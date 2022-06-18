@@ -23,12 +23,13 @@ import {
   BoxLogin,
   BoxRegister,
   BoxUser,
+  StyledCircularProgress,
 } from "./styles";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
 import { UserContext } from "../../contexts/UserContext";
 
-import { auth } from "../../config/firebaseConfig";
+import Link from "next/link";
 
 export default function index() {
   const { register, handleSubmit } = useForm();
@@ -42,13 +43,8 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-  const {
-    createUser,
-    loginUser,
-    forgotPassword,
-    isLoading,
-  } = useContext(UserContext);
-
+  const { createUser, loginUser, forgotPassword, isLoading } =
+    useContext(UserContext);
 
   return (
     <UserModal>
@@ -110,15 +106,15 @@ export default function index() {
                     </BoxPassword>
                   </BoxInfo>
                   <BoxButtons>
-                    <ButtonInfo onClick={handleSubmit(forgotPassword)}>
-                      Forgot password?
-                    </ButtonInfo>
+                    <Link href="/forgotpassword/forgotpassword">
+                      <ButtonInfo>Forgot password?</ButtonInfo>
+                    </Link>
                     <FinishButton
                       type="submit"
                       onClick={handleSubmit(loginUser)}
                       disabled={isLoading}
                     >
-                      Login
+                      {isLoading ? <StyledCircularProgress size="25px"/> : "Login"}
                     </FinishButton>
                   </BoxButtons>
                 </BoxLogin>
@@ -168,8 +164,9 @@ export default function index() {
                     <FinishButton
                       type="submit"
                       onClick={handleSubmit(createUser)}
+                      disabled={isLoading}
                     >
-                      Register
+                      {isLoading ? <StyledCircularProgress size="25px" /> : "Register"}
                     </FinishButton>
                   </BoxButtons>
                 </BoxRegister>
