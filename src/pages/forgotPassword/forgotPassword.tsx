@@ -2,66 +2,51 @@ import React, { useContext } from "react";
 import {
   ForgotPasswordWrapper,
   ForgotPasswordBoxWrapper,
-  ForgotPasswordBox,
+  ForgotPasswordBoxTitle,
+  InfoButton,
+  InputBox,
+  InputTitle,
+  InputInfo,
+  FinishButton,
   ForgotPasswordImageBox,
+  BoxLogo,
 } from "./styles";
 
 import { UserContext } from "../../contexts/UserContext";
 import { useForm } from "react-hook-form";
-import {
-  BoxLogo,
-  BoxInfo,
-  InputTitle,
-  InputInfo,
-  BoxEmail,
-  BoxButtons,
-  FinishButton,
-  StyledCircularProgress,
-  ButtonInfo,
-} from "../../components/UserModal/styles";
 
 import Logo from "../../components/Logo";
+import { StyledCircularProgress } from "../../components/UserModal/styles";
 
 export default function index() {
   const { forgotPassword, isLoading } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
 
   return (
-    <ForgotPasswordWrapper>
-      <ForgotPasswordBoxWrapper>
-        <ForgotPasswordBox>
+    <form onSubmit={handleSubmit(forgotPassword)}>
+      <ForgotPasswordWrapper>
+        <ForgotPasswordBoxWrapper>
           <BoxLogo>
-            <Logo variant="vertical" />
+            <Logo variant="horizontal" />
           </BoxLogo>
-          <form onSubmit={handleSubmit(forgotPassword)}>
-            <BoxInfo>
-              <BoxEmail>
-                <InputTitle>Email</InputTitle>
-                <InputInfo
-                  {...register("email")}
-                  id="login-email"
-                  type="email"
-                />
-              </BoxEmail>
-            </BoxInfo>
-            <BoxButtons>
-              <ButtonInfo>Forgot password</ButtonInfo>
-              <FinishButton
-                type="submit"
-                onClick={handleSubmit(forgotPassword)}
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <StyledCircularProgress size="25px" />
-                ) : (
-                  "Send email"
-                )}
-              </FinishButton>
-            </BoxButtons>
-          </form>
-        </ForgotPasswordBox>
-      </ForgotPasswordBoxWrapper>
-      <ForgotPasswordImageBox />
-    </ForgotPasswordWrapper>
+          <InputBox>
+            <InputInfo
+              placeholder="Enter your email here"
+              {...register("email")}
+              id="login-email"
+              type="email"
+            />
+          </InputBox>
+          <InfoButton>Back to home</InfoButton>
+          <FinishButton
+            disabled={isLoading}
+            onClick={handleSubmit(forgotPassword)}
+          >
+            {isLoading ? <StyledCircularProgress size="25px"/> : "Send email"}
+          </FinishButton>
+        </ForgotPasswordBoxWrapper>
+        <ForgotPasswordImageBox />
+      </ForgotPasswordWrapper>
+    </form>
   );
 }
