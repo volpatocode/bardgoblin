@@ -10,10 +10,20 @@ export const ForgotPasswordWrapper = styled(Box)`
   align-items: center;
 `;
 
-export const ForgotPasswordBox = styled(Box)`
+export const ForgotPasswordBoxWrapper = styled(Box)`
   width:40vw;
   height: 100vh;
   background: #141414;
+`;
+
+export const ForgotPasswordBox= styled(Box)`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 100%;
+width: 100%;
+padding: 3rem 2rem;
 `;
 
 export const ForgotPasswordImageBox = styled(Box)`
