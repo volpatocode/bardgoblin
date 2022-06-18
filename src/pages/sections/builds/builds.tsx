@@ -18,33 +18,39 @@ import {
   TopicFiltersWrapper,
   BorderDivider,
 } from "../../sectionStyles";
+import { UserModalContextProvider } from "../../../contexts/UserModalContext";
+import { UserContextProvider } from "../../../contexts/UserContext";
 
 export default function index() {
   return (
     <>
-      <SectionWrapper>
-        <SectionHeader section="builds">
-          <Navbar page="section" />
-          <SectionContent>
-            <SectionTitle>Builds</SectionTitle>
-            <SectionDescription>
-            Examples and combinations to explore your hidden creativity
-            </SectionDescription>
-          </SectionContent>
-          <BorderDivider/>
-        </SectionHeader>
-      </SectionWrapper>
-      <SectionResults>
-        <TopicQueryInfo>
-          <TopicListTitle>You are looking for "aaa"</TopicListTitle>
-          <TopicFiltersWrapper>
-            <TopicSearchBar />
-          </TopicFiltersWrapper>
-        </TopicQueryInfo>
-        <TopicListWrapper />
-        <TopicPagination />
-      </SectionResults>
-      <Footer />
+      <UserModalContextProvider>
+        <UserContextProvider>
+          <SectionWrapper>
+            <SectionHeader section="builds">
+              <Navbar page="section" />
+              <SectionContent>
+                <SectionTitle>Builds</SectionTitle>
+                <SectionDescription>
+                  Examples and combinations to explore your hidden creativity
+                </SectionDescription>
+              </SectionContent>
+              <BorderDivider />
+            </SectionHeader>
+          </SectionWrapper>
+          <SectionResults>
+            <TopicQueryInfo>
+              <TopicListTitle>You are looking for "aaa"</TopicListTitle>
+              <TopicFiltersWrapper>
+                <TopicSearchBar />
+              </TopicFiltersWrapper>
+            </TopicQueryInfo>
+            <TopicListWrapper />
+            <TopicPagination />
+          </SectionResults>
+          <Footer />
+        </UserContextProvider>
+      </UserModalContextProvider>
     </>
   );
 }

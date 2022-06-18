@@ -86,6 +86,7 @@ export const ButtonInfo = styled(Button)`
   font-size: 0.7rem;
   width: fit-content;
   cursor: pointer;
+  padding: 6px 8px 6px 0;
 `;
 
 export const BoxButtons = styled(Box)`

@@ -18,33 +18,39 @@ import {
   TopicFiltersWrapper,
   BorderDivider,
 } from "../../sectionStyles";
+import { UserModalContextProvider } from "../../../contexts/UserModalContext";
+import { UserContextProvider } from "../../../contexts/UserContext";
 
 export default function index() {
   return (
     <>
-      <SectionWrapper>
-        <SectionHeader section="quest">
-          <Navbar page="section" />
-          <SectionContent>
-            <SectionTitle>Side Quests</SectionTitle>
-            <SectionDescription>
-              Find the best answers to the most unexpected situations
-            </SectionDescription>
-          </SectionContent>
-          <BorderDivider/>
-        </SectionHeader>
-      </SectionWrapper>
-      <SectionResults>
-        <TopicQueryInfo>
-          <TopicListTitle>You are looking for "ssssa"</TopicListTitle>
-          <TopicFiltersWrapper>
-            <TopicSearchBar />
-          </TopicFiltersWrapper>
-        </TopicQueryInfo>
-        <TopicListWrapper />
-        <TopicPagination />
-      </SectionResults>
-      <Footer />
+      <UserModalContextProvider>
+        <UserContextProvider>
+          <SectionWrapper>
+            <SectionHeader section="quest">
+              <Navbar page="section" />
+              <SectionContent>
+                <SectionTitle>Side Quests</SectionTitle>
+                <SectionDescription>
+                  Find the best answers to the most unexpected situations
+                </SectionDescription>
+              </SectionContent>
+              <BorderDivider />
+            </SectionHeader>
+          </SectionWrapper>
+          <SectionResults>
+            <TopicQueryInfo>
+              <TopicListTitle>You are looking for "ssssa"</TopicListTitle>
+              <TopicFiltersWrapper>
+                <TopicSearchBar />
+              </TopicFiltersWrapper>
+            </TopicQueryInfo>
+            <TopicListWrapper />
+            <TopicPagination />
+          </SectionResults>
+          <Footer />
+        </UserContextProvider>
+      </UserModalContextProvider>
     </>
   );
 }

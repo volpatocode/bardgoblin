@@ -111,7 +111,7 @@ export default function index() {
                     </Link>
                     <FinishButton
                       type="submit"
-                      onClick={handleSubmit(forgotPassword)}
+                      onClick={handleSubmit(loginUser)}
                       disabled={isLoading}
                     >
                       {isLoading ? <StyledCircularProgress size="25px"/> : "Login"}
