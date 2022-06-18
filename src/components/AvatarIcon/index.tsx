@@ -25,6 +25,17 @@ export default function index() {
 
   const { logOut, isAuthorized } = useContext(UserContext);
 
+  const authorizedMenu = [
+    <MenuItem onClick={handleClose}>My account</MenuItem>,
+    <MenuItem onClick={handleClose}>Reset password</MenuItem>,
+    <MenuItem onClick={logOut}>Log out</MenuItem>,
+  ];
+
+  const unauthorizedMenu = [
+    <MenuItem onClick={handleUserModalLogin}>Login</MenuItem>,
+    <MenuItem onClick={handleUserModalRegister}>Register</MenuItem>,
+  ];
+
   return (
     <AvatarIcon>
       <IconButton
@@ -58,19 +69,7 @@ export default function index() {
           },
         }}
       >
-        {isAuthorized ? (
-          <>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Reset password</MenuItem>
-            <MenuItem onClick={logOut}>Log out</MenuItem>
-          </>
-        ) : (
-          <>
-            <MenuItem onClick={handleUserModalLogin}>Login</MenuItem>
-            <MenuItem onClick={handleUserModalRegister}>Register</MenuItem>
-          </>
-        )}
-
+        {isAuthorized ? authorizedMenu : unauthorizedMenu}
         {handleUserModal && <UserModal />}
       </Menu>
     </AvatarIcon>

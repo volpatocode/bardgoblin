@@ -25,37 +25,31 @@ export default function index() {
   const { forgotPassword } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
 
-
   return (
-      <ForgotPasswordWrapper>
-        <Navbar page="forgotpassword" />
-        <ForgotPasswordContent>
-          <ForgotPasswordBox>
-            <BoxLogo>
-              <Logo variant="vertical" />
-            </BoxLogo>
-            <form onSubmit={handleSubmit(forgotPassword)}>
-              <InputTitle>Recover your password</InputTitle>
-              <InputInfo
-                type="email"
-                placeholder="Enter your email"
-                {...register("email")}
-                id="login-email"
-              />
-              <BoxButtons>
-                <Warning>Check your spam box</Warning>
-                <FinishButton
-                  type="submit"
-                  onClick={handleSubmit(forgotPassword)}
-                >
-                  Send email
-                </FinishButton>
-              </BoxButtons>
-            </form>
-          </ForgotPasswordBox>
-          <ImageBox src="/campfire.png" />
-        </ForgotPasswordContent>
-        <Footer />
-      </ForgotPasswordWrapper>
+    <ForgotPasswordWrapper>
+      <Navbar page="forgotpassword" />
+      <ForgotPasswordContent>
+        <ForgotPasswordBox>
+          <BoxLogo>
+            <Logo variant="vertical" />
+          </BoxLogo>
+          <form onSubmit={handleSubmit(forgotPassword)}>
+            <InputTitle>Recover your password</InputTitle>
+            <InputInfo
+              {...register("email")}
+              id="register-email"
+              type="email"
+            />
+            <BoxButtons>
+              <Warning>Check your spam box</Warning>
+              <FinishButton type="submit">Send email</FinishButton>
+            </BoxButtons>
+          </form>
+        </ForgotPasswordBox>
+
+        <ImageBox src="/campfire.png" />
+      </ForgotPasswordContent>
+      <Footer />
+    </ForgotPasswordWrapper>
   );
 }

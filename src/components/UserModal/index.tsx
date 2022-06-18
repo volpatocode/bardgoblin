@@ -32,7 +32,7 @@ import { UserContext } from "../../contexts/UserContext";
 import Link from "next/link";
 
 export default function index() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,  } = useForm();
 
   const {
     isOpen,
@@ -111,7 +111,7 @@ export default function index() {
                     </Link>
                     <FinishButton
                       type="submit"
-                      onClick={handleSubmit(loginUser)}
+                      onClick={handleSubmit(forgotPassword)}
                       disabled={isLoading}
                     >
                       {isLoading ? <StyledCircularProgress size="25px"/> : "Login"}
