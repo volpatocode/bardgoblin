@@ -2,10 +2,8 @@ import React, { useContext } from "react";
 import {
   ForgotPasswordWrapper,
   ForgotPasswordBoxWrapper,
-  ForgotPasswordBoxTitle,
   InfoButton,
   InputBox,
-  InputTitle,
   InputInfo,
   FinishButton,
   ForgotPasswordImageBox,
@@ -19,7 +17,7 @@ import Logo from "../../components/Logo";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
 
 export default function index() {
-  const { forgotPassword, isLoading } = useContext(UserContext);
+  const { forgotPassword, isLoading, onError } = useContext(UserContext);
   const { register, handleSubmit } = useForm();
 
   return (
@@ -40,7 +38,7 @@ export default function index() {
           <InfoButton href="/">Back to home</InfoButton>
           <FinishButton
             disabled={isLoading}
-            onClick={handleSubmit(forgotPassword)}
+            onClick={handleSubmit(forgotPassword, onError)}
           >
             {isLoading ? <StyledCircularProgress size="25px"/> : "Send email"}
           </FinishButton>

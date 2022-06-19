@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import Link from "next/link";
+
 import { UserModalContext } from "../../contexts/UserModalContext";
 
 import { AvatarIcon } from "./styles";
@@ -27,7 +29,9 @@ export default function index() {
 
   const authorizedMenu = [
     <MenuItem onClick={handleClose}>My account</MenuItem>,
-    <MenuItem onClick={handleClose}>Reset password</MenuItem>,
+    <Link href="/forgotpassword/forgotpassword">
+      <MenuItem onClick={handleClose}>Reset password</MenuItem>
+    </Link>,
     <MenuItem onClick={logOut}>Log out</MenuItem>,
   ];
 

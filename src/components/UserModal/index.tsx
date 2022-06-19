@@ -12,13 +12,12 @@ import {
   SelectButton,
   BoxLogo,
   InputTitle,
+  InputBox,
   InputInfo,
   BoxInfo,
   BoxEmail,
   BoxPassword,
-  AnchorInfo,
   ButtonInfo,
-  BoxButtons,
   FinishButton,
   BoxLogin,
   BoxRegister,
@@ -32,7 +31,10 @@ import { UserContext } from "../../contexts/UserContext";
 import Link from "next/link";
 
 import { yupResolver } from "@hookform/resolvers/yup";
-import { validationSchema } from "../../utils/validations";
+import {
+  loginValidationSchema,
+  registerValidationSchema,
+} from "../../utils/validations";
 
 export default function index() {
   const {
@@ -47,9 +49,8 @@ export default function index() {
   const { createUser, loginUser, isLoading, onError } = useContext(UserContext);
 
   const { register, handleSubmit } = useForm({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(registerValidationSchema),
   });
-
 
   return (
     <UserModal>
@@ -94,38 +95,40 @@ export default function index() {
                 <BoxLogin>
                   <BoxInfo>
                     <BoxEmail>
-                      <InputTitle>Email</InputTitle>
-                      <InputInfo
-                        {...register("email")}
-                        id="login-email"
-                        type="email"
-                      />
+                      <InputBox>
+                        <InputInfo
+                          {...register("email")}
+                          id="login-email"
+                          type="email"
+                          placeholder="Email"
+                        />
+                      </InputBox>
                     </BoxEmail>
                     <BoxPassword>
-                      <InputTitle>Password</InputTitle>
-                      <InputInfo
-                        {...register("password")}
-                        id="login-password"
-                        type="password"
-                      />
+                      <InputBox>
+                        <InputInfo
+                          {...register("password")}
+                          id="login-password"
+                          type="password"
+                          placeholder="Password"
+                        />
+                      </InputBox>
                     </BoxPassword>
                   </BoxInfo>
-                  <BoxButtons>
-                    <Link href="/forgotpassword/forgotpassword">
-                      <ButtonInfo>Forgot password?</ButtonInfo>
-                    </Link>
-                    <FinishButton
-                      type="submit"
-                      onClick={handleSubmit(loginUser, onError)}
-                      disabled={isLoading}
-                    >
-                      {isLoading ? (
-                        <StyledCircularProgress size="25px" />
-                      ) : (
-                        "Login"
-                      )}
-                    </FinishButton>
-                  </BoxButtons>
+                  <Link href="/forgotpassword/forgotpassword">
+                    <ButtonInfo>Forgot password?</ButtonInfo>
+                  </Link>
+                  <FinishButton
+                    type="submit"
+                    onClick={handleSubmit(loginUser, onError)}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <StyledCircularProgress size="25px" />
+                    ) : (
+                      "Login"
+                    )}
+                  </FinishButton>
                 </BoxLogin>
               </form>
             )}
@@ -134,54 +137,60 @@ export default function index() {
                 <BoxRegister>
                   <BoxInfo>
                     <BoxUser>
-                      <InputTitle>Name</InputTitle>
-                      <InputInfo
-                        {...register("name")}
-                        id="register-name"
-                        type="text"
-                      />
+                      <InputBox>
+                        <InputInfo
+                          {...register("name")}
+                          id="register-name"
+                          type="text"
+                          placeholder="Name"
+                        />
+                      </InputBox>
                     </BoxUser>
                     <BoxEmail>
-                      <InputTitle>Email</InputTitle>
-                      <InputInfo
-                        {...register("email")}
-                        id="register-email"
-                        type="email"
-                      />
+                      <InputBox>
+                        <InputInfo
+                          {...register("email")}
+                          id="register-email"
+                          type="email"
+                          placeholder="Email"
+                        />
+                      </InputBox>
                     </BoxEmail>
                     <BoxPassword>
-                      <InputTitle>Password</InputTitle>
-                      <InputInfo
-                        {...register("password")}
-                        id="register-password"
-                        type="password"
-                      />
+                      <InputBox>
+                        <InputInfo
+                          {...register("password")}
+                          id="register-password"
+                          type="password"
+                          placeholder="Password"
+                        />
+                      </InputBox>
                     </BoxPassword>
                     <BoxPassword>
-                      <InputTitle>Confirm password</InputTitle>
-                      <InputInfo
-                        {...register("confirmPassword")}
-                        id="register-confirm-password"
-                        type="password"
-                      />
+                      <InputBox>
+                        <InputInfo
+                          {...register("confirmPassword")}
+                          id="register-confirm-password"
+                          type="password"
+                          placeholder="Confirm password"
+                        />
+                      </InputBox>
                     </BoxPassword>
                   </BoxInfo>
-                  <BoxButtons>
-                    <AnchorInfo onClick={() => toggleLogin()}>
-                      Already have an account?
-                    </AnchorInfo>
-                    <FinishButton
-                      type="submit"
-                      onClick={handleSubmit(createUser, onError)}
-                      disabled={isLoading}
-                    >
-                      {isLoading ? (
-                        <StyledCircularProgress size="25px" />
-                      ) : (
-                        "Register"
-                      )}
-                    </FinishButton>
-                  </BoxButtons>
+                  <ButtonInfo onClick={() => toggleLogin()}>
+                    Already have an account?
+                  </ButtonInfo>
+                  <FinishButton
+                    type="submit"
+                    onClick={handleSubmit(createUser, onError)}
+                    disabled={isLoading}
+                  >
+                    {isLoading ? (
+                      <StyledCircularProgress size="25px" />
+                    ) : (
+                      "Register"
+                    )}
+                  </FinishButton>
                 </BoxRegister>
               </form>
             )}

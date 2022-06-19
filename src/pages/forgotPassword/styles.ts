@@ -48,21 +48,7 @@ export const Warning = styled.p`
   user-select: none;
 `;
 
-export const ForgotPasswordBoxTitle = styled.h4`
-  font-size: 1.3rem;
-  color: #f6f6f6;
-  letter-spacing: 0.4px;
-  text-align: left;
-  font-weight: 400;
-`;
 
-export const InputTitle = styled.h3`
-  font-size: 0.8rem;
-  color: #f6f6f6;
-  text-align: left;
-  font-weight: 500;
-  padding-bottom: 0.2rem;
-`;
 
 export const InputBox = styled(Box)`
   width: 100%;

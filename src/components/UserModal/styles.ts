@@ -6,12 +6,12 @@ export const UserModal = styled(Box)``;
 
 export const BoxModal = styled(Box)`
   position: absolute;
-  border-radius: 10px;
+  border-radius: 5px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 450px;
-  background-color: #131313;
+  background-color: #141414;
   display: flex;
   flex-direction: column;
   padding: 2.5rem 1rem;
@@ -21,15 +21,16 @@ export const BoxModal = styled(Box)`
 export const BoxLogo = styled(Box)`
   display: flex;
   justify-content: center;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
 `;
 
-export const SelectButtonBox = styled(Box)``;
+export const SelectButtonBox = styled(Box)`
+`;
 
 export const SelectButton = styled(Button)`
   color: #fff;
   text-transform: none;
-  padding: 4px 8px 4px 8px;
+  padding: 4px 8px;
   text-align: left;
   border-radius: 0px;
   :hover {
@@ -45,16 +46,21 @@ export const InputTitle = styled.h3`
   padding-bottom: 0.2rem;
 `;
 
+export const InputBox = styled(Box)`
+  width: 100%;
+  border-bottom: 2px solid #4b4b4b;
+`;
+
 export const InputInfo = styled.input`
   width: 100%;
-  padding: 0.5rem;
-  border-radius: 5px;
+  padding: 0.5rem 0.5rem 0.5rem 0;
   text-align: left;
   border: none;
+  color: #f6f6f6;
   display: flex;
   align-items: center;
+  background: #141414;
   justify-content: space-between;
-
   :focus {
     outline: none;
   }
@@ -71,15 +77,6 @@ export const BoxEmail = styled(Box)``;
 
 export const BoxPassword = styled(Box)``;
 
-export const AnchorInfo = styled(Button)`
-  color: #ff9900;
-  text-decoration: none;
-  font-size: 0.7rem;
-  width: fit-content;
-  cursor: pointer;
-  min-width: 0;
-`;
-
 export const ButtonInfo = styled(Button)`
   color: #ff9900;
   text-decoration: none;
@@ -87,20 +84,14 @@ export const ButtonInfo = styled(Button)`
   width: fit-content;
   cursor: pointer;
   padding: 6px 8px 6px 0;
-`;
-
-export const BoxButtons = styled(Box)`
   margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 `;
 
 export const FinishButton = styled(Button)`
   color: #fff;
   text-transform: none;
   background: #dd3e0e;
-  :disabled{
+  :disabled {
     background: #c3c3c3;
   }
   :hover {
@@ -108,12 +99,12 @@ export const FinishButton = styled(Button)`
   }
   padding: 4px 8px;
   width: 100%;
+  margin-top: 1rem;
 `;
 
 export const BoxUser = styled(Box)``;
 
-export const BoxLogin = styled(Box)`
-`;
+export const BoxLogin = styled(Box)``;
 
 export const BoxRegister = styled(Box)``;
 
