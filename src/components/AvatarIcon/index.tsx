@@ -29,7 +29,7 @@ export default function index() {
 
   const authorizedMenu = [
     <MenuItem onClick={handleClose}>My account</MenuItem>,
-    <Link href="/forgotpassword/forgotpassword">
+    <Link href="/help/forgotpassword">
       <MenuItem onClick={handleClose}>Reset password</MenuItem>
     </Link>,
     <MenuItem onClick={logOut}>Log out</MenuItem>,

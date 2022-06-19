@@ -36,8 +36,8 @@ export default function index({ page }: navbarType) {
             alignItems="center"
             spacing={1}
           >
-            <TextButton href="/sections/builds/builds">Builds</TextButton>
-            <TextButton href="/sections/quest/quest">Side Quests</TextButton>
+            <TextButton href="/section/builds">Builds</TextButton>
+            <TextButton href="/section/sidequests">Side Quests</TextButton>
             <TextButton>Tools</TextButton>
             <TextButton>About</TextButton>
             {isAuthorized && (

@@ -118,7 +118,7 @@ export default function index() {
                       </InputBox>
                     </BoxPassword>
                   </BoxInfo>
-                  <Link href="/forgotpassword/forgotpassword">
+                  <Link href="/help/forgotpassword">
                     <ButtonInfo>Forgot password?</ButtonInfo>
                   </Link>
                   <FinishButton

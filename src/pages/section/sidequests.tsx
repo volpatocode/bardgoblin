@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "../../../components/Navbar";
-import TopicListWrapper from "../../../components/Topic/TopicListWrapper";
-import Footer from "../../../components/Footer";
-import TopicSearchBar from "../../../components/Topic/TopicSearchBar";
-import LabelSelector from "../../../components/LabelSelector";
-import TopicPagination from "../../../components/Topic/TopicPagination";
+import Navbar from "../../components/Navbar";
+import TopicListWrapper from "../../components/Topic/TopicListWrapper";
+import Footer from "../../components/Footer";
+import TopicSearchBar from "../../components/Topic/TopicSearchBar";
+import LabelSelector from "../../components/LabelSelector";
+import TopicPagination from "../../components/Topic/TopicPagination";
 
 import {
   SectionWrapper,
@@ -17,9 +17,9 @@ import {
   TopicQueryInfo,
   TopicFiltersWrapper,
   BorderDivider,
-} from "../../sectionStyles";
-import { UserModalContextProvider } from "../../../contexts/UserModalContext";
-import { UserContextProvider } from "../../../contexts/UserContext";
+} from "./sectionStyles";
+import { UserModalContextProvider } from "../../contexts/UserModalContext";
+import { UserContextProvider } from "../../contexts/UserContext";
 
 export default function index() {
   return (

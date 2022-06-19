@@ -19,7 +19,7 @@ import TopicModule from "../../components/Topic/TopicModule";
 import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
 import OptionalQuestAccordion from "../../components/Topic/OptionalQuestAccordion";
 
-import {BorderDivider} from "../sectionStyles";
+import {BorderDivider} from "../section/sectionStyles";
 
 export default function index() {
   return (
