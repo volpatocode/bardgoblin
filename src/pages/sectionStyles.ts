@@ -14,16 +14,17 @@ export const SectionWrapper = styled(Box)`
 `;
 
 export const SectionHeader = styled(Box)<sectionType>`
-  background: linear-gradient(rgba(29, 29, 29, 0.6), rgba(29, 29, 29, 0.6)), ${(props) => {
-    switch (props.section) {
-      case "quest":
-        return `url("/quests.png") no-repeat center center / cover`;
-      case "builds":
-        return `url("/builds.png") no-repeat center center / cover`;
-      default:
-        return `url("/background2.png") no-repeat center center / cover`;
-    }
-  }};
+  background: linear-gradient(rgba(29, 29, 29, 0.6), rgba(29, 29, 29, 0.6)),
+    ${(props) => {
+      switch (props.section) {
+        case "quest":
+          return `url("/quests.png") no-repeat center center / cover`;
+        case "builds":
+          return `url("/builds.png") no-repeat center center / cover`;
+        default:
+          return `url("/background2.png") no-repeat center center / cover`;
+      }
+    }};
   width: 100vw;
   height: 65vh;
   display: flex;
@@ -43,10 +44,9 @@ export const SectionContent = styled(Box)`
 export const SectionTitle = styled.h1`
   font-size: 3rem;
   color: #fff;
-  font-family: "The Wild Breath of Zelda";
+  font-family: "Uncial Antiqua", cursive;
   text-transform: uppercase;
   text-align: center;
-  max-width: 70%;
 `;
 
 export const SectionDescription = styled.h3`

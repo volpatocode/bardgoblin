@@ -31,9 +31,10 @@ import { UserContext } from "../../contexts/UserContext";
 
 import Link from "next/link";
 
-export default function index() {
-  const { register, handleSubmit,  } = useForm();
+import { yupResolver } from "@hookform/resolvers/yup";
+import { validationSchema } from "../../utils/validations";
 
+export default function index() {
   const {
     isOpen,
     handleUserModal,
@@ -43,8 +44,12 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-  const { createUser, loginUser,isLoading } =
-    useContext(UserContext);
+  const { createUser, loginUser, isLoading, onError } = useContext(UserContext);
+
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
 
   return (
     <UserModal>
@@ -85,7 +90,7 @@ export default function index() {
               </SelectButton>
             </SelectButtonBox>
             {isOnLogin && (
-              <form onSubmit={handleSubmit(loginUser)}>
+              <form onSubmit={handleSubmit(loginUser, onError)}>
                 <BoxLogin>
                   <BoxInfo>
                     <BoxEmail>
@@ -111,17 +116,21 @@ export default function index() {
                     </Link>
                     <FinishButton
                       type="submit"
-                      onClick={handleSubmit(loginUser)}
+                      onClick={handleSubmit(loginUser, onError)}
                       disabled={isLoading}
                     >
-                      {isLoading ? <StyledCircularProgress size="25px"/> : "Login"}
+                      {isLoading ? (
+                        <StyledCircularProgress size="25px" />
+                      ) : (
+                        "Login"
+                      )}
                     </FinishButton>
                   </BoxButtons>
                 </BoxLogin>
               </form>
             )}
             {isOnRegister && (
-              <form onSubmit={handleSubmit(createUser)}>
+              <form onSubmit={handleSubmit(createUser, onError)}>
                 <BoxRegister>
                   <BoxInfo>
                     <BoxUser>
@@ -163,10 +172,14 @@ export default function index() {
                     </AnchorInfo>
                     <FinishButton
                       type="submit"
-                      onClick={handleSubmit(createUser)}
+                      onClick={handleSubmit(createUser, onError)}
                       disabled={isLoading}
                     >
-                      {isLoading ? <StyledCircularProgress size="25px" /> : "Register"}
+                      {isLoading ? (
+                        <StyledCircularProgress size="25px" />
+                      ) : (
+                        "Register"
+                      )}
                     </FinishButton>
                   </BoxButtons>
                 </BoxRegister>

@@ -25,6 +25,7 @@ type UserContextType = {
   forgotPassword: (data: UserFormData) => void;
   isAuthorized: boolean;
   setIsAuthorized: (newState: boolean) => void;
+  onError: (error: any) => void;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -50,6 +51,10 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       }
     });
   }, []);
+
+  function onError(error: any) {
+    console.log('error: ', error);
+  }
 
   async function createUser(data: UserFormData) {
     setIsLoading(true);
@@ -104,6 +109,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         forgotPassword,
         isAuthorized,
         setIsAuthorized,
+        onError,
       }}
     >
       {children}
