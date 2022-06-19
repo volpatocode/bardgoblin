@@ -3,7 +3,7 @@ import Logo from "../Logo";
 
 import { useForm } from "react-hook-form";
 
-import { Backdrop, Modal, Fade, Button } from "@mui/material";
+import { Backdrop, Modal, Fade} from "@mui/material";
 
 import {
   BoxModal,
@@ -11,7 +11,6 @@ import {
   SelectButtonBox,
   SelectButton,
   BoxLogo,
-  InputTitle,
   InputBox,
   InputInfo,
   BoxInfo,
@@ -48,8 +47,12 @@ export default function index() {
 
   const { createUser, loginUser, isLoading, onError } = useContext(UserContext);
 
-  const { register, handleSubmit } = useForm({
+  const { register: registerRegister, handleSubmit: handleSubmitRegister } = useForm({
     resolver: yupResolver(registerValidationSchema),
+  });
+
+  const { register: registerLogin, handleSubmit: handleSubmitLogin } = useForm({
+    resolver: yupResolver(loginValidationSchema),
   });
 
   return (
@@ -91,13 +94,13 @@ export default function index() {
               </SelectButton>
             </SelectButtonBox>
             {isOnLogin && (
-              <form onSubmit={handleSubmit(loginUser, onError)}>
+              <form onSubmit={handleSubmitLogin(loginUser, onError)}>
                 <BoxLogin>
                   <BoxInfo>
                     <BoxEmail>
                       <InputBox>
                         <InputInfo
-                          {...register("email")}
+                          {...registerLogin("email")}
                           id="login-email"
                           type="email"
                           placeholder="Email"
@@ -107,7 +110,7 @@ export default function index() {
                     <BoxPassword>
                       <InputBox>
                         <InputInfo
-                          {...register("password")}
+                          {...registerLogin("password")}
                           id="login-password"
                           type="password"
                           placeholder="Password"
@@ -120,7 +123,7 @@ export default function index() {
                   </Link>
                   <FinishButton
                     type="submit"
-                    onClick={handleSubmit(loginUser, onError)}
+                    onClick={handleSubmitLogin(loginUser, onError)}
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -133,13 +136,13 @@ export default function index() {
               </form>
             )}
             {isOnRegister && (
-              <form onSubmit={handleSubmit(createUser, onError)}>
+              <form onSubmit={handleSubmitRegister(createUser, onError)}>
                 <BoxRegister>
                   <BoxInfo>
                     <BoxUser>
                       <InputBox>
                         <InputInfo
-                          {...register("name")}
+                          {...registerRegister("name")}
                           id="register-name"
                           type="text"
                           placeholder="Name"
@@ -149,7 +152,7 @@ export default function index() {
                     <BoxEmail>
                       <InputBox>
                         <InputInfo
-                          {...register("email")}
+                          {...registerRegister("email")}
                           id="register-email"
                           type="email"
                           placeholder="Email"
@@ -159,7 +162,7 @@ export default function index() {
                     <BoxPassword>
                       <InputBox>
                         <InputInfo
-                          {...register("password")}
+                          {...registerRegister("password")}
                           id="register-password"
                           type="password"
                           placeholder="Password"
@@ -169,7 +172,7 @@ export default function index() {
                     <BoxPassword>
                       <InputBox>
                         <InputInfo
-                          {...register("confirmPassword")}
+                          {...registerRegister("confirmPassword")}
                           id="register-confirm-password"
                           type="password"
                           placeholder="Confirm password"
@@ -182,7 +185,7 @@ export default function index() {
                   </ButtonInfo>
                   <FinishButton
                     type="submit"
-                    onClick={handleSubmit(createUser, onError)}
+                    onClick={handleSubmitRegister(createUser, onError)}
                     disabled={isLoading}
                   >
                     {isLoading ? (

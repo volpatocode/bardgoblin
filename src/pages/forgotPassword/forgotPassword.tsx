@@ -12,13 +12,17 @@ import {
 
 import { UserContext } from "../../contexts/UserContext";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import Logo from "../../components/Logo";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
+import { forgotPasswordValidationSchema } from "../../utils/validations";
 
 export default function index() {
   const { forgotPassword, isLoading, onError } = useContext(UserContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(forgotPasswordValidationSchema),
+  });
 
   return (
     <form onSubmit={handleSubmit(forgotPassword)}>
@@ -40,7 +44,7 @@ export default function index() {
             disabled={isLoading}
             onClick={handleSubmit(forgotPassword, onError)}
           >
-            {isLoading ? <StyledCircularProgress size="25px"/> : "Send email"}
+            {isLoading ? <StyledCircularProgress size="25px" /> : "Send email"}
           </FinishButton>
         </ForgotPasswordBoxWrapper>
         <ForgotPasswordImageBox />

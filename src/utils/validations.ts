@@ -25,3 +25,7 @@ export const loginValidationSchema = yup.object({
     .required("Password is required")
     .min(6, "minimum of 6 characters"),
 });
+
+export const forgotPasswordValidationSchema = yup.object({
+  email: yup.string().email("Invalid Email").required("Email is required"),
+});
