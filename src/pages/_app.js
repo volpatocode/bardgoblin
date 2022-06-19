@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
-import { ThemeProvider} from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 
 import { theme } from "../theme/theme.ts";
 
@@ -31,6 +31,13 @@ export default function App({ Component, pageProps }) {
         <link rel="shortcut icon" href="/icon-logo.png" />
         <link
           href="../../public/fonts/thewildbreathofzelda.otf"
+          rel="stylesheet"
+        />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap"
           rel="stylesheet"
         />
       </Head>

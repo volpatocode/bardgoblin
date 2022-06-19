@@ -19,7 +19,7 @@ export default function index() {
           <Navbar page="home" />
           <HomeContent>
             <WrittenContent>
-              <HomeTitle>Speak friend and enter dear traveler</HomeTitle>
+              <HomeTitle>Speak friendly and enter dear traveler</HomeTitle>
               <HomeSubtitle>
                 Find and share quests, builds, supplies and others for your
                 tabletop rpg

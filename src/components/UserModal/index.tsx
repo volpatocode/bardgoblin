@@ -43,7 +43,7 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-  const { createUser, loginUser, forgotPassword, isLoading } =
+  const { createUser, loginUser,isLoading } =
     useContext(UserContext);
 
   return (

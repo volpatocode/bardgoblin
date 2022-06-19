@@ -31,12 +31,13 @@ export const HomeContent = styled.div`
 export const WrittenContent = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
 `;
 
 export const HomeTitle = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: #fff;
-  font-family: "The Wild Breath of Zelda";
+  font-family: 'New Rocker', cursive;
   text-transform: uppercase;
   letter-spacing: 0.2px;
   text-align: center;

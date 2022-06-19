@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
+import { createContext, ReactNode, useState, useEffect, useContext } from "react";
 
 import { UserFormData } from "../types/user";
 
@@ -10,6 +10,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
+import { UserModalContext } from "./UserModalContext";
 
 type UserContextProps = {
   children: ReactNode;
@@ -31,6 +32,11 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
+
+  const {
+    handleUserModal,
+  } = useContext(UserModalContext);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -49,6 +55,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((value) => {
+        handleUserModal();
         console.log("Cadastrado com sucesso!");
       })
       .catch((error) => console.log(error))
@@ -59,6 +66,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await signInWithEmailAndPassword(auth, data.email, data.password)
       .then((value) => {
+        handleUserModal();
         console.log("Logado com sucesso!");
       })
       .catch((error) => console.log(error))

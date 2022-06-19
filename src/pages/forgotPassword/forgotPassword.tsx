@@ -37,7 +37,7 @@ export default function index() {
               type="email"
             />
           </InputBox>
-          <InfoButton>Back to home</InfoButton>
+          <InfoButton href="/">Back to home</InfoButton>
           <FinishButton
             disabled={isLoading}
             onClick={handleSubmit(forgotPassword)}
