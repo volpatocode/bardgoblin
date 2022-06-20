@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 
-export const TopicSearchBar = styled.div`
+export const TopicSearchBar = styled(Box)`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -35,6 +36,7 @@ export const InputButton = styled.button`
   display: flex;
   align-items: center;
   color: #4f4f4f;
-  height: 40px;
+  max-height: 40px;
   cursor: pointer;
+  overflow-y: hidden;
 `;

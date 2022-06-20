@@ -9,9 +9,25 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
   }
    body{
     background-color: #131313;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #ff9900;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    };
+
+    &::-webkit-scrollbar-thumb {
+      background: #ff9900;
+      border-radius: 20px;
+    };
    }
 `;
 

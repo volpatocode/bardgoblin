@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 
-export const UserModal = styled(Box)``;
 
 export const BoxModal = styled(Box)`
   position: absolute;
@@ -16,6 +15,7 @@ export const BoxModal = styled(Box)`
   flex-direction: column;
   padding: 2.5rem 1rem;
   text-align: left;
+  height: auto;
 `;
 
 export const BoxLogo = styled(Box)`
@@ -24,8 +24,7 @@ export const BoxLogo = styled(Box)`
   margin-bottom: 1rem;
 `;
 
-export const SelectButtonBox = styled(Box)`
-`;
+export const SelectButtonBox = styled(Box)``;
 
 export const SelectButton = styled(Button)`
   color: #fff;

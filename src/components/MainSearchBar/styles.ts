@@ -55,10 +55,11 @@ export const SelectButton = styled(Select)`
   font-weight: 600;
   gap: 0.3rem;
   cursor: pointer;
-  :hover{
+  :hover {
     outline: none;
     border: none;
   }
+  overflow-y: hidden;
 `;
 
 export const SectionButton = styled(Button)`
@@ -76,7 +77,7 @@ export const SectionButton = styled(Button)`
   gap: 0.3rem;
   text-transform: none;
   cursor: pointer;
-  :hover{
+  :hover {
     outline: none;
     border: none;
     background-color: #fff;

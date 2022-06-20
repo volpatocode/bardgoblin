@@ -7,7 +7,6 @@ import { Backdrop, Modal, Fade} from "@mui/material";
 
 import {
   BoxModal,
-  UserModal,
   SelectButtonBox,
   SelectButton,
   BoxLogo,
@@ -56,7 +55,6 @@ export default function index() {
   });
 
   return (
-    <UserModal>
       <Modal
         open={isOpen}
         onClose={handleUserModal}
@@ -200,6 +198,5 @@ export default function index() {
           </BoxModal>
         </Fade>
       </Modal>
-    </UserModal>
   );
 }
