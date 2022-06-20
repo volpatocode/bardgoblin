@@ -68,7 +68,7 @@ export const InputInfo = styled.input`
 export const BoxInfo = styled(Box)`
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.8rem;
   padding-top: 1rem;
 `;
 
