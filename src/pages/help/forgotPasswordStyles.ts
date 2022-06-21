@@ -48,8 +48,6 @@ export const Warning = styled.p`
   user-select: none;
 `;
 
-
-
 export const InputBox = styled(Box)`
   width: 100%;
   border-bottom: 2px solid #4b4b4b;

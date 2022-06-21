@@ -17,10 +17,15 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Logo from "../../components/Logo";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
 import { forgotPasswordValidationSchema } from "../../utils/validations";
+import InputError from "../../components/InputError";
 
 export default function index() {
-  const { forgotPassword, isLoading, onError } = useContext(UserContext);
-  const { register, handleSubmit } = useForm({
+  const { forgotPassword, isLoading, errorFirebase } = useContext(UserContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors: forgotPasswordErrors },
+  } = useForm({
     resolver: yupResolver(forgotPasswordValidationSchema),
   });
 
@@ -39,10 +44,14 @@ export default function index() {
               type="email"
             />
           </InputBox>
+          {forgotPasswordErrors?.email && (
+            <InputError error={forgotPasswordErrors?.email?.message} />
+          )}
+          {errorFirebase && <InputError error={errorFirebase} />}
           <InfoButton href="/">Back to home</InfoButton>
           <FinishButton
             disabled={isLoading}
-            onClick={handleSubmit(forgotPassword, onError)}
+            onClick={handleSubmit(forgotPassword)}
           >
             {isLoading ? <StyledCircularProgress size="25px" /> : "Send email"}
           </FinishButton>

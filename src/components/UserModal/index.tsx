@@ -132,7 +132,7 @@ export default function index() {
                     )}
                   </BoxPassword>
                 </BoxInfo>
-                <InputError error={errorFirebase} />
+                {errorFirebase && <InputError error={errorFirebase} />}
                 <Link href="/help/forgotpassword">
                   <ButtonInfo>Forgot password?</ButtonInfo>
                 </Link>
@@ -205,7 +205,7 @@ export default function index() {
                     )}
                   </BoxPassword>
                 </BoxInfo>
-                <InputError error={errorFirebase} />
+                {errorFirebase && <InputError error={errorFirebase} />}
                 <ButtonInfo onClick={() => toggleLogin()}>
                   Already have an account?
                 </ButtonInfo>

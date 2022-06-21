@@ -83,7 +83,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       .then(() => {
         console.log("Deslogado com sucesso!");
       })
-      .catch((error) => console.log(error.message))
       .finally(() => setIsLoading(false));
   }
 
@@ -93,7 +92,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       .then((value) => {
         console.log("Email enviado com sucesso!");
       })
-      .catch((error) => console.log(error.message))
+      .catch((error) => setErrorFirebase(error.message))
       .finally(() => setIsLoading(false));
   }
 
