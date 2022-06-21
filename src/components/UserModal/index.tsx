@@ -45,7 +45,8 @@ export default function index() {
     toggleRegister,
   } = useContext(UserModalContext);
 
-  const { createUser, loginUser, isLoading, onError } = useContext(UserContext);
+  const { createUser, loginUser, isLoading, errorFirebase } =
+    useContext(UserContext);
 
   const {
     register: registerRegister,
@@ -101,7 +102,7 @@ export default function index() {
             </SelectButton>
           </SelectButtonBox>
           {isOnLogin && (
-            <form onSubmit={handleSubmitLogin(loginUser, onError)}>
+            <form onSubmit={handleSubmitLogin(loginUser)}>
               <BoxLogin>
                 <BoxInfo>
                   <BoxEmail>
@@ -131,12 +132,13 @@ export default function index() {
                     )}
                   </BoxPassword>
                 </BoxInfo>
+                <InputError error={errorFirebase} />
                 <Link href="/help/forgotpassword">
                   <ButtonInfo>Forgot password?</ButtonInfo>
                 </Link>
                 <FinishButton
                   type="submit"
-                  onClick={handleSubmitLogin(loginUser, onError)}
+                  onClick={handleSubmitLogin(loginUser)}
                   disabled={isLoading}
                 >
                   {isLoading ? <StyledCircularProgress size="25px" /> : "Login"}
@@ -145,7 +147,7 @@ export default function index() {
             </form>
           )}
           {isOnRegister && (
-            <form onSubmit={handleSubmitRegister(createUser, onError)}>
+            <form onSubmit={handleSubmitRegister(createUser)}>
               <BoxRegister>
                 <BoxInfo>
                   <BoxUser>
@@ -197,16 +199,19 @@ export default function index() {
                       />
                     </InputBox>
                     {registerErrors?.confirmPassword && (
-                      <InputError error={registerErrors?.confirmPassword?.message} />
+                      <InputError
+                        error={registerErrors?.confirmPassword?.message}
+                      />
                     )}
                   </BoxPassword>
                 </BoxInfo>
+                <InputError error={errorFirebase} />
                 <ButtonInfo onClick={() => toggleLogin()}>
                   Already have an account?
                 </ButtonInfo>
                 <FinishButton
                   type="submit"
-                  onClick={handleSubmitRegister(createUser, onError)}
+                  onClick={handleSubmitRegister(createUser)}
                   disabled={isLoading}
                 >
                   {isLoading ? (

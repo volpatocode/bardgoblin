@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";;
 
-export const InputError = styled.span`
+export const InputError = styled.p`
   font-size: 0.7rem;
   color: #dd3e0e;
   text-transform: uppercase;

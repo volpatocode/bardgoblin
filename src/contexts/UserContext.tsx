@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useState, useEffect, useContext } from "react";
+import {
+  createContext,
+  ReactNode,
+  useState,
+  useEffect,
+  useContext,
+} from "react";
 
 import { UserFormData } from "../types/user";
 
@@ -25,7 +31,7 @@ type UserContextType = {
   forgotPassword: (data: UserFormData) => void;
   isAuthorized: boolean;
   setIsAuthorized: (newState: boolean) => void;
-  onError: (error: any) => void;
+  errorFirebase: string;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -33,13 +39,10 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-
-  const {
-    handleUserModal,
-  } = useContext(UserModalContext);
+  const { handleUserModal } = useContext(UserModalContext);
 
   const [isLoading, setIsLoading] = useState(false);
-
+  const [errorFirebase, setErrorFirebase] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
 
   useEffect(() => {
@@ -52,10 +55,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     });
   }, []);
 
-  function onError(error: any) {
-    console.log('error: ', error);
-  }
-
   async function createUser(data: UserFormData) {
     setIsLoading(true);
     await createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -63,7 +62,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         handleUserModal();
         console.log("Cadastrado com sucesso!");
       })
-      .catch((error) => console.log(error))
+      .catch((error) => setErrorFirebase(error.message))
       .finally(() => setIsLoading(false));
   }
 
@@ -74,7 +73,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         handleUserModal();
         console.log("Logado com sucesso!");
       })
-      .catch((error) => console.log(error))
+      .catch((error) => setErrorFirebase(error.message))
       .finally(() => setIsLoading(false));
   }
 
@@ -84,7 +83,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       .then(() => {
         console.log("Deslogado com sucesso!");
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error.message))
       .finally(() => setIsLoading(false));
   }
 
@@ -94,7 +93,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       .then((value) => {
         console.log("Email enviado com sucesso!");
       })
-      .catch((error) => console.log(error))
+      .catch((error) => console.log(error.message))
       .finally(() => setIsLoading(false));
   }
 
@@ -109,7 +108,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         forgotPassword,
         isAuthorized,
         setIsAuthorized,
-        onError,
+        errorFirebase,
       }}
     >
       {children}

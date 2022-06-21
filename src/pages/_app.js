@@ -38,10 +38,6 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Bard Goblin</title>
         <link rel="shortcut icon" href="/icon-logo.png" />
-        <link
-          href="../../public/fonts/thewildbreathofzelda.otf"
-          rel="stylesheet"
-        />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
