@@ -4,6 +4,7 @@ import Home from "./home/home";
 import Builds from "./section/builds";
 import Topic from "./topic/topic";
 import UserModal from "../components/UserModal";
+import ProfilePage from "./profile/account";
 import ForgotPassword from "./help/forgotpassword";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
 import { UserContextProvider } from "../contexts/UserContext";
@@ -15,7 +16,7 @@ export default function index(): propsType {
     <>
       <UserModalContextProvider>
         <UserContextProvider>
-         <Home/>
+          <ProfilePage />
         </UserContextProvider>
       </UserModalContextProvider>
     </>

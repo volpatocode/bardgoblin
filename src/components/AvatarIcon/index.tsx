@@ -28,7 +28,9 @@ export default function index() {
   const { logOut, isAuthorized } = useContext(UserContext);
 
   const authorizedMenu = [
-    <MenuItem onClick={handleClose}>My account</MenuItem>,
+    <Link href="/profile/account">
+      <MenuItem onClick={handleClose}>My account</MenuItem>
+    </Link>,
     <Link href="/help/forgotpassword">
       <MenuItem onClick={handleClose}>Reset password</MenuItem>
     </Link>,

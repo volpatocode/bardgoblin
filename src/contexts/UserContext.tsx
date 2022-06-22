@@ -14,6 +14,7 @@ import {
   signOut,
   sendPasswordResetEmail,
   onAuthStateChanged,
+  updateCurrentUser,
 } from "firebase/auth";
 import { auth } from "../config/firebaseConfig";
 import { UserModalContext } from "./UserModalContext";
@@ -44,6 +45,17 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorFirebase, setErrorFirebase] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
+  const [photoURL, setPhotoURL] = useState(
+    "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+  );
+
+
+
+  useEffect(() => {
+    if(auth?.currentUser?.photoURL) {
+      setPhotoURL(auth.currentUser.photoURL)
+    }
+  }, [auth.currentUser])
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
