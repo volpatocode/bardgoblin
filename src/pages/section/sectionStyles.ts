@@ -82,6 +82,6 @@ export const TopicQueryInfo = styled(Box)`
 export const TopicFiltersWrapper = styled(Box)``;
 
 export const BorderDivider = styled(Box)`
-  border-bottom: 1px solid rgba(29, 29, 29, 1);
+  border-bottom: 3px solid rgba(29, 29, 29, 1);
   width: 100%;
 `;

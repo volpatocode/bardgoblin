@@ -1,17 +1,25 @@
 import React, { useContext } from "react";
-import { ProfilePageWrapper, ProfilePageContent } from "./accountStyles";
+import {
+  ProfilePageWrapper,
+  ProfilePageContent,
+  ProfileHeader,
+  ProfileGreetings,
+} from "./accountStyles";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
-import ProfileHeader from "../../components/Profile/ProfileHeader";
 import ProfileInfo from "../../components/Profile/ProfileInfo";
+import { BorderDivider } from "../section/sectionStyles";
 
 export default function index() {
   return (
     <ProfilePageWrapper>
-      <Navbar page="home" />
+      <ProfileHeader>
+        <Navbar page="home" />
+        <ProfileGreetings>Welcome, John Doe</ProfileGreetings>
+        <BorderDivider />
+      </ProfileHeader>
       <ProfilePageContent>
-        <ProfileHeader />
         <ProfileInfo />
       </ProfilePageContent>
       <Footer />
