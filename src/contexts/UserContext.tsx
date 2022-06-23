@@ -14,7 +14,6 @@ import {
   signOut,
   sendPasswordResetEmail,
   onAuthStateChanged,
-  updateCurrentUser,
 } from "firebase/auth";
 import { auth, storage } from "../config/firebaseConfig";
 import { ref, uploadBytes } from "firebase/storage";
@@ -46,6 +45,7 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
+  const { handleUserModal } = useContext(UserModalContext);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
@@ -54,7 +54,12 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
-  const { handleUserModal } = useContext(UserModalContext);
+
+  // Util functions
+
+  function forceHome() {
+    document.location.href = "/";
+  }
 
   // User listener
   useEffect(() => {
@@ -67,9 +72,56 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(isAuthorized);
-  }, [isAuthorized]);
+  // User Login/register functions
+  async function createUser(data: UserFormData) {
+    setIsLoading(true);
+    await createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((value) => {
+        handleUserModal();
+        console.log("Cadastrado com sucesso!");
+      })
+      .catch((error) => setErrorFirebase(error.message))
+      .finally(() => {
+        setIsLoading(false);
+        forceHome();
+      });
+  }
+
+  async function loginUser(data: UserFormData) {
+    setIsLoading(true);
+    await signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((value) => {
+        handleUserModal();
+        console.log("Logado com sucesso!");
+      })
+      .catch((error) => setErrorFirebase(error.message))
+      .finally(() => {
+        setIsLoading(false);
+        forceHome();
+      });
+  }
+
+  async function logOut() {
+    setIsLoading(true);
+    await signOut(auth)
+      .then(() => {
+        console.log("Deslogado com sucesso!");
+      })
+      .finally(() => {
+        setIsLoading(false);
+        forceHome();
+      });
+  }
+
+  async function forgotPassword(data: UserFormData) {
+    setIsLoading(true);
+    await sendPasswordResetEmail(auth, data.email)
+      .then((value) => {
+        console.log("Email enviado com sucesso!");
+      })
+      .catch((error) => setErrorFirebase(error.message))
+      .finally(() => setIsLoading(false));
+  }
 
   // Profile picture
   useEffect(() => {
@@ -98,48 +150,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
 
   function handlePhotoUpload() {
     upload(photo, currentUser, isLoading);
-  }
-
-  // User Login/register functions
-  async function createUser(data: UserFormData) {
-    setIsLoading(true);
-    await createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((value) => {
-        handleUserModal();
-        console.log("Cadastrado com sucesso!");
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => setIsLoading(false));
-  }
-
-  async function loginUser(data: UserFormData) {
-    setIsLoading(true);
-    await signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((value) => {
-        handleUserModal();
-        console.log("Logado com sucesso!");
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => setIsLoading(false));
-  }
-
-  async function logOut() {
-    setIsLoading(true);
-    await signOut(auth)
-      .then(() => {
-        console.log("Deslogado com sucesso!");
-      })
-      .finally(() => setIsLoading(false));
-  }
-
-  async function forgotPassword(data: UserFormData) {
-    setIsLoading(true);
-    await sendPasswordResetEmail(auth, data.email)
-      .then((value) => {
-        console.log("Email enviado com sucesso!");
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => setIsLoading(false));
   }
 
   return (

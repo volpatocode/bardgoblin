@@ -26,7 +26,9 @@ export const UserModalContextProvider = ({
   children,
 }: UserModalContextProps) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isOnRegister, setIsOnRegister] = useState(false);
+  const [isOnLogin, setIsOnLogin] = useState(true);
+  
   const handleUserModal = () => setIsOpen(!isOpen);
 
   const handleUserModalLogin = () => {
@@ -38,13 +40,11 @@ export const UserModalContextProvider = ({
     toggleRegister();
   };
 
-  const [isOnLogin, setIsOnLogin] = useState(true);
   const toggleLogin = () => {
     setIsOnLogin(true);
     setIsOnRegister(false);
   };
 
-  const [isOnRegister, setIsOnRegister] = useState(false);
   const toggleRegister = () => {
     setIsOnRegister(true);
     setIsOnLogin(false);
