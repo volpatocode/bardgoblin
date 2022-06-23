@@ -6,9 +6,10 @@ import Topic from "./topic/topic";
 import UserModal from "../components/UserModal";
 import ProfilePage from "./profile/account";
 import ForgotPassword from "./help/forgotpassword";
+import EmailSent from "./help/emailsent";
 
 type propsType = {};
 
 export default function index(): propsType {
-  return <Home />;
+  return <Home/>
 }

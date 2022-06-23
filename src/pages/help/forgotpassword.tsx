@@ -8,7 +8,7 @@ import {
   FinishButton,
   ForgotPasswordImageBox,
   BoxLogo,
-} from "./forgotPasswordStyles";
+} from "./forgotpasswordstyles";
 
 import { UserContext } from "../../contexts/UserContext";
 import { useForm } from "react-hook-form";
