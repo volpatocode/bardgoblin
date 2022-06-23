@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
 import { profileInfoType } from "./index";
 
 export const ProfileInfo = styled(Box)`
@@ -20,6 +19,7 @@ export const ProfileImage = styled.img`
   border-radius: 50%;
   min-width: 100px;
   width: 100%;
+  cursor: pointer;
 `;
 
 export const ProfileContent = styled(Box)`
@@ -60,11 +60,25 @@ export const DataValue = styled(Box)<profileInfoType>`
   border-radius: 5px;
 `;
 
-export const DataInput = styled.input``;
+export const DataInput = styled.input`
+  font-size: 1.15rem;
+  color: #ff9900;
+  letter-spacing: 0.2px;
+  line-height: 1.75;
+  font-weight: 500;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background: #1d1d1d;
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+`;
 
-export const StyledEditIcon = styled(EditIcon)`
-  color: #000;
-  background-color: #fff;
+export const BoxButtons = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 0.5rem;
 `;
 
 export const EditButton = styled(Button)`
@@ -72,12 +86,52 @@ export const EditButton = styled(Button)`
   text-transform: none;
   background: #ff9900;
   font-size: 1.2rem;
+  padding: 4px 8px;
+  margin-top: 1rem;
+  width: 100%;
   :disabled {
     background: #c3c3c3;
   }
   :hover {
     background: #ff9900;
   }
+`;
+
+export const UploadButton = styled(Button)`
+  color: #000;
+  text-transform: none;
+  background: #ff9900;
+  font-size: 1.2rem;
   padding: 4px 8px;
   margin-top: 1rem;
+  width: 100%;
+  :disabled {
+    background: #c3c3c3;
+  }
+  :hover {
+    background: #ff9900;
+  }
+`;
+
+export const InputImage = styled.label`
+  color: #000;
+  text-transform: none;
+  background: #ff9900;
+  font-size: 1.2rem;
+  padding: 4px 8px;
+  margin-top: 1rem;
+  width: 100%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 1.75;
+  :disabled {
+    background: #c3c3c3;
+  }
+  :hover {
+    background: #ff9900;
+  }
 `;
