@@ -63,7 +63,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   }, [currentUser]);
 
   async function upload(file, currentUser, loading) {
-    const fileRef = ref(storage, currentUser?.uid + ".png");
+    const fileRef = ref(storage, `profilepictures/${currentUser?.uid + ".png"}`);
     setIsLoading(true);
     const snapshot = await uploadBytes(fileRef, file);
     setIsLoading(false);

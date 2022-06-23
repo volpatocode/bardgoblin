@@ -134,4 +134,5 @@ export const InputImage = styled.label`
   :hover {
     background: #ff9900;
   }
+  text-align: center;
 `;
