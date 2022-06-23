@@ -1,8 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material";
-
 import { theme } from "../theme/theme.ts";
+import { UserModalContextProvider } from "../contexts/UserModalContext";
+import { UserContextProvider } from "../contexts/UserContext";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -46,9 +47,13 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <UserModalContextProvider>
+        <UserContextProvider>
+          <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </UserContextProvider>
+      </UserModalContextProvider>
     </>
   );
 }

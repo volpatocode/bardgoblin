@@ -26,18 +26,19 @@ type UserContextProps = {
 };
 
 type UserContextType = {
+  isAuthorized: boolean;
+  setIsAuthorized: (newState: boolean) => void;
   isLoading: boolean;
   setIsLoading: (newState: boolean) => void;
   createUser: (data: UserFormData) => void;
   loginUser: (data: UserFormData) => void;
   logOut: () => void;
   forgotPassword: (data: UserFormData) => void;
-  isAuthorized: boolean;
-  setIsAuthorized: (newState: boolean) => void;
   errorFirebase: string;
   handlePhoto: (e: any) => void;
   handlePhotoUpload: () => void;
   photo: boolean;
+  currentUser: any;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -45,15 +46,30 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-  const { handleUserModal } = useContext(UserModalContext);
-  const currentUser = auth.currentUser;
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorFirebase, setErrorFirebase] = useState("");
   const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
+  const currentUser = auth?.currentUser;
+  const [errorFirebase, setErrorFirebase] = useState("");
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
+  const { handleUserModal } = useContext(UserModalContext);
+
+  // User listener
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthorized(true);
+      } else {
+        setIsAuthorized(false);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(isAuthorized);
+  }, [isAuthorized]);
 
   // Profile picture
   useEffect(() => {
@@ -63,7 +79,10 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   }, [currentUser]);
 
   async function upload(file, currentUser, loading) {
-    const fileRef = ref(storage, `profilepictures/${currentUser?.uid + ".png"}`);
+    const fileRef = ref(
+      storage,
+      `user/profilepicture/${currentUser?.uid + ".png"}`
+    );
     setIsLoading(true);
     const snapshot = await uploadBytes(fileRef, file);
     setIsLoading(false);
@@ -80,17 +99,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   function handlePhotoUpload() {
     upload(photo, currentUser, isLoading);
   }
-
-  // User listener
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsAuthorized(true);
-      } else {
-        setIsAuthorized(false);
-      }
-    });
-  }, []);
 
   // User Login/register functions
   async function createUser(data: UserFormData) {
@@ -137,18 +145,19 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   return (
     <UserContext.Provider
       value={{
+        isAuthorized,
+        setIsAuthorized,
         isLoading,
         setIsLoading,
         createUser,
         loginUser,
         logOut,
         forgotPassword,
-        isAuthorized,
-        setIsAuthorized,
         errorFirebase,
         handlePhoto,
         handlePhotoUpload,
         photo,
+        currentUser,
       }}
     >
       {children}

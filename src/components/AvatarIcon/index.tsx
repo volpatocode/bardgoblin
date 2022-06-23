@@ -10,6 +10,7 @@ import { IconButton, Menu, MenuItem } from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import UserModal from "../UserModal";
 import { UserContext } from "../../contexts/UserContext";
+import { auth } from "../../config/firebaseConfig";
 
 export default function index() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -25,7 +26,7 @@ export default function index() {
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
 
-  const { logOut, isAuthorized } = useContext(UserContext);
+  const { logOut, isAuthorized} = useContext(UserContext);
 
   const authorizedMenu = [
     <Link href="/profile/account">
