@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import EmailStatus from "../EmailStatus";
-import Tooltip from "@mui/material/Tooltip";
+import HelpPopover from "../../HelpPopover";
 
 import {
   ProfileInfo,
@@ -56,7 +56,7 @@ useEffect(() => {
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>UUID</DataPlaceholder>
-          <DataValue background="none">{currentUser?.uid}</DataValue>
+          <DataValue background="none">{currentUser?.uid}<HelpPopover/></DataValue>
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Username</DataPlaceholder>

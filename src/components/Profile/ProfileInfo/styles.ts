@@ -58,6 +58,9 @@ export const DataValue = styled(Box)<profileInfoType>`
   width: 100%;
   padding: 8px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
 `;
 
 export const DataInput = styled.input`
