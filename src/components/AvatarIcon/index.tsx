@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { UserModalContext } from "../../contexts/UserModalContext";
 
-import { AvatarIcon } from "./styles";
+import { AvatarIcon, AccountAvatar } from "./styles";
 
 import { IconButton, Menu, MenuItem } from "@mui/material";
 
@@ -26,7 +26,7 @@ export default function index() {
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
 
-  const { logOut, isAuthorized} = useContext(UserContext);
+  const { logOut, isAuthorized, photoURL} = useContext(UserContext);
 
   const authorizedMenu = [
     <Link href="/profile/account">
@@ -53,7 +53,7 @@ export default function index() {
         onClick={handleMenu}
         sx={{ color: "white" }}
       >
-        <AccountCircle fontSize="large" />
+        <AccountAvatar src={photoURL}/>
       </IconButton>
       <Menu
         id="menu-appbar"

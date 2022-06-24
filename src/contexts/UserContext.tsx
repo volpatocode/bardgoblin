@@ -14,9 +14,10 @@ import {
   signOut,
   sendPasswordResetEmail,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import { auth, storage } from "../config/firebaseConfig";
-import { ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 import { UserModalContext } from "./UserModalContext";
 
@@ -37,6 +38,7 @@ type UserContextType = {
   handlePhoto: (e: any) => void;
   handlePhotoUpload: () => void;
   photo: boolean;
+  photoURL: string;
   currentUser: any;
 };
 
@@ -126,7 +128,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
 
   // Profile picture
   useEffect(() => {
-    if (auth.currentUser?.photoURL) {
+    if (currentUser?.photoURL) {
       setPhotoURL(currentUser?.photoURL);
     }
   }, [currentUser]);
@@ -138,6 +140,9 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     );
     setIsLoading(true);
     const snapshot = await uploadBytes(fileRef, file);
+    const photoURL = await getDownloadURL(fileRef);
+    updateProfile(currentUser, {photoURL: photoURL});
+
     setIsLoading(false);
   }
 
@@ -169,6 +174,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         handlePhotoUpload,
         photo,
         currentUser,
+        photoURL,
       }}
     >
       {children}

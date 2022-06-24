@@ -11,11 +11,11 @@ import {
 } from "./styles";
 
 export type logoType = {
-  status: "verified" | "notverified" | "pending";
+  status: boolean;
 };
 
 export default function index({ status }: logoType) {
-  if (status === "verified") {
+  if (status === true) {
     return (
       <EmailStatus>
         <Verified>
@@ -24,7 +24,7 @@ export default function index({ status }: logoType) {
       </EmailStatus>
     );
   }
-  if (status === "notverified") {
+  if (status === false) {
     return (
       <EmailStatus>
         <NotVerified>
@@ -32,8 +32,7 @@ export default function index({ status }: logoType) {
         </NotVerified>
       </EmailStatus>
     );
-  }
-  if (status === "pending") {
+  } else {
     return (
       <EmailStatus>
         <Pending>

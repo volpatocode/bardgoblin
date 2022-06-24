@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import EmailStatus from "../EmailStatus";
 import Tooltip from "@mui/material/Tooltip";
 
@@ -26,16 +26,25 @@ export type profileInfoType = {
 export default function index({}: profileInfoType) {
   const [isEditing, setIsEditing] = useState(false);
 
-  const { isLoading, handlePhoto, handlePhotoUpload, photo } = useContext(UserContext);
-console.log(photo)
+  const { isLoading, handlePhoto, handlePhotoUpload, currentUser, photo, photoURL } =
+    useContext(UserContext);
+
+useEffect(() => {
+  console.log(currentUser.emailVerified)
+
+}, [currentUser.emailVerified])
 
   return (
     <ProfileInfo>
       <ProfileImageBox>
-        <ProfileImage src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png" />
+        <ProfileImage src={photoURL} />
         {isEditing && (
           <InputImage>
-            <input onChange={handlePhoto} style={{ display: "none" }} type="file" />
+            <input
+              onChange={handlePhoto}
+              style={{ display: "none" }}
+              type="file"
+            />
             Edit Image
           </InputImage>
         )}
@@ -43,15 +52,15 @@ console.log(photo)
       <ProfileContent>
         <ProfileData>
           <DataPlaceholder>Email</DataPlaceholder>
-          <DataValue>johndoe@gmail.com</DataValue>
+          <DataValue>{currentUser?.email}</DataValue>
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>UUID</DataPlaceholder>
-          <DataValue background="none">B45453453B484</DataValue>
+          <DataValue background="none">{currentUser?.uid}</DataValue>
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Username</DataPlaceholder>
-          <DataValue>John Doe</DataValue>
+          <DataValue>{currentUser?.displayName || "Not provided"}</DataValue>
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Title</DataPlaceholder>
@@ -60,15 +69,15 @@ console.log(photo)
         <ProfileData>
           <DataPlaceholder>Email verification</DataPlaceholder>
           <DataValue background="none">
-            <EmailStatus status="verified" />
+            <EmailStatus status={currentUser?.emailVerified} />
           </DataValue>
         </ProfileData>
         {isEditing ? (
           <UploadButton
             disabled={isLoading || !photo}
             onClick={() => {
-              handlePhotoUpload()
-              setIsEditing(!isEditing)
+              handlePhotoUpload();
+              setIsEditing(!isEditing);
             }}
           >
             {isLoading ? <StyledCircularProgress size="25px" /> : "Upload"}
@@ -77,10 +86,10 @@ console.log(photo)
           <EditButton
             disabled={isLoading}
             onClick={() => {
-              setIsEditing(!isEditing)
+              setIsEditing(!isEditing);
             }}
           >
-            Edit
+            {isLoading ? <StyledCircularProgress size="25px" /> : "Edit"}
           </EditButton>
         )}
       </ProfileContent>

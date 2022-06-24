@@ -117,7 +117,7 @@ export const InputImage = styled.label`
   color: #000;
   text-transform: none;
   background: #ff9900;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding: 4px 8px;
   margin-top: 1rem;
   width: 100%;

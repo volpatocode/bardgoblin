@@ -13,7 +13,7 @@ import { BorderDivider } from "../section/sectionStyles";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function index() {
-  const { isAuthorized } = useContext(UserContext);
+  const { isAuthorized, currentUser } = useContext(UserContext);
   
   useEffect(() => {
     console.log(isAuthorized)
@@ -24,7 +24,7 @@ export default function index() {
       <ProfilePageWrapper>
         <ProfileHeader>
           <Navbar page="home" />
-          <ProfileGreetings>Welcome, John Doe</ProfileGreetings>
+          <ProfileGreetings>Welcome,{" "}{currentUser?.displayName || "Traveler"}</ProfileGreetings>
           <BorderDivider />
         </ProfileHeader>
         <ProfilePageContent>
