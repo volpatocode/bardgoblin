@@ -1,10 +1,10 @@
 import * as yup from "yup";
 
 export const registerValidationSchema = yup.object({
-  name: yup
-    .string()
-    .required("Name is required")
-    .min(2, "Minimum of 2 characters"),
+  // name: yup
+  //   .string()
+  //   .required("Name is required")
+  //   .min(2, "Minimum of 2 characters"),
   email: yup.string().email("Invalid Email").required("Email is required"),
   password: yup
     .string()

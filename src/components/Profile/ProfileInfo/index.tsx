@@ -21,9 +21,10 @@ import { StyledCircularProgress } from "../../UserModal/styles";
 
 export type profileInfoType = {
   background?: "none";
+  src: string;
 };
 
-export default function index({}: profileInfoType) {
+export default function index() {
   const [isEditing, setIsEditing] = useState(false);
 
   const { isLoading, handlePhoto, handlePhotoUpload, currentUser, photo, photoURL } =

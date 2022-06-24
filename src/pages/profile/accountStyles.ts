@@ -14,8 +14,8 @@ export const ProfilePageContent = styled(Box)`
   align-items: flex-start;
   justify-content: center;
   width: 100%;
-  min-height: 90vh;
   height: 100%;
+  margin: 2rem 0;
 `;
 
 export const ProfileGreetings = styled.h4`

@@ -150,19 +150,6 @@ export default function index() {
             <form onSubmit={handleSubmitRegister(createUser)}>
               <BoxRegister>
                 <BoxInfo>
-                  <BoxUser>
-                    <InputBox>
-                      <InputInfo
-                        {...registerRegister("name")}
-                        id="register-name"
-                        type="text"
-                        placeholder="Name"
-                      />
-                    </InputBox>
-                    {registerErrors?.name && (
-                      <InputError error={registerErrors?.name?.message} />
-                    )}
-                  </BoxUser>
                   <BoxEmail>
                     <InputBox>
                       <InputInfo
