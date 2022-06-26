@@ -128,7 +128,24 @@ export const HeaderModal = styled(Box)`
   height: 60px;
 `;
 
-export const MenuModal = styled(Box)``;
+export const MenuModal = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 50%;
+  margin-bottom: 3rem;
+`;
+
+export const ModalButton = styled(Button)`
+  color: #fff;
+  text-transform: uppercase;
+  :hover {
+    background: none;
+  }
+  padding: 4px 8px;
+  border-radius: 0px;
+  font-size: 2rem;
+`;
 
 export const FooterModal = styled(Box)`
   width: 50%;

@@ -26,21 +26,35 @@ export default function index() {
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
 
-  const { logOut, isAuthorized, photoURL} = useContext(UserContext);
+  const { logOut, isAuthorized, photoURL } = useContext(UserContext);
 
   const authorizedMenu = [
     <Link href="/profile/account">
       <MenuItem onClick={handleClose}>My account</MenuItem>
     </Link>,
-    <Link href="/help/forgotpassword">
-      <MenuItem onClick={handleClose}>Reset password</MenuItem>
-    </Link>,
     <MenuItem onClick={logOut}>Log out</MenuItem>,
   ];
 
   const unauthorizedMenu = [
-    <MenuItem onClick={handleUserModalLogin}>Login</MenuItem>,
-    <MenuItem onClick={handleUserModalRegister}>Register</MenuItem>,
+    <MenuItem
+      onClick={() => {
+        handleUserModalLogin();
+        handleClose();
+      }}
+    >
+      Login
+    </MenuItem>,
+    <MenuItem
+      onClick={() => {
+        handleUserModalRegister();
+        handleClose();
+      }}
+    >
+      Register
+    </MenuItem>,
+    <Link href="/help/forgotpassword">
+      <MenuItem onClick={handleClose}>Forgot password</MenuItem>
+    </Link>,
   ];
 
   return (
@@ -53,7 +67,7 @@ export default function index() {
         onClick={handleMenu}
         sx={{ color: "white" }}
       >
-        <AccountAvatar src={photoURL}/>
+        <AccountAvatar src={photoURL} />
       </IconButton>
       <Menu
         id="menu-appbar"

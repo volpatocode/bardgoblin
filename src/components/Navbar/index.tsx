@@ -14,13 +14,16 @@ import {
   MenuModal,
   HeaderModal,
   FooterModal,
+  ModalButton,
 } from "./styles";
 
 import Logo from "../Logo";
 import NavSearchBar from "../NavSearchBar";
 import AvatarIcon from "../AvatarIcon";
 import { UserContext } from "../../contexts/UserContext";
+import { UserModalContext } from "../../contexts/UserModalContext";
 import { Fade } from "@mui/material";
+import UserModal from "../UserModal";
 
 export type navbarType = {
   page: "home" | "section" | "topic" | "forgotpassword";
@@ -28,6 +31,9 @@ export type navbarType = {
 
 export default function index({ page }: navbarType) {
   const { isAuthorized } = useContext(UserContext);
+  const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
+    useContext(UserModalContext);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -69,8 +75,45 @@ export default function index({ page }: navbarType) {
                     <CloseMenuIcon fontSize="large" />
                   </IconButton>
                 </HeaderModal>
-                <MenuModal>aa</MenuModal>
-                <FooterModal/>
+                <MenuModal>
+                  {isAuthorized ? (
+                    <ModalButton href="/profile/account">
+                      My account
+                    </ModalButton>
+                  ) : (
+                    <>
+                      <ModalButton
+                        onClick={() => {
+                          handleUserModalLogin();
+                        }}
+                      >
+                        Login
+                      </ModalButton>
+                      <ModalButton
+                        onClick={() => {
+                          handleUserModalRegister();
+                        }}
+                      >
+                        Register
+                      </ModalButton>
+                      <ModalButton href="/help/forgotpassword">
+                        Forgot password
+                      </ModalButton>
+                    </>
+                  )}
+
+                  <ModalButton href="/section/builds">Builds</ModalButton>
+                  <ModalButton href="/section/sidequests">
+                    Side quests
+                  </ModalButton>
+                  <ModalButton>Tools</ModalButton>
+                  <ModalButton>About</ModalButton>
+                  {isAuthorized && (
+                    <ModalButton>Create Build / Quest</ModalButton>
+                  )}
+                  {handleUserModal && <UserModal />}
+                </MenuModal>
+                <FooterModal />
               </BoxModal>
             </Fade>
           )}
