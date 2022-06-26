@@ -8,7 +8,8 @@ import {
   ContainedButton,
   MenuIcon,
   CloseMenuIcon,
-  IconButton,
+  OpenIconButton,
+  CloseIconButton,
   StyledStack,
   BoxModal,
   MenuModal,
@@ -53,26 +54,26 @@ export default function index({ page }: navbarType) {
             <AvatarIcon />
           </StyledStack>
           {/* responsive */}
-          <IconButton
+          <OpenIconButton
             size="large"
             edge="start"
             aria-label="open-drawer"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <MenuIcon />
-          </IconButton>
+          </OpenIconButton>
           {isMenuOpen && (
             <Fade in={isMenuOpen}>
               <BoxModal>
                 <HeaderModal>
-                  <IconButton
+                  <CloseIconButton
                     size="medium"
                     edge="start"
                     aria-label="open-drawer"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                   >
                     <CloseMenuIcon fontSize="large" />
-                  </IconButton>
+                  </CloseIconButton>
                 </HeaderModal>
                 <MenuModal>
                   {isAuthorized ? (

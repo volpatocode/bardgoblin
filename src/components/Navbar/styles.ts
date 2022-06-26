@@ -4,7 +4,6 @@ import { navbarType } from "./index";
 import MenuIcona from "@mui/icons-material/Menu";
 import IconButtona from "@mui/material/IconButton";
 import CloseIcona from "@mui/icons-material/Close";
-import { Stack } from "@mui/material";
 
 export const Navbar = styled(Box)<navbarType>`
   width: 100vw;
@@ -76,12 +75,16 @@ export const ContainedButton = styled(Button)`
 
 // Responsive
 
-export const IconButton = styled(IconButtona)`
+export const OpenIconButton = styled(IconButtona)`
   color: #fff;
   display: none;
   @media (max-width: 960px) {
     display: block;
   }
+`;
+
+export const CloseIconButton = styled(IconButtona)`
+  color: #fff;
 `;
 
 export const MenuIcon = styled(MenuIcona)`
@@ -132,8 +135,20 @@ export const MenuModal = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  width: 50%;
   margin-bottom: 3rem;
+  width: 50%;
+  @media (max-width: 960px) {
+    width: 60%;
+  }
+  @media (max-width: 760px) {
+    width: 70%;
+  }
+  @media (max-width: 560px) {
+    width: 90%;
+  }
+  @media (max-width: 400px) {
+    width: 100%;
+  }
 `;
 
 export const ModalButton = styled(Button)`
@@ -148,9 +163,10 @@ export const ModalButton = styled(Button)`
 `;
 
 export const FooterModal = styled(Box)`
-  width: 50%;
   height: 4px;
   background-color: #ff9900;
   border-radius: 5px;
   margin-bottom: 3rem;
+  width: 60%;
+
 `;
