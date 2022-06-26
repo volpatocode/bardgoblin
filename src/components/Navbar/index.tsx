@@ -18,7 +18,6 @@ import {
 } from "./styles";
 
 import Logo from "../Logo";
-import NavSearchBar from "../NavSearchBar";
 import AvatarIcon from "../AvatarIcon";
 import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
