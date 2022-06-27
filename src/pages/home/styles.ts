@@ -31,7 +31,10 @@ export const HomeContent = styled.div`
 export const WrittenContent = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 0.35rem;
+  width: 100%;
 `;
 
 export const HomeTitle = styled.h1`
@@ -41,6 +44,21 @@ export const HomeTitle = styled.h1`
   text-transform: uppercase;
   letter-spacing: 0.2px;
   text-align: center;
+  max-width: 80%;
+  transition: 0.2s ease-in-out;
+  @media (max-width: 960px) {
+    font-size: 2.3rem;
+  }
+  @media (max-width: 760px) {
+    font-size: 2.1rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+    max-width: 90%;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const HomeSubtitle = styled.h2`
@@ -49,4 +67,18 @@ export const HomeSubtitle = styled.h2`
   letter-spacing: 0.2px;
   text-align: center;
   font-weight: 400;
+  max-width: 80%;
+  @media (max-width: 960px) {
+    font-size: 1.1rem;
+  }
+  @media (max-width: 760px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
+  }
 `;

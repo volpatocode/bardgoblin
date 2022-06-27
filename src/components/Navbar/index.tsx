@@ -96,9 +96,6 @@ export default function index({ page }: navbarType) {
                       >
                         Register
                       </ModalButton>
-                      <ModalButton href="/help/forgotpassword">
-                        Forgot password
-                      </ModalButton>
                     </>
                   )}
 

@@ -19,17 +19,27 @@ export const StyledInput = styled.input`
   width: fit-content;
   outline: none;
   height: 60px;
-  transition: 200ms ease-in-out;
-  width: 300px;
   font-weight: 500;
+  width: 300px;
+  transition: 200ms ease-in-out;
   ::placeholder {
     color: #4f4f4f;
   }
+  @media (max-width: 960px) {
+    width: 250px;
+  }
+  @media (max-width: 480px) {
+    width: 180px;
+    height: 40px;
+  }
+  @media (max-width: 420px) {
+    width: 110px;
+  }
 `;
 
-export const InputButton = styled.button`
+export const InputButton = styled(Button)`
   border: none;
-  padding: 15px 20px 15px 10px;
+  padding: 15px 10px 15px 10px;
   font-size: 0.85rem;
   letter-spacing: 0.2px;
   background-color: #fff;
@@ -39,11 +49,19 @@ export const InputButton = styled.button`
   color: #4f4f4f;
   height: 60px;
   cursor: pointer;
+  :hover {
+    background-color: #fff;
+  }
+  transition: 200ms ease-in-out;
+  @media (max-width: 480px) {
+    height: 40px;
+    padding: 15px 4px 15px 4px;
+  }
 `;
 
 export const SelectButton = styled(Select)`
   border: none;
-  padding: 15px 8px 15px 15px;
+  padding: 15px 8px 15px 8px;
   font-size: 0.85rem;
   letter-spacing: 0.2px;
   background-color: #fff;
@@ -60,7 +78,28 @@ export const SelectButton = styled(Select)`
     border: none;
   }
   overflow-y: hidden;
+  transition: 200ms ease-in-out;
+  @media (max-width: 480px) {
+    height: 40px;
+  }
+  @media (max-width: 420px) {
+    padding: 15px 3px 15px 6px;
+  }
 `;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const SectionButton = styled(Button)`
   border: none;
@@ -81,5 +120,9 @@ export const SectionButton = styled(Button)`
     outline: none;
     border: none;
     background-color: #fff;
+  }
+  transition: 200ms ease-in-out;
+  @media (max-width: 480px) {
+    height: 40px;
   }
 `;

@@ -52,9 +52,6 @@ export default function index() {
     >
       Register
     </MenuItem>,
-    <Link href="/help/forgotpassword">
-      <MenuItem onClick={handleClose}>Forgot password</MenuItem>
-    </Link>,
   ];
 
   return (

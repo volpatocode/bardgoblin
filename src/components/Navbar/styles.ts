@@ -81,10 +81,12 @@ export const OpenIconButton = styled(IconButtona)`
   @media (max-width: 960px) {
     display: block;
   }
+  padding-right: 0;
 `;
 
 export const CloseIconButton = styled(IconButtona)`
   color: #fff;
+  padding-right: 0;
 `;
 
 export const MenuIcon = styled(MenuIcona)`
