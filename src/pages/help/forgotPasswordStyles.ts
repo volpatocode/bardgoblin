@@ -19,6 +19,9 @@ export const ForgotPasswordBoxWrapper = styled(Box)`
   justify-content: center;
   align-items: left;
   padding: 10%;
+  @media (max-width: 1000px) {
+    width: 100vw;
+  }
 `;
 
 export const ForgotPasswordBoxContent = styled(Box)`
@@ -33,6 +36,9 @@ export const ForgotPasswordImageBox = styled(Box)`
   height: 100vh;
   background: url("/backgroundcampfiremiddle.png") no-repeat center center /
     cover;
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const Warning = styled.p`
@@ -54,7 +60,6 @@ export const InputBox = styled(Box)`
 `;
 
 export const InputInfo = styled.input`
-  width: 100%;
   padding: 0.5rem 0.5rem 0.5rem 0;
   text-align: left;
   border: none;
