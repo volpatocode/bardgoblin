@@ -5,10 +5,15 @@ import { profileInfoType } from "./index";
 export const ProfileInfo = styled(Box)`
   width: 70%;
   height: 100%;
-  padding: 3.5rem;
   display: flex;
-  flex-direction: row;
   gap: 6rem;
+  flex-direction: row;
+  @media (max-width: 960px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 3rem;
+  }
 `;
 
 export const ProfileImageBox = styled(Box)`
@@ -17,8 +22,11 @@ export const ProfileImageBox = styled(Box)`
 export const ProfileImage = styled.div<Pick<profileInfoType, "src">>`
   background: url(${(props) => props.src}) no-repeat center center / cover;
   border-radius: 50%;
-  min-width:150px;
-  min-height:150px;
+  aspect-ratio: 1/1;
+  width: 15vw;
+  @media (max-width: 960px) {
+    width: 30vw;
+  }
 
 `;
 
@@ -27,12 +35,20 @@ export const ProfileContent = styled(Box)`
   flex-direction: column;
   gap: 2rem;
   width: 80%;
+  @media (max-width: 560px) {
+  width: 90%;
+  }
+
 `;
 
 export const ProfileData = styled(Box)`
   display: flex;
   flex-direction: row;
   gap: 3rem;
+  @media (max-width: 960px) {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
 `;
 
 export const DataPlaceholder = styled.p`
@@ -45,6 +61,9 @@ export const DataPlaceholder = styled.p`
   width: 250px;
   display: flex;
   align-items: center;
+  @media (max-width: 560px) {
+    font-size: 1rem;
+  }
 `;
 
 export const DataValue = styled(Box)<Pick<profileInfoType, "background">>`
@@ -59,8 +78,12 @@ export const DataValue = styled(Box)<Pick<profileInfoType, "background">>`
   padding: 8px;
   border-radius: 5px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.2rem;
+  @media (max-width: 560px) {
+    font-size: 1rem;
+  }
 `;
 
 export const DataInput = styled.input`
@@ -75,6 +98,9 @@ export const DataInput = styled.input`
   padding: 8px;
   border-radius: 5px;
   border: none;
+  @media (max-width: 560px) {
+    font-size: 1rem;
+  }
 `;
 
 export const BoxButtons = styled(Box)`
@@ -98,6 +124,9 @@ export const EditButton = styled(Button)`
   :hover {
     background: #dd3e0e;
   }
+  @media (max-width: 560px) {
+    font-size: 1.08rem;
+  }
 `;
 
 export const UploadButton = styled(Button)`
@@ -113,6 +142,9 @@ export const UploadButton = styled(Button)`
   }
   :hover {
     background: #ff9900;
+  }
+  @media (max-width: 560px) {
+    font-size: 1.08rem;
   }
 `;
 
@@ -131,11 +163,14 @@ export const InputImage = styled.label`
   border-radius: 5px;
   cursor: pointer;
   line-height: 1.75;
+  text-align: center;
   :disabled {
     background: #c3c3c3;
   }
   :hover {
     background: #dd3e0e;
   }
-  text-align: center;
+  @media (max-width: 560px) {
+    font-size: 1.12rem;
+  }
 `;

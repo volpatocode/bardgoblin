@@ -39,6 +39,7 @@ export const ForgotPasswordImageBox = styled(Box)`
   @media (max-width: 1000px) {
     display: none;
   }
+
 `;
 
 export const Warning = styled.p`

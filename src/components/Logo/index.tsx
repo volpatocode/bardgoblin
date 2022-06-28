@@ -11,7 +11,7 @@ export default function index({ variant }: logoType) {
     horizontal: "/horizontal-logo.png",
     vertical: "/vertical-logo.png",
     icon: "/icon-logo.png",
-    icon2: "/icon-logo2.png",
+    icon2: "/icon-logo2.svg",
   };
 
   const logoWidth = {
