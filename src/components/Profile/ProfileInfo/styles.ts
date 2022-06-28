@@ -16,8 +16,7 @@ export const ProfileInfo = styled(Box)`
   }
 `;
 
-export const ProfileImageBox = styled(Box)`
-`;
+export const ProfileImageBox = styled(Box)``;
 
 export const ProfileImage = styled.div<Pick<profileInfoType, "src">>`
   background: url(${(props) => props.src}) no-repeat center center / cover;
@@ -27,7 +26,6 @@ export const ProfileImage = styled.div<Pick<profileInfoType, "src">>`
   @media (max-width: 960px) {
     width: 30vw;
   }
-
 `;
 
 export const ProfileContent = styled(Box)`
@@ -36,9 +34,8 @@ export const ProfileContent = styled(Box)`
   gap: 2rem;
   width: 80%;
   @media (max-width: 560px) {
-  width: 90%;
+    width: 90%;
   }
-
 `;
 
 export const ProfileData = styled(Box)`
@@ -61,6 +58,27 @@ export const DataPlaceholder = styled.p`
   width: 250px;
   display: flex;
   align-items: center;
+  @media (max-width: 560px) {
+    font-size: 1rem;
+  }
+`;
+export const EditDataValue = styled.input`
+  font-size: 1.15rem;
+  color: #ff9900;
+  letter-spacing: 0.2px;
+  line-height: 1.75;
+  font-weight: 500;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  background: #1d1d1d;
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+  border: none;
+  outline: none;
   @media (max-width: 560px) {
     font-size: 1rem;
   }
@@ -132,7 +150,7 @@ export const EditButton = styled(Button)`
 export const UploadButton = styled(Button)`
   color: #000;
   text-transform: none;
-  background: #ff9900;
+  background:#dd3e0e;
   font-size: 1.2rem;
   padding: 4px 8px;
   margin-top: 1rem;
@@ -141,7 +159,7 @@ export const UploadButton = styled(Button)`
     background: #c3c3c3;
   }
   :hover {
-    background: #ff9900;
+    background: #dd3e0e;
   }
   @media (max-width: 560px) {
     font-size: 1.08rem;

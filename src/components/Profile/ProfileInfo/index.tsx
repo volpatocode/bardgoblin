@@ -15,6 +15,7 @@ import {
   EditButton,
   UploadButton,
   InputImage,
+  EditDataValue,
 } from "./styles";
 import { UserContext } from "../../../contexts/UserContext";
 import { StyledCircularProgress } from "../../UserModal/styles";
@@ -27,13 +28,18 @@ export type profileInfoType = {
 export default function index() {
   const [isEditing, setIsEditing] = useState(false);
 
-  const { isLoading, handlePhoto, handlePhotoUpload, currentUser, photo, photoURL } =
-    useContext(UserContext);
+  const {
+    isLoading,
+    handlePhoto,
+    handlePhotoUpload,
+    currentUser,
+    photo,
+    photoURL,
+  } = useContext(UserContext);
 
-useEffect(() => {
-  console.log(currentUser.emailVerified)
-
-}, [currentUser.emailVerified])
+  useEffect(() => {
+    console.log(currentUser.emailVerified);
+  }, [currentUser.emailVerified]);
 
   return (
     <ProfileInfo>
@@ -46,26 +52,43 @@ useEffect(() => {
               style={{ display: "none" }}
               type="file"
             />
-            Edit Image
+            Search Image
           </InputImage>
         )}
       </ProfileImageBox>
       <ProfileContent>
         <ProfileData>
           <DataPlaceholder>Email</DataPlaceholder>
-          <DataValue>{currentUser?.email}</DataValue>
+          {isEditing ? (
+            <EditDataValue placeholder={currentUser?.email} />
+          ) : (
+            <DataValue>{currentUser?.email}</DataValue>
+          )}
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>UUID</DataPlaceholder>
-          <DataValue background="none">{currentUser?.uid}<HelpPopover/></DataValue>
+          <DataValue background="none">
+            {currentUser?.uid}
+            <HelpPopover />
+          </DataValue>
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Username</DataPlaceholder>
-          <DataValue>{currentUser?.displayName || "Not provided"}</DataValue>
+          {isEditing ? (
+            <EditDataValue
+              placeholder={currentUser?.displayName || "Not provided"}
+            />
+          ) : (
+            <DataValue>{currentUser?.displayName || "Not provided"}</DataValue>
+          )}
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Title</DataPlaceholder>
-          <DataValue>Fantasy Writter</DataValue>
+          {isEditing ? (
+            <EditDataValue placeholder={"Fantasy Writer"} />
+          ) : (
+            <DataValue>Fantasy Writer</DataValue>
+          )}
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Email verification</DataPlaceholder>
@@ -75,13 +98,16 @@ useEffect(() => {
         </ProfileData>
         {isEditing ? (
           <UploadButton
-            disabled={isLoading || !photo}
+            disabled={isLoading}
             onClick={() => {
-              handlePhotoUpload();
-              setIsEditing(!isEditing);
+              {
+                !photo ? setIsEditing(false) : handlePhotoUpload();
+                setIsEditing(!isEditing);
+              }
             }}
           >
-            {isLoading ? <StyledCircularProgress size="25px" /> : "Upload"}
+            {isLoading && <StyledCircularProgress size="30px" />}
+            {!photo ? "Return" : "Upload"}
           </UploadButton>
         ) : (
           <EditButton
@@ -90,7 +116,7 @@ useEffect(() => {
               setIsEditing(!isEditing);
             }}
           >
-            {isLoading ? <StyledCircularProgress size="25px" /> : "Edit"}
+            {isLoading ? <StyledCircularProgress size="30px" /> : "Edit"}
           </EditButton>
         )}
       </ProfileContent>
