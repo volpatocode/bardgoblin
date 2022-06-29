@@ -104,29 +104,6 @@ export const DataValue = styled(Box)<Pick<profileInfoType, "background">>`
   }
 `;
 
-export const DataInput = styled.input`
-  font-size: 1.15rem;
-  color: #ff9900;
-  letter-spacing: 0.2px;
-  line-height: 1.75;
-  font-weight: 500;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  background: #1d1d1d;
-  width: 100%;
-  padding: 8px;
-  border-radius: 5px;
-  border: none;
-  @media (max-width: 560px) {
-    font-size: 1rem;
-  }
-`;
-
-export const BoxButtons = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  gap: 0.5rem;
-`;
 
 export const EditButton = styled(Button)`
   color: #fff;

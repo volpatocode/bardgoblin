@@ -9,9 +9,7 @@ import {
   ProfileContentForm,
   ProfileData,
   DataPlaceholder,
-  DataInput,
   DataValue,
-  BoxButtons,
   EditButton,
   UploadButton,
   InputImage,
@@ -19,16 +17,26 @@ import {
 } from "./styles";
 import { UserContext } from "../../../contexts/UserContext";
 import { StyledCircularProgress } from "../../UserModal/styles";
-import { doc, addDoc, setDoc, collection } from "firebase/firestore";
-import { db } from "../../../config/firebaseConfig";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { auth, db } from "../../../config/firebaseConfig";
+import { updateProfile, updatePassword, updateEmail } from "firebase/auth";
 
 export type profileInfoType = {
   background?: "none";
   src: string;
 };
 
+type dataInput = {
+  email: string;
+  username: string;
+  title: string;
+  password: string;
+};
+
 export default function index() {
   const [isEditingUser, setIsEditingUser] = useState(false);
+  const [dataInput, setDataInput] = useState<dataInput>();
+  const [userData, setUserData] = useState({});
 
   const {
     isLoading,
@@ -39,12 +47,29 @@ export default function index() {
     photoURL,
   } = useContext(UserContext);
 
+  // Edit user
+
+  const handleDataInput = (e) => {
+    const id = e.target.id;
+    const value = e.target.value;
+
+    setDataInput({ ...dataInput, [id]: value });
+  };
+
   const handleEditUser = async () => {
-    await addDoc(collection(db, "Cities"), {
-      name: "Los Angeles",
-      state: "CA",
-      country: "USA",
-    });
+    try {
+      updateProfile(currentUser, {
+        displayName: dataInput.username,
+      });
+      updateEmail(currentUser, dataInput.email);
+      updatePassword(currentUser, dataInput.password);
+
+      await setDoc(doc(db, "users", auth.currentUser.uid), {
+        ...dataInput,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -72,13 +97,29 @@ export default function index() {
           </InputImage>
         )}
       </ProfileImageBox>
-      <ProfileContentForm onSubmit={handleEditUser}>
+      <ProfileContentForm onSubmit={() => handleEditUser()}>
         <ProfileData>
           <DataPlaceholder>Email</DataPlaceholder>
           {isEditingUser ? (
-            <EditDataValue placeholder={currentUser?.email} />
+            <EditDataValue
+              onChange={handleDataInput}
+              id="email"
+              placeholder={currentUser?.email}
+            />
           ) : (
             <DataValue>{currentUser?.email}</DataValue>
+          )}
+        </ProfileData>
+        <ProfileData>
+          <DataPlaceholder>Password</DataPlaceholder>
+          {isEditingUser ? (
+            <EditDataValue
+              onChange={handleDataInput}
+              id="password"
+              placeholder="super secrete password"
+            />
+          ) : (
+            <DataValue>**********</DataValue>
           )}
         </ProfileData>
         <ProfileData>
@@ -92,6 +133,8 @@ export default function index() {
           <DataPlaceholder>Username</DataPlaceholder>
           {isEditingUser ? (
             <EditDataValue
+              onChange={handleDataInput}
+              id="username"
               placeholder={currentUser?.displayName || "Not provided"}
             />
           ) : (
@@ -101,7 +144,11 @@ export default function index() {
         <ProfileData>
           <DataPlaceholder>Title</DataPlaceholder>
           {isEditingUser ? (
-            <EditDataValue placeholder={"Fantasy Writer"} />
+            <EditDataValue
+              onChange={handleDataInput}
+              id="usertitle"
+              placeholder={"calma"}
+            />
           ) : (
             <DataValue>Fantasy Writer</DataValue>
           )}

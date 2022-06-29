@@ -16,9 +16,9 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { auth, storage } from "../config/firebaseConfig";
+import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-
+import { doc, getDoc } from "firebase/firestore";
 import { UserModalContext } from "./UserModalContext";
 
 type UserContextProps = {
@@ -48,21 +48,21 @@ export const UserContext = createContext<UserContextType>(
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
   const { handleUserModal } = useContext(UserModalContext);
+  const currentUser = auth?.currentUser;
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
-  const currentUser = auth?.currentUser;
   const [errorFirebase, setErrorFirebase] = useState("");
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
+  const [userData, setUserData] = useState({});
 
   // Util functions
 
   function forceHome() {
     document.location.href = "/";
   }
-
   // User listener
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -73,6 +73,25 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       }
     });
   }, []);
+
+  // useEffect(() => {
+  //   async function fetchUserData() {
+  //     try {
+  //       const docRef = doc(db, "users", currentUser?.uid);
+  //       const docSnapshot = await getDoc(docRef);
+
+  //       if (docSnapshot.exists()) {
+  //         setUserData(docSnapshot.data());
+  //       } else {
+  //         console.log("No such document!");
+  //       }
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   }
+  //   console.log(userData);
+  //   fetchUserData();
+  // }, []);
 
   // User Login/register functions
   async function createUser(data: UserFormData) {
@@ -119,7 +138,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await sendPasswordResetEmail(auth, data.email)
       .then((value) => {
-        document.location.href="/help/emailsent"
+        document.location.href = "/help/emailsent";
         console.log("Email enviado com sucesso!");
       })
       .catch((error) => setErrorFirebase(error.message))
@@ -141,7 +160,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     const snapshot = await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
-    updateProfile(currentUser, {photoURL: photoURL});
+    updateProfile(currentUser, { photoURL: photoURL });
 
     setIsLoading(false);
   }
