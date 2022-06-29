@@ -64,6 +64,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     document.location.href = "/";
   }
   // User listener
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -77,21 +78,20 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   // useEffect(() => {
   //   async function fetchUserData() {
   //     try {
-  //       const docRef = doc(db, "users", currentUser?.uid);
+  //       const docRef = doc(db, "users", auth?.currentUser?.uid);
   //       const docSnapshot = await getDoc(docRef);
-
-  //       if (docSnapshot.exists()) {
-  //         setUserData(docSnapshot.data());
-  //       } else {
-  //         console.log("No such document!");
-  //       }
-  //     } catch (err) {
-  //       console.log(err);
+  //       setUserData(docSnapshot?.data());
+  //     } catch (e) {
+  //       console.log(e);
   //     }
+  //     // if (docSnapshot.exists()) {
+  //     //   setUserData(docSnapshot.data());
+  //     // } else {
+  //     //   console.log("No such document!");
+  //     // }
   //   }
-  //   console.log(userData);
   //   fetchUserData();
-  // }, []);
+  // });
 
   // User Login/register functions
   async function createUser(data: UserFormData) {
@@ -100,11 +100,11 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       .then((value) => {
         handleUserModal();
         console.log("Cadastrado com sucesso!");
+        forceHome();
       })
       .catch((error) => setErrorFirebase(error.message))
       .finally(() => {
         setIsLoading(false);
-        forceHome();
       });
   }
 
@@ -114,11 +114,11 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       .then((value) => {
         handleUserModal();
         console.log("Logado com sucesso!");
+        forceHome();
       })
       .catch((error) => setErrorFirebase(error.message))
       .finally(() => {
         setIsLoading(false);
-        forceHome();
       });
   }
 
@@ -127,10 +127,10 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     await signOut(auth)
       .then(() => {
         console.log("Deslogado com sucesso!");
+        forceHome();
       })
       .finally(() => {
         setIsLoading(false);
-        forceHome();
       });
   }
 

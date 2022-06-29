@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import {
   ProfilePageWrapper,
   ProfilePageContent,
@@ -13,28 +13,20 @@ import { BorderDivider } from "../section/sectionStyles";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function index() {
-  const { isAuthorized, currentUser } = useContext(UserContext);
-  
-  useEffect(() => {
-    console.log(isAuthorized)
-  }, [isAuthorized])
-
-  if (isAuthorized) {
-    return (
-      <ProfilePageWrapper>
-        <ProfileHeader>
-          <Navbar page="home" />
-          <ProfileGreetings>Welcome,{" "}{currentUser?.displayName || "Traveler"}</ProfileGreetings>
-          <BorderDivider />
-        </ProfileHeader>
-        <ProfilePageContent>
-          <ProfileInfo />
-        </ProfilePageContent>
-        <Footer />
-      </ProfilePageWrapper>
-    );
-  }
-  if (!isAuthorized) {
-    return <h4>teste</h4>;
-  }
+  const { currentUser } = useContext(UserContext);
+  return (
+    <ProfilePageWrapper>
+      <ProfileHeader>
+        <Navbar page="home" />
+        <ProfileGreetings>
+          Welcome, {currentUser?.displayName || "Traveler"}
+        </ProfileGreetings>
+        <BorderDivider />
+      </ProfileHeader>
+      <ProfilePageContent>
+        <ProfileInfo />
+      </ProfilePageContent>
+      <Footer />
+    </ProfilePageWrapper>
+  );
 }

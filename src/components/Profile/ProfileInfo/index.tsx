@@ -72,6 +72,8 @@ export default function index() {
     }
   };
 
+
+
   return (
     <ProfileInfo>
       <ProfileImageBox>
