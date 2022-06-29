@@ -20,6 +20,7 @@ import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { doc, getDoc } from "firebase/firestore";
 import { UserModalContext } from "./UserModalContext";
+import { checkboxClasses } from "@mui/material";
 
 type UserContextProps = {
   children: ReactNode;
@@ -75,23 +76,19 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   async function fetchUserData() {
-  //     try {
-  //       const docRef = doc(db, "users", auth?.currentUser?.uid);
-  //       const docSnapshot = await getDoc(docRef);
-  //       setUserData(docSnapshot?.data());
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //     // if (docSnapshot.exists()) {
-  //     //   setUserData(docSnapshot.data());
-  //     // } else {
-  //     //   console.log("No such document!");
-  //     // }
-  //   }
-  //   fetchUserData();
-  // });
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const docRef =  doc(db, "users", currentUser?.uid);
+        const docSnapshot = await getDoc(docRef);
+        setUserData(docSnapshot.data());
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchUserData();
+  }, [currentUser]);
+
 
   // User Login/register functions
   async function createUser(data: UserFormData) {

@@ -61,6 +61,7 @@ export default function index() {
       updateProfile(currentUser, {
         displayName: dataInput.username,
       });
+
       updateEmail(currentUser, dataInput.email);
       updatePassword(currentUser, dataInput.password);
 
@@ -71,8 +72,6 @@ export default function index() {
       console.log(err);
     }
   };
-
-
 
   return (
     <ProfileInfo>
