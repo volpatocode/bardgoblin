@@ -18,7 +18,7 @@ export const ProfileInfo = styled(Box)`
 
 export const ProfileImageBox = styled(Box)``;
 
-export const ProfileImage = styled.div<Pick<profileInfoType, "src">>`
+export const ProfileImage = styled.img<Pick<profileInfoType, "src">>`
   background: url(${(props) => props.src}) no-repeat center center / cover;
   border-radius: 50%;
   aspect-ratio: 1/1;
@@ -28,7 +28,7 @@ export const ProfileImage = styled.div<Pick<profileInfoType, "src">>`
   }
 `;
 
-export const ProfileContent = styled(Box)`
+export const ProfileContentForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -129,7 +129,7 @@ export const BoxButtons = styled(Box)`
 `;
 
 export const EditButton = styled(Button)`
-  color: #000;
+  color: #fff;
   text-transform: none;
   background: #dd3e0e;
   font-size: 1.2rem;
@@ -148,7 +148,7 @@ export const EditButton = styled(Button)`
 `;
 
 export const UploadButton = styled(Button)`
-  color: #000;
+  color: #fff;
   text-transform: none;
   background:#dd3e0e;
   font-size: 1.2rem;
@@ -167,7 +167,7 @@ export const UploadButton = styled(Button)`
 `;
 
 export const InputImage = styled.label`
-  color: #000;
+  color: #fff;
   text-transform: none;
   background: #dd3e0e;
   font-size: 1.3rem;

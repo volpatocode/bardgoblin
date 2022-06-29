@@ -15,7 +15,7 @@ export const ProfilePageContent = styled(Box)`
   justify-content: center;
   width: 100%;
   height: 100%;
-  margin: 2rem 0;
+  margin: 5rem 0;
 `;
 
 export const ProfileGreetings = styled.h4`

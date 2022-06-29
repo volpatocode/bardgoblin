@@ -111,7 +111,6 @@ export const BoxModal = styled(Box)`
   width: 100vw;
   height: 100vh;
   background-color: #141414;
-
   padding: 0.3rem 2.5rem 0rem 2.5rem;
 
   @media (max-width: 960px) {

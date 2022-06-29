@@ -6,7 +6,7 @@ import {
   ProfileInfo,
   ProfileImageBox,
   ProfileImage,
-  ProfileContent,
+  ProfileContentForm,
   ProfileData,
   DataPlaceholder,
   DataInput,
@@ -19,6 +19,8 @@ import {
 } from "./styles";
 import { UserContext } from "../../../contexts/UserContext";
 import { StyledCircularProgress } from "../../UserModal/styles";
+import { doc, addDoc, setDoc, collection } from "firebase/firestore";
+import { db } from "../../../config/firebaseConfig";
 
 export type profileInfoType = {
   background?: "none";
@@ -26,7 +28,7 @@ export type profileInfoType = {
 };
 
 export default function index() {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditingUser, setIsEditingUser] = useState(false);
 
   const {
     isLoading,
@@ -37,15 +39,29 @@ export default function index() {
     photoURL,
   } = useContext(UserContext);
 
-  useEffect(() => {
-    console.log(currentUser.emailVerified);
-  }, [currentUser.emailVerified]);
+  const handleEditUser = async () => {
+    await addDoc(collection(db, "Cities"), {
+      name: "Los Angeles",
+      state: "CA",
+      country: "USA",
+    });
+  };
 
   return (
     <ProfileInfo>
       <ProfileImageBox>
         <ProfileImage src={photoURL} />
-        {isEditing && (
+        {photo ? (
+          <UploadButton
+            type="submit"
+            disabled={isLoading}
+            onClick={() => {
+              handlePhotoUpload();
+            }}
+          >
+            {isLoading ? <StyledCircularProgress size="30px" /> : "Upload"}
+          </UploadButton>
+        ) : (
           <InputImage>
             <input
               onChange={handlePhoto}
@@ -56,10 +72,10 @@ export default function index() {
           </InputImage>
         )}
       </ProfileImageBox>
-      <ProfileContent>
+      <ProfileContentForm onSubmit={handleEditUser}>
         <ProfileData>
           <DataPlaceholder>Email</DataPlaceholder>
-          {isEditing ? (
+          {isEditingUser ? (
             <EditDataValue placeholder={currentUser?.email} />
           ) : (
             <DataValue>{currentUser?.email}</DataValue>
@@ -74,7 +90,7 @@ export default function index() {
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Username</DataPlaceholder>
-          {isEditing ? (
+          {isEditingUser ? (
             <EditDataValue
               placeholder={currentUser?.displayName || "Not provided"}
             />
@@ -84,7 +100,7 @@ export default function index() {
         </ProfileData>
         <ProfileData>
           <DataPlaceholder>Title</DataPlaceholder>
-          {isEditing ? (
+          {isEditingUser ? (
             <EditDataValue placeholder={"Fantasy Writer"} />
           ) : (
             <DataValue>Fantasy Writer</DataValue>
@@ -96,30 +112,28 @@ export default function index() {
             <EmailStatus status={currentUser?.emailVerified} />
           </DataValue>
         </ProfileData>
-        {isEditing ? (
+        {isEditingUser ? (
           <UploadButton
+            type="submit"
             disabled={isLoading}
             onClick={() => {
-              {
-                !photo ? setIsEditing(false) : handlePhotoUpload();
-                setIsEditing(!isEditing);
-              }
+              handleEditUser();
+              setIsEditingUser(!isEditingUser);
             }}
           >
-            {isLoading && <StyledCircularProgress size="30px" />}
-            {!photo ? "Return" : "Upload"}
+            {isLoading ? <StyledCircularProgress size="30px" /> : "Upload"}
           </UploadButton>
         ) : (
           <EditButton
             disabled={isLoading}
             onClick={() => {
-              setIsEditing(!isEditing);
+              setIsEditingUser(!isEditingUser);
             }}
           >
             {isLoading ? <StyledCircularProgress size="30px" /> : "Edit"}
           </EditButton>
         )}
-      </ProfileContent>
+      </ProfileContentForm>
     </ProfileInfo>
   );
 }
