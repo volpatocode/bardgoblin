@@ -1,13 +1,10 @@
 import React from "react";
-import Link from "next/link";
 import {
   EmailStatus,
   Verified,
   VerifiedIcon,
   NotVerified,
   NotVerifiedIcon,
-  Pending,
-  PendingIcon,
 } from "./styles";
 
 export type logoType = {
@@ -23,21 +20,12 @@ export default function index({ status }: logoType) {
         </Verified>
       </EmailStatus>
     );
-  }
-  if (status === false) {
+  } else {
     return (
       <EmailStatus>
         <NotVerified>
           <NotVerifiedIcon /> Not Verified
         </NotVerified>
-      </EmailStatus>
-    );
-  } else {
-    return (
-      <EmailStatus>
-        <Pending>
-          <PendingIcon /> Pending
-        </Pending>
       </EmailStatus>
     );
   }

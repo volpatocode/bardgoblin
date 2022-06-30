@@ -29,14 +29,3 @@ export const NotVerifiedIcon = styled(GppMaybeIcon)`
     
 `;
 
-export const Pending = styled(Box)`
-  color: #dd3e0e;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-`;
-
-export const PendingIcon = styled(PendingIcona)`
-    
-`;
-
