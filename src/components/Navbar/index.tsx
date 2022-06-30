@@ -30,7 +30,7 @@ export type navbarType = {
 };
 
 export default function index({ page }: navbarType) {
-  const { isAuthorized } = useContext(UserContext);
+  const { isAuthorized, logOut } = useContext(UserContext);
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
 
@@ -77,23 +77,28 @@ export default function index({ page }: navbarType) {
                 </HeaderModal>
                 <MenuModal>
                   {isAuthorized ? (
-                    <ModalButton href="/profile/account">
-                      My account
-                    </ModalButton>
-                  ) : (
                     <>
                       <ModalButton
-                        onClick={() => {
-                          handleUserModalLogin();
-                        }}
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        href="/profile/account"
                       >
-                        Login
+                        My account
                       </ModalButton>
                       <ModalButton
                         onClick={() => {
-                          handleUserModalRegister();
+                          logOut();
+                          setIsMenuOpen(!isMenuOpen);
                         }}
                       >
+                        Logout
+                      </ModalButton>
+                    </>
+                  ) : (
+                    <>
+                      <ModalButton onClick={handleUserModalLogin}>
+                        Login
+                      </ModalButton>
+                      <ModalButton onClick={handleUserModalRegister}>
                         Register
                       </ModalButton>
                     </>
