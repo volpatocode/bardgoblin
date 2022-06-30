@@ -17,14 +17,21 @@ import {
 } from "./styles";
 import { UserContext } from "../../../contexts/UserContext";
 import { StyledCircularProgress } from "../../UserModal/styles";
-import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "../../../config/firebaseConfig";
-import { updateProfile, updatePassword, updateEmail } from "firebase/auth";
+import {
+  updateProfile,
+  updatePassword,
+  updateEmail,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from "firebase/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { editUserValidationSchema } from "../../../utils/validations";
 import InputError from "../../InputError";
-import { EditUserData } from "../../../types/user";
+import { EditUserData, UserFormData } from "../../../types/user";
+import { FirebaseError } from "firebase/app";
+import { UserModalContext } from "../../../contexts/UserModalContext";
 
 export type profileInfoType = {
   background?: "none";
@@ -47,6 +54,10 @@ export default function index() {
   } = useContext(UserContext);
 
   const {
+    handleUserModal
+  } = useContext(UserModalContext);
+
+  const {
     register,
     handleSubmit,
     formState: { errors: editUserErrors },
@@ -57,46 +68,67 @@ export default function index() {
   // Edit user
 
   const handleDataInput = (e) => {
+    e.preventDefault();
     const id = e.target.id;
     const value = e.target.value;
-
     setDataInput({ ...dataInput, [id]: value });
   };
 
-  const handleEditUser = async () => {
-    updateProfile(currentUser, {
-      displayName: dataInput?.username,
-    })
+  async function updateUserDisplayName() {
+    await updateProfile(auth?.currentUser, { displayName: dataInput?.username })
       .then(() => {
-        console.log("trocou o username");
+        console.log("Trocou o username");
       })
       .catch((error) => {
         setErrorFirebase(error.message);
       });
-    updateEmail(currentUser, dataInput?.email)
-      .then(() => {
-        console.log("trocou o email");
-      })
-      .catch((error) => {
-        setErrorFirebase(error.message);
-      });
-    updatePassword(currentUser, dataInput?.password)
-      .then(() => {
-        console.log("trocou a password");
-      })
-      .catch((error) => {
-        setErrorFirebase(error.message);
-      });
+  }
 
-    await setDoc(doc(db, "users", auth.currentUser.uid), {
-      ...dataInput,
-    })
+  async function updateUserEmail() {
+    await updateEmail(auth?.currentUser, dataInput?.email)
       .then(() => {
-        console.log("sucesso total");
+        console.log("Trocou o email");
+      })
+      .catch((error) => {
+        setErrorFirebase(error.message);
+        handleUserModal()
+      });
+  }
+
+  async function reauthenticate(data: UserFormData) {
+    const credential = EmailAuthProvider.credential(
+      data.email,
+      data.password,
+    )
+    reauthenticateWithCredential(auth.currentUser, credential)
+      .then(() => {
+        console.log("User re-authenticated");
+      })
+      .catch((error) => {
+        console.log(error.message)
+      });
+  }
+
+  async function updateUserPassword() {
+    await updatePassword(auth?.currentUser, dataInput?.password)
+      .then(() => {
+        console.log("Trocou a senha");
       })
       .catch((error) => {
         setErrorFirebase(error.message);
       });
+  }
+
+  const handleEditUser = async () => {
+    if (dataInput?.email && !errorFirebase) {
+      updateUserEmail();
+    }
+    if (dataInput?.password && !errorFirebase) {
+      updateUserPassword();
+    }
+    if (dataInput?.username && !errorFirebase) {
+      updateUserDisplayName();
+    }
   };
 
   useEffect(() => {
@@ -182,22 +214,6 @@ export default function index() {
           )}
           {editUserErrors?.username && (
             <InputError error={editUserErrors?.username?.message} />
-          )}
-        </ProfileData>
-        <ProfileData>
-          <DataPlaceholder>Title</DataPlaceholder>
-          {isEditingUser ? (
-            <EditDataValue
-              {...register("title")}
-              onChange={handleDataInput}
-              id="title"
-              placeholder={"calma"}
-            />
-          ) : (
-            <DataValue>Fantasy Writer</DataValue>
-          )}
-          {editUserErrors?.title && (
-            <InputError error={editUserErrors?.title?.message} />
           )}
         </ProfileData>
         <ProfileData>

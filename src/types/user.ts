@@ -9,6 +9,5 @@ export type EditUserData = {
   username?: string;
   password?: string;
   email?: string;
-  title?: string;
 }
   
