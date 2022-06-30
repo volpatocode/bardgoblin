@@ -89,6 +89,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     fetchUserData();
   }, [currentUser]);
 
+  console.log(userData)
+
 
   // User Login/register functions
   async function createUser(data: UserFormData) {

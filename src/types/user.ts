@@ -4,4 +4,11 @@ export type UserFormData = {
     password?: string;
     confirmPassword?: string;
   }
+
+export type EditUserData = {
+  username?: string;
+  password?: string;
+  email?: string;
+  title?: string;
+}
   
