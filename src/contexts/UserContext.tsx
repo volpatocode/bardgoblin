@@ -41,6 +41,7 @@ type UserContextType = {
   photo: boolean;
   photoURL: string;
   currentUser: any;
+  forceHome: () => void;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -117,7 +118,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         setIsLoading(false);
       });
   }
-
+  
   async function forgotPassword(data: UserFormData) {
     setIsLoading(true);
     await sendPasswordResetEmail(auth, data.email)
@@ -178,6 +179,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         photo,
         currentUser,
         photoURL,
+        forceHome,
       }}
     >
       {children}

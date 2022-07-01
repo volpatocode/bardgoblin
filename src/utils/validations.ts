@@ -31,14 +31,16 @@ export const forgotPasswordValidationSchema = yup.object({
 });
 
 export const editUserValidationSchema = yup.object({
-  email: yup.string().email("Invalid Email").required("Email is required"),
+  email: yup
+    .string()
+    .email("Invalid Email")
+    .max(50, "maximum of 50 characters"),
   password: yup
     .string()
-    .required("Password is required")
-    .min(6, "minimum of 6 characters"),
+    .min(6, "minimum of 6 characters")
+    .max(20, "maximum of 20 characters"),
   username: yup
     .string()
-    .required("Username is required")
     .min(4, "minimum of 4 characters")
     .max(20, "maximum of 20 characters"),
 });

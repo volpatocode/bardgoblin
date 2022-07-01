@@ -39,11 +39,6 @@ export type profileInfoType = {
 };
 
 export default function index() {
-  const [isEditingUser, setIsEditingUser] = useState(false);
-  const [dataInput, setDataInput] = useState<EditUserData>();
-  const [userData, setUserData] = useState({});
-  const [errorFirebase, setErrorFirebase] = useState("");
-
   const {
     isLoading,
     handlePhoto,
@@ -52,10 +47,12 @@ export default function index() {
     photo,
     photoURL,
   } = useContext(UserContext);
+  const { handleUserModal } = useContext(UserModalContext);
 
-  const {
-    handleUserModal
-  } = useContext(UserModalContext);
+  const [isEditingUser, setIsEditingUser] = useState(false);
+  const [dataInput, setDataInput] = useState<EditUserData>();
+  const [userData, setUserData] = useState({});
+  const [errorFirebase, setErrorFirebase] = useState("");
 
   const {
     register,
@@ -91,21 +88,18 @@ export default function index() {
       })
       .catch((error) => {
         setErrorFirebase(error.message);
-        handleUserModal()
+        handleUserModal();
       });
   }
 
   async function reauthenticate(data: UserFormData) {
-    const credential = EmailAuthProvider.credential(
-      data.email,
-      data.password,
-    )
+    const credential = EmailAuthProvider.credential(data.email, data.password);
     reauthenticateWithCredential(auth.currentUser, credential)
       .then(() => {
         console.log("User re-authenticated");
       })
       .catch((error) => {
-        console.log(error.message)
+        console.log(error.message);
       });
   }
 
@@ -135,6 +129,11 @@ export default function index() {
     console.log(dataInput);
   }, [dataInput]);
 
+  useEffect(() => {
+    console.log(editUserErrors);
+    console.log(errorFirebase);
+  }, [errorFirebase, editUserErrors]);
+
   return (
     <ProfileInfo>
       <ProfileImageBox>
@@ -160,7 +159,7 @@ export default function index() {
           </InputImage>
         )}
       </ProfileImageBox>
-      <ProfileContentForm onSubmit={() => handleEditUser()}>
+      <ProfileContentForm onSubmit={handleSubmit(handleEditUser)}>
         <ProfileData>
           <DataPlaceholder>Email</DataPlaceholder>
           {isEditingUser ? (
@@ -169,14 +168,16 @@ export default function index() {
               onChange={handleDataInput}
               id="email"
               placeholder={currentUser?.email}
+              type="email"
+              defaultValue={currentUser?.email}
             />
           ) : (
             <DataValue>{currentUser?.email}</DataValue>
           )}
-          {editUserErrors?.email && (
-            <InputError error={editUserErrors?.email?.message} />
-          )}
         </ProfileData>
+        {editUserErrors?.email && (
+          <InputError error={editUserErrors?.email?.message} />
+        )}
         <ProfileData>
           <DataPlaceholder>Password</DataPlaceholder>
           {isEditingUser ? (
@@ -184,15 +185,16 @@ export default function index() {
               {...register("password")}
               onChange={handleDataInput}
               id="password"
-              placeholder="super secrete password"
+              placeholder="******"
+              type="password"
             />
           ) : (
             <DataValue>**********</DataValue>
           )}
-          {editUserErrors?.password && (
-            <InputError error={editUserErrors?.password?.message} />
-          )}
         </ProfileData>
+        {editUserErrors?.password && (
+          <InputError error={editUserErrors?.password?.message} />
+        )}
         <ProfileData>
           <DataPlaceholder>UUID</DataPlaceholder>
           <DataValue background="none">
@@ -208,14 +210,16 @@ export default function index() {
               onChange={handleDataInput}
               id="username"
               placeholder={currentUser?.displayName || "Not provided"}
+              type="text"
+              defaultValue={currentUser?.displayName || "Not provided"}
             />
           ) : (
             <DataValue>{currentUser?.displayName || "Not provided"}</DataValue>
           )}
-          {editUserErrors?.username && (
-            <InputError error={editUserErrors?.username?.message} />
-          )}
         </ProfileData>
+        {editUserErrors?.username && (
+          <InputError error={editUserErrors?.username?.message} />
+        )}
         <ProfileData>
           <DataPlaceholder>Email verification</DataPlaceholder>
           <DataValue background="none">
@@ -227,10 +231,7 @@ export default function index() {
           <UploadButton
             type="submit"
             disabled={isLoading}
-            onClick={() => {
-              handleEditUser();
-              setIsEditingUser(false);
-            }}
+            onClick={handleSubmit(handleEditUser)}
           >
             {isLoading ? <StyledCircularProgress size="30px" /> : "Upload"}
           </UploadButton>
