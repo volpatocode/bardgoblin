@@ -118,7 +118,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         setIsLoading(false);
       });
   }
-  
+
   async function forgotPassword(data: UserFormData) {
     setIsLoading(true);
     await sendPasswordResetEmail(auth, data.email)

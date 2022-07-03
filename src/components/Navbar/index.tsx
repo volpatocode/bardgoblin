@@ -30,11 +30,18 @@ export type navbarType = {
 };
 
 export default function index({ page }: navbarType) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthorized, logOut } = useContext(UserContext);
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "initial";
+    }
+  }, [isMenuOpen]);
 
   return (
     <>

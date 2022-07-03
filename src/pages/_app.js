@@ -5,6 +5,9 @@ import { theme } from "../theme/theme.ts";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
 import { UserContextProvider } from "../contexts/UserContext";
 
+
+
+
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -29,13 +32,14 @@ const GlobalStyle = createGlobalStyle`
       background: #ff9900;
       border-radius: 20px;
     };
+    
    }
 `;
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle/>
       <Head>
         <title>Bard Goblin</title>
         <link rel="shortcut icon" href="/icon-logo.png" />
