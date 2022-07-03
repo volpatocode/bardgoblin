@@ -37,9 +37,9 @@ export default function index({ page }: navbarType) {
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflowY = "hidden";
     } else {
-      document.body.style.overflow = "initial";
+      document.body.style.overflowY = "initial";
     }
   }, [isMenuOpen]);
 
