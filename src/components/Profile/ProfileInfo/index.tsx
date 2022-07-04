@@ -30,7 +30,7 @@ import { useForm } from "react-hook-form";
 import { editUserValidationSchema } from "../../../utils/validations";
 import InputError from "../../InputError";
 import { EditUserData, UserFormData } from "../../../types/user";
-import { FirebaseError } from "firebase/app";
+import { UserReauthenticateModalContext } from "../../../contexts/UserReauthenticateModal";
 import { UserModalContext } from "../../../contexts/UserModalContext";
 
 export type profileInfoType = {
@@ -47,7 +47,9 @@ export default function index() {
     photo,
     photoURL,
   } = useContext(UserContext);
-  const { handleUserModal } = useContext(UserModalContext);
+  const { handleReauthenticateModal } = useContext(
+    UserReauthenticateModalContext
+  );
 
   const [isEditingUser, setIsEditingUser] = useState(false);
   const [dataInput, setDataInput] = useState<EditUserData>();
@@ -99,7 +101,6 @@ export default function index() {
       })
       .catch((error) => {
         setErrorFirebase(error.message);
-        handleUserModal();
       });
   }
 
@@ -114,19 +115,27 @@ export default function index() {
   }
 
   const handleEditUser = async () => {
-    if (dataInput?.email && !errorFirebase) {
-      updateUserEmail();
+    try {
+      if (dataInput?.email && !errorFirebase) {
+        updateUserEmail();
+      }
+      if (dataInput?.password && !errorFirebase) {
+        updateUserPassword();
+      }
+      if (dataInput?.username && !errorFirebase) {
+        updateUserDisplayName();
+      }
+    } finally {
+      setIsEditingUser(false);
     }
-    if (dataInput?.password && !errorFirebase) {
-      updateUserPassword();
-    }
-    if (dataInput?.username && !errorFirebase) {
-      updateUserDisplayName();
-    }
-    if (errorFirebase) {
-    handleReauthenticateModal();
-  }
   };
+
+  useEffect(() => {
+    if (errorFirebase) {
+      handleReauthenticateModal;
+      console.log("erro");
+    }
+  }, [errorFirebase]);
 
   useEffect(() => {
     console.log(dataInput);
@@ -192,7 +201,7 @@ export default function index() {
               type="password"
             />
           ) : (
-            <DataValue>**********</DataValue>
+            <DataValue>******</DataValue>
           )}
         </ProfileData>
         {editUserErrors?.password && (
