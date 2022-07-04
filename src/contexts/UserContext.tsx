@@ -42,6 +42,7 @@ type UserContextType = {
   photoURL: string;
   currentUser: any;
   forceHome: () => void;
+  refreshPage: () => void;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -64,6 +65,10 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   // Util functions
   function forceHome() {
     router.push("/");
+  }
+
+  function refreshPage() {
+    router.reload();
   }
 
   // User listener
@@ -158,8 +163,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     }
   }
 
-  function handlePhotoUpload() {
-    upload(photo, currentUser, isLoading);
+  async function handlePhotoUpload() {
+    await upload(photo, currentUser, isLoading).then(() => refreshPage());
   }
 
   return (
@@ -180,6 +185,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         currentUser,
         photoURL,
         forceHome,
+        refreshPage,
       }}
     >
       {children}

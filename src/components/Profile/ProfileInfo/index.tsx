@@ -30,7 +30,6 @@ import { useForm } from "react-hook-form";
 import { editUserValidationSchema } from "../../../utils/validations";
 import InputError from "../../InputError";
 import { EditUserData, UserFormData } from "../../../types/user";
-import { UserReauthenticateModalContext } from "../../../contexts/UserReauthenticateModal";
 import { UserModalContext } from "../../../contexts/UserModalContext";
 
 export type profileInfoType = {
@@ -46,10 +45,9 @@ export default function index() {
     currentUser,
     photo,
     photoURL,
+    refreshPage,
   } = useContext(UserContext);
-  const { handleReauthenticateModal } = useContext(
-    UserReauthenticateModalContext
-  );
+  const { handleUserModal } = useContext(UserModalContext);
 
   const [isEditingUser, setIsEditingUser] = useState(false);
   const [dataInput, setDataInput] = useState<EditUserData>();
@@ -91,6 +89,7 @@ export default function index() {
       })
       .catch((error) => {
         setErrorFirebase(error.message);
+        handleUserModal();
       });
   }
 
@@ -101,6 +100,7 @@ export default function index() {
       })
       .catch((error) => {
         setErrorFirebase(error.message);
+        handleUserModal();
       });
   }
 
@@ -111,6 +111,7 @@ export default function index() {
       })
       .catch((error) => {
         setErrorFirebase(error.message);
+        handleUserModal();
       });
   }
 
@@ -130,21 +131,20 @@ export default function index() {
     }
   };
 
-  useEffect(() => {
-    if (errorFirebase) {
-      handleReauthenticateModal;
-      console.log("erro");
-    }
-  }, [errorFirebase]);
+  // useEffect(() => {
+  //   if (errorFirebase) {
+  //     handleUserModalLogin();
+  //   }
+  // }, [errorFirebase]);
 
-  useEffect(() => {
-    console.log(dataInput);
-  }, [dataInput]);
+  // useEffect(() => {
+  //   console.log(dataInput);
+  // }, [dataInput]);
 
-  useEffect(() => {
-    console.log(editUserErrors);
-    console.log(errorFirebase);
-  }, [errorFirebase, editUserErrors]);
+  // useEffect(() => {
+  //   console.log(editUserErrors);
+  //   console.log(errorFirebase);
+  // }, [errorFirebase, editUserErrors]);
 
   return (
     <ProfileInfo>
@@ -166,6 +166,7 @@ export default function index() {
               onChange={handlePhoto}
               style={{ display: "none" }}
               type="file"
+              id="handleimage"
             />
             Search Image
           </InputImage>

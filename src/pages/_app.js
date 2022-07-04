@@ -5,9 +5,6 @@ import { theme } from "../theme/theme.ts";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
 import { UserContextProvider } from "../contexts/UserContext";
 
-
-
-
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -39,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Head>
         <title>Bard Goblin</title>
         <link rel="shortcut icon" href="/icon-logo.png" />
@@ -53,9 +50,9 @@ export default function App({ Component, pageProps }) {
       </Head>
       <UserModalContextProvider>
         <UserContextProvider>
-          <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-          </ThemeProvider>
+            <ThemeProvider theme={theme}>
+              <Component {...pageProps} />
+            </ThemeProvider>
         </UserContextProvider>
       </UserModalContextProvider>
     </>

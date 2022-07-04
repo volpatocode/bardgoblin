@@ -16,7 +16,12 @@ export const ProfileInfo = styled(Box)`
   }
 `;
 
-export const ProfileImageBox = styled(Box)``;
+export const ProfileImageBox = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const ProfileImage = styled.img<Pick<profileInfoType, "src">>`
   background: url(${(props) => props.src}) no-repeat center center / cover;
