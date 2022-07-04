@@ -64,6 +64,17 @@ export default function index() {
 
   // Edit user
 
+  async function reauthenticate(data: UserFormData) {
+    const credential = EmailAuthProvider.credential(data.email, data.password);
+    reauthenticateWithCredential(auth.currentUser, credential)
+      .then(() => {
+        console.log("User re-authenticated");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  }
+
   const handleDataInput = (e) => {
     e.preventDefault();
     const id = e.target.id;
@@ -92,17 +103,6 @@ export default function index() {
       });
   }
 
-  async function reauthenticate(data: UserFormData) {
-    const credential = EmailAuthProvider.credential(data.email, data.password);
-    reauthenticateWithCredential(auth.currentUser, credential)
-      .then(() => {
-        console.log("User re-authenticated");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
-
   async function updateUserPassword() {
     await updatePassword(auth?.currentUser, dataInput?.password)
       .then(() => {
@@ -123,6 +123,9 @@ export default function index() {
     if (dataInput?.username && !errorFirebase) {
       updateUserDisplayName();
     }
+    if (errorFirebase) {
+    handleReauthenticateModal();
+  }
   };
 
   useEffect(() => {

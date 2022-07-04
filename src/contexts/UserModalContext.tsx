@@ -28,7 +28,7 @@ export const UserModalContextProvider = ({
   const [isOpen, setIsOpen] = useState(false);
   const [isOnRegister, setIsOnRegister] = useState(false);
   const [isOnLogin, setIsOnLogin] = useState(true);
-  
+
   const handleUserModal = () => setIsOpen(!isOpen);
 
   const handleUserModalLogin = () => {
