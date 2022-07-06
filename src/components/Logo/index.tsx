@@ -20,14 +20,14 @@ export default function index({ variant }: logoType) {
     horizontal: "180px",
     vertical: "120px",
     icon: "30px",
-    icon2: "25px",
+    icon2: "30px",
   };
 
   const logoHeight = {
     horizontal: "25px",
     vertical: "60px",
     icon: "40px",
-    icon2: "30px",
+    icon2: "40px",
   };
 
   return (
