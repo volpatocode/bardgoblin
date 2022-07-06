@@ -13,5 +13,5 @@ export const StyledFormControl = styled(FormControl)`
 `;
 
 export const StyledInputLabel = styled(InputLabel)`
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.45);
 `;

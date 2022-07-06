@@ -21,15 +21,11 @@ export default function index() {
     setLabel(typeof value === "string" ? value.split(",") : value);
   };
 
-  const ITEM_HEIGHT = 30;
-  const ITEM_PADDING_TOP = 8;
   const MenuProps = {
     PaperProps: {
       style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
         backgroundColor: "#141414",
-        color: "rgba(255, 255, 255, 0.75)",
+        color: "rgba(255, 255, 255, 0.45);",
       },
     },
   };
@@ -56,7 +52,12 @@ export default function index() {
           onChange={handleChange}
           input={
             <OutlinedInput
-              sx={{ color: "rgba(255, 255, 255, 0.75)" }}
+              sx={{
+                color: "rgba(255, 255, 255, 0.45)",
+                border: "1px solid rgba(29, 29, 29, 0.7)",
+                outline: "none",
+                "&:hover": { border: "1px solid rgba(29, 29, 29, 0.7)" },
+              }}
               label="label"
             />
           }
