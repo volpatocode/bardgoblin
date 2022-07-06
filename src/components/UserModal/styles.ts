@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 
-
 export const BoxModal = styled(Box)`
   position: absolute;
   border-radius: 5px;

@@ -1,4 +1,14 @@
 import React, { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { forgotPasswordValidationSchema } from "../../utils/validations";
+
+import Logo from "../../components/Logo";
+import { StyledCircularProgress } from "../../components/UserModal/styles";
+import InputError from "../../components/InputError";
+
 import {
   ForgotPasswordWrapper,
   ForgotPasswordBoxWrapper,
@@ -9,15 +19,6 @@ import {
   ForgotPasswordImageBox,
   BoxLogo,
 } from "./forgotpasswordstyles";
-
-import { UserContext } from "../../contexts/UserContext";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-
-import Logo from "../../components/Logo";
-import { StyledCircularProgress } from "../../components/UserModal/styles";
-import { forgotPasswordValidationSchema } from "../../utils/validations";
-import InputError from "../../components/InputError";
 
 export default function index() {
   const { forgotPassword, isLoading, errorFirebase } = useContext(UserContext);

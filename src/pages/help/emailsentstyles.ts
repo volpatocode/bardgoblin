@@ -17,7 +17,6 @@ export const EmailSentBox = styled(Box)`
   width: 40vw;
   height: 100vh;
   padding: 10% 12% 10% 10%;
-
 `;
 
 export const BoxLogo = styled(Box)`
@@ -29,7 +28,6 @@ export const BoxContent = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  
 `;
 
 export const BoxInfo = styled(Box)`

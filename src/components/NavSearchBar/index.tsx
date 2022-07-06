@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { NavSearchBar, StyledInput, InputButton, SelectButton } from "./styles";
+
 import SearchIcon from "@mui/icons-material/Search";
+
 import { MenuItem, FormControl, SelectChangeEvent } from "@mui/material/";
 
-export type searchBarType = {};
+import { NavSearchBar, StyledInput, InputButton, SelectButton } from "./styles";
 
-export default function index({}: searchBarType) {
+export default function index() {
   const [searchBarSection, setSearchBarSection] = useState("Side Quests");
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setSearchBarSection(event.target.value as string);
+  const handleChange = (e: SelectChangeEvent) => {
+    setSearchBarSection(e.target.value as string);
   };
 
   return (

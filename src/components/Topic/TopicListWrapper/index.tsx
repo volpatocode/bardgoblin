@@ -1,10 +1,10 @@
 import React from "react";
+
 import QueryTopic from "../QueryTopic";
+
 import { TopicListWrapper } from "./styles";
 
-export type topicListType = {};
-
-export default function index({}: topicListType) {
+export default function index() {
   return (
     <TopicListWrapper>
       <QueryTopic />

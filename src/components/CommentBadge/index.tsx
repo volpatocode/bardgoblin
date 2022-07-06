@@ -1,14 +1,14 @@
 import React from "react";
-import { CommentBadge, CommentCount } from "./styles";
-import CommentIcon from "@mui/icons-material/Comment";
 
-export type badgeType = {};
+import Icon from "@mui/icons-material/Comment";
 
-export default function index({}: badgeType) {
+import { CommentBadge, Count} from "./styles";
+
+export default function index() {
   return (
     <CommentBadge>
-      <CommentIcon fontSize="small" />
-      <CommentCount>221</CommentCount>
+      <Icon fontSize="small" />
+      <Count>221</Count>
     </CommentBadge>
   );
 }

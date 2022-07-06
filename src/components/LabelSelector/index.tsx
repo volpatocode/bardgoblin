@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+
+import {
+  OutlinedInput,
+  MenuItem,
+  ListItemText,
+  Select,
+  SelectChangeEvent,
+  Checkbox,
+} from "@mui/material";
+
 import { LabelSelector, StyledFormControl, StyledInputLabel } from "./styles";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemText from "@mui/material/ListItemText";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
 
-export type LabelSelectorType = {};
-
-export default function index({}: LabelSelectorType) {
-  const [label, setLabel] = useState<string[]>([]);
+export default function index() {
+  const [label, setLabel] = useState([]);
 
   const handleChange = (event: SelectChangeEvent<typeof label>) => {
     const {
@@ -37,11 +40,10 @@ export default function index({}: LabelSelectorType) {
     "#Mountain",
     "#Plains",
     "#Swamp",
-    "#Underdark",
     "#Dungeon",
     "#Aquatic",
     "#Desert",
-    "#Jungle",  
+    "#Jungle",
   ];
 
   return (
@@ -52,13 +54,21 @@ export default function index({}: LabelSelectorType) {
           multiple
           value={label}
           onChange={handleChange}
-          input={<OutlinedInput sx={{color: "rgba(255, 255, 255, 0.75)"}} label="label"/>}
+          input={
+            <OutlinedInput
+              sx={{ color: "rgba(255, 255, 255, 0.75)" }}
+              label="label"
+            />
+          }
           renderValue={(selected) => selected.join("  ")}
           MenuProps={MenuProps}
         >
           {labels.map((name) => (
-            <MenuItem  key={name} value={name}>
-              <Checkbox sx={{ color: "rgba(255, 255, 255, 0.75)"}} checked={label.indexOf(name) > -1} />
+            <MenuItem key={name} value={name}>
+              <Checkbox
+                sx={{ color: "rgba(255, 255, 255, 0.75)" }}
+                checked={label.indexOf(name) > -1}
+              />
               <ListItemText primary={name} />
             </MenuItem>
           ))}

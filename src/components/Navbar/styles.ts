@@ -169,5 +169,4 @@ export const FooterModal = styled(Box)`
   border-radius: 5px;
   margin-bottom: 3rem;
   width: 60%;
-
 `;

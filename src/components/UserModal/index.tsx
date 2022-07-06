@@ -1,9 +1,19 @@
-import React, { useState, useContext, useEffect } from "react";
-import Logo from "../Logo";
+import React, { useContext } from "react";
+import { UserModalContext } from "../../contexts/UserModalContext";
+import { UserContext } from "../../contexts/UserContext";
+import Link from "next/link";
 
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import {
+  loginValidationSchema,
+  registerValidationSchema,
+} from "../../utils/validations";
 
 import { Backdrop, Modal, Fade } from "@mui/material";
+
+import Logo from "../Logo";
+import InputError from "../InputError";
 
 import {
   BoxModal,
@@ -22,18 +32,6 @@ import {
   BoxUser,
   StyledCircularProgress,
 } from "./styles";
-import { UserModalContext } from "../../contexts/UserModalContext";
-
-import { UserContext } from "../../contexts/UserContext";
-
-import Link from "next/link";
-
-import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  loginValidationSchema,
-  registerValidationSchema,
-} from "../../utils/validations";
-import InputError from "../InputError";
 
 export default function index() {
   const {
@@ -44,7 +42,6 @@ export default function index() {
     toggleLogin,
     toggleRegister,
   } = useContext(UserModalContext);
-
   const { createUser, loginUser, isLoading, errorFirebase } =
     useContext(UserContext);
 

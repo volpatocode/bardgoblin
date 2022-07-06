@@ -1,17 +1,18 @@
-import React, { useContext, useEffect } from "react";
-import {
-  ProfilePageWrapper,
-  ProfilePageContent,
-  ProfileHeader,
-  ProfileGreetings,
-} from "./accountStyles";
+import React, { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ProfileInfo from "../../components/Profile/ProfileInfo";
 import Unauthorized from "../../components/UnauthorizedPage/index";
 import { BorderDivider } from "../section/sectionStyles";
-import { UserContext } from "../../contexts/UserContext";
+
+import {
+  ProfilePageWrapper,
+  ProfilePageContent,
+  ProfileHeader,
+  ProfileGreetings,
+} from "./accountStyles";
 
 export default function index() {
   const { currentUser, isAuthorized } = useContext(UserContext);

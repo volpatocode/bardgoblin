@@ -26,20 +26,19 @@ export const ProfileGreetings = styled.h4`
   text-align: center;
   max-width: 70%;
   @media (max-width: 1200px) {
-   font-size: 2.6rem;
+    font-size: 2.6rem;
   }
   @media (max-width: 960px) {
-  font-size: 2.2rem;
+    font-size: 2.2rem;
   }
   @media (max-width: 660px) {
-  font-size: 1.9rem;
-  max-width: 80%;
+    font-size: 1.9rem;
+    max-width: 80%;
   }
   @media (max-width: 460px) {
-  font-size: 1.7rem;
-  max-width: 85%;
+    font-size: 1.7rem;
+    max-width: 85%;
   }
-
 `;
 
 export const ProfileHeader = styled(Box)`

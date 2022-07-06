@@ -17,7 +17,7 @@ export const BadgeCharacter = styled(Button)`
   margin: 0 1px;
 `;
 
-export const CharacterImage = styled.img`
+export const Image = styled.img`
   border-radius: 50%;
   width: 20px;
   height: 18px;

@@ -1,5 +1,8 @@
 import React from "react";
+
 import Logo from "../../components/Logo";
+import { ForgotPasswordImageBox } from "./forgotpasswordstyles";
+
 import {
   EmailSent,
   EmailSentBox,
@@ -14,7 +17,6 @@ import {
   FooterInfo,
   InfoAnchor,
 } from "./emailsentstyles";
-import { ForgotPasswordImageBox } from "./forgotpasswordstyles";
 
 export default function index() {
   return (
@@ -30,18 +32,22 @@ export default function index() {
             </InfoSubtitle>
           </BoxInfo>
           <BoxButtons>
-            <EmailButton href="https://mail.google.com/mail/u/0/">Open email</EmailButton>
+            <EmailButton href="https://mail.google.com/mail/u/0/">
+              Open email
+            </EmailButton>
             <SkipButton href="/">Skip, I'll confirm later</SkipButton>
           </BoxButtons>
         </BoxContent>
         <BoxFooter>
-        <FooterInfo>
-          Did not receive the email? Check your spam filter, or{" "}
-          <InfoAnchor href="/help/forgotpassword">try another email adress</InfoAnchor>
-        </FooterInfo>
+          <FooterInfo>
+            Did not receive the email? Check your spam filter, or{" "}
+            <InfoAnchor href="/help/forgotpassword">
+              try another email adress
+            </InfoAnchor>
+          </FooterInfo>
         </BoxFooter>
       </EmailSentBox>
-      <ForgotPasswordImageBox/>
+      <ForgotPasswordImageBox />
     </EmailSent>
   );
 }

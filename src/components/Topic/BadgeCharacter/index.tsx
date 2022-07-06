@@ -1,12 +1,11 @@
 import React from "react";
-import { BadgeCharacter, CharacterImage } from "./styles";
 
-export type badgeType = {};
+import { BadgeCharacter, Image } from "./styles";
 
-export default function index({}: badgeType) {
+export default function index() {
   return (
     <BadgeCharacter>
-      <CharacterImage src="https://pbs.twimg.com/profile_images/1208753996418232321/oB769Osy_400x400.jpg" />
+      <Image src="https://pbs.twimg.com/profile_images/1208753996418232321/oB769Osy_400x400.jpg" />
       tempora sizus
     </BadgeCharacter>
   );

@@ -1,5 +1,7 @@
 import React from "react";
+
 import UserBadge from "../../UserBadge";
+
 import {
   QueryTopic,
   LeftSideTopic,
@@ -8,9 +10,7 @@ import {
   Label,
 } from "./styles";
 
-export type topicType = {};
-
-export default function index({}: topicType) {
+export default function index() {
   return (
     <QueryTopic>
       <LeftSideTopic>

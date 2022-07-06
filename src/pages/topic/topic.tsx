@@ -1,6 +1,16 @@
 import React from "react";
+
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import UserBadge from "../../components/UserBadge";
+import LikeBadge from "../../components/LikeBadge";
+import CommentBadge from "../../components/CommentBadge";
+import BreadcrumbsWrapper from "../../components/Topic/Breadcrumbs";
+import TopicIntroduction from "../../components/Topic/TopicIntroduction";
+import TopicModule from "../../components/Topic/TopicModule";
+import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
+import OptionalQuestAccordion from "../../components/Topic/OptionalQuestAccordion";
+import { BorderDivider } from "../section/sectionStyles";
 
 import {
   TopicHeaderWrapper,
@@ -10,16 +20,6 @@ import {
   TopicBadges,
   TopicContent,
 } from "./styles";
-import UserBadge from "../../components/UserBadge";
-import LikeBadge from "../../components/LikeBadge";
-import CommentBadge from "../../components/CommentBadge";
-import BreadcrumbsWrapper from "../../components/Topic/Breadcrumbs";
-import TopicIntroduction from "../../components/Topic/TopicIntroduction";
-import TopicModule from "../../components/Topic/TopicModule";
-import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
-import OptionalQuestAccordion from "../../components/Topic/OptionalQuestAccordion";
-
-import {BorderDivider} from "../section/sectionStyles";
 
 export default function index() {
   return (
@@ -38,15 +38,15 @@ export default function index() {
               <CommentBadge />
             </TopicBadges>
           </TopicHeaderContent>
-          <BorderDivider/>
+          <BorderDivider />
         </TopicHeader>
       </TopicHeaderWrapper>
       <TopicContent>
-        <TopicIntroduction/>
-        <TopicModule/>
-        <TopicModule/>
-        <TopicHiddenInfo/>
-        <OptionalQuestAccordion/>
+        <TopicIntroduction />
+        <TopicModule />
+        <TopicModule />
+        <TopicHiddenInfo />
+        <OptionalQuestAccordion />
       </TopicContent>
       <Footer />
     </>

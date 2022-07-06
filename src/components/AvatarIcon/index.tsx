@@ -1,32 +1,27 @@
 import React, { useState, useContext } from "react";
-import Link from "next/link";
-
+import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
-
-import { AvatarIcon, AccountAvatar } from "./styles";
+import Link from "next/link";
 
 import { IconButton, Menu, MenuItem } from "@mui/material";
 
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import UserModal from "../UserModal";
-import { UserContext } from "../../contexts/UserContext";
-import { auth } from "../../config/firebaseConfig";
+
+import { AvatarIcon, AccountAvatar } from "./styles";
 
 export default function index() {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchor, setAnchor] = useState<null | HTMLElement>(null);
+  const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
+    useContext(UserModalContext);
+  const { logOut, isAuthorized, photoURL } = useContext(UserContext);
 
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleMenu = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchor(e.currentTarget);
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    setAnchor(null);
   };
-
-  const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
-    useContext(UserModalContext);
-
-  const { logOut, isAuthorized, photoURL } = useContext(UserContext);
 
   const authorizedMenu = [
     <Link href="/profile/account">
@@ -68,7 +63,7 @@ export default function index() {
       </IconButton>
       <Menu
         id="menu-appbar"
-        anchorEl={anchorEl}
+        anchorEl={anchor}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "left",
@@ -78,7 +73,7 @@ export default function index() {
           vertical: "top",
           horizontal: "center",
         }}
-        open={Boolean(anchorEl)}
+        open={Boolean(anchor)}
         onClose={handleClose}
         PaperProps={{
           sx: {

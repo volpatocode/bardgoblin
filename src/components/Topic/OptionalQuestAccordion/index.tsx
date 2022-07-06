@@ -1,4 +1,5 @@
 import React from "react";
+
 import BadgeID from "../BadgeID";
 
 import {
@@ -24,7 +25,7 @@ export default function index() {
           <OptionalQuestTitle>
             <StyledVisibilityIcon />
             Fighting the Orc
-            <BadgeID/>
+            <BadgeID />
           </OptionalQuestTitle>
         </StyledAccordionSummary>
         <StyledAccordionDetails>
@@ -45,7 +46,7 @@ export default function index() {
           <OptionalQuestTitle>
             <StyledVisibilityIcon />
             Helping the Orc
-            <BadgeID/>
+            <BadgeID />
           </OptionalQuestTitle>
         </StyledAccordionSummary>
         <StyledAccordionDetails>

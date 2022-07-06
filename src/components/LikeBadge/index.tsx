@@ -1,14 +1,14 @@
 import React from "react";
-import { LikeBadge, LikeCount } from "./styles";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
-export type badgeType = {};
+import Icon from "@mui/icons-material/ThumbUp";
 
-export default function index({}: badgeType) {
+import { LikeBadge, Count } from "./styles";
+
+export default function index() {
   return (
     <LikeBadge>
-      <ThumbUpIcon fontSize="small" />
-      <LikeCount>221</LikeCount>
+      <Icon fontSize="small" />
+      <Count>221</Count>
     </LikeBadge>
   );
 }

@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+
+import { MenuItem, FormControl, SelectChangeEvent } from "@mui/material/";
+
+import SearchIcon from "@mui/icons-material/Search";
+
 import {
   MainSearchBar,
   StyledInput,
@@ -6,36 +11,28 @@ import {
   SelectButton,
 } from "./styles";
 
-import { MenuItem, FormControl, SelectChangeEvent } from "@mui/material/";
-
-import SearchIcon from "@mui/icons-material/Search";
-
-export type searchBarType = {
-};
-
-export default function index({}: searchBarType) {
+export default function index() {
   const [searchBarSection, setSearchBarSection] = useState("Side Quests");
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setSearchBarSection(event.target.value as string);
+  const handleChange = (e: SelectChangeEvent) => {
+    setSearchBarSection(e.target.value as string);
   };
-
 
   return (
     <MainSearchBar>
-        <FormControl fullWidth>
-          <SelectButton
-            id="select-section"
-            value={searchBarSection}
-            onChange={handleChange}
-            sx={{ display: "flex", justifyContent: "center" }}
-            color="secondary"
-          >
-            <MenuItem value="Side Quests">Side Quests</MenuItem>
-            <MenuItem value="Builds">Builds</MenuItem>
-            <MenuItem value="Tools">Tools</MenuItem>
-          </SelectButton>
-        </FormControl>
+      <FormControl fullWidth>
+        <SelectButton
+          id="select-section"
+          value={searchBarSection}
+          onChange={handleChange}
+          sx={{ display: "flex", justifyContent: "center" }}
+          color="secondary"
+        >
+          <MenuItem value="Side Quests">Side Quests</MenuItem>
+          <MenuItem value="Builds">Builds</MenuItem>
+          <MenuItem value="Tools">Tools</MenuItem>
+        </SelectButton>
+      </FormControl>
       <form>
         <StyledInput
           type="text"

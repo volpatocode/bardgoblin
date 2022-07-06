@@ -16,7 +16,7 @@ export const CommentBadge = styled(Button)`
   }
 `;
 
-export const CommentCount = styled.p`
+export const Count = styled.p`
   color: rgba(255, 255, 255, 0.75);
   font-size: 1rem;
   text-align: left;

@@ -40,7 +40,7 @@ export const WrittenContent = styled.div`
 export const HomeTitle = styled.h1`
   font-size: 2.8rem;
   color: #fff;
-  font-family: 'New Rocker', cursive;
+  font-family: "New Rocker", cursive;
   text-transform: uppercase;
   letter-spacing: 0.2px;
   text-align: center;

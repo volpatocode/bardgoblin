@@ -1,10 +1,10 @@
 import React from "react";
-import { Footer } from "./styles";
+
 import Logo from "../Logo";
 
-export type footerType = {};
+import { Footer } from "./styles";
 
-export default function index({}: footerType) {
+export default function index() {
   return (
     <Footer>
         <Logo variant="icon2" />

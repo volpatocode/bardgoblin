@@ -1,4 +1,7 @@
 import React from "react";
+import { UserModalContextProvider } from "../../contexts/UserModalContext";
+import { UserContextProvider } from "../../contexts/UserContext";
+
 import Navbar from "../../components/Navbar";
 import TopicListWrapper from "../../components/Topic/TopicListWrapper";
 import Footer from "../../components/Footer";
@@ -18,8 +21,6 @@ import {
   TopicFiltersWrapper,
   BorderDivider,
 } from "./sectionStyles";
-import { UserModalContextProvider } from "../../contexts/UserModalContext";
-import { UserContextProvider } from "../../contexts/UserContext";
 
 export default function index() {
   return (

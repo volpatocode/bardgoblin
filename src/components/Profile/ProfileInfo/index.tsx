@@ -1,6 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../../../contexts/UserContext";
+import { UserModalContext } from "../../../contexts/UserModalContext";
+
+import { auth, db } from "../../../config/firebaseConfig";
+import {
+  updateProfile,
+  updatePassword,
+  updateEmail,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
+} from "firebase/auth";
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { editUserValidationSchema } from "../../../utils/validations";
+import { EditUserData, UserFormData } from "../../../types/user";
+
 import EmailStatus from "../EmailStatus";
 import HelpPopover from "../../HelpPopover";
+import { StyledCircularProgress } from "../../UserModal/styles";
+import InputError from "../../InputError";
 
 import {
   ProfileInfo,
@@ -15,22 +34,6 @@ import {
   InputImage,
   EditDataValue,
 } from "./styles";
-import { UserContext } from "../../../contexts/UserContext";
-import { StyledCircularProgress } from "../../UserModal/styles";
-import { auth, db } from "../../../config/firebaseConfig";
-import {
-  updateProfile,
-  updatePassword,
-  updateEmail,
-  reauthenticateWithCredential,
-  EmailAuthProvider,
-} from "firebase/auth";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import { editUserValidationSchema } from "../../../utils/validations";
-import InputError from "../../InputError";
-import { EditUserData, UserFormData } from "../../../types/user";
-import { UserModalContext } from "../../../contexts/UserModalContext";
 
 export type profileInfoType = {
   background?: "none";
@@ -45,13 +48,11 @@ export default function index() {
     currentUser,
     photo,
     photoURL,
-    refreshPage,
   } = useContext(UserContext);
   const { handleUserModal } = useContext(UserModalContext);
 
   const [isEditingUser, setIsEditingUser] = useState(false);
   const [dataInput, setDataInput] = useState<EditUserData>();
-  const [userData, setUserData] = useState({});
   const [errorFirebase, setErrorFirebase] = useState("");
 
   const {
@@ -63,17 +64,6 @@ export default function index() {
   });
 
   // Edit user
-
-  async function reauthenticate(data: UserFormData) {
-    const credential = EmailAuthProvider.credential(data.email, data.password);
-    reauthenticateWithCredential(auth.currentUser, credential)
-      .then(() => {
-        console.log("User re-authenticated");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }
 
   const handleDataInput = (e) => {
     e.preventDefault();

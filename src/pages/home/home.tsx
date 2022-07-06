@@ -1,6 +1,9 @@
 import React from "react";
+
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import MainSearchBar from "../../components/MainSearchBar";
+
 import {
   HomeWrapper,
   HomeContent,
@@ -9,7 +12,6 @@ import {
   WrittenContent,
   HomeMainContent,
 } from "./styles";
-import MainSearchBar from "../../components/MainSearchBar";
 
 export default function index() {
   return (
@@ -25,7 +27,7 @@ export default function index() {
                 tabletop rpg
               </HomeSubtitle>
             </WrittenContent>
-            <MainSearchBar/>
+            <MainSearchBar />
           </HomeContent>
           <Footer />
         </HomeMainContent>

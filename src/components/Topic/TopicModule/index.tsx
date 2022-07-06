@@ -1,24 +1,23 @@
 import React from "react";
+
+import TopicContent from "../TopicContent";
+
+import BadgeID from "../BadgeID";
+
 import {
   TopicModuleWrapper,
   TopicModuleTitle,
   TopicModuleTitleWrapper,
 } from "./styles";
 
-import TopicContent from "../TopicContent";
-
-import BadgeID from "../BadgeID";
-
-export type hiddenInfoType = {};
-
-export default function index({}: hiddenInfoType) {
+export default function index() {
   return (
     <TopicModuleWrapper>
       <TopicModuleTitleWrapper>
         <TopicModuleTitle>The Beginning</TopicModuleTitle>
-        <BadgeID/>
+        <BadgeID />
       </TopicModuleTitleWrapper>
-      <TopicContent/>
+      <TopicContent />
     </TopicModuleWrapper>
   );
 }

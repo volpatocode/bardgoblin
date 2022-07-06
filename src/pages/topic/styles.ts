@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, Box } from "@mui/material";
+import { Box } from "@mui/material";
 
 export const TopicHeaderWrapper = styled(Box)`
   width: 100%;

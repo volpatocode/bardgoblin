@@ -1,14 +1,16 @@
 import React from "react";
-import {IDButton, SectionButton } from "./styles";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import { Label } from "../QueryTopic/styles";
-import Stack from "@mui/material/Stack";
+
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-export type breadcrumbsType = {};
+import { Stack, Breadcrumbs } from "@mui/material";
 
-export default function index({}: breadcrumbsType) {
+import { Label } from "../QueryTopic/styles";
+
+import { IDButton, SectionButton } from "./styles";
+
+export default function index() {
   const arrowRight = <ChevronRightIcon fontSize="small" />;
+
   return (
     <Stack direction="row" spacing={2}>
       <Breadcrumbs separator={arrowRight} aria-label="breadcrumb">

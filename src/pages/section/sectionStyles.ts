@@ -61,7 +61,6 @@ export const SectionTitle = styled.h1`
   @media (max-width: 420px) {
     font-size: 1.8rem;
   }
-  
 `;
 
 export const SectionDescription = styled.h3`

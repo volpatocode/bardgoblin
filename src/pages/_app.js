@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
-import Head from "next/head";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "../theme/theme.ts";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
 import { UserContextProvider } from "../contexts/UserContext";
+import { theme } from "../theme/theme.ts";
+import { ThemeProvider } from "@mui/material";
+import Head from "next/head";
 
 const GlobalStyle = createGlobalStyle`
   *{
@@ -50,9 +50,9 @@ export default function App({ Component, pageProps }) {
       </Head>
       <UserModalContextProvider>
         <UserContextProvider>
-            <ThemeProvider theme={theme}>
-              <Component {...pageProps} />
-            </ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </UserContextProvider>
       </UserModalContextProvider>
     </>

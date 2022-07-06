@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import Popover from "@mui/material/Popover";
+import { Popover, Tooltip } from "@mui/material";
 
 import { HelpIcon } from "./styles";
-import { Tooltip } from "@mui/material";
 
 export default function index() {
   const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);

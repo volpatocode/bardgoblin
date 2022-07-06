@@ -87,20 +87,6 @@ export const SelectButton = styled(Select)`
   }
 `;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const SectionButton = styled(Button)`
   border: none;
   padding: 15px 8px 15px 15px;

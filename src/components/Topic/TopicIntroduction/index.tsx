@@ -1,19 +1,18 @@
 import React from "react";
+
+import TopicContent from "../TopicContent";
+
 import {
   TopicIntroduction,
   IntroductionTitle,
   IntroductionDivider,
 } from "./styles";
 
-import TopicContent from "../TopicContent";
-
-export type introductionType = {};
-
-export default function index({}: introductionType) {
+export default function index() {
   return (
     <TopicIntroduction>
       <IntroductionTitle>• Introduction</IntroductionTitle>
-      <TopicContent/>
+      <TopicContent />
       <IntroductionDivider />
     </TopicIntroduction>
   );

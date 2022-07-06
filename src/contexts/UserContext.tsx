@@ -5,7 +5,9 @@ import {
   useEffect,
   useContext,
 } from "react";
+import { useRouter } from "next/router";
 
+import { UserModalContext } from "./UserModalContext";
 import { UserFormData } from "../types/user";
 
 import {
@@ -18,9 +20,6 @@ import {
 } from "firebase/auth";
 import { auth, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { UserModalContext } from "./UserModalContext";
-
-import { useRouter } from "next/router";
 
 type UserContextProps = {
   children: ReactNode;
@@ -59,7 +58,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
-  const [userData, setUserData] = useState({});
   const router = useRouter();
 
   // Util functions
