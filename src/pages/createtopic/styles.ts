@@ -12,7 +12,10 @@ export const MainBox = styled(Box)`
   width: 80vw;
   min-height: 100vh;
   background-color: #141414;
-  padding: 3rem 11.5%;
+  padding: 1rem 11.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const MainHeader = styled(Box)`

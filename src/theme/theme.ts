@@ -1,4 +1,5 @@
-import { createTheme } from "@mui/material";
+import { createTheme, OutlinedInput } from "@mui/material";
+import { red } from "@mui/material/colors";
 
 export const theme = createTheme({
   palette: {
@@ -12,9 +13,22 @@ export const theme = createTheme({
       light: "#DD3E0E",
       main: "#DD3E0E",
     },
-    text: {
-      primary: "rgba(255, 255, 255, 0.75)",
-      secondary: "#4f4f4f",
+  },
+  components: {
+    MuiSelect: {
+      styleOverrides: {
+        icon: {
+          color: "#DD3E0E",
+        },
+      },
+    },
+    MuiPaginationItem: {
+      styleOverrides: {
+        root: {
+          color: "rgba(255, 255, 255, 0.75)",
+          borderColor: "#DD3E0E",
+        },
+      },
     },
   },
 });
