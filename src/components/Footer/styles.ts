@@ -9,11 +9,14 @@ flex-direction: row;
 flex-wrap: nowrap;
 align-items: center;
 text-align: center;
-gap: 1rem;
+gap: 0.5rem;
 width: 100%;
 padding: 0.7rem 2.5rem 0.7rem 2.5rem;
 @media (max-width: 960px) {
   padding: 0.7rem 1.5rem 0.7rem 1.5rem;
+}
+@media (max-width: 600px) {
+  justify-content: center;
 }
 
 @media (max-width: 400px) {

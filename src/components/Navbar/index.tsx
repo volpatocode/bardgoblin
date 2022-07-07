@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
-import { Fade } from "@mui/material";
+import { Fade, useMediaQuery } from "@mui/material";
 
 import Logo from "../Logo";
 import AvatarIcon from "../AvatarIcon";
@@ -35,6 +35,7 @@ export default function index({ page }: navbarType) {
   const { isAuthorized, logOut } = useContext(UserContext);
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
+  const screenSm = useMediaQuery('(max-width:600px)');
 
   // prevent modal scrolling
   useEffect(() => {
@@ -48,7 +49,7 @@ export default function index({ page }: navbarType) {
   return (
     <Navbar page={page}>
       <NavLeftSide>
-        <Logo variant="horizontal" />
+        <Logo variant={screenSm ? "icon" : "horizontal"} />
       </NavLeftSide>
       <NavRightSide>
         <StyledStack>
