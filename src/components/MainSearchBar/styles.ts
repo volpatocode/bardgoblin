@@ -28,6 +28,9 @@ export const StyledInput = styled.input`
   @media (max-width: 960px) {
     width: 250px;
   }
+  @media (max-width: 600px) {
+    width: 220px;
+  }
   @media (max-width: 480px) {
     width: 180px;
     height: 40px;

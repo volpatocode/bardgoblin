@@ -89,13 +89,14 @@ export const CloseIconButton = styled(IconButtona)`
   padding-right: 0;
 `;
 
+export const CloseMenuIcon = styled(CloseIcona)`
+  color: #fff;
+`;
+
 export const MenuIcon = styled(MenuIcona)`
   color: #fff;
 `;
 
-export const CloseMenuIcon = styled(CloseIcona)`
-  color: #fff;
-`;
 
 export const BoxModal = styled(Box)`
   display: flex;
@@ -169,4 +170,8 @@ export const FooterModal = styled(Box)`
   border-radius: 5px;
   margin-bottom: 3rem;
   width: 60%;
+  transition: 200ms ease-in-out;
+  :hover{
+    background-color: #dd3e0e;
+  }
 `;

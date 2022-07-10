@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
+import IconButtona from "@mui/material/IconButton";
+import CloseIcona from "@mui/icons-material/Close";
 
 export const BoxModal = styled(Box)`
   position: absolute;
@@ -15,12 +17,52 @@ export const BoxModal = styled(Box)`
   padding: 2.5rem 1rem;
   text-align: left;
   height: auto;
+  @media (max-width: 600px) {
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+  }
+`;
+
+export const BoxModalHeader = styled(Box)`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
+export const BoxModalContent = styled(Box)``;
+
+export const ModalFooter = styled(Box)`
+  height: 4px;
+  background-color: #ff9900;
+  border-radius: 5px;
+  margin-bottom: 3rem;
+  width: 60%;
+  margin: 0 auto 3rem auto;
+  transition: 200ms ease-in-out;
+  :hover{
+    background-color: #dd3e0e;
+  }
+`;
+
+export const CloseIconButton = styled(IconButtona)`
+  color: #fff;
+  padding-right: 0;
+`;
+
+export const CloseMenuIcon = styled(CloseIcona)`
+  color: #fff;
 `;
 
 export const BoxLogo = styled(Box)`
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  @media (max-width: 600px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const SelectButtonBox = styled(Box)``;
