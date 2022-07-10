@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import AddIcona from '@mui/icons-material/Add';
 
 export const PageWrapper = styled(Box)`
   min-width: 100vw;
@@ -57,6 +58,25 @@ export const MainSubtitle = styled.p`
   color: rgba(255, 255, 255, 0.65);
   text-align: left;
 `;
+
+export const AddModuleButton = styled(Button)`
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    align-items: center;
+    text-transform: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.45);
+    :hover{
+        background: transparent;
+    }
+
+`;
+
+export const AddIcon = styled(AddIcona)`
+    color: rgba(255, 255, 255, 0.45);
+`;
+
 
 // Side Box
 

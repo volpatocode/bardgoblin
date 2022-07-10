@@ -1,5 +1,5 @@
-import React from "react";
-import AddModuleButton from "../../components/CreateTopic/AddModuleButton";
+import { loadComponents } from "next/dist/server/load-components";
+import React, { useEffect, useState } from "react";
 import NewModule from "../../components/CreateTopic/NewModule";
 import LabelSelector from "../../components/LabelSelector";
 import Logo from "../../components/Logo";
@@ -16,15 +16,24 @@ import {
   MainTitle,
   MainSubtitle,
   SimpleInput,
+  AddIcon,
+  AddModuleButton,
 } from "./styles";
 
 export default function index() {
+  const [modules, setModules] = useState([{ module: "" }]);
+
+  function addModule() {
+    setModules([...modules, { module: "" }]);
+  }
+
+  useEffect(() => {
+    console.log(modules);
+  }, [modules]);
   return (
     <PageWrapper>
       <SideBox>
-        <Logo variant="icon2" />
-        <SideContent>walk your way... and deal with it</SideContent>
-        <SideFooter>- bardgoblin 2k22</SideFooter>
+        <Logo variant="icon2" /> <SideFooter>- bardgoblin 2k22</SideFooter>
       </SideBox>
       <MainBox>
         <MainHeader>
@@ -34,9 +43,12 @@ export default function index() {
         <MainContent>
           <SimpleInput type="text" placeholder="Topic title" />
           <LabelSelector />
-          <NewModule />
-          <NewModule />
-          <AddModuleButton />
+          {modules.map((module, index) => (
+            <NewModule key={index} />
+          ))}
+          <AddModuleButton type="button" onClick={addModule}>
+            <AddIcon fontSize="small" /> Module
+          </AddModuleButton>
         </MainContent>
         <MainFooter></MainFooter>
       </MainBox>
