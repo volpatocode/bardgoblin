@@ -18,7 +18,7 @@ export const ForgotPasswordBoxWrapper = styled(Box)`
   flex-direction: column;
   justify-content: center;
   align-items: left;
-  padding: 10%;
+  padding: 0 1rem;
   @media (max-width: 1000px) {
     width: 100vw;
   }
