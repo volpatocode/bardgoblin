@@ -42,6 +42,10 @@ type UserContextType = {
   currentUser: any;
   forceHome: () => void;
   refreshPage: () => void;
+  modules: { module: string }[];
+  setModules: any;
+  addModule: () => void;
+  removeModule: (index) => void;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -58,6 +62,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
+  const [modules, setModules] = useState([{ module: "" }]);
   const router = useRouter();
 
   // Util functions
@@ -67,6 +72,16 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
 
   function refreshPage() {
     router.reload();
+  }
+
+  function addModule() {
+    setModules([...modules, { module: "" }]);
+  }
+
+  function removeModule(index) {
+    const list = [...modules];
+    list.splice(index, 1);
+    setModules(list);
   }
 
   // User listener
@@ -184,6 +199,10 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         photoURL,
         forceHome,
         refreshPage,
+        modules,
+        setModules,
+        addModule,
+        removeModule,
       }}
     >
       {children}
