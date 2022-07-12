@@ -5,25 +5,17 @@ import {
   NewModule,
   ModuleInput,
   ModuleTitleInput,
-  ModuleHeader,
-  ModuleRemoveButton,
-  RemoveIcon,
   ModuleDivider,
 } from "./styles";
 
 export default function index() {
-  const {removeModule} = useContext(UserContext);
+  const { modules } = useContext(UserContext);
 
   return (
     <NewModule>
-      <ModuleHeader>
-        <ModuleTitleInput placeholder="Module title" type="text" />
-        <ModuleRemoveButton onClick={() => removeModule(index)}>
-          <RemoveIcon fontSize="small" />
-        </ModuleRemoveButton>
-      </ModuleHeader>
+      <ModuleTitleInput placeholder="Module title" type="text" />
       <ModuleInput placeholder="Insert module content here" />
-      <ModuleDivider />
+      {modules.length > 1 && <ModuleDivider />}
     </NewModule>
   );
 }

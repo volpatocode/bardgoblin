@@ -15,13 +15,17 @@ import {
   MainFooter,
   MainTitle,
   MainSubtitle,
-  SimpleInput,
+  TopicTitle,
   AddIcon,
   AddModuleButton,
+  ButtonsBox,
+  ModuleRemoveButton,
+  RemoveIcon,
 } from "./styles";
 
 export default function index() {
-  const { modules, addModule } = useContext(UserContext);
+  const { modules, addModule, removeModule } = useContext(UserContext);
+
   return (
     <PageWrapper>
       <SideBox>
@@ -33,14 +37,21 @@ export default function index() {
           <MainSubtitle>Create your topic however you want</MainSubtitle>
         </MainHeader>
         <MainContent>
-          <SimpleInput type="text" placeholder="Topic title" />
+          <TopicTitle type="text" placeholder="Topic title" />
           <LabelSelector />
           {modules.map((module, index) => (
             <NewModule key={index} />
           ))}
-          <AddModuleButton type="button" onClick={addModule}>
-            <AddIcon fontSize="small" /> Module
-          </AddModuleButton>
+          <ButtonsBox>
+            <AddModuleButton type="button" onClick={addModule}>
+              <AddIcon fontSize="small" /> Module
+            </AddModuleButton>
+            {modules.length > 1 && (
+              <ModuleRemoveButton onClick={() => removeModule(index)}>
+                <RemoveIcon fontSize="small" /> Module
+              </ModuleRemoveButton>
+            )}
+          </ButtonsBox>
         </MainContent>
         <MainFooter></MainFooter>
       </MainBox>

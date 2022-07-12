@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
-import AddIcona from '@mui/icons-material/Add';
+import AddIcona from "@mui/icons-material/Add";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 export const PageWrapper = styled(Box)`
   min-width: 100vw;
@@ -31,8 +32,8 @@ export const MainContent = styled(Box)`
 
 export const MainFooter = styled(Box)``;
 
-export const SimpleInput = styled.input`
-  color: rgba(255, 255, 255, 0.45);
+export const TopicTitle = styled.input`
+  color: #ff9900;
   border: 1px solid rgba(29, 29, 29, 0.7);
   background: transparent;
   outline: none;
@@ -42,7 +43,7 @@ export const SimpleInput = styled.input`
   padding: 8px;
   border-radius: 5px;
   :focus {
-    border: 1px solid #dd3e0e;
+    border: 1px solid #ff9900;
   }
 `;
 
@@ -59,24 +60,50 @@ export const MainSubtitle = styled.p`
   text-align: left;
 `;
 
-export const AddModuleButton = styled(Button)`
-    display: flex;
-    flex-direction: row;
-    gap: 0.3rem;
-    align-items: center;
-    text-transform: none;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.45);
-    :hover{
-        background: transparent;
-    }
+export const ButtonsBox = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+`;
 
+export const AddModuleButton = styled(Button)`
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  align-items: center;
+  text-transform: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  width: 100%;
+  :hover {
+    background: transparent;
+  }
 `;
 
 export const AddIcon = styled(AddIcona)`
-    color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.45);
 `;
 
+export const RemoveIcon = styled(RemoveCircleOutlineIcon)`
+  color: rgba(255, 255, 255, 0.45);
+`;
+
+export const ModuleRemoveButton = styled(Button)`
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  align-items: center;
+  text-transform: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  width: 100%;
+  :hover {
+    background: transparent;
+  }
+`;
 
 // Side Box
 
