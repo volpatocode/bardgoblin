@@ -1,4 +1,3 @@
-import { loadComponents } from "next/dist/server/load-components";
 import React, { useEffect, useState } from "react";
 import NewModule from "../../components/CreateTopic/NewModule";
 import LabelSelector from "../../components/LabelSelector";
@@ -27,9 +26,6 @@ export default function index() {
     setModules([...modules, { module: "" }]);
   }
 
-  useEffect(() => {
-    console.log(modules);
-  }, [modules]);
   return (
     <PageWrapper>
       <SideBox>

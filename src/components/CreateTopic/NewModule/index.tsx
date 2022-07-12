@@ -1,10 +1,26 @@
 import React from "react";
 
-import { NewModule, ModuleInput, ModuleTitleInput } from "./styles";
+import {
+  NewModule,
+  ModuleInput,
+  ModuleTitleInput,
+  ModuleHeader,
+  ModuleRemoveButton,
+  RemoveIcon,
+  ModuleDivider,
+} from "./styles";
 
 export default function index() {
-  return <NewModule>
-    <ModuleTitleInput placeholder="Module title" type="text"/>
-    <ModuleInput placeholder="Insert module content here"/>
-  </NewModule>;
+  return (
+    <NewModule>
+      <ModuleHeader>
+        <ModuleTitleInput placeholder="Module title" type="text" />
+        <ModuleRemoveButton>
+          <RemoveIcon fontSize="small" />
+        </ModuleRemoveButton>
+      </ModuleHeader>
+      <ModuleInput placeholder="Insert module content here" />
+      <ModuleDivider />
+    </NewModule>
+  );
 }
