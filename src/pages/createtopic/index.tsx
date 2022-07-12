@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NewModule from "../../components/CreateTopic/NewModule";
 import LabelSelector from "../../components/LabelSelector";
 import Logo from "../../components/Logo";
+import { UserContext } from "../../contexts/UserContext";
 
 import {
   PageWrapper,
@@ -20,12 +21,7 @@ import {
 } from "./styles";
 
 export default function index() {
-  const [modules, setModules] = useState([{ module: "" }]);
-
-  function addModule() {
-    setModules([...modules, { module: "" }]);
-  }
-
+  const { modules, addModule } = useContext(UserContext);
   return (
     <PageWrapper>
       <SideBox>

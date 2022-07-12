@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext } from "../../../contexts/UserContext";
 
 import {
   NewModule,
@@ -11,11 +12,13 @@ import {
 } from "./styles";
 
 export default function index() {
+  const {removeModule} = useContext(UserContext);
+
   return (
     <NewModule>
       <ModuleHeader>
         <ModuleTitleInput placeholder="Module title" type="text" />
-        <ModuleRemoveButton>
+        <ModuleRemoveButton onClick={() => removeModule(index)}>
           <RemoveIcon fontSize="small" />
         </ModuleRemoveButton>
       </ModuleHeader>
