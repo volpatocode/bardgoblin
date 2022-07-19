@@ -42,7 +42,7 @@ type UserContextType = {
   currentUser: any;
   forceHome: () => void;
   refreshPage: () => void;
-  modules: { module: string }[];
+  modules: { module: {} }[];
   setModules: any;
   addModule: () => void;
   removeModule: (index) => void;
@@ -62,7 +62,14 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
-  const [modules, setModules] = useState([{ module: "" }]);
+  const [modules, setModules] = useState([
+    {
+      module: {
+        moduletitle : "",
+        modulecontent: "",
+      },
+    },
+  ]);
   const router = useRouter();
 
   // Util functions
@@ -75,7 +82,15 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   }
 
   function addModule() {
-    setModules([...modules, { module: "" }]);
+    setModules([
+      ...modules,
+      {
+        module: {
+          moduletitle: "",
+          modulecontent: "",
+        },
+      },
+    ]);
   }
 
   function removeModule(index) {

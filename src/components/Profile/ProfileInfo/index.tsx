@@ -121,21 +121,6 @@ export default function index() {
     }
   };
 
-  // useEffect(() => {
-  //   if (errorFirebase) {
-  //     handleUserModalLogin();
-  //   }
-  // }, [errorFirebase]);
-
-  // useEffect(() => {
-  //   console.log(dataInput);
-  // }, [dataInput]);
-
-  // useEffect(() => {
-  //   console.log(editUserErrors);
-  //   console.log(errorFirebase);
-  // }, [errorFirebase, editUserErrors]);
-
   return (
     <ProfileInfo>
       <ProfileImageBox>

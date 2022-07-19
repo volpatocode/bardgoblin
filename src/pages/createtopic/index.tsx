@@ -37,10 +37,11 @@ export default function index() {
           <MainSubtitle>Create your topic however you want</MainSubtitle>
         </MainHeader>
         <MainContent>
-          <TopicTitle type="text" placeholder="Topic title" />
+          <TopicTitle id="topictitle" type="text" placeholder="Topic title" />
           <LabelSelector />
           {modules.map((module, index) => (
             <NewModule key={index} />
+           
           ))}
           <ButtonsBox>
             <AddModuleButton type="button" onClick={addModule}>
