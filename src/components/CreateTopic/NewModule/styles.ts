@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 export const NewModule = styled(Box)`
   display: flex;
@@ -44,4 +45,30 @@ export const ModuleDivider = styled(Box)`
   height: 1px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
+`;
+
+export const ModuleHeader = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  flex-wrap: nowrap;
+`;
+
+// module remove
+
+export const RemoveIcon = styled(RemoveCircleOutlineIcon)`
+  color: #dd3e0e;
+`;
+
+export const ModuleRemoveButton = styled(Button)`
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  text-transform: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.45);
+  :hover {
+    background: transparent;
+  }
 `;

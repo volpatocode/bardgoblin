@@ -90,9 +90,9 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   }
 
   function removeModule(index) {
-    const list = [...modules];
-    list.splice(index, 1);
-    setModules(list);
+    let data = [...modules];
+    data.splice(index, 1);
+    setModules(data);
   }
 
   // User listener
