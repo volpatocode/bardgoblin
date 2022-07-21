@@ -42,9 +42,9 @@ type UserContextType = {
   currentUser: any;
   forceHome: () => void;
   refreshPage: () => void;
-  modules: { module: {} }[];
+  modules: { moduletitle: string; modulecontent: string }[];
   setModules: any;
-  addModule: () => void;
+  addModule: (e) => void;
   removeModule: (index) => void;
 };
 
@@ -64,10 +64,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   );
   const [modules, setModules] = useState([
     {
-      module: {
-        moduletitle : "",
-        modulecontent: "",
-      },
+      moduletitle: "",
+      modulecontent: "",
     },
   ]);
   const router = useRouter();
@@ -81,16 +79,14 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     router.reload();
   }
 
-  function addModule() {
-    setModules([
-      ...modules,
-      {
-        module: {
-          moduletitle: "",
-          modulecontent: "",
-        },
-      },
-    ]);
+  function addModule(e) {
+    e.preventDefault();
+    let newField = {
+      moduletitle: "",
+      modulecontent: "",
+    };
+
+    setModules([...modules, newField]);
   }
 
   function removeModule(index) {
