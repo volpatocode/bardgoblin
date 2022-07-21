@@ -9,34 +9,41 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { modules } = useContext(UserContext);
-  const [dataInput, setDataInput] = useState({});
+  const { modules, setModules } = useContext(UserContext);
 
-  const handleDataInput = (e) => {
-    e.preventDefault();
-    const id = e.target.id;
-    const value = e.target.value;
-    setDataInput({ ...dataInput, [id]: value });
+
+  const handleDataInput = (index, event) => {
+    let data = [...modules];
+    data[index][event.target.name] = event.target.value;
+    setModules(data);
   };
 
   useEffect(() => {
-    console.log(dataInput);
-  }, [dataInput]);
+    console.log(modules);
+  }, [modules]);
 
   return (
-    <NewModule >
-      <ModuleTitleInput
-        onChange={handleDataInput}
-        placeholder="Module title"
-        type="text"
-        value={input.moduletitle}
-      />
-      <ModuleInput
-        onChange={handleDataInput}
-        placeholder="Insert module content here"
-        value={input.modulecontent}
-      />
-      {modules.length > 1 && <ModuleDivider />}
-    </NewModule>
+    <form>
+      {modules.map((input, index) => {
+        return (
+          <NewModule key={index}>
+            <ModuleTitleInput
+              name="moduletitle"
+              placeholder="Module title"
+              onChange={event => handleDataInput(index, event)}
+              type="text"
+              value={input.moduletitle}
+            />
+            <ModuleInput
+              name="modulecontent"
+              placeholder="Insert module content here"
+              onChange={event => handleDataInput(index, event)}
+              value={input.modulecontent}
+            />
+            {modules.length > 1 && <ModuleDivider />}
+          </NewModule>
+        );
+      })}
+    </form>
   );
 }

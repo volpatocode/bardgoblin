@@ -39,10 +39,7 @@ export default function index() {
         <MainContent>
           <TopicTitle id="topictitle" type="text" placeholder="Topic title" />
           <LabelSelector />
-          {modules.map((module, index) => (
-            <NewModule key={index} />
-           
-          ))}
+          <NewModule />
           <ButtonsBox>
             <AddModuleButton type="button" onClick={addModule}>
               <AddIcon fontSize="small" /> Module
