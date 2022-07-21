@@ -17,11 +17,17 @@ export const BoxModal = styled(Box)`
   padding: 2.5rem 1rem;
   text-align: left;
   height: auto;
+
   @media (max-width: 600px) {
     width: 100vw;
     height: 100vh;
     justify-content: space-between;
-    padding: 0rem 1rem;
+    padding: 0.3rem 1.5rem 0rem 1.5rem;
+  }
+
+  @media (max-width: 400px) {
+    transition: 0.2s ease-in-out;
+    padding: 0.3rem 0.5rem 0rem 0.5rem;
   }
 `;
 
@@ -35,14 +41,14 @@ export const BoxModalHeader = styled(Box)`
 export const BoxModalContent = styled(Box)``;
 
 export const ModalFooter = styled(Box)`
-  height: 4px;
+  height: 2px;
   background-color: #ff9900;
   border-radius: 5px;
   margin-bottom: 3rem;
   width: 60%;
   margin: 0 auto 3rem auto;
   transition: 200ms ease-in-out;
-  :hover{
+  :hover {
     background-color: #dd3e0e;
   }
 `;

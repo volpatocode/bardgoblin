@@ -97,7 +97,6 @@ export const MenuIcon = styled(MenuIcona)`
   color: #fff;
 `;
 
-
 export const BoxModal = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -116,6 +115,11 @@ export const BoxModal = styled(Box)`
 
   @media (max-width: 960px) {
     transition: 0.2s ease-in-out;
+    padding: 0.3rem 2.5rem 0rem 2.5rem;
+  }
+
+  @media (max-width: 960px) {
+    transition: 0.2s ease-in-out;
     padding: 0.3rem 1.5rem 0rem 1.5rem;
   }
 
@@ -130,7 +134,6 @@ export const HeaderModal = styled(Box)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 60px;
 `;
 
 export const MenuModal = styled(Box)`
@@ -165,13 +168,13 @@ export const ModalButton = styled(Button)`
 `;
 
 export const FooterModal = styled(Box)`
-  height: 4px;
+  height: 2px;
   background-color: #ff9900;
   border-radius: 5px;
   margin-bottom: 3rem;
   width: 60%;
   transition: 200ms ease-in-out;
-  :hover{
+  :hover {
     background-color: #dd3e0e;
   }
 `;
