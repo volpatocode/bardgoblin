@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     scrollbar-width: thin;
     scrollbar-color: #ff9900;
     &::-webkit-scrollbar {
-      width: 6px;
+      width: 3px;
     }
 
     &::-webkit-scrollbar-track {
