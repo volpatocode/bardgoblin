@@ -58,7 +58,7 @@ export default function index({ page }: navbarType) {
           <TextButton>Tools</TextButton>
           <TextButton>About</TextButton>
           {isAuthorized && (
-            <ContainedButton>Create Build / Quest</ContainedButton>
+            <ContainedButton href="/createtopic">Create Build / Quest</ContainedButton>
           )}
           <AvatarIcon />
         </StyledStack>

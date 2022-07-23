@@ -60,14 +60,6 @@ export const MainSubtitle = styled.p`
   text-align: left;
 `;
 
-export const ButtonsBox = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-`;
 
 export const AddModuleButton = styled(Button)`
   display: flex;
@@ -87,23 +79,7 @@ export const AddIcon = styled(AddIcona)`
   color: rgba(255, 255, 255, 0.45);
 `;
 
-export const RemoveIcon = styled(RemoveCircleOutlineIcon)`
-  color: rgba(255, 255, 255, 0.45);
-`;
 
-export const ModuleRemoveButton = styled(Button)`
-  display: flex;
-  flex-direction: row;
-  gap: 0.3rem;
-  align-items: center;
-  text-transform: none;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.45);
-  width: 100%;
-  :hover {
-    background: transparent;
-  }
-`;
 
 // Side Box
 
@@ -118,19 +94,6 @@ export const SideBox = styled(Box)`
   justify-content: space-between;
 `;
 
-export const SideContent = styled.p`
-  padding: 0 2rem;
-  font-size: 1.2rem;
-  text-transform: lowercase;
-  letter-spacing: 0.3px;
-  color: rgba(255, 255, 255, 0.65);
-  text-align: center;
-  transition: 1s ease-in-out;
-  :hover {
-    color: rgba(255, 255, 255, 1);
-    cursor: default;
-  }
-`;
 
 export const SideFooter = styled.p`
   font-size: 1rem;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext} from "react";
 import NewModule from "../../components/CreateTopic/NewModule";
 import LabelSelector from "../../components/LabelSelector";
 import Logo from "../../components/Logo";
@@ -8,7 +8,6 @@ import {
   PageWrapper,
   SideBox,
   MainBox,
-  SideContent,
   SideFooter,
   MainHeader,
   MainContent,
@@ -18,13 +17,10 @@ import {
   TopicTitle,
   AddIcon,
   AddModuleButton,
-  ButtonsBox,
-  ModuleRemoveButton,
-  RemoveIcon,
 } from "./styles";
 
 export default function index() {
-  const { modules, addModule, removeModule } = useContext(UserContext);
+  const { addModule } = useContext(UserContext);
 
   return (
     <PageWrapper>
@@ -40,16 +36,9 @@ export default function index() {
           <TopicTitle id="topictitle" type="text" placeholder="Topic title" />
           <LabelSelector />
           <NewModule />
-          <ButtonsBox>
-            <AddModuleButton type="button" onClick={addModule}>
-              <AddIcon fontSize="small" /> Module
-            </AddModuleButton>
-            {modules.length > 1 && (
-              <ModuleRemoveButton onClick={() => removeModule(index)}>
-                <RemoveIcon fontSize="small" /> Module
-              </ModuleRemoveButton>
-            )}
-          </ButtonsBox>
+          <AddModuleButton type="button" onClick={addModule}>
+            <AddIcon fontSize="small" /> Module
+          </AddModuleButton>
         </MainContent>
         <MainFooter></MainFooter>
       </MainBox>

@@ -49,7 +49,7 @@ export default function index() {
               onChange={(event) => handleDataInput(index, event)}
               value={input.modulecontent}
             />
-            {modules.length > 1 && <ModuleDivider />}
+            {modules.length > 1 && <ModuleDivider/>}
           </NewModule>
         );
       })}
