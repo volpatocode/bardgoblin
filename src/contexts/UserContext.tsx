@@ -46,6 +46,7 @@ type UserContextType = {
   setModules: any;
   addModule: (e) => void;
   removeModule: (index) => void;
+  submitModules: (e) => void;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -79,6 +80,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     router.reload();
   }
 
+  // Module
+
   function addModule(e) {
     e.preventDefault();
     let newField = {
@@ -93,6 +96,11 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     let data = [...modules];
     data.splice(index, 1);
     setModules(data);
+  }
+
+  function submitModules(e) {
+    e.preventDefault();
+    console.log(modules);
   }
 
   // User listener
@@ -214,6 +222,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         setModules,
         addModule,
         removeModule,
+        submitModules,
       }}
     >
       {children}

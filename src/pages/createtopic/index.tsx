@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import NewModule from "../../components/CreateTopic/NewModule";
 import LabelSelector from "../../components/LabelSelector";
 import Logo from "../../components/Logo";
@@ -17,10 +17,13 @@ import {
   TopicTitle,
   AddIcon,
   AddModuleButton,
+  SubmitButton,
+  BoxButtons,
+  DoneIcon,
 } from "./styles";
 
 export default function index() {
-  const { addModule } = useContext(UserContext);
+  const { addModule, submitModules } = useContext(UserContext);
 
   return (
     <PageWrapper>
@@ -32,13 +35,19 @@ export default function index() {
           <MainTitle>Set up your topic</MainTitle>
           <MainSubtitle>Create your topic however you want</MainSubtitle>
         </MainHeader>
-        <MainContent>
+        <MainContent onSubmit={submitModules}>
           <TopicTitle id="topictitle" type="text" placeholder="Topic title" />
           <LabelSelector />
           <NewModule />
-          <AddModuleButton type="button" onClick={addModule}>
-            <AddIcon fontSize="small" /> Module
-          </AddModuleButton>
+          <BoxButtons>
+            <AddModuleButton type="button" onClick={addModule}>
+              <AddIcon fontSize="small" /> Module
+            </AddModuleButton>
+            <SubmitButton type="submit" onClick={submitModules}>
+              <DoneIcon fontSize="small" />
+              Submit
+            </SubmitButton>
+          </BoxButtons>
         </MainContent>
         <MainFooter></MainFooter>
       </MainBox>

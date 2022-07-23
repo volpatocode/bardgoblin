@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 import AddIcona from "@mui/icons-material/Add";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import DoneIcona from "@mui/icons-material/Done";
 
 export const PageWrapper = styled(Box)`
   min-width: 100vw;
@@ -24,7 +24,7 @@ export const MainHeader = styled(Box)`
   margin-bottom: 3rem;
 `;
 
-export const MainContent = styled(Box)`
+export const MainContent = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -60,7 +60,6 @@ export const MainSubtitle = styled.p`
   text-align: left;
 `;
 
-
 export const AddModuleButton = styled(Button)`
   display: flex;
   flex-direction: row;
@@ -68,7 +67,7 @@ export const AddModuleButton = styled(Button)`
   align-items: center;
   text-transform: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.45);
+  color: #dd3e0e;
   width: 100%;
   :hover {
     background: transparent;
@@ -76,10 +75,32 @@ export const AddModuleButton = styled(Button)`
 `;
 
 export const AddIcon = styled(AddIcona)`
-  color: rgba(255, 255, 255, 0.45);
+  color: #dd3e0e;
 `;
 
+export const DoneIcon = styled(DoneIcona)`
+  color: #dd3e0e;
+`;
 
+export const SubmitButton = styled(Button)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  text-transform: none;
+  background: transparent;
+  color: #dd3e0e;
+  width: 100%;
+  :hover {
+    background: transparent;
+  }
+`;
+
+export const BoxButtons = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+`;
 
 // Side Box
 
@@ -93,7 +114,6 @@ export const SideBox = styled(Box)`
   flex-direction: column;
   justify-content: space-between;
 `;
-
 
 export const SideFooter = styled.p`
   font-size: 1rem;
