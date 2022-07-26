@@ -32,21 +32,6 @@ export const MainContent = styled.form`
 
 export const MainFooter = styled(Box)``;
 
-export const TopicTitle = styled.input`
-  color: #ff9900;
-  border: 1px solid rgba(29, 29, 29, 0.7);
-  background: transparent;
-  outline: none;
-  font-size: 1rem;
-  width: 100%;
-  line-height: 1.75;
-  padding: 8px;
-  border-radius: 5px;
-  :focus {
-    border: 1px solid #ff9900;
-  }
-`;
-
 export const MainTitle = styled.h1`
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.85);
@@ -71,7 +56,6 @@ export const AddModuleButton = styled(Button)`
   :hover {
     background: #dd3e0e;
   }
-  width: 100%;
 `;
 
 export const AddIcon = styled(AddIcona)`
@@ -93,7 +77,6 @@ export const SubmitButton = styled(Button)`
   :hover {
     background: #dd3e0e;
   }
-  width: 100%;
 `;
 
 export const BoxButtons = styled(Box)`
@@ -101,7 +84,8 @@ export const BoxButtons = styled(Box)`
   flex-direction: row;
   gap: 0.5rem;
   width: 100%;
-`;
+  align-items: center;
+  `;
 
 // Side Box
 
