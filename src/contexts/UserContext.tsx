@@ -47,6 +47,8 @@ type UserContextType = {
   addModule: (e) => void;
   removeModule: (index) => void;
   submitModules: (e) => void;
+  topics: { topictitle: string; modules: {} }[];
+  setTopics: any;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -69,6 +71,13 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       modulecontent: "",
     },
   ]);
+  const [topics, setTopics] = useState([
+    {
+      topictitle: "",
+      modules: [...modules],
+    },
+  ]);
+
   const router = useRouter();
 
   // Util functions
@@ -223,6 +232,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         addModule,
         removeModule,
         submitModules,
+        topics,
+        setTopics,
       }}
     >
       {children}
