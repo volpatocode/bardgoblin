@@ -66,20 +66,20 @@ export const AddModuleButton = styled(Button)`
   gap: 0.3rem;
   align-items: center;
   text-transform: none;
-  background: transparent;
-  color: #dd3e0e;
-  width: 100%;
+  background: #dd3e0e;
+  color: rgba(255, 255, 255, 0.65);
   :hover {
-    background: transparent;
+    background: #dd3e0e;
   }
+  width: 100%;
 `;
 
 export const AddIcon = styled(AddIcona)`
-  color: #dd3e0e;
+  color: rgba(255, 255, 255, 0.65);
 `;
 
 export const DoneIcon = styled(DoneIcona)`
-  color: #dd3e0e;
+  color: rgba(255, 255, 255, 0.65);
 `;
 
 export const SubmitButton = styled(Button)`
@@ -88,18 +88,19 @@ export const SubmitButton = styled(Button)`
   align-items: center;
   gap: 0.3rem;
   text-transform: none;
-  background: transparent;
-  color: #dd3e0e;
-  width: 100%;
+  background: #dd3e0e;
+  color: rgba(255, 255, 255, 0.65);
   :hover {
-    background: transparent;
+    background: #dd3e0e;
   }
+  width: 100%;
 `;
 
 export const BoxButtons = styled(Box)`
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
+  width: 100%;
 `;
 
 // Side Box
