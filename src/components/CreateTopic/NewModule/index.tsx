@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 
 import {
@@ -19,10 +19,6 @@ export default function index() {
     data[index][event.target.name] = event.target.value;
     setModules(data);
   };
-
-  useEffect(() => {
-    console.log(modules);
-  }, [modules]);
 
   return (
     <form>
@@ -49,7 +45,7 @@ export default function index() {
               onChange={(event) => handleDataInput(index, event)}
               value={input.modulecontent}
             />
-            {modules.length > 1 && <ModuleDivider/>}
+            {modules.length > 1 && <ModuleDivider />}
           </NewModule>
         );
       })}

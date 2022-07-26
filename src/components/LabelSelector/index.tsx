@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   OutlinedInput,
@@ -10,8 +10,10 @@ import {
 } from "@mui/material";
 
 import { LabelSelector, StyledFormControl, StyledInputLabel } from "./styles";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function index() {
+  const { topics, setTopics } = useContext(UserContext);
   const [label, setLabel] = useState([]);
 
   const handleChange = (event: SelectChangeEvent<typeof label>) => {
@@ -19,6 +21,13 @@ export default function index() {
       target: { value },
     } = event;
     setLabel(typeof value === "string" ? value.split(",") : value);
+    setTopics((current) => {
+      return [
+        {...current, 
+          labels: [...label],
+        },
+      ];
+    });
   };
 
   const MenuProps = {
@@ -30,7 +39,7 @@ export default function index() {
     },
   };
 
-  const labels = [
+  const possibleLabels = [
     "#Cave",
     "#Forest",
     "#Mountain",
@@ -64,7 +73,7 @@ export default function index() {
           renderValue={(selected) => selected.join("  ")}
           MenuProps={MenuProps}
         >
-          {labels.map((name) => (
+          {possibleLabels.map((name) => (
             <MenuItem key={name} value={name}>
               <Checkbox
                 sx={{ color: "rgba(255, 255, 255, 0.75)" }}

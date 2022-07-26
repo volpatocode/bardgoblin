@@ -15,7 +15,7 @@ export default function index() {
 
   useEffect(() => {
     console.log(topics);
-  }, [modules]);
+  }, [modules, topics]);
 
   return (
     <>
