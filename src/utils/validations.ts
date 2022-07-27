@@ -40,3 +40,12 @@ export const editUserValidationSchema = yup.object({
     .min(4, "minimum of 4 characters")
     .max(20, "maximum of 20 characters"),
 });
+
+export const topicCreateValidationSchema = yup.object({
+  topicTitle: yup.string().min(6, "minimum of 6 characters"),
+  moduletitle: yup.string().min(6, "minimum of 6 characters"),
+  modulecontent: yup
+    .string()
+    .min(150, "minimum of 150 characters")
+    .max(1500, "maximum of 1500 characters"),
+});
