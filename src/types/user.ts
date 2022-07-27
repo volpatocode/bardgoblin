@@ -10,3 +10,12 @@ export type EditUserData = {
   password?: string;
   email?: string;
 };
+
+export type CreateTopicData = {
+  topictitle: string;
+  labels: string[];
+  modules: {
+    moduletitle: string;
+    modulecontent: string;
+  }
+};
