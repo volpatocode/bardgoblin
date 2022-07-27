@@ -5,35 +5,27 @@ import LabelSelector from "../../LabelSelector";
 import { NewTopic, TopicTitle } from "./styles";
 
 export default function index() {
-  const { topics, setTopics, modules } = useContext(UserContext);
+  const { topic, setTopic, modules } = useContext(UserContext);
 
-  const handleDataInput = (index, event) => {
-    let data = [...topics];
-    data[index][event.target.name] = event.target.value;
-    setTopics(data);
+  const handleTopicInput = (event) => {
+    let data = topic;
+    data[event.target.name] = event.target;
+    setTopic(data);
   };
 
   useEffect(() => {
-    console.log(topics);
-  }, [modules, topics]);
+    console.log(modules);
+  }, [modules, topic]);
 
   return (
-    <>
-      {topics.map((input, index) => {
-        return (
-          <NewTopic key={index}>
-            <TopicTitle
-              id="topictitle"
-              name="topictitle"
-              type="text"
-              placeholder="Topic title"
-              value={input.topictitle}
-              onChange={(event) => handleDataInput(index, event)}
-            />
-            <LabelSelector />
-          </NewTopic>
-        );
-      })}
-    </>
+    <NewTopic>
+      <TopicTitle
+        name="topictitle"
+        type="text"
+        placeholder="Topic title"
+        onChange={(event) => handleTopicInput(event)}
+      />
+      <LabelSelector />
+    </NewTopic>
   );
 }

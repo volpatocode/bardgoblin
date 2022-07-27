@@ -18,8 +18,9 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { auth, storage } from "../config/firebaseConfig";
+import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { addDoc, collection } from "firebase/firestore";
 
 type UserContextProps = {
   children: ReactNode;
@@ -46,9 +47,9 @@ type UserContextType = {
   setModules: any;
   addModule: (e) => void;
   removeModule: (index) => void;
-  submitModules: (e) => void;
-  topics: { topictitle: string; labels: any[]; modules: {} };
-  setTopics: any;
+  submitTopic: (e) => void;
+  topic: { topictitle: string; labels: any[]; modules: {} };
+  setTopic: any;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -71,13 +72,11 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       modulecontent: "",
     },
   ]);
-  const [topics, setTopics] = useState(
-    {
-      topictitle: "",
-      labels: [],
-      modules: [...modules],
-    },
-  );
+  const [topic, setTopic] = useState({
+    topictitle: "",
+    labels: [],
+    modules: [...modules],
+  });
 
   const router = useRouter();
 
@@ -108,10 +107,11 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setModules(data);
   }
 
-  function submitModules(e) {
+  const submitTopic = async (e) => {
     e.preventDefault();
-    console.log(modules);
-  }
+
+    await addDoc(collection(db, "modules"), {});
+  };
 
   // User listener
 
@@ -232,9 +232,9 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         setModules,
         addModule,
         removeModule,
-        submitModules,
-        topics,
-        setTopics,
+        submitTopic,
+        topic,
+        setTopic,
       }}
     >
       {children}

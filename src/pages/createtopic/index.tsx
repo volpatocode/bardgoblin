@@ -1,8 +1,14 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import { addDoc, collection } from "firebase/firestore";
 import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
 import NewModule from "../../components/CreateTopic/NewModule";
 import NewTopic from "../../components/CreateTopic/NewTopic";
 import Logo from "../../components/Logo";
+import { db } from "../../config/firebaseConfig";
 import { UserContext } from "../../contexts/UserContext";
+import { CreateTopicData } from "../../types/user";
+import { topicCreateValidationSchema } from "../../utils/validations";
 
 import {
   PageWrapper,
@@ -21,9 +27,8 @@ import {
   DoneIcon,
 } from "./styles";
 
-
 export default function index() {
-  const { addModule, submitModules } = useContext(UserContext);
+  const { addModule, submitTopic } = useContext(UserContext);
 
   return (
     <PageWrapper>
@@ -35,14 +40,14 @@ export default function index() {
           <MainTitle>Set up your topic</MainTitle>
           <MainSubtitle>Create your topic however you want</MainSubtitle>
         </MainHeader>
-        <MainContent onSubmit={submitModules}>
-          <NewTopic/>
-          <NewModule/>
+        <MainContent onSubmit={submitTopic}>
+          <NewTopic />
+          <NewModule />
           <BoxButtons>
             <AddModuleButton type="button" onClick={addModule}>
               <AddIcon fontSize="small" /> Module
             </AddModuleButton>
-            <SubmitButton type="submit" onClick={submitModules}>
+            <SubmitButton type="submit" onClick={submitTopic}>
               <DoneIcon fontSize="small" />
               Submit
             </SubmitButton>

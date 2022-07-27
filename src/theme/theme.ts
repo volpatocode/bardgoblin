@@ -1,5 +1,4 @@
-import { createTheme, OutlinedInput } from "@mui/material";
-import { red } from "@mui/material/colors";
+import { createTheme} from "@mui/material";
 
 export const theme = createTheme({
   palette: {

@@ -22,11 +22,7 @@ export default function index() {
     } = event;
     setLabel(typeof value === "string" ? value.split(",") : value);
     setTopics((current) => {
-      return [
-        {...current, 
-          labels: [...label],
-        },
-      ];
+      return { ...current, labels: [...label] };
     });
   };
 

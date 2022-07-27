@@ -120,7 +120,7 @@ export default function index({ page }: navbarType) {
                 <ModalButton>Tools</ModalButton>
                 <ModalButton>About</ModalButton>
                 {isAuthorized && (
-                  <ModalButton>Create Build / Quest</ModalButton>
+                  <ModalButton href="/createtopic">Create Build / Quest</ModalButton>
                 )}
                 {handleUserModal && <UserModal />}
               </MenuModal>

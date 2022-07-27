@@ -45,6 +45,20 @@ export const MainSubtitle = styled.p`
   text-align: left;
 `;
 
+export const AddIcon = styled(AddIcona)`
+  color: rgba(255, 255, 255, 0.65);
+`;
+
+export const DoneIcon = styled(DoneIcona)`
+  color: rgba(255, 255, 255, 0.65);
+`;
+
+export const BoxButtons = styled(Box)`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+`;
+
 export const AddModuleButton = styled(Button)`
   display: flex;
   flex-direction: row;
@@ -56,14 +70,7 @@ export const AddModuleButton = styled(Button)`
   :hover {
     background: #dd3e0e;
   }
-`;
-
-export const AddIcon = styled(AddIcona)`
-  color: rgba(255, 255, 255, 0.65);
-`;
-
-export const DoneIcon = styled(DoneIcona)`
-  color: rgba(255, 255, 255, 0.65);
+  width: 100%;
 `;
 
 export const SubmitButton = styled(Button)`
@@ -77,15 +84,8 @@ export const SubmitButton = styled(Button)`
   :hover {
     background: #dd3e0e;
   }
-`;
-
-export const BoxButtons = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
   width: 100%;
-  align-items: center;
-  `;
+`;
 
 // Side Box
 
