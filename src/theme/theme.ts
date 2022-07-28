@@ -1,4 +1,4 @@
-import { createTheme} from "@mui/material";
+import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
   palette: {
@@ -24,7 +24,7 @@ export const theme = createTheme({
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: "rgba(255, 255, 255, 0.75)",
+          color: "#DD3E0E",
         },
       },
     },
