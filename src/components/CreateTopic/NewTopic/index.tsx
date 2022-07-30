@@ -5,17 +5,7 @@ import LabelSelector from "../../LabelSelector";
 import { NewTopic, TopicTitle } from "./styles";
 
 export default function index() {
-  const { topic, setTopic, modules } = useContext(UserContext);
-
-  const handleTopicInput = (event) => {
-    let data = topic;
-    data[event.target.name] = event.target;
-    setTopic(data);
-  };
-
-  useEffect(() => {
-    console.log(modules);
-  }, [modules, topic]);
+  const {register } = useContext(UserContext);
 
   return (
     <NewTopic>
@@ -23,7 +13,7 @@ export default function index() {
         name="topictitle"
         type="text"
         placeholder="Topic title"
-        onChange={(event) => handleTopicInput(event)}
+        {...register("topictitle" as const)}
       />
       <LabelSelector />
     </NewTopic>

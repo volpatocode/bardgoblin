@@ -12,28 +12,24 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { modules, setModules, removeModule } = useContext(UserContext);
-
-  const handleModuleInput = (index, event) => {
-    let data = [...modules];
-    data[index][event.target.name] = event.target.value;
-    setModules(data);
-  };
+  const { modules, append, remove, register, control } =
+    useContext(UserContext);
 
   return (
     <>
-      {modules.map((input, index) => {
+      {modules.map((field, index) => {
         return (
-          <NewModule key={index}>
+          <NewModule key={field.id}>
             <ModuleHeader>
               <ModuleTitleInput
                 name="moduletitle"
                 placeholder="Module title"
                 type="text"
-                onChange={(event) => handleModuleInput(index, event)}
+                {...register(`modules.${index}.moduletitle` as const)}
+                key={field.id}
               />
               {modules.length > 1 && (
-                <ModuleRemoveButton onClick={() => removeModule(index)}>
+                <ModuleRemoveButton onClick={() => remove(index)}>
                   <RemoveIcon fontSize="small" />
                 </ModuleRemoveButton>
               )}
@@ -41,7 +37,8 @@ export default function index() {
             <ModuleInput
               name="modulecontent"
               placeholder="Insert module content here"
-              onChange={(event) => handleModuleInput(index, event)}
+              {...register(`modules.${index}.modulecontent` as const)}
+              key={field.id}
             />
             {modules.length > 1 && <ModuleDivider />}
           </NewModule>
