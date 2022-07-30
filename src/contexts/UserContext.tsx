@@ -8,7 +8,7 @@ import {
 import { useRouter } from "next/router";
 
 import { UserModalContext } from "./UserModalContext";
-import { UserFormData } from "../types/user";
+import { FormValues, UserFormData } from "../types/user";
 
 import {
   createUserWithEmailAndPassword,
@@ -21,6 +21,16 @@ import {
 import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection } from "firebase/firestore";
+import {
+  Control,
+  FieldValues,
+  useFieldArray,
+  UseFieldArrayAppend,
+  UseFieldArrayRemove,
+  useForm,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from "react-hook-form";
 
 type UserContextProps = {
   children: ReactNode;
@@ -43,13 +53,14 @@ type UserContextType = {
   currentUser: any;
   forceHome: () => void;
   refreshPage: () => void;
-  modules: { moduletitle: string; modulecontent: string }[];
-  setModules: any;
-  addModule: (e) => void;
-  removeModule: (index) => void;
   submitTopic: (e) => void;
-  topic: { topictitle: string; labels: any[]; modules: {} };
-  setTopic: any;
+  modules: Record<"id", string>[];
+  append: UseFieldArrayAppend<FieldValues, "module">;
+  remove: UseFieldArrayRemove;
+  register: UseFormRegister<FieldValues>;
+  handleSubmit: UseFormHandleSubmit<FieldValues>;
+  control: Control<FieldValues, any>;
+  onSubmit: (data: FormValues) => void;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -66,17 +77,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
-  const [modules, setModules] = useState([
-    {
-      moduletitle: "",
-      modulecontent: "",
-    },
-  ]);
-  const [topic, setTopic] = useState({
-    topictitle: "",
-    labels: [],
-    modules: [...modules],
-  });
 
   const router = useRouter();
 
@@ -91,27 +91,25 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
 
   // Module
 
-  function addModule(e) {
-    e.preventDefault();
-    let newField = {
-      moduletitle: "",
-      modulecontent: "",
-    };
+  const { register, control, handleSubmit, reset, trigger, setError } =
+    useForm<FieldValues>();
 
-    setModules([...modules, newField]);
-  }
-
-  function removeModule(index) {
-    let data = [...modules];
-    data.splice(index, 1);
-    setModules(data);
-  }
+  const {
+    fields: modules,
+    append,
+    remove,
+  } = useFieldArray({
+    control,
+    name: "modules",
+  });
 
   const submitTopic = async (e) => {
     e.preventDefault();
 
     await addDoc(collection(db, "modules"), {});
   };
+
+  const onSubmit = (data: FormValues) => console.log(data);
 
   // User listener
 
@@ -228,13 +226,14 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         photoURL,
         forceHome,
         refreshPage,
-        modules,
-        setModules,
-        addModule,
-        removeModule,
         submitTopic,
-        topic,
-        setTopic,
+        modules,
+        append,
+        remove,
+        register,
+        handleSubmit,
+        control,
+        onSubmit,
       }}
     >
       {children}

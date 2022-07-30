@@ -28,7 +28,7 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { addModule, submitTopic } = useContext(UserContext);
+  const {modules, append, remove, register, handleSubmit, onSubmit } = useContext(UserContext);
 
   return (
     <PageWrapper>
@@ -40,14 +40,14 @@ export default function index() {
           <MainTitle>Set up your topic</MainTitle>
           <MainSubtitle>Create your topic however you want</MainSubtitle>
         </MainHeader>
-        <MainContent onSubmit={submitTopic}>
+        <MainContent onSubmit={handleSubmit(onSubmit)}>
           <NewTopic />
           <NewModule />
           <BoxButtons>
-            <AddModuleButton type="button" onClick={addModule}>
+            <AddModuleButton type="button" onClick={() => append({moduletitle: "", modulecontent: ""})}>
               <AddIcon fontSize="small" /> Module
             </AddModuleButton>
-            <SubmitButton type="submit" onClick={submitTopic}>
+            <SubmitButton type="submit" onClick={handleSubmit(onSubmit)}>
               <DoneIcon fontSize="small" />
               Submit
             </SubmitButton>
