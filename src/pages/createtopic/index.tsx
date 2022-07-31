@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import NewModule from "../../components/CreateTopic/NewModule";
 import NewTopic from "../../components/CreateTopic/NewTopic";
+import InputError from "../../components/InputError";
 import Logo from "../../components/Logo";
 import { db } from "../../config/firebaseConfig";
 import { UserContext } from "../../contexts/UserContext";
@@ -27,7 +28,8 @@ import {
 } from "./styles";
 
 export default function index() {
-  const {append, handleSubmit, onSubmit } = useContext(UserContext);
+  const { append, handleSubmitTopic, submitTopic, topicError } =
+    useContext(UserContext);
 
   return (
     <PageWrapper>
@@ -39,14 +41,20 @@ export default function index() {
           <MainTitle>Set up your topic</MainTitle>
           <MainSubtitle>Create your topic however you want</MainSubtitle>
         </MainHeader>
-        <MainContent onSubmit={handleSubmit(onSubmit)}>
+        <MainContent onSubmit={handleSubmitTopic(submitTopic)}>
           <NewTopic />
           <NewModule />
           <BoxButtons>
-            <AddModuleButton type="button" onClick={() => append({moduletitle: "", modulecontent: ""})}>
+            <AddModuleButton
+              type="button"
+              onClick={() => append({ moduletitle: "", modulecontent: "" })}
+            >
               <AddIcon fontSize="small" /> Module
             </AddModuleButton>
-            <SubmitButton type="submit" onClick={handleSubmit(onSubmit)}>
+            <SubmitButton
+              type="submit"
+              onClick={handleSubmitTopic(submitTopic)}
+            >
               <DoneIcon fontSize="small" />
               Submit
             </SubmitButton>

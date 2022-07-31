@@ -107,3 +107,4 @@ export const SideFooter = styled.p`
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
 `;
+
