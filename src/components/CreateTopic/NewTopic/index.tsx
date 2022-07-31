@@ -13,7 +13,7 @@ export default function index() {
         name="topictitle"
         type="text"
         placeholder="Topic title"
-        {...register("topictitle" as const)}
+        {...register("topic.topictitle" as const)}
       />
       <LabelSelector />
     </NewTopic>

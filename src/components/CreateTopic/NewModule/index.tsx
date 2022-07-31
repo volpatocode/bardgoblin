@@ -25,7 +25,7 @@ export default function index() {
                 name="moduletitle"
                 placeholder="Module title"
                 type="text"
-                {...register(`modules.${index}.moduletitle` as const)}
+                {...register(`topic.modules.${index}.moduletitle` as const)}
                 key={field.id}
               />
               {modules.length > 1 && (
@@ -37,7 +37,7 @@ export default function index() {
             <ModuleInput
               name="modulecontent"
               placeholder="Insert module content here"
-              {...register(`modules.${index}.modulecontent` as const)}
+              {...register(`topic.modules.${index}.modulecontent` as const)}
               key={field.id}
             />
             {modules.length > 1 && <ModuleDivider />}
