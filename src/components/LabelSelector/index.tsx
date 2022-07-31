@@ -13,7 +13,7 @@ import { LabelSelector, StyledFormControl, StyledInputLabel } from "./styles";
 import { UserContext } from "../../contexts/UserContext";
 
 export default function index() {
-  const { register } = useContext(UserContext);
+  const { registerTopic } = useContext(UserContext);
   const [label, setLabel] = useState([]);
 
   const handleChange = (event: SelectChangeEvent<typeof label>) => {
@@ -50,7 +50,7 @@ export default function index() {
         <StyledInputLabel id="labels">Labels</StyledInputLabel>
         <Select
           multiple
-          {...register("topic.labels" as const)}
+          {...registerTopic("topic.labels" as const)}
           value={label}
           onChange={handleChange}
           input={

@@ -6,7 +6,7 @@ import LabelSelector from "../../LabelSelector";
 import { NewTopic, TopicTitle, TopicTitleBox } from "./styles";
 
 export default function index() {
-  const { register, formErrors } = useContext(UserContext);
+  const { registerTopic, formErrors } = useContext(UserContext);
 
   return (
     <NewTopic>
@@ -15,7 +15,7 @@ export default function index() {
           name="topictitle"
           type="text"
           placeholder="Topic title"
-          {...register("topic.topictitle" as const)}
+          {...registerTopic("topic.topictitle" as const)}
         />
         {formErrors?.topic?.topictitle && (
           <InputError error={formErrors?.topic?.topictitle?.message} />

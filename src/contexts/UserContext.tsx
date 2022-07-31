@@ -56,15 +56,15 @@ type UserContextType = {
   currentUser: any;
   forceHome: () => void;
   refreshPage: () => void;
-  submitTopic: (e) => void;
   modules: Record<"id", string>[];
   append: UseFieldArrayAppend<FormValues, "topic.modules">;
   remove: UseFieldArrayRemove;
-  register: UseFormRegister<FormValues>;
-  handleSubmit: UseFormHandleSubmit<FormValues>;
+  registerTopic: UseFormRegister<FormValues>;
+  handleSubmitTopic: UseFormHandleSubmit<FormValues>;
   control: Control<FormValues, any>;
-  onSubmit: (data: FormValues) => void;
+  submitTopic: (data: FormValues) => void;
   formErrors: any;
+  topicError: string;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -78,6 +78,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [errorFirebase, setErrorFirebase] = useState("");
+  const [topicError, setTopicError] = useState("");
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
@@ -93,13 +94,12 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     router.reload();
   }
 
-  
   // Module
 
   const {
-    register,
+    register: registerTopic,
     control,
-    handleSubmit,
+    handleSubmit: handleSubmitTopic,
     formState: { errors: formErrors },
   } = useForm<FormValues>({
     defaultValues: {
@@ -121,13 +121,18 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     name: "topic.modules",
   });
 
-  const submitTopic = async (e) => {
-    e.preventDefault();
-
-    await addDoc(collection(db, "modules"), {});
+  const submitTopic = async (data: FormValues) => {
+    setIsLoading(true);
+    await addDoc(collection(db, "topics"), { ...data })
+      .then(() => console.log("Cadastrado com sucesso!"))
+      .catch((error) => {
+        setTopicError(error.message);
+        console.log(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
-
-  const onSubmit = (data: FormValues) => console.log(data);
 
   // User listener
 
@@ -244,15 +249,15 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         photoURL,
         forceHome,
         refreshPage,
-        submitTopic,
         modules,
         append,
         remove,
-        register,
-        handleSubmit,
+        registerTopic,
+        handleSubmitTopic,
         control,
-        onSubmit,
+        submitTopic,
         formErrors,
+        topicError,
       }}
     >
       {children}

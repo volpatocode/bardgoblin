@@ -16,7 +16,8 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { modules, remove, register, formErrors } = useContext(UserContext);
+  const { modules, remove, registerTopic, formErrors } =
+    useContext(UserContext);
 
   return (
     <>
@@ -29,7 +30,9 @@ export default function index() {
                   name="moduletitle"
                   placeholder="Module title"
                   type="text"
-                  {...register(`topic.modules.${index}.moduletitle` as const)}
+                  {...registerTopic(
+                    `topic.modules.${index}.moduletitle` as const
+                  )}
                   key={field.id}
                 />
                 {formErrors?.topic?.modules?.map(
@@ -52,7 +55,9 @@ export default function index() {
               <ModuleContentInput
                 name="modulecontent"
                 placeholder="Insert module content here"
-                {...register(`topic.modules.${index}.modulecontent` as const)}
+                {...registerTopic(
+                  `topic.modules.${index}.modulecontent` as const
+                )}
                 key={field.id}
               />
               {formErrors?.topic?.modules?.map(
