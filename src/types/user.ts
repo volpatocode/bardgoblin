@@ -21,9 +21,12 @@ export type CreateTopicData = {
 };
 
 export type FormValues = {
-  topictitle?: string;
-  modules?: {
-    moduletitle?: string;
-    modulecontent?: string;
-  }[];
+  topic: {
+    topictitle?: string;
+    labels?: [];
+    modules?: {
+      moduletitle?: string;
+      modulecontent?: string;
+    }[];
+  };
 };

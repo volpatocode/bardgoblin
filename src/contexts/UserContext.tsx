@@ -55,11 +55,11 @@ type UserContextType = {
   refreshPage: () => void;
   submitTopic: (e) => void;
   modules: Record<"id", string>[];
-  append: UseFieldArrayAppend<FieldValues, "module">;
+  append: UseFieldArrayAppend<FormValues, "topic.modules">;
   remove: UseFieldArrayRemove;
-  register: UseFormRegister<FieldValues>;
-  handleSubmit: UseFormHandleSubmit<FieldValues>;
-  control: Control<FieldValues, any>;
+  register: UseFormRegister<FormValues>;
+  handleSubmit: UseFormHandleSubmit<FormValues>;
+  control: Control<FormValues, any>;
   onSubmit: (data: FormValues) => void;
 };
 
@@ -92,7 +92,15 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   // Module
 
   const { register, control, handleSubmit, reset, trigger, setError } =
-    useForm<FieldValues>();
+    useForm<FormValues>({
+      defaultValues: {
+        topic: {
+          topictitle: "",
+          labels: [],
+          modules: [{ moduletitle: "", modulecontent: "" }],
+        },
+      },
+    });
 
   const {
     fields: modules,
@@ -100,7 +108,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     remove,
   } = useFieldArray({
     control,
-    name: "modules",
+    name: "topic.modules",
   });
 
   const submitTopic = async (e) => {
