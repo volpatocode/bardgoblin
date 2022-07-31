@@ -24,7 +24,7 @@ export const ModuleTitleInput = styled.input`
   }
 `;
 
-export const ModuleInput = styled.textarea`
+export const ModuleContentInput = styled.textarea`
   color: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(29, 29, 29, 0.7);
   background: transparent;
@@ -53,6 +53,14 @@ export const ModuleHeader = styled(Box)`
   flex-direction: row;
   gap: 0.3rem;
   flex-wrap: nowrap;
+`;
+
+export const ModuleTitleBox = styled(Box)`
+  width: 100%;
+`;
+
+export const ModuleContentBox = styled(Box)`
+  width: 100%;
 `;
 
 // module remove

@@ -1,20 +1,26 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../../contexts/UserContext";
+import InputError from "../../InputError";
 import LabelSelector from "../../LabelSelector";
 
-import { NewTopic, TopicTitle } from "./styles";
+import { NewTopic, TopicTitle, TopicTitleBox } from "./styles";
 
 export default function index() {
-  const {register } = useContext(UserContext);
+  const { register, formErrors } = useContext(UserContext);
 
   return (
     <NewTopic>
-      <TopicTitle
-        name="topictitle"
-        type="text"
-        placeholder="Topic title"
-        {...register("topic.topictitle" as const)}
-      />
+      <TopicTitleBox>
+        <TopicTitle
+          name="topictitle"
+          type="text"
+          placeholder="Topic title"
+          {...register("topic.topictitle" as const)}
+        />
+        {formErrors?.topic?.topictitle && (
+          <InputError error={formErrors?.topic?.topictitle?.message} />
+        )}
+      </TopicTitleBox>
       <LabelSelector />
     </NewTopic>
   );

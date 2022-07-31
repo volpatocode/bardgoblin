@@ -23,6 +23,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection } from "firebase/firestore";
 import {
   Control,
+  FieldError,
   FieldValues,
   useFieldArray,
   UseFieldArrayAppend,
@@ -31,6 +32,8 @@ import {
   UseFormHandleSubmit,
   UseFormRegister,
 } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { topicCreateValidationSchema } from "../utils/validations";
 
 type UserContextProps = {
   children: ReactNode;
@@ -61,6 +64,7 @@ type UserContextType = {
   handleSubmit: UseFormHandleSubmit<FormValues>;
   control: Control<FormValues, any>;
   onSubmit: (data: FormValues) => void;
+  formErrors: any;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -89,18 +93,24 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     router.reload();
   }
 
+  
   // Module
 
-  const { register, control, handleSubmit, reset, trigger, setError } =
-    useForm<FormValues>({
-      defaultValues: {
-        topic: {
-          topictitle: "",
-          labels: [],
-          modules: [{ moduletitle: "", modulecontent: "" }],
-        },
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors: formErrors },
+  } = useForm<FormValues>({
+    defaultValues: {
+      topic: {
+        topictitle: "",
+        labels: [],
+        modules: [{ moduletitle: "", modulecontent: "" }],
       },
-    });
+    },
+    resolver: yupResolver(topicCreateValidationSchema),
+  });
 
   const {
     fields: modules,
@@ -242,6 +252,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         handleSubmit,
         control,
         onSubmit,
+        formErrors,
       }}
     >
       {children}

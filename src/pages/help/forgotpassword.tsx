@@ -18,7 +18,7 @@ import {
   FinishButton,
   ForgotPasswordImageBox,
   BoxLogo,
-} from "./forgotpasswordstyles";
+} from "./forgotPasswordStyles";
 
 export default function index() {
   const { forgotPassword, isLoading, errorFirebase } = useContext(UserContext);

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box, Button } from "@mui/material";
+import { Box} from "@mui/material";
 
 export const TopicTitle = styled.input`
   color: #ff9900;
@@ -20,4 +20,8 @@ export const NewTopic = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+`;
+
+export const TopicTitleBox = styled(Box)`
+  width: 100%;
 `;

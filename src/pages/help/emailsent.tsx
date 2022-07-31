@@ -1,7 +1,7 @@
 import React from "react";
 
 import Logo from "../../components/Logo";
-import { ForgotPasswordImageBox } from "./forgotpasswordstyles";
+import { ForgotPasswordImageBox } from "./forgotPasswordStyles";
 
 import {
   EmailSent,

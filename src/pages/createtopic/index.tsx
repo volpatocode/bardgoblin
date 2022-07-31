@@ -7,7 +7,6 @@ import NewTopic from "../../components/CreateTopic/NewTopic";
 import Logo from "../../components/Logo";
 import { db } from "../../config/firebaseConfig";
 import { UserContext } from "../../contexts/UserContext";
-import { CreateTopicData } from "../../types/user";
 import { topicCreateValidationSchema } from "../../utils/validations";
 
 import {
@@ -28,7 +27,7 @@ import {
 } from "./styles";
 
 export default function index() {
-  const {modules, append, remove, register, handleSubmit, onSubmit } = useContext(UserContext);
+  const {append, handleSubmit, onSubmit } = useContext(UserContext);
 
   return (
     <PageWrapper>
