@@ -11,15 +11,6 @@ export type EditUserData = {
   email?: string;
 };
 
-export type CreateTopicData = {
-  topictitle: string;
-  labels: string[];
-  modules: {
-    moduletitle: string;
-    modulecontent: string;
-  };
-};
-
 export type FormValues = {
   topic: {
     topictitle?: string;

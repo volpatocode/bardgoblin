@@ -5,7 +5,7 @@ export const registerValidationSchema = yup.object({
   password: yup
     .string()
     .required("Password is required")
-    .min(6, "minimum of 6 characters"),
+    .min(6, "Minimum of 6 characters"),
   confirmPassword: yup
     .string()
     .required("Confirm password is required")
@@ -19,7 +19,7 @@ export const loginValidationSchema = yup.object({
   password: yup
     .string()
     .required("Password is required")
-    .min(6, "minimum of 6 characters"),
+    .min(6, "Minimum of 6 characters"),
 });
 
 export const forgotPasswordValidationSchema = yup.object({
@@ -30,22 +30,37 @@ export const editUserValidationSchema = yup.object({
   email: yup
     .string()
     .email("Invalid Email")
-    .max(50, "maximum of 50 characters"),
+    .max(50, "Maximum of 50 characters"),
   password: yup
     .string()
-    .min(6, "minimum of 6 characters")
-    .max(20, "maximum of 20 characters"),
+    .min(6, "Minimum of 6 characters")
+    .max(20, "Maximum of 20 characters"),
   username: yup
     .string()
-    .min(4, "minimum of 4 characters")
-    .max(20, "maximum of 20 characters"),
+    .min(4, "Minimum of 4 characters")
+    .max(20, "Maximum of 20 characters"),
 });
 
 export const topicCreateValidationSchema = yup.object({
-  topicTitle: yup.string().min(6, "minimum of 6 characters"),
-  moduletitle: yup.string().min(6, "minimum of 6 characters"),
-  modulecontent: yup
-    .string()
-    .min(150, "minimum of 150 characters")
-    .max(1500, "maximum of 1500 characters"),
+  topic: yup.object().shape({
+    topictitle: yup
+      .string()
+      .required("Topic title is required")
+      .min(6, "Minimum of 6 characters")
+      .max(50, "Maximum of 50 characters"),
+    modules: yup.array().of(
+      yup.object().shape({
+        moduletitle: yup
+          .string()
+          .required("Module title is required")
+          .min(6, "Minimum of 6 characters")
+          .max(50, "Maximum of 50 characters"),
+        modulecontent: yup
+          .string()
+          .required("Module content is required")
+          .min(150, "Minimum of 150 characters")
+          .max(1500, "Maximum of 1500 characters"),
+      })
+    ),
+  }),
 });
