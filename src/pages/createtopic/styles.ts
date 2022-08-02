@@ -81,6 +81,9 @@ export const AddModuleButton = styled(Button)`
   :hover {
     background: #dd3e0e;
   }
+  :disabled {
+    background: #c3c3c3;
+  }
   width: 100%;
 `;
 
@@ -94,6 +97,9 @@ export const SubmitButton = styled(Button)`
   color: rgba(255, 255, 255, 0.65);
   :hover {
     background: #dd3e0e;
+  }
+  :disabled {
+    background: #c3c3c3;
   }
   width: 100%;
 `;

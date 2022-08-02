@@ -7,6 +7,7 @@ import NewModule from "../../components/CreateTopic/NewModule";
 import NewTopic from "../../components/CreateTopic/NewTopic";
 import InputError from "../../components/InputError";
 import Logo from "../../components/Logo";
+import { StyledCircularProgress } from "../../components/UserModal/styles";
 import { db } from "../../config/firebaseConfig";
 import { UserContext } from "../../contexts/UserContext";
 import { topicCreateValidationSchema } from "../../utils/validations";
@@ -30,7 +31,7 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { append, handleSubmitTopic, submitTopic, topicError } =
+  const { append, handleSubmitTopic, submitTopic, topicError, isLoading } =
     useContext(UserContext);
 
   const screenMd = useMediaQuery("(max-width:1000px)");
@@ -53,17 +54,31 @@ export default function index() {
           <NewModule />
           <BoxButtons>
             <AddModuleButton
+              disabled={isLoading}
               type="button"
               onClick={() => append({ moduletitle: "", modulecontent: "" })}
             >
-              <AddIcon fontSize="small" /> Module
+              {isLoading ? (
+                <StyledCircularProgress size="25px" />
+              ) : (
+                <>
+                  <AddIcon fontSize="small" /> Module
+                </>
+              )}
             </AddModuleButton>
             <SubmitButton
+              disabled={isLoading}
               type="submit"
               onClick={handleSubmitTopic(submitTopic)}
             >
-              <DoneIcon fontSize="small" />
-              Submit
+              {isLoading ? (
+                <StyledCircularProgress size="25px" />
+              ) : (
+                <>
+                  <DoneIcon fontSize="small" />
+                  Submit
+                </>
+              )}
             </SubmitButton>
           </BoxButtons>
         </MainContent>
