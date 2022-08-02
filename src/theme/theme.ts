@@ -24,7 +24,7 @@ export const theme = createTheme({
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: "#DD3E0E",
+          color: "rgba(255, 255, 255, 0.75)",
         },
       },
     },

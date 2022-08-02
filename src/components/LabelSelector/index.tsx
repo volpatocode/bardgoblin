@@ -7,6 +7,8 @@ import {
   Select,
   SelectChangeEvent,
   Checkbox,
+  createTheme,
+  ThemeProvider,
 } from "@mui/material";
 
 import { LabelSelector, StyledFormControl, StyledInputLabel } from "./styles";
