@@ -91,7 +91,7 @@ export const EditDataValue = styled.input`
 
 export const DataValue = styled(Box)<Pick<profileInfoType, "background">>`
   font-size: 1.15rem;
-  color: #ff9900;
+  color: rgba(255, 255, 255, 0.75);
   letter-spacing: 0.2px;
   line-height: 1.75;
   font-weight: 500;

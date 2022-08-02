@@ -13,15 +13,26 @@ export const PageWrapper = styled(Box)`
 export const MainBox = styled(Box)`
   width: 80vw;
   min-height: 100vh;
+  height: 100%;
   background-color: #141414;
   padding: 1rem 11.5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
+  @media (max-width: 1000px) {
+    width: 100vw;
+  }
 `;
 
+export const MainHeaderInfo = styled(Box)``;
+
 export const MainHeader = styled(Box)`
+  display: flex;
   margin-bottom: 3rem;
+  column-gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const MainContent = styled.form`
@@ -92,12 +103,17 @@ export const SubmitButton = styled(Button)`
 export const SideBox = styled(Box)`
   width: 20vw;
   min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
   background: url("./createtopicbackground.png") no-repeat center center / cover;
   border-right: 2px solid rgba(29, 29, 29, 0.7);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 export const SideFooter = styled.p`
@@ -107,4 +123,3 @@ export const SideFooter = styled.p`
   color: rgba(255, 255, 255, 0.6);
   text-align: center;
 `;
-

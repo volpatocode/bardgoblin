@@ -8,14 +8,14 @@ import {
   ThemeProvider,
 } from "@mui/material/";
 
-import SearchIcon from "@mui/icons-material/Search";
-
 import {
   MainSearchBar,
   StyledInput,
   InputButton,
   SelectButton,
+  SearchIcon,
 } from "./styles";
+import { searchBarTheme } from "../../theme/theme";
 
 export default function index() {
   const [searchBarSection, setSearchBarSection] = useState("Side Quests");
@@ -24,27 +24,8 @@ export default function index() {
     setSearchBarSection(e.target.value as string);
   };
 
-  const theme = createTheme({
-    components: {
-      MuiMenuItem: {
-        styleOverrides: {
-          root: {
-            color: "#000",
-          },
-        },
-      },
-      MuiSelect: {
-        styleOverrides: {
-          icon: {
-            color: "#DD3E0E",
-          },
-        },
-      },
-    },
-  });
-
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={searchBarTheme}>
       <MainSearchBar>
         <FormControl fullWidth>
           <SelectButton

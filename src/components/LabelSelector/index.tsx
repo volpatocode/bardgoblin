@@ -7,8 +7,6 @@ import {
   Select,
   SelectChangeEvent,
   Checkbox,
-  createTheme,
-  ThemeProvider,
 } from "@mui/material";
 
 import { LabelSelector, StyledFormControl, StyledInputLabel } from "./styles";
@@ -29,7 +27,7 @@ export default function index() {
     PaperProps: {
       style: {
         backgroundColor: "#141414",
-        color: "rgba(255, 255, 255, 0.45);",
+        color: "rgba(255, 255, 255, 0.45)",
       },
     },
   };

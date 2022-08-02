@@ -1,3 +1,4 @@
+
 import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
@@ -31,8 +32,27 @@ export const theme = createTheme({
     MuiPaginationItem: {
       styleOverrides: {
         root: {
-          color: "rgba(255, 255, 255, 0.75)",
-          borderColor: "#DD3E0E",
+          color: "rgba(255, 255, 255, 0.5)",
+          borderColor: "rgba(255, 255, 255, 0.3)"
+        },
+      },
+    },
+  },
+});
+
+export const searchBarTheme = createTheme({
+  components: {
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: "#000",
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        icon: {
+          color: "#DD3E0E",
         },
       },
     },

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Button, Select } from "@mui/material";
+import SearchIcona from "@mui/icons-material/Search";
 
 export const MainSearchBar = styled.div`
   display: flex;
@@ -11,14 +12,13 @@ export const MainSearchBar = styled.div`
 export const StyledInput = styled.input`
   border: none;
   padding: 15px 6px;
-  border-left: 2px solid #e2e2e2;
   color: #000;
   font-size: 0.85rem;
   letter-spacing: 0.2px;
   background-color: #fff;
   width: fit-content;
   outline: none;
-  height: 60px;
+  height: 50px;
   font-weight: 500;
   width: 300px;
   transition: 200ms ease-in-out;
@@ -50,7 +50,7 @@ export const InputButton = styled(Button)`
   display: flex;
   align-items: center;
   color: #4f4f4f;
-  height: 60px;
+  height: 50px;
   cursor: pointer;
   :hover {
     background-color: #fff;
@@ -70,7 +70,7 @@ export const SelectButton = styled(Select)`
   background-color: #fff;
   border-radius: 7.5px 0px 0px 7.5px;
   display: flex;
-  height: 60px;
+  height: 50px;
   align-items: center;
   color: #4f4f4f;
   font-weight: 600;
@@ -114,4 +114,8 @@ export const SectionButton = styled(Button)`
   @media (max-width: 480px) {
     height: 40px;
   }
+`;
+
+export const SearchIcon = styled(SearchIcona)`
+ color: #dd3e0e;
 `;
