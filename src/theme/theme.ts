@@ -1,4 +1,3 @@
-
 import { createTheme } from "@mui/material";
 
 export const theme = createTheme({
@@ -22,6 +21,15 @@ export const theme = createTheme({
         },
       },
     },
+    // MuiOutlinedInput: {
+    //   styleOverrides: {
+    //     root: {
+    //       "&:hover": {
+    //         outline: "none"
+    //       }
+    //     }
+    //   }
+    // },
     MuiMenuItem: {
       styleOverrides: {
         root: {
@@ -33,7 +41,7 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           color: "rgba(255, 255, 255, 0.5)",
-          borderColor: "rgba(255, 255, 255, 0.3)"
+          borderColor: "rgba(255, 255, 255, 0.3)",
         },
       },
     },

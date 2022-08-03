@@ -110,16 +110,19 @@ export const SideBox = styled(Box)`
   width: 20vw;
   min-height: 100vh;
   max-height: 100vh;
-  overflow: hidden;
   background: url("./createtopicbackground.png") no-repeat center center / cover;
   border-right: 2px solid rgba(29, 29, 29, 0.7);
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  
   @media (max-width: 1000px) {
     display: none;
   }
+  position: sticky;
+  left: 0;
+  top: 0;
 `;
 
 export const SideFooter = styled.p`
