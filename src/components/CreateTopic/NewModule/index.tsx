@@ -35,13 +35,9 @@ export default function index() {
                   )}
                   key={field.id}
                 />
-                {formErrors?.topic?.modules?.map(
-                  (module) => module?.moduletitle
-                ) && (
+                {formErrors?.topic?.modules[0]?.moduletitle && (
                   <InputError
-                    error={formErrors?.topic?.modules?.map(
-                      (module) => module?.moduletitle?.message
-                    )}
+                    error={formErrors?.topic?.modules[0]?.moduletitle?.message}
                   />
                 )}
               </ModuleTitleBox>
@@ -60,13 +56,9 @@ export default function index() {
                 )}
                 key={field.id}
               />
-              {formErrors?.topic?.modules?.map(
-                (module) => module?.modulecontent
-              ) && (
+              {formErrors?.topic?.modules[0]?.modulecontent && (
                 <InputError
-                  error={formErrors?.topic?.modules?.map(
-                    (module) => module?.modulecontent?.message
-                  )}
+                  error={formErrors?.topic?.modules[0]?.modulecontent?.message}
                 />
               )}
             </ModuleContentBox>
