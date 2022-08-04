@@ -35,9 +35,9 @@ export default function index() {
                   )}
                   key={field.id}
                 />
-                {formErrors?.topic?.modules[0]?.moduletitle && (
+                {formErrors?.topic?.modules[index]?.moduletitle && (
                   <InputError
-                    error={formErrors?.topic?.modules[0]?.moduletitle?.message}
+                    error={formErrors?.topic?.modules[index]?.moduletitle?.message}
                   />
                 )}
               </ModuleTitleBox>
@@ -56,9 +56,9 @@ export default function index() {
                 )}
                 key={field.id}
               />
-              {formErrors?.topic?.modules[0]?.modulecontent && (
+              {formErrors?.topic?.modules[index]?.modulecontent && (
                 <InputError
-                  error={formErrors?.topic?.modules[0]?.modulecontent?.message}
+                  error={formErrors?.topic?.modules[index]?.modulecontent?.message}
                 />
               )}
             </ModuleContentBox>
