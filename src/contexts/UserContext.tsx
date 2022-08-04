@@ -8,7 +8,7 @@ import {
 import { useRouter } from "next/router";
 
 import { UserModalContext } from "./UserModalContext";
-import { FormValues, UserFormData } from "../types/user";
+import { UserFormData } from "../types/user";
 
 import {
   createUserWithEmailAndPassword,
@@ -18,22 +18,8 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { auth, db, storage } from "../config/firebaseConfig";
+import { auth, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { addDoc, collection } from "firebase/firestore";
-import {
-  Control,
-  FieldError,
-  FieldValues,
-  useFieldArray,
-  UseFieldArrayAppend,
-  UseFieldArrayRemove,
-  useForm,
-  UseFormHandleSubmit,
-  UseFormRegister,
-} from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { topicCreateValidationSchema } from "../utils/validations";
 
 type UserContextProps = {
   children: ReactNode;
@@ -56,15 +42,6 @@ type UserContextType = {
   currentUser: any;
   forceHome: () => void;
   refreshPage: () => void;
-  modules: Record<"id", string>[];
-  append: UseFieldArrayAppend<FormValues, "topic.modules">;
-  remove: UseFieldArrayRemove;
-  registerTopic: UseFormRegister<FormValues>;
-  handleSubmitTopic: UseFormHandleSubmit<FormValues>;
-  control: Control<FormValues, any>;
-  submitTopic: (data: FormValues) => void;
-  formErrors: any;
-  topicError: string;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -78,7 +55,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [errorFirebase, setErrorFirebase] = useState("");
-  const [topicError, setTopicError] = useState("");
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
@@ -93,46 +69,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   function refreshPage() {
     router.reload();
   }
-
-  // Module
-
-  const {
-    register: registerTopic,
-    control,
-    handleSubmit: handleSubmitTopic,
-    formState: { errors: formErrors },
-  } = useForm<FormValues>({
-    defaultValues: {
-      topic: {
-        topictitle: "",
-        labels: [],
-        modules: [{ moduletitle: "", modulecontent: "" }],
-      },
-    },
-    resolver: yupResolver(topicCreateValidationSchema),
-  });
-
-  const {
-    fields: modules,
-    append,
-    remove,
-  } = useFieldArray({
-    control,
-    name: "topic.modules",
-  });
-
-  const submitTopic = async (data: FormValues) => {
-    setIsLoading(true);
-    await addDoc(collection(db, "topics"), { ...data })
-      .then(() => console.log("Cadastrado com sucesso!"))
-      .catch((error) => {
-        setTopicError(error.message);
-        console.log(error.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
 
   // User listener
 
@@ -249,15 +185,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         photoURL,
         forceHome,
         refreshPage,
-        modules,
-        append,
-        remove,
-        registerTopic,
-        handleSubmitTopic,
-        control,
-        submitTopic,
-        formErrors,
-        topicError,
       }}
     >
       {children}

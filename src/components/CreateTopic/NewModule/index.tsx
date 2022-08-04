@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { TopicContext } from "../../../contexts/TopicContext";
 import { UserContext } from "../../../contexts/UserContext";
 import InputError from "../../InputError";
 import { InputBox } from "../../UserModal/styles";
@@ -16,8 +17,9 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { modules, remove, registerTopic, formErrors } =
-    useContext(UserContext);
+
+    const { modules, remove, registerTopic, formErrors } =
+    useContext(TopicContext);
 
   return (
     <>

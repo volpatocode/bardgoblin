@@ -10,10 +10,10 @@ import {
 } from "@mui/material";
 
 import { LabelSelector, StyledFormControl, StyledInputLabel } from "./styles";
-import { UserContext } from "../../contexts/UserContext";
+import { TopicContext } from "../../contexts/TopicContext";
 
 export default function index() {
-  const { registerTopic } = useContext(UserContext);
+  const { registerTopic } = useContext(TopicContext);
   const [label, setLabel] = useState([]);
 
   const handleChange = (event: SelectChangeEvent<typeof label>) => {

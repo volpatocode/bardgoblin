@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { TopicContext } from "../../../contexts/TopicContext";
 import { UserContext } from "../../../contexts/UserContext";
 import InputError from "../../InputError";
 import LabelSelector from "../../LabelSelector";
@@ -6,7 +7,7 @@ import LabelSelector from "../../LabelSelector";
 import { NewTopic, TopicTitle, TopicTitleBox } from "./styles";
 
 export default function index() {
-  const { registerTopic, formErrors } = useContext(UserContext);
+  const { registerTopic, formErrors } = useContext(TopicContext);
 
   return (
     <NewTopic>

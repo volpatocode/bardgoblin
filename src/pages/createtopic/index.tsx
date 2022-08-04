@@ -9,6 +9,7 @@ import InputError from "../../components/InputError";
 import Logo from "../../components/Logo";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
 import { db } from "../../config/firebaseConfig";
+import { TopicContext } from "../../contexts/TopicContext";
 import { UserContext } from "../../contexts/UserContext";
 import { topicCreateValidationSchema } from "../../utils/validations";
 
@@ -31,8 +32,8 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { append, handleSubmitTopic, submitTopic, topicError, isLoading } =
-    useContext(UserContext);
+  const { append, handleSubmitTopic, submitTopic, isLoading } =
+    useContext(TopicContext);
 
   const screenMd = useMediaQuery("(max-width:1000px)");
 
