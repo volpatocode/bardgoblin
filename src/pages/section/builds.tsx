@@ -25,8 +25,6 @@ import {
 export default function index() {
   return (
     <>
-      <UserModalContextProvider>
-        <UserContextProvider>
           <SectionWrapper>
             <SectionHeader section="builds">
               <Navbar page="section" />
@@ -46,12 +44,10 @@ export default function index() {
                 <TopicSearchBar />
               </TopicFiltersWrapper>
             </TopicQueryInfo>
-            <TopicListWrapper />
+            <TopicListWrapper/>
             <TopicPagination />
           </SectionResults>
           <Footer />
-        </UserContextProvider>
-      </UserModalContextProvider>
     </>
   );
 }

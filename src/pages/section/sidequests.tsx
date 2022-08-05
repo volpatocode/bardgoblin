@@ -25,8 +25,6 @@ import {
 export default function index() {
   return (
     <>
-      <UserModalContextProvider>
-        <UserContextProvider>
           <SectionWrapper>
             <SectionHeader section="quest">
               <Navbar page="section" />
@@ -50,8 +48,6 @@ export default function index() {
             <TopicPagination />
           </SectionResults>
           <Footer />
-        </UserContextProvider>
-      </UserModalContextProvider>
     </>
   );
 }
