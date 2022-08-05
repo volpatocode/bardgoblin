@@ -1,7 +1,7 @@
 import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { db } from "../../../config/firebaseConfig";
-import { FormValues } from "../../../types/user";
+import { UserContext } from "../../../contexts/UserContext";
 import UserBadge from "../../UserBadge";
 
 import {
@@ -15,6 +15,7 @@ import {
 
 type topicData = {
   id: string;
+  userUID: string;
   topic: {
     topictitle: string;
     modules: [moduletitle: string, modulecontent: string];
@@ -23,7 +24,7 @@ type topicData = {
 }[];
 
 export default function index() {
-  const [topicData, setTopicData] = useState<topicData>([]);
+  const [topicData, setTopicData] = useState<topicData>();
 
   useEffect(() => {
     console.log(topicData);
@@ -47,14 +48,14 @@ export default function index() {
 
   return topicData.map((topic) => {
     return (
-      <TopicListWrapper key={topic.id}>
+      <TopicListWrapper key={topic?.id}>
         <QueryTopic>
           <LeftSideTopic>
             <UserBadge />
             <TopicContent>{topic?.topic?.topictitle}</TopicContent>
           </LeftSideTopic>
           <Labels>
-            {topic?.topic?.labels.map((label, index) => {
+            {topic?.topic?.labels?.map((label, index) => {
               return <Label key={index}>{label}</Label>;
             })}
           </Labels>

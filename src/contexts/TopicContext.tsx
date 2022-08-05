@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 import { db } from "../config/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
@@ -15,6 +15,7 @@ import {
 import { yupResolver } from "@hookform/resolvers/yup";
 import { topicCreateValidationSchema } from "../utils/validations";
 import { FormValues } from "../types/user";
+import { UserContext } from "./UserContext";
 
 type TopicContextProps = {
   children: ReactNode;
@@ -39,6 +40,7 @@ export const TopicContext = createContext<TopicContextType>(
 );
 
 export const TopicContextProvider = ({ children }: TopicContextProps) => {
+  const { currentUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [topicError, setTopicError] = useState("");
 
@@ -50,6 +52,7 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
   } = useForm<FormValues>({
     defaultValues: {
       topic: {
+        userUID: currentUser?.uid,
         topictitle: "",
         labels: [],
         modules: [{ moduletitle: "", modulecontent: "" }],

@@ -13,6 +13,7 @@ export type EditUserData = {
 
 export type FormValues = {
   topic: {
+    userUID: string;
     topictitle?: string;
     labels?: [];
     modules?: {
