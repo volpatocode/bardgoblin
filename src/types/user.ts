@@ -3,6 +3,7 @@ export type UserFormData = {
   email?: string;
   password?: string;
   confirmPassword?: string;
+  photoURL?: string;
 };
 
 export type EditUserData = {
