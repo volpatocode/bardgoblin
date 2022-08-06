@@ -37,7 +37,7 @@ type UserContextType = {
   forgotPassword: (data: UserFormData) => void;
   errorFirebase: string;
   handlePhoto: (e: any) => void;
-  handlePhotoUpload: (data: UserFormData) => void;
+  handlePhotoUpload: () => void;
   photo: boolean;
   photoURL: string;
   currentUser: any;
@@ -146,8 +146,12 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   useEffect(() => {
     if (currentUser?.photoURL) {
       setPhotoURL(currentUser?.photoURL);
+    } else {
+      setPhotoURL(
+        "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+      );
     }
-  }, [currentUser, currentUser?.photoURL]);
+  }, [currentUser, currentUser?.photoURL, photoURL]);
 
   async function upload(file, currentUser, loading) {
     setIsLoading(true);
@@ -156,19 +160,19 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       storage,
       `user/profilepicture/${currentUser?.uid + randomstring + ".png"}`
     );
-   
+
     await uploadBytes(fileRef, file);
     const updatedPhotoURL = await getDownloadURL(fileRef);
 
     await updateProfile(currentUser, { photoURL: updatedPhotoURL });
-    await updateDoc(doc(db, "users", currentUser?.uid), { photoURL: updatedPhotoURL }).then(
-      () => {
-        refreshPage();
-      }
-    );
+    await updateDoc(doc(db, "users", currentUser?.uid), {
+      photoURL: updatedPhotoURL,
+    }).then(() => {
+      refreshPage();
+    });
   }
 
-  async function handlePhotoUpload(data: UserFormData) {
+  async function handlePhotoUpload() {
     await upload(photo, currentUser, isLoading);
 
     setIsLoading(false);
