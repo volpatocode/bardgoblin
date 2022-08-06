@@ -20,7 +20,7 @@ import {
 } from "firebase/auth";
 import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
 
 type UserContextProps = {
   children: ReactNode;
@@ -37,7 +37,7 @@ type UserContextType = {
   forgotPassword: (data: UserFormData) => void;
   errorFirebase: string;
   handlePhoto: (e: any) => void;
-  handlePhotoUpload: () => void;
+  handlePhotoUpload: (data: UserFormData) => void;
   photo: boolean;
   photoURL: string;
   currentUser: any;
@@ -59,6 +59,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
+  const [newPhotoURL, setNewPhotoURL] = useState(null);
 
   const router = useRouter();
 
@@ -141,26 +142,34 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   }
 
   // Profile picture
+
   useEffect(() => {
     if (currentUser?.photoURL) {
       setPhotoURL(currentUser?.photoURL);
     }
   }, [currentUser, currentUser?.photoURL]);
 
-
-  
-
   async function upload(file, currentUser, loading) {
-    const randomstring = new Date().getTime()
+    setIsLoading(true);
+    const randomstring = new Date().getTime();
     const fileRef = ref(
       storage,
       `user/profilepicture/${currentUser?.uid + randomstring + ".png"}`
     );
-    console.log(fileRef)
-    setIsLoading(true);
-    const snapshot = await uploadBytes(fileRef, file);
-    const photoURL = await getDownloadURL(fileRef);
-    await updateProfile(currentUser, { photoURL: photoURL });
+   
+    await uploadBytes(fileRef, file);
+    const updatedPhotoURL = await getDownloadURL(fileRef);
+
+    await updateProfile(currentUser, { photoURL: updatedPhotoURL });
+    await updateDoc(doc(db, "users", currentUser?.uid), { photoURL: updatedPhotoURL }).then(
+      () => {
+        refreshPage();
+      }
+    );
+  }
+
+  async function handlePhotoUpload(data: UserFormData) {
+    await upload(photo, currentUser, isLoading);
 
     setIsLoading(false);
   }
@@ -172,14 +181,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       setIsLoading(false);
     }
   }
-
-  async function handlePhotoUpload() {
-    await upload(photo, currentUser, isLoading).then(() => refreshPage());
-  }
-
-  // Profile picture 2
-
-
 
   return (
     <UserContext.Provider

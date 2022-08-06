@@ -16,6 +16,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { topicCreateValidationSchema } from "../utils/validations";
 import { FormValues } from "../types/user";
 import { UserContext } from "./UserContext";
+import { firestore } from "firebase-admin";
+import { getAdditionalUserInfo, getAuth } from "firebase/auth";
 
 type TopicContextProps = {
   children: ReactNode;
