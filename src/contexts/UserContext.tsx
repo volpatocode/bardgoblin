@@ -18,8 +18,9 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { auth, storage } from "../config/firebaseConfig";
+import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
 
 type UserContextProps = {
   children: ReactNode;
@@ -85,10 +86,15 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   // User Login/register functions
   async function createUser(data: UserFormData) {
     setIsLoading(true);
-    await createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((value) => {
+    const res = await createUserWithEmailAndPassword(
+      auth,
+      data.email,
+      data.password
+    );
+    await setDoc(doc(db, "users", res?.user?.uid), { ...data })
+      .then(() => {
         handleUserModal();
-        console.log("Cadastrado com sucesso!");
+        console.log(" Cadastrado com sucesso!");
         forceHome();
       })
       .catch((error) => setErrorFirebase(error.message))
@@ -139,17 +145,22 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     if (currentUser?.photoURL) {
       setPhotoURL(currentUser?.photoURL);
     }
-  }, [currentUser]);
+  }, [currentUser, currentUser?.photoURL]);
+
+
+  
 
   async function upload(file, currentUser, loading) {
+    const randomstring = new Date().getTime()
     const fileRef = ref(
       storage,
-      `user/profilepicture/${currentUser?.uid + ".png"}`
+      `user/profilepicture/${currentUser?.uid + randomstring + ".png"}`
     );
+    console.log(fileRef)
     setIsLoading(true);
     const snapshot = await uploadBytes(fileRef, file);
     const photoURL = await getDownloadURL(fileRef);
-    updateProfile(currentUser, { photoURL: photoURL });
+    await updateProfile(currentUser, { photoURL: photoURL });
 
     setIsLoading(false);
   }
@@ -165,6 +176,10 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   async function handlePhotoUpload() {
     await upload(photo, currentUser, isLoading).then(() => refreshPage());
   }
+
+  // Profile picture 2
+
+
 
   return (
     <UserContext.Provider
