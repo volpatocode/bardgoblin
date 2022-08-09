@@ -52,7 +52,6 @@ export default function index() {
   const { handleUserModal } = useContext(UserModalContext);
 
   const [isEditingUser, setIsEditingUser] = useState(false);
-  const [dataInput, setDataInput] = useState<EditUserData>();
   const [errorFirebase, setErrorFirebase] = useState("");
 
   const {
@@ -65,15 +64,8 @@ export default function index() {
 
   // Edit user
 
-  const handleDataInput = (e) => {
-    e.preventDefault();
-    const id = e.target.id;
-    const value = e.target.value;
-    setDataInput({ ...dataInput, [id]: value });
-  };
-
-  async function updateUserDisplayName() {
-    await updateProfile(auth?.currentUser, { displayName: dataInput?.username })
+  async function updateUserDisplayName(data: EditUserData) {
+    await updateProfile(auth?.currentUser, { displayName: data?.username })
       .then(() => {
         console.log("Trocou o username");
       })
@@ -83,8 +75,8 @@ export default function index() {
       });
   }
 
-  async function updateUserEmail() {
-    await updateEmail(auth?.currentUser, dataInput?.email)
+  async function updateUserEmail(data: EditUserData) {
+    await updateEmail(auth?.currentUser, data?.email)
       .then(() => {
         console.log("Trocou o email");
       })
@@ -94,8 +86,8 @@ export default function index() {
       });
   }
 
-  async function updateUserPassword() {
-    await updatePassword(auth?.currentUser, dataInput?.password)
+  async function updateUserPassword(data: EditUserData) {
+    await updatePassword(auth?.currentUser, data.password)
       .then(() => {
         console.log("Trocou a senha");
       })
@@ -105,20 +97,19 @@ export default function index() {
       });
   }
 
-  const handleEditUser = async () => {
-    try {
-      if (dataInput?.email && !errorFirebase) {
-        updateUserEmail();
-      }
-      if (dataInput?.password && !errorFirebase) {
-        updateUserPassword();
-      }
-      if (dataInput?.username && !errorFirebase) {
-        updateUserDisplayName();
-      }
-    } finally {
+  const handleEditUser = async (data: EditUserData) => {
+    if (currentUser?.displayName != data?.username) {
+      updateUserDisplayName(data);
       setIsEditingUser(false);
     }
+    if (currentUser?.email != data?.email) {
+      updateUserEmail(data);
+      setIsEditingUser(false);
+    }
+    // if (currentUser?.password != data?.password) {
+    //   updateUserPassword(data);
+    //   setIsEditingUser(false);
+    // }
   };
 
   return (
@@ -153,7 +144,6 @@ export default function index() {
           {isEditingUser ? (
             <EditDataValue
               {...register("email")}
-              onChange={handleDataInput}
               id="email"
               placeholder={currentUser?.email}
               type="email"
@@ -171,7 +161,6 @@ export default function index() {
           {isEditingUser ? (
             <EditDataValue
               {...register("password")}
-              onChange={handleDataInput}
               id="password"
               placeholder="******"
               type="password"
@@ -195,7 +184,6 @@ export default function index() {
           {isEditingUser ? (
             <EditDataValue
               {...register("username")}
-              onChange={handleDataInput}
               id="username"
               placeholder={currentUser?.displayName || "Not provided"}
               type="text"
