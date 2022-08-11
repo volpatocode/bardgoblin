@@ -43,6 +43,11 @@ export const ProfileContentForm = styled.form`
   }
 `;
 
+export const ProfileDataBox = styled(Box)`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const ProfileData = styled(Box)`
   display: flex;
   flex-direction: row;

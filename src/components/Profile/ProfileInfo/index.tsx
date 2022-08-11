@@ -26,6 +26,7 @@ import {
   ProfileImageBox,
   ProfileImage,
   ProfileContentForm,
+  ProfileDataBox,
   ProfileData,
   DataPlaceholder,
   DataValue,
@@ -139,6 +140,7 @@ export default function index() {
         )}
       </ProfileImageBox>
       <ProfileContentForm onSubmit={handleSubmit(handleEditUser)}>
+        <ProfileDataBox>
         <ProfileData>
           <DataPlaceholder>Email</DataPlaceholder>
           {isEditingUser ? (
@@ -156,6 +158,9 @@ export default function index() {
         {editUserErrors?.email && (
           <InputError error={editUserErrors?.email?.message} />
         )}
+        </ProfileDataBox>
+
+        <ProfileDataBox>
         <ProfileData>
           <DataPlaceholder>Password</DataPlaceholder>
           {isEditingUser ? (
@@ -172,6 +177,7 @@ export default function index() {
         {editUserErrors?.password && (
           <InputError error={editUserErrors?.password?.message} />
         )}
+        </ProfileDataBox>
         <ProfileData>
           <DataPlaceholder>UUID</DataPlaceholder>
           <DataValue background="none">
@@ -179,6 +185,7 @@ export default function index() {
             <HelpPopover />
           </DataValue>
         </ProfileData>
+        <ProfileDataBox>
         <ProfileData>
           <DataPlaceholder>Username</DataPlaceholder>
           {isEditingUser ? (
@@ -196,6 +203,8 @@ export default function index() {
         {editUserErrors?.username && (
           <InputError error={editUserErrors?.username?.message} />
         )}
+        </ProfileDataBox>
+
         <ProfileData>
           <DataPlaceholder>Email verification</DataPlaceholder>
           <DataValue background="none">

@@ -8,5 +8,4 @@ export const InputError = styled.p`
   line-height: 1.75;
   font-weight: 500;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  padding-left: 8px;
 `;
