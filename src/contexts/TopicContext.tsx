@@ -54,7 +54,7 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
   } = useForm<FormValues>({
     defaultValues: {
       topic: {
-        userUID: currentUser?.uid,
+        userUID: "",
         topictitle: "",
         labels: [],
         modules: [{ moduletitle: "", modulecontent: "" }],
@@ -74,7 +74,10 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
 
   const submitTopic = async (data: FormValues) => {
     setIsLoading(true);
-    await addDoc(collection(db, "topics"), { ...data })
+    await addDoc(collection(db, "topics"), {
+      userUID: currentUser?.uid,
+      ...data,
+    })
       .then(() => console.log("Cadastrado com sucesso!"))
       .catch((error) => {
         setTopicError(error.message);

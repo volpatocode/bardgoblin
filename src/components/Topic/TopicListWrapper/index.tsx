@@ -46,7 +46,7 @@ export default function index() {
     fetchTopicData();
   }, []);
 
-  return topicData.map((topic) => {
+  return topicData?.map((topic) => {
     return (
       <TopicListWrapper key={topic?.id}>
         <QueryTopic>
@@ -62,5 +62,6 @@ export default function index() {
         </QueryTopic>
       </TopicListWrapper>
     );
+        
   });
 }

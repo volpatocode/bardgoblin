@@ -2,19 +2,17 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { UserModalContext } from "../../../contexts/UserModalContext";
 
-import { auth, db } from "../../../config/firebaseConfig";
+import { auth } from "../../../config/firebaseConfig";
 import {
   updateProfile,
   updatePassword,
   updateEmail,
-  reauthenticateWithCredential,
-  EmailAuthProvider,
 } from "firebase/auth";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { editUserValidationSchema } from "../../../utils/validations";
-import { EditUserData, UserFormData } from "../../../types/user";
+import { EditUserData} from "../../../types/user";
 
 import EmailStatus from "../EmailStatus";
 import HelpPopover from "../../HelpPopover";
