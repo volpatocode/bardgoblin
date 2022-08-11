@@ -46,22 +46,23 @@ export default function index() {
     fetchTopicData();
   }, []);
 
-  return topicData?.map((topic) => {
-    return (
-      <TopicListWrapper key={topic?.id}>
-        <QueryTopic>
-          <LeftSideTopic>
-            <UserBadge />
-            <TopicContent>{topic?.topic?.topictitle}</TopicContent>
-          </LeftSideTopic>
-          <Labels>
-            {topic?.topic?.labels?.map((label, index) => {
-              return <Label key={index}>{label}</Label>;
-            })}
-          </Labels>
-        </QueryTopic>
-      </TopicListWrapper>
-    );
-        
-  });
+  return (
+    <>
+      {topicData?.map((topic) => (
+        <TopicListWrapper key={topic?.id}>
+          <QueryTopic>
+            <LeftSideTopic>
+              <UserBadge />
+              <TopicContent>{topic?.topic?.topictitle}</TopicContent>
+            </LeftSideTopic>
+            <Labels>
+              {topic?.topic?.labels?.map((label, index) => (
+                <Label key={index}>{label}</Label>
+              ))}
+            </Labels>
+          </QueryTopic>
+        </TopicListWrapper>
+      ))}
+    </>
+  );
 }
