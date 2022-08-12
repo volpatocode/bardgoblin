@@ -35,7 +35,7 @@ export default function index({ page }: navbarType) {
   const { isAuthorized, logOut } = useContext(UserContext);
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
-  const screenSm = useMediaQuery('(max-width:600px)');
+  const screenSm = useMediaQuery("(max-width:600px)");
 
   // prevent modal scrolling
   useEffect(() => {
@@ -53,12 +53,14 @@ export default function index({ page }: navbarType) {
       </NavLeftSide>
       <NavRightSide>
         <StyledStack>
-          <TextButton href="/section/builds">Builds</TextButton>
           <TextButton href="/section/sidequests">Side Quests</TextButton>
+          <TextButton href="/section/builds">Builds</TextButton>
           <TextButton>Tools</TextButton>
           <TextButton>About</TextButton>
           {isAuthorized && (
-            <ContainedButton href="/createtopic">Create Build / Quest</ContainedButton>
+            <ContainedButton href="/createtopic">
+              Create Build / Quest
+            </ContainedButton>
           )}
           <AvatarIcon />
         </StyledStack>
@@ -112,15 +114,17 @@ export default function index({ page }: navbarType) {
                     </ModalButton>
                   </>
                 )}
-
-                <ModalButton href="/section/builds">Builds</ModalButton>
                 <ModalButton href="/section/sidequests">
                   Side quests
                 </ModalButton>
+                <ModalButton href="/section/builds">Builds</ModalButton>
+
                 <ModalButton>Tools</ModalButton>
                 <ModalButton>About</ModalButton>
                 {isAuthorized && (
-                  <ModalButton href="/createtopic">Create Build / Quest</ModalButton>
+                  <ModalButton href="/createtopic">
+                    Create Build / Quest
+                  </ModalButton>
                 )}
                 {handleUserModal && <UserModal />}
               </MenuModal>

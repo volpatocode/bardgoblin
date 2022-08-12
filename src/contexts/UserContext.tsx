@@ -59,7 +59,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [photoURL, setPhotoURL] = useState(
     "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
   );
-  const [newPhotoURL, setNewPhotoURL] = useState(null);
 
   const router = useRouter();
 
@@ -89,10 +88,14 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     const res = await createUserWithEmailAndPassword(
       auth,
-      data.email,
-      data.password
+      data?.email,
+      data?.password
     );
-    await setDoc(doc(db, "users", res?.user?.uid), { ...data })
+    await setDoc(doc(db, "users", res?.user?.uid), {
+      email: data?.email,
+      password: data?.password,
+      uid: res?.user?.uid,
+    })
       .then(() => {
         handleUserModal();
         console.log(" Cadastrado com sucesso!");
