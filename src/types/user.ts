@@ -1,15 +1,9 @@
 export type UserFormData = {
-  name?: string;
+  username?: string;
   email?: string;
   password?: string;
   confirmPassword?: string;
   photoURL?: string;
-};
-
-export type EditUserData = {
-  username?: string;
-  password?: string;
-  email?: string;
 };
 
 export type FormValues = {
