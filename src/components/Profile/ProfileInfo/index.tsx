@@ -1,18 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { UserModalContext } from "../../../contexts/UserModalContext";
 
-import { auth } from "../../../config/firebaseConfig";
-import {
-  updateProfile,
-  updatePassword,
-  updateEmail,
-} from "firebase/auth";
+import { auth, db } from "../../../config/firebaseConfig";
+import { updateProfile, updatePassword, updateEmail } from "firebase/auth";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { editUserValidationSchema } from "../../../utils/validations";
-import { EditUserData} from "../../../types/user";
+import { UserFormData } from "../../../types/user";
 
 import EmailStatus from "../EmailStatus";
 import HelpPopover from "../../HelpPopover";
@@ -33,6 +29,7 @@ import {
   InputImage,
   EditDataValue,
 } from "./styles";
+import { collection, doc, getDoc, getDocs, QuerySnapshot } from "firebase/firestore";
 
 export type profileInfoType = {
   background?: "none";
@@ -52,6 +49,7 @@ export default function index() {
 
   const [isEditingUser, setIsEditingUser] = useState(false);
   const [errorFirebase, setErrorFirebase] = useState("");
+  const [userData, setUserData] = useState<UserFormData>({});
 
   const {
     register,
@@ -61,9 +59,28 @@ export default function index() {
     resolver: yupResolver(editUserValidationSchema),
   });
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const querySnapshot = await getDoc(doc(db, "users", currentUser?.uid));
+        querySnapshot &&
+          setUserData({...querySnapshot?.data() });
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  useEffect(() => {
+    console.log(userData.password)
+  }, [userData])
+
+
+
   // Edit user
 
-  async function updateUserDisplayName(data: EditUserData) {
+  async function updateUserDisplayName(data: UserFormData) {
     await updateProfile(auth?.currentUser, { displayName: data?.username })
       .then(() => {
         console.log("Trocou o username");
@@ -74,7 +91,7 @@ export default function index() {
       });
   }
 
-  async function updateUserEmail(data: EditUserData) {
+  async function updateUserEmail(data: UserFormData) {
     await updateEmail(auth?.currentUser, data?.email)
       .then(() => {
         console.log("Trocou o email");
@@ -85,8 +102,8 @@ export default function index() {
       });
   }
 
-  async function updateUserPassword(data: EditUserData) {
-    await updatePassword(auth?.currentUser, data.password)
+  async function updateUserPassword(data: UserFormData) {
+    await updatePassword(auth?.currentUser, data?.password)
       .then(() => {
         console.log("Trocou a senha");
       })
@@ -96,7 +113,7 @@ export default function index() {
       });
   }
 
-  const handleEditUser = async (data: EditUserData) => {
+  const handleEditUser = async (data: UserFormData) => {
     if (currentUser?.displayName != data?.username) {
       updateUserDisplayName(data);
       setIsEditingUser(false);
@@ -105,10 +122,10 @@ export default function index() {
       updateUserEmail(data);
       setIsEditingUser(false);
     }
-    // if (currentUser?.password != data?.password) {
-    //   updateUserPassword(data);
-    //   setIsEditingUser(false);
-    // }
+    if (userData?.password != data?.password) {
+      updateUserPassword(data);
+      setIsEditingUser(false);
+    }
   };
 
   return (
@@ -139,42 +156,42 @@ export default function index() {
       </ProfileImageBox>
       <ProfileContentForm onSubmit={handleSubmit(handleEditUser)}>
         <ProfileDataBox>
-        <ProfileData>
-          <DataPlaceholder>Email</DataPlaceholder>
-          {isEditingUser ? (
-            <EditDataValue
-              {...register("email")}
-              id="email"
-              placeholder={currentUser?.email}
-              type="email"
-              defaultValue={currentUser?.email}
-            />
-          ) : (
-            <DataValue>{currentUser?.email}</DataValue>
+          <ProfileData>
+            <DataPlaceholder>Email</DataPlaceholder>
+            {isEditingUser ? (
+              <EditDataValue
+                {...register("email")}
+                id="email"
+                placeholder={currentUser?.email}
+                type="email"
+                defaultValue={currentUser?.email}
+              />
+            ) : (
+              <DataValue>{currentUser?.email}</DataValue>
+            )}
+          </ProfileData>
+          {editUserErrors?.email && (
+            <InputError error={editUserErrors?.email?.message} />
           )}
-        </ProfileData>
-        {editUserErrors?.email && (
-          <InputError error={editUserErrors?.email?.message} />
-        )}
         </ProfileDataBox>
 
         <ProfileDataBox>
-        <ProfileData>
-          <DataPlaceholder>Password</DataPlaceholder>
-          {isEditingUser ? (
-            <EditDataValue
-              {...register("password")}
-              id="password"
-              placeholder="******"
-              type="password"
-            />
-          ) : (
-            <DataValue>******</DataValue>
+          <ProfileData>
+            <DataPlaceholder>Password</DataPlaceholder>
+            {isEditingUser ? (
+              <EditDataValue
+                {...register("password")}
+                id="password"
+                placeholder="******"
+                type="password"
+              />
+            ) : (
+              <DataValue>******</DataValue>
+            )}
+          </ProfileData>
+          {editUserErrors?.password && (
+            <InputError error={editUserErrors?.password?.message} />
           )}
-        </ProfileData>
-        {editUserErrors?.password && (
-          <InputError error={editUserErrors?.password?.message} />
-        )}
         </ProfileDataBox>
         <ProfileData>
           <DataPlaceholder>UUID</DataPlaceholder>
@@ -184,23 +201,25 @@ export default function index() {
           </DataValue>
         </ProfileData>
         <ProfileDataBox>
-        <ProfileData>
-          <DataPlaceholder>Username</DataPlaceholder>
-          {isEditingUser ? (
-            <EditDataValue
-              {...register("username")}
-              id="username"
-              placeholder={currentUser?.displayName || "Not provided"}
-              type="text"
-              defaultValue={currentUser?.displayName || "Not provided"}
-            />
-          ) : (
-            <DataValue>{currentUser?.displayName || "Not provided"}</DataValue>
+          <ProfileData>
+            <DataPlaceholder>Username</DataPlaceholder>
+            {isEditingUser ? (
+              <EditDataValue
+                {...register("username")}
+                id="username"
+                placeholder={currentUser?.displayName || "Not provided"}
+                type="text"
+                defaultValue={currentUser?.displayName || "Not provided"}
+              />
+            ) : (
+              <DataValue>
+                {currentUser?.displayName || "Not provided"}
+              </DataValue>
+            )}
+          </ProfileData>
+          {editUserErrors?.username && (
+            <InputError error={editUserErrors?.username?.message} />
           )}
-        </ProfileData>
-        {editUserErrors?.username && (
-          <InputError error={editUserErrors?.username?.message} />
-        )}
         </ProfileDataBox>
 
         <ProfileData>
