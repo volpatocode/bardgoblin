@@ -29,7 +29,8 @@ import {
   InputImage,
   EditDataValue,
 } from "./styles";
-import { collection, doc, getDoc, getDocs, QuerySnapshot } from "firebase/firestore";
+import { setDoc, doc, getDoc, updateDoc } from "firebase/firestore";
+import { Preview } from "@mui/icons-material";
 
 export type profileInfoType = {
   background?: "none";
@@ -63,8 +64,7 @@ export default function index() {
     const fetchUserData = async () => {
       try {
         const querySnapshot = await getDoc(doc(db, "users", currentUser?.uid));
-        querySnapshot &&
-          setUserData({...querySnapshot?.data() });
+        querySnapshot && setUserData({ ...querySnapshot?.data() });
       } catch (e) {
         console.log(e.message);
       }
@@ -73,15 +73,15 @@ export default function index() {
   }, []);
 
   useEffect(() => {
-    console.log(userData.password)
-  }, [userData])
-
-
+    console.log(userData.password);
+  }, [userData]);
 
   // Edit user
 
   async function updateUserDisplayName(data: UserFormData) {
-    await updateProfile(auth?.currentUser, { displayName: data?.username })
+    await updateProfile(auth?.currentUser, {
+      displayName: data?.username,
+    })
       .then(() => {
         console.log("Trocou o username");
       })
@@ -89,6 +89,14 @@ export default function index() {
         setErrorFirebase(error.message);
         handleUserModal();
       });
+    await updateDoc(doc(db, "users", auth?.currentUser?.uid), {
+      displayName: data?.username,
+    })
+      .then(() => {
+        console.log(" Trocou o username fake");
+      })
+      .catch((error) => setErrorFirebase(error.message))
+      .finally(() => {});
   }
 
   async function updateUserEmail(data: UserFormData) {
@@ -100,17 +108,14 @@ export default function index() {
         setErrorFirebase(error.message);
         handleUserModal();
       });
-  }
-
-  async function updateUserPassword(data: UserFormData) {
-    await updatePassword(auth?.currentUser, data?.password)
+    await updateDoc(doc(db, "users", auth?.currentUser?.uid), {
+      email: data?.email,
+    })
       .then(() => {
-        console.log("Trocou a senha");
+        console.log(" Trocou o email fake");
       })
-      .catch((error) => {
-        setErrorFirebase(error.message);
-        handleUserModal();
-      });
+      .catch((error) => setErrorFirebase(error.message))
+      .finally(() => {});
   }
 
   const handleEditUser = async (data: UserFormData) => {
@@ -120,10 +125,6 @@ export default function index() {
     }
     if (currentUser?.email != data?.email) {
       updateUserEmail(data);
-      setIsEditingUser(false);
-    }
-    if (userData?.password != data?.password) {
-      updateUserPassword(data);
       setIsEditingUser(false);
     }
   };
@@ -172,25 +173,6 @@ export default function index() {
           </ProfileData>
           {editUserErrors?.email && (
             <InputError error={editUserErrors?.email?.message} />
-          )}
-        </ProfileDataBox>
-
-        <ProfileDataBox>
-          <ProfileData>
-            <DataPlaceholder>Password</DataPlaceholder>
-            {isEditingUser ? (
-              <EditDataValue
-                {...register("password")}
-                id="password"
-                placeholder="******"
-                type="password"
-              />
-            ) : (
-              <DataValue>******</DataValue>
-            )}
-          </ProfileData>
-          {editUserErrors?.password && (
-            <InputError error={editUserErrors?.password?.message} />
           )}
         </ProfileDataBox>
         <ProfileData>
