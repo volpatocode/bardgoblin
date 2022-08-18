@@ -21,6 +21,7 @@ import {
 import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import { useMediaQuery } from "@mui/material";
 
 type UserContextProps = {
   children: ReactNode;
@@ -43,6 +44,8 @@ type UserContextType = {
   currentUser: any;
   forceHome: () => void;
   refreshPage: () => void;
+  screenSm: boolean;
+  screenMd: boolean;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -50,7 +53,7 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-  const { handleUserModal } = useContext(UserModalContext);
+  const { handleUserModal, handleMobileUserModal } = useContext(UserModalContext);
   const currentUser = auth?.currentUser;
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -70,6 +73,9 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   function refreshPage() {
     router.reload();
   }
+
+  const screenSm = useMediaQuery("(max-width:600px)");
+  const screenMd = useMediaQuery("(max-width:1000px)");
 
   // User listener
 
@@ -97,7 +103,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       uid: res?.user?.uid,
     })
       .then(() => {
-        handleUserModal();
+        screenMd ? handleMobileUserModal() : handleUserModal();
         console.log(" Cadastrado com sucesso!");
         forceHome();
       })
@@ -111,7 +117,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await signInWithEmailAndPassword(auth, data.email, data.password)
       .then((value) => {
-        handleUserModal();
+        screenMd ? handleMobileUserModal() : handleUserModal();
         console.log("Logado com sucesso!");
         forceHome();
       })
@@ -208,6 +214,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         photoURL,
         forceHome,
         refreshPage,
+        screenMd,
+        screenSm
       }}
     >
       {children}

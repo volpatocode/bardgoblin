@@ -5,13 +5,16 @@ type UserModalContextProps = {
 };
 
 type UserModalContextType = {
-  isOpen: boolean;
-  setIsOpen: (newState: boolean) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (newState: boolean) => void;
+  isMenuMobileOpen: boolean;
+  setIsMenuMobileOpen: (newState: boolean) => void;
   isOnLogin: boolean;
   setIsOnLogin: (newState: boolean) => void;
   isOnRegister: boolean;
   setIsOnRegister: (newState: boolean) => void;
   handleUserModal: () => void;
+  handleMobileUserModal: () => void;
   handleUserModalLogin: () => void;
   handleUserModalRegister: () => void;
   toggleLogin: () => void;
@@ -25,18 +28,21 @@ export const UserModalContext = createContext<UserModalContextType>(
 export const UserModalContextProvider = ({
   children,
 }: UserModalContextProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuMobileOpen, setIsMenuMobileOpen] = useState(false);
   const [isOnRegister, setIsOnRegister] = useState(false);
   const [isOnLogin, setIsOnLogin] = useState(true);
 
-  const handleUserModal = () => setIsOpen(!isOpen);
+  const handleUserModal = () => setIsMenuOpen(!isMenuOpen);
+
+  const handleMobileUserModal = () => setIsMenuMobileOpen(!isMenuMobileOpen);
 
   const handleUserModalLogin = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
     toggleLogin();
   };
   const handleUserModalRegister = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
     toggleRegister();
   };
 
@@ -53,9 +59,12 @@ export const UserModalContextProvider = ({
   return (
     <UserModalContext.Provider
       value={{
-        isOpen,
-        setIsOpen,
+        isMenuOpen,
+        setIsMenuOpen,
+        isMenuMobileOpen,
+        setIsMenuMobileOpen,
         handleUserModal,
+        handleMobileUserModal,
         handleUserModalLogin,
         handleUserModalRegister,
         isOnLogin,
