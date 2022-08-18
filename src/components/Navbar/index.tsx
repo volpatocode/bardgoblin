@@ -31,20 +31,18 @@ export type navbarType = {
 };
 
 export default function index({ page }: navbarType) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isAuthorized, logOut } = useContext(UserContext);
-  const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
+  const { isAuthorized, logOut, screenSm } = useContext(UserContext);
+  const { handleUserModal, handleUserModalLogin, handleUserModalRegister, isMenuMobileOpen, handleMobileUserModal } =
     useContext(UserModalContext);
-  const screenSm = useMediaQuery("(max-width:600px)");
 
   // prevent modal scrolling
   useEffect(() => {
-    if (isMenuOpen) {
+    if (isMenuMobileOpen) {
       document.body.style.overflowY = "hidden";
     } else {
       document.body.style.overflowY = "initial";
     }
-  }, [isMenuOpen]);
+  }, [isMenuMobileOpen]);
 
   return (
     <Navbar page={page}>
@@ -69,19 +67,19 @@ export default function index({ page }: navbarType) {
           size="large"
           edge="start"
           aria-label="open-drawer"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={handleMobileUserModal}
         >
           <MenuIcon />
         </OpenIconButton>
-        {isMenuOpen && (
-          <Fade in={isMenuOpen}>
+        {isMenuMobileOpen && (
+          <Fade in={isMenuMobileOpen}>
             <BoxModal>
               <HeaderModal>
                 <CloseIconButton
                   size="medium"
                   edge="start"
                   aria-label="open-drawer"
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  onClick={handleMobileUserModal}
                 >
                   <CloseMenuIcon fontSize="large" />
                 </CloseIconButton>
@@ -90,7 +88,7 @@ export default function index({ page }: navbarType) {
                 {isAuthorized ? (
                   <>
                     <ModalButton
-                      onClick={() => setIsMenuOpen(!isMenuOpen)}
+                      onClick={handleMobileUserModal}
                       href="/profile/account"
                     >
                       My account
@@ -98,7 +96,7 @@ export default function index({ page }: navbarType) {
                     <ModalButton
                       onClick={() => {
                         logOut();
-                        setIsMenuOpen(!isMenuOpen);
+                        handleMobileUserModal() ;
                       }}
                     >
                       Logout

@@ -14,7 +14,7 @@ export const Navbar = styled(Box)<navbarType>`
   height: 60px;
   padding: 0.3rem 2.5rem 0rem 2.5rem;
 
-  @media (max-width: 960px) {
+  @media (max-width: 1000px) {
     transition: 0.2s ease-in-out;
     padding: 0.3rem 1.5rem 0rem 1.5rem;
   }
@@ -49,7 +49,7 @@ export const StyledStack = styled(Box)`
   justify-content: flex-end;
   align-items: center;
   gap: 0.75rem;
-  @media (max-width: 960px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -78,7 +78,7 @@ export const ContainedButton = styled(Button)`
 export const OpenIconButton = styled(IconButtona)`
   color: #fff;
   display: none;
-  @media (max-width: 960px) {
+  @media (max-width: 1000px) {
     display: block;
   }
   padding-right: 0;
@@ -113,12 +113,12 @@ export const BoxModal = styled(Box)`
   background-color: #141414;
   padding: 0.3rem 2.5rem 0rem 2.5rem;
 
-  @media (max-width: 960px) {
+  @media (max-width: 1000px) {
     transition: 0.2s ease-in-out;
     padding: 0.3rem 2.5rem 0rem 2.5rem;
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 600px) {
     transition: 0.2s ease-in-out;
     padding: 0.3rem 1.5rem 0rem 1.5rem;
   }
@@ -142,7 +142,7 @@ export const MenuModal = styled(Box)`
   gap: 0.8rem;
   margin-bottom: 3rem;
   width: 50%;
-  @media (max-width: 960px) {
+  @media (max-width: 1000px) {
     width: 60%;
   }
   @media (max-width: 760px) {

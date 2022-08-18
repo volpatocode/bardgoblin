@@ -39,7 +39,7 @@ import {
 
 export default function index() {
   const {
-    isOpen,
+    isMenuOpen,
     handleUserModal,
     isOnLogin,
     isOnRegister,
@@ -69,7 +69,7 @@ export default function index() {
 
   return (
     <Modal
-      open={isOpen}
+      open={isMenuOpen}
       onClose={handleUserModal}
       closeAfterTransition
       BackdropComponent={Backdrop}
@@ -77,7 +77,7 @@ export default function index() {
         timeout: 500,
       }}
     >
-      <Fade in={isOpen}>
+      <Fade in={isMenuOpen}>
         <BoxModal>
           {screenSm && <BoxModalHeader>
             <CloseIconButton
