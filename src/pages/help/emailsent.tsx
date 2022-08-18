@@ -5,7 +5,7 @@ import { ResetPasswordImageBox } from "./resetpasswordstyles";
 
 import {
   EmailSent,
-  EmailSentBox,
+  EmailSentBoxWrapper,
   BoxLogo,
   BoxContent,
   BoxInfo,
@@ -21,7 +21,7 @@ import {
 export default function index() {
   return (
     <EmailSent>
-      <EmailSentBox>
+      <EmailSentBoxWrapper>
         <BoxLogo>
           <Logo variant="horizontal" />
         </BoxLogo>
@@ -46,7 +46,7 @@ export default function index() {
             </InfoAnchor>
           </FooterInfo>
         </BoxFooter>
-      </EmailSentBox>
+      </EmailSentBoxWrapper>
       <ResetPasswordImageBox />
     </EmailSent>
   );

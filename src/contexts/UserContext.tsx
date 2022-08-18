@@ -137,7 +137,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await sendPasswordResetEmail(auth, data.email)
       .then((value) => {
-        document.location.href = "/help/emailsent";
+        router.push("/help/emailsent");
         console.log("Email enviado com sucesso!");
       })
       .catch((error) => setErrorFirebase(error.message))

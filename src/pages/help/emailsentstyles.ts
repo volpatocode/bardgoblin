@@ -7,7 +7,7 @@ export const EmailSent = styled(Box)`
   display: flex;
 `;
 
-export const EmailSentBox = styled(Box)`
+export const EmailSentBoxWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,11 +17,26 @@ export const EmailSentBox = styled(Box)`
   width: 40vw;
   height: 100vh;
   padding: 10% 12% 10% 10%;
+  @media (max-width: 1600px) {
+    padding: 8% 10% 8% 8%;
+  }
+  @media (max-width: 1300px) {
+    padding: 6% 8% 6% 6%;
+  }
+  @media (max-width: 1000px) {
+    align-items: center;
+    text-align: center;
+    width: 100vw;
+  }
+
 `;
 
 export const BoxLogo = styled(Box)`
   display: flex;
   width: 100%;
+  @media (max-width: 1000px) {
+    justify-content: center;
+  }
 `;
 
 export const BoxContent = styled(Box)`
@@ -35,6 +50,7 @@ export const BoxInfo = styled(Box)`
   align-items: flex-start;
   flex-direction: column;
   gap: 1rem;
+
 `;
 
 export const InfoSubtitle = styled.p`
@@ -43,21 +59,27 @@ export const InfoSubtitle = styled.p`
   letter-spacing: 0.2px;
   text-align: left;
   font-weight: 400;
+  @media (max-width: 1000px) {
+    text-align: center;
+  }
 `;
 
 export const BoxButtons = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media (max-width: 1000px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const EmailButton = styled(Button)`
-  color: #000;
+  color: rgba(0, 0, 0, 1);
   text-transform: none;
-  font-weight: bold;
-  background: #ff9900;
+  background: #dd3e0e;
   :hover {
-    background: #ff9900;
+    background: #dd3e0e;
   }
   padding: 6px 16px;
   width: 140px;
@@ -83,12 +105,14 @@ export const FooterInfo = styled.p`
   letter-spacing: 0.2px;
   text-align: left;
   font-weight: 400;
+  @media (max-width: 1000px) {
+    text-align: center;
+  }
 `;
 
 export const InfoAnchor = styled.a`
   color: #dd3e0e;
   text-decoration: none;
-  font-size: rem;
   width: fit-content;
   cursor: pointer;
   :hover {

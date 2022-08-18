@@ -10,7 +10,7 @@ import { StyledCircularProgress } from "../../components/UserModal/styles";
 import InputError from "../../components/InputError";
 
 import {
-  ResetPasswordWrapper,
+  ResetPassword,
   ResetPasswordBoxWrapper,
   InfoButton,
   InputBox,
@@ -32,7 +32,7 @@ export default function index() {
 
   return (
     <form onSubmit={handleSubmit(resetPassword)}>
-      <ResetPasswordWrapper>
+      <ResetPassword>
         <ResetPasswordBoxWrapper>
           <BoxLogo>
             <Logo variant="horizontal" />
@@ -58,7 +58,7 @@ export default function index() {
           </FinishButton>
         </ResetPasswordBoxWrapper>
         <ResetPasswordImageBox />
-      </ResetPasswordWrapper>
+      </ResetPassword>
     </form>
   );
 }

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 
-export const ResetPasswordWrapper = styled(Box)`
+export const ResetPassword = styled(Box)`
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
