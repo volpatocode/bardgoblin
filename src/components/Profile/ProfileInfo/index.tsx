@@ -29,8 +29,7 @@ import {
   InputImage,
   EditDataValue,
 } from "./styles";
-import { setDoc, doc, getDoc, updateDoc } from "firebase/firestore";
-import { Preview } from "@mui/icons-material";
+import {doc, getDoc, updateDoc } from "firebase/firestore";
 
 export type profileInfoType = {
   background?: "none";
@@ -50,7 +49,6 @@ export default function index() {
 
   const [isEditingUser, setIsEditingUser] = useState(false);
   const [errorFirebase, setErrorFirebase] = useState("");
-  const [userData, setUserData] = useState<UserFormData>({});
 
   const {
     register,
@@ -60,21 +58,18 @@ export default function index() {
     resolver: yupResolver(editUserValidationSchema),
   });
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const querySnapshot = await getDoc(doc(db, "users", currentUser?.uid));
-        querySnapshot && setUserData({ ...querySnapshot?.data() });
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    fetchUserData();
-  }, []);
-
-  useEffect(() => {
-    console.log(userData.password);
-  }, [userData]);
+  // função pra pegar os dados - resolve o problema do topico
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       const querySnapshot = await getDoc(doc(db, "users", currentUser?.uid));
+  //       querySnapshot && setUserData({ ...querySnapshot?.data() });
+  //     } catch (e) {
+  //       console.log(e.message);
+  //     }
+  //   };
+  //   fetchUserData();
+  // }, []);
 
   // Edit user
 

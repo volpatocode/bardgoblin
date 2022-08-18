@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 
-export const ForgotPasswordWrapper = styled(Box)`
+export const ResetPasswordWrapper = styled(Box)`
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
@@ -10,7 +10,7 @@ export const ForgotPasswordWrapper = styled(Box)`
   align-items: center;
 `;
 
-export const ForgotPasswordBoxWrapper = styled(Box)`
+export const ResetPasswordBoxWrapper = styled(Box)`
   width: 40vw;
   height: 100vh;
   background: #141414;
@@ -24,14 +24,14 @@ export const ForgotPasswordBoxWrapper = styled(Box)`
   }
 `;
 
-export const ForgotPasswordBoxContent = styled(Box)`
+export const ResetPasswordBoxContent = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: left;
 `;
 
-export const ForgotPasswordImageBox = styled(Box)`
+export const ResetPasswordImageBox = styled(Box)`
   width: 60vw;
   height: 100vh;
   background: url("/backgroundcampfiremiddle.png") no-repeat center center /

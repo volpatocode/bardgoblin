@@ -1,7 +1,7 @@
 import React from "react";
 
 import Logo from "../../components/Logo";
-import { ForgotPasswordImageBox } from "./forgotPasswordStyles";
+import { ResetPasswordImageBox } from "./resetpasswordstyles";
 
 import {
   EmailSent,
@@ -41,13 +41,13 @@ export default function index() {
         <BoxFooter>
           <FooterInfo>
             Did not receive the email? Check your spam filter, or{" "}
-            <InfoAnchor href="/help/forgotpassword">
+            <InfoAnchor href="/help/resetpassword">
               try another email adress
             </InfoAnchor>
           </FooterInfo>
         </BoxFooter>
       </EmailSentBox>
-      <ForgotPasswordImageBox />
+      <ResetPasswordImageBox />
     </EmailSent>
   );
 }

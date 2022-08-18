@@ -1,7 +1,15 @@
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { db } from "../../../config/firebaseConfig";
 import { UserContext } from "../../../contexts/UserContext";
+import { topicData, topicFullType, userData } from "../../../types/user";
 import UserBadge from "../../UserBadge";
 
 import {
@@ -13,31 +21,36 @@ import {
   Label,
 } from "./styles";
 
-type topicData = {
-  id: string;
-  userUID: string;
-  topic: {
-    topictitle: string;
-    modules: [moduletitle: string, modulecontent: string];
-    labels: [];
-  };
-}[];
-
 export default function index() {
-  const [topicData, setTopicData] = useState<topicData>();
+  const [topicData, setTopicData] = useState([] as topicData);
 
-  useEffect(() => {
-    console.log(topicData);
-  }, [topicData]);
+  // fetch users
+  // useEffect(() => {
+  //   const fetchTopicData = async () => {
+  //     let usersList = [];
+  //     try {
+  //       const queryUsersData = await getDocs(collection(db, "users"));
+  //       queryUsersData.forEach((doc) => {
+  //         usersList.push({ ...doc.data() });
+  //       });
+  //       setUsersData(usersList);
+  //     } catch (e) {
+  //       console.log(e.message);
+  //     }
+  //   };
+  //   fetchTopicData();
+  // }, []);
 
+  // fetch topics
   useEffect(() => {
     const fetchTopicData = async () => {
       let topicList = [];
       try {
-        const querySnapshot = await getDocs(collection(db, "topics"));
-        querySnapshot.forEach((doc) => {
+        const queryTopicData = await getDocs(collection(db, "topics"));
+        queryTopicData.forEach(async (doc) => {
           topicList.push({ id: doc.id, ...doc.data() });
         });
+
         setTopicData(topicList);
       } catch (e) {
         console.log(e.message);
@@ -49,7 +62,7 @@ export default function index() {
   return (
     <>
       {topicData?.map((topic) => (
-        <TopicListWrapper key={topic?.id}>
+        <TopicListWrapper key={topic?.uid}>
           <QueryTopic>
             <LeftSideTopic>
               <UserBadge />

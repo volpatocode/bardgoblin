@@ -147,8 +147,8 @@ export default function index() {
                     </BoxPassword>
                   </BoxInfo>
                   {errorFirebase && <InputError error={errorFirebase} />}
-                  <Link href="/help/forgotpassword">
-                    <ButtonInfo>Forgot password?</ButtonInfo>
+                  <Link href="/help/resetpassword">
+                    <ButtonInfo>Reset your password</ButtonInfo>
                   </Link>
                   <FinishButton
                     type="submit"

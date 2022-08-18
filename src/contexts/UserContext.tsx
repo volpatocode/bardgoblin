@@ -34,7 +34,7 @@ type UserContextType = {
   createUser: (data: UserFormData) => void;
   loginUser: (data: UserFormData) => void;
   logOut: () => void;
-  forgotPassword: (data: UserFormData) => void;
+  resetPassword: (data: UserFormData) => void;
   errorFirebase: string;
   handlePhoto: (e: any) => void;
   handlePhotoUpload: () => void;
@@ -133,7 +133,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       });
   }
 
-  async function forgotPassword(data: UserFormData) {
+  async function resetPassword(data: UserFormData) {
     setIsLoading(true);
     await sendPasswordResetEmail(auth, data.email)
       .then((value) => {
@@ -199,7 +199,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         createUser,
         loginUser,
         logOut,
-        forgotPassword,
+        resetPassword,
         errorFirebase,
         handlePhoto,
         handlePhotoUpload,

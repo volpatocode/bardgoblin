@@ -3,37 +3,37 @@ import { UserContext } from "../../contexts/UserContext";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { forgotPasswordValidationSchema } from "../../utils/validations";
+import { resetPasswordValidationSchema } from "../../utils/validations";
 
 import Logo from "../../components/Logo";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
 import InputError from "../../components/InputError";
 
 import {
-  ForgotPasswordWrapper,
-  ForgotPasswordBoxWrapper,
+  ResetPasswordWrapper,
+  ResetPasswordBoxWrapper,
   InfoButton,
   InputBox,
   InputInfo,
   FinishButton,
-  ForgotPasswordImageBox,
+  ResetPasswordImageBox,
   BoxLogo,
-} from "./forgotPasswordStyles";
+} from "./resetpasswordstyles";
 
 export default function index() {
-  const { forgotPassword, isLoading, errorFirebase } = useContext(UserContext);
+  const { resetPassword, isLoading, errorFirebase } = useContext(UserContext);
   const {
     register,
     handleSubmit,
-    formState: { errors: forgotPasswordErrors },
+    formState: { errors: resetPasswordErrors },
   } = useForm({
-    resolver: yupResolver(forgotPasswordValidationSchema),
+    resolver: yupResolver(resetPasswordValidationSchema),
   });
 
   return (
-    <form onSubmit={handleSubmit(forgotPassword)}>
-      <ForgotPasswordWrapper>
-        <ForgotPasswordBoxWrapper>
+    <form onSubmit={handleSubmit(resetPassword)}>
+      <ResetPasswordWrapper>
+        <ResetPasswordBoxWrapper>
           <BoxLogo>
             <Logo variant="horizontal" />
           </BoxLogo>
@@ -45,20 +45,20 @@ export default function index() {
               type="email"
             />
           </InputBox>
-          {forgotPasswordErrors?.email && (
-            <InputError error={forgotPasswordErrors?.email?.message} />
+          {resetPasswordErrors?.email && (
+            <InputError error={resetPasswordErrors?.email?.message} />
           )}
           {errorFirebase && <InputError error={errorFirebase} />}
           <InfoButton href="/">Back to home</InfoButton>
           <FinishButton
             disabled={isLoading}
-            onClick={handleSubmit(forgotPassword)}
+            onClick={handleSubmit(resetPassword)}
           >
             {isLoading ? <StyledCircularProgress size="25px" /> : "Send email"}
           </FinishButton>
-        </ForgotPasswordBoxWrapper>
-        <ForgotPasswordImageBox />
-      </ForgotPasswordWrapper>
+        </ResetPasswordBoxWrapper>
+        <ResetPasswordImageBox />
+      </ResetPasswordWrapper>
     </form>
   );
 }

@@ -27,7 +27,7 @@ import {
 } from "./styles";
 
 export type navbarType = {
-  page: "home" | "section" | "topic" | "forgotpassword";
+  page: "home" | "section" | "topic" | "resetpassword";
 };
 
 export default function index({ page }: navbarType) {

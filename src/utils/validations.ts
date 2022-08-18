@@ -22,7 +22,7 @@ export const loginValidationSchema = yup.object({
     .min(6, "Minimum of 6 characters"),
 });
 
-export const forgotPasswordValidationSchema = yup.object({
+export const resetPasswordValidationSchema = yup.object({
   email: yup.string().email("Invalid Email").required("Email is required"),
 });
 
