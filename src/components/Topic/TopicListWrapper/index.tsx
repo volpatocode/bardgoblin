@@ -23,23 +23,24 @@ import {
 
 export default function index() {
   const [topicData, setTopicData] = useState([] as topicData);
+  const [usersData, setUsersData] = useState([]);
 
   // fetch users
-  // useEffect(() => {
-  //   const fetchTopicData = async () => {
-  //     let usersList = [];
-  //     try {
-  //       const queryUsersData = await getDocs(collection(db, "users"));
-  //       queryUsersData.forEach((doc) => {
-  //         usersList.push({ ...doc.data() });
-  //       });
-  //       setUsersData(usersList);
-  //     } catch (e) {
-  //       console.log(e.message);
-  //     }
-  //   };
-  //   fetchTopicData();
-  // }, []);
+  useEffect(() => {
+    const fetchUserData = async () => {
+      let usersList = [];
+      try {
+        const queryUsersData = await getDocs(collection(db, "users"));
+        queryUsersData.forEach((doc) => {
+          usersList.push({ ...doc.data() });
+        });
+        setUsersData(usersList);
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+    fetchUserData();
+  }, []);
 
   // fetch topics
   useEffect(() => {
@@ -61,21 +62,33 @@ export default function index() {
 
   return (
     <>
-      {topicData?.map((topic) => (
-        <TopicListWrapper key={topic?.uid}>
-          <QueryTopic>
-            <LeftSideTopic>
-              <UserBadge />
-              <TopicContent>{topic?.topic?.topictitle}</TopicContent>
-            </LeftSideTopic>
-            <Labels>
-              {topic?.topic?.labels?.map((label, index) => (
-                <Label key={index}>{label}</Label>
-              ))}
-            </Labels>
-          </QueryTopic>
-        </TopicListWrapper>
-      ))}
+      {topicData?.map((topic) => {
+        return (
+          <TopicListWrapper key={topic?.uid}>
+            <QueryTopic>
+              <LeftSideTopic>
+                {usersData?.map((user) => {
+                  if (user?.uid == topic?.userUID) {
+                    return (
+                      <UserBadge
+                        displayName={user?.displayName}
+                        photoURL={user?.photoURL}
+                        key={user?.uid}
+                      />
+                    );
+                  }
+                })}
+                <TopicContent>{topic?.topic?.topictitle}</TopicContent>
+              </LeftSideTopic>
+              <Labels>
+                {topic?.topic?.labels?.map((label, index) => (
+                  <Label key={index}>{label}</Label>
+                ))}
+              </Labels>
+            </QueryTopic>
+          </TopicListWrapper>
+        );
+      })}
     </>
   );
 }
