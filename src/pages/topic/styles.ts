@@ -1,6 +1,13 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
+export const TopicWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+`;
+
 export const TopicHeaderWrapper = styled(Box)`
   width: 100%;
   display: flex;
@@ -13,7 +20,7 @@ export const TopicHeader = styled(Box)`
   background: linear-gradient(rgba(29, 29, 29, 0.8), rgba(29, 29, 29, 0.8)),
     url("/background2.png") no-repeat center center / cover;
   width: 100vw;
-  height: 65vh;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   align-items: center;
