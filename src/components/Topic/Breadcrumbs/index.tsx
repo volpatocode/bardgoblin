@@ -1,32 +1,26 @@
 import React from "react";
 
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-
 import { Stack, Breadcrumbs } from "@mui/material";
 
-import { Label } from "../QueryTopic/styles";
+import { IDButton, SectionButton} from "./styles";
 
-import { IDButton, SectionButton } from "./styles";
+type breadcrumbType = {
+  topicType: "Build" | "Side Quest"
+  labels: any;
+  topicId: string | string[];
+}
 
-export default function index() {
-  const arrowRight = <ChevronRightIcon fontSize="small" />;
-
+export default function index({topicType, labels, topicId}: breadcrumbType) {
   return (
     <Stack direction="row" spacing={2}>
-      <Breadcrumbs separator={arrowRight} aria-label="breadcrumb">
-        <SectionButton>Side Quest</SectionButton>
+      <Breadcrumbs separator=">" aria-label="breadcrumb">
+        <SectionButton>{topicType}</SectionButton>
       </Breadcrumbs>
-      <Breadcrumbs separator={arrowRight} aria-label="breadcrumb">
-        <Label>Cave</Label>
+      <Breadcrumbs separator=">" aria-label="breadcrumb">
+        {labels}
       </Breadcrumbs>
-      <Breadcrumbs separator={arrowRight} aria-label="breadcrumb">
-        <Label>Forest</Label>
-      </Breadcrumbs>
-      <Breadcrumbs separator={arrowRight} aria-label="breadcrumb">
-        <Label>Desert</Label>
-      </Breadcrumbs>
-      <Breadcrumbs separator={arrowRight} aria-label="breadcrumb">
-        <IDButton>B445725</IDButton>
+      <Breadcrumbs separator=">" aria-label="breadcrumb">
+        <IDButton>{topicId}</IDButton>
       </Breadcrumbs>
     </Stack>
   );
