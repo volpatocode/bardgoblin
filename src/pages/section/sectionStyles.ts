@@ -6,6 +6,13 @@ export type sectionType = {
 };
 
 export const SectionWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+`;
+
+export const SectionHeaderWrapper = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -33,7 +40,7 @@ export const SectionHeader = styled(Box)<sectionType>`
   justify-content: space-between;
 `;
 
-export const SectionContent = styled(Box)`
+export const SectionHeaderContent = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,18 +1,16 @@
 import React from "react";
-import { UserModalContextProvider } from "../../contexts/UserModalContext";
-import { UserContextProvider } from "../../contexts/UserContext";
 
 import Navbar from "../../components/Navbar";
 import TopicListWrapper from "../../components/Topic/TopicListWrapper";
 import Footer from "../../components/Footer";
 import TopicSearchBar from "../../components/Topic/TopicSearchBar";
-import LabelSelector from "../../components/LabelSelector";
 import TopicPagination from "../../components/Topic/TopicPagination";
 
 import {
   SectionWrapper,
+  SectionHeaderWrapper,
   SectionHeader,
-  SectionContent,
+  SectionHeaderContent,
   SectionTitle,
   SectionDescription,
   SectionResults,
@@ -24,30 +22,30 @@ import {
 
 export default function index() {
   return (
-    <>
-          <SectionWrapper>
-            <SectionHeader section="builds">
-              <Navbar page="section" />
-              <SectionContent>
-                <SectionTitle>Builds</SectionTitle>
-                <SectionDescription>
-                  Examples and combinations to explore your hidden creativity
-                </SectionDescription>
-              </SectionContent>
-              <BorderDivider />
-            </SectionHeader>
-          </SectionWrapper>
-          <SectionResults>
-            <TopicQueryInfo>
-              <TopicListTitle>You are looking for "aaa"</TopicListTitle>
-              <TopicFiltersWrapper>
-                <TopicSearchBar />
-              </TopicFiltersWrapper>
-            </TopicQueryInfo>
-            <TopicListWrapper/>
-            <TopicPagination />
-          </SectionResults>
-          <Footer />
-    </>
+    <SectionWrapper>
+      <SectionHeaderWrapper>
+        <SectionHeader section="builds">
+          <Navbar page="section" />
+          <SectionHeaderContent>
+            <SectionTitle>Builds</SectionTitle>
+            <SectionDescription>
+              Examples and combinations to explore your hidden creativity
+            </SectionDescription>
+          </SectionHeaderContent>
+          <BorderDivider />
+        </SectionHeader>
+      </SectionHeaderWrapper>
+      <SectionResults>
+        <TopicQueryInfo>
+          <TopicListTitle>You are looking for "aaa"</TopicListTitle>
+          <TopicFiltersWrapper>
+            <TopicSearchBar />
+          </TopicFiltersWrapper>
+        </TopicQueryInfo>
+        <TopicListWrapper />
+        <TopicPagination />
+      </SectionResults>
+      <Footer />
+    </SectionWrapper>
   );
 }
