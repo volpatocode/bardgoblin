@@ -19,10 +19,10 @@ export type topicFullType = {
     password?: string;
     photoURL?: string;
     uid: string;
-  }
+  };
 }[];
 
-export type topicData = {
+export type topicsData = {
   topic: {
     topictitle: string;
     modules: [moduletitle: string, modulecontent: string];
@@ -32,13 +32,31 @@ export type topicData = {
   userUID: any;
 }[];
 
-export type userData = {
+export type topicData = {
+  topic: {
+    topictitle: string;
+    modules: { moduletitle: string; modulecontent: string }[];
+
+    labels: [];
+  };
+  userUID: any;
+};
+
+export type usersData = {
   displayName?: string;
   email?: string;
   password?: string;
   photoURL?: string;
   uid: string;
 }[];
+
+export type userData = {
+  displayName?: string;
+  email?: string;
+  password?: string;
+  photoURL?: string;
+  uid: string;
+};
 
 export type FormValues = {
   topic: {
