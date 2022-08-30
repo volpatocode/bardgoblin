@@ -1,15 +1,8 @@
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
 import { db } from "../../../config/firebaseConfig";
-import { UserContext } from "../../../contexts/UserContext";
-import { topicData, topicFullType, userData } from "../../../types/user";
+import { topicsData, usersData } from "../../../types/user";
 import UserBadge from "../../UserBadge";
 
 import {
@@ -22,12 +15,28 @@ import {
 } from "./styles";
 
 export default function index() {
-  const [topicData, setTopicData] = useState([] as topicData);
-  const [usersData, setUsersData] = useState([]);
+  const [topicsData, setTopicsData] = useState([] as topicsData);
+  const [usersData, setUsersData] = useState([] as usersData);
 
-  // fetch users
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchTopicsData = async () => {
+      let topicList = [];
+      try {
+        const queryTopicsData = await getDocs(collection(db, "topics"));
+        queryTopicsData.forEach(async (doc) => {
+          topicList.push({ uid: doc.id, ...doc.data() });
+        });
+
+        setTopicsData(topicList);
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+    fetchTopicsData();
+  }, []);
+
+  useEffect(() => {
+    const fetchUsersData = async () => {
       let usersList = [];
       try {
         const queryUsersData = await getDocs(collection(db, "users"));
@@ -39,53 +48,38 @@ export default function index() {
         console.log(e.message);
       }
     };
-    fetchUserData();
-  }, []);
-
-  // fetch topics
-  useEffect(() => {
-    const fetchTopicData = async () => {
-      let topicList = [];
-      try {
-        const queryTopicData = await getDocs(collection(db, "topics"));
-        queryTopicData.forEach(async (doc) => {
-          topicList.push({ id: doc.id, ...doc.data() });
-        });
-
-        setTopicData(topicList);
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    fetchTopicData();
+    fetchUsersData();
   }, []);
 
   return (
     <>
-      {topicData?.map((topic) => {
+      {topicsData?.map((topic) => {
         return (
           <TopicListWrapper key={topic?.uid}>
-            <QueryTopic>
-              <LeftSideTopic>
-                {usersData?.map((user) => {
-                  if (user?.uid == topic?.userUID) {
+            <Link href={`/topic/${topic?.uid}`}>
+              <QueryTopic>
+                <LeftSideTopic>
+                  {usersData?.map((user) => {
                     return (
-                      <UserBadge
-                        displayName={user?.displayName}
-                        photoURL={user?.photoURL}
-                        key={user?.uid}
-                      />
+                      user?.uid == topic?.userUID && (
+                        <UserBadge
+                          displayName={user?.displayName}
+                          photoURL={user?.photoURL}
+                          key={user?.uid}
+                        />
+                      )
                     );
-                  }
-                })}
-                <TopicContent>{topic?.topic?.topictitle}</TopicContent>
-              </LeftSideTopic>
-              <Labels>
-                {topic?.topic?.labels?.map((label, index) => (
-                  <Label key={index}>{label}</Label>
-                ))}
-              </Labels>
-            </QueryTopic>
+                  })}
+
+                  <TopicContent>{topic?.topic?.topictitle}</TopicContent>
+                </LeftSideTopic>
+                <Labels>
+                  {topic?.topic?.labels?.map((label, index) => (
+                    <Label key={index}>{label}</Label>
+                  ))}
+                </Labels>
+              </QueryTopic>
+            </Link>
           </TopicListWrapper>
         );
       })}

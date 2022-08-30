@@ -1,23 +1,24 @@
 import React from "react";
 
-import TopicContent from "../TopicContent";
-
-import BadgeID from "../BadgeID";
-
 import {
   TopicModuleWrapper,
   TopicModuleTitle,
-  TopicModuleTitleWrapper,
+  TopicContent
 } from "./styles";
 
-export default function index() {
+type moduleType = {
+  title: string;
+  content: string;
+}
+
+export default function index({title, content}: moduleType) {
   return (
     <TopicModuleWrapper>
-      <TopicModuleTitleWrapper>
-        <TopicModuleTitle>The Beginning</TopicModuleTitle>
-        <BadgeID />
-      </TopicModuleTitleWrapper>
-      <TopicContent />
+      {/* <TopicModuleTitleWrapper> */}
+        <TopicModuleTitle>{title}</TopicModuleTitle>
+        {/* <BadgeID /> */}
+      {/* </TopicModuleTitleWrapper> */}
+      <TopicContent>{content}</TopicContent>
     </TopicModuleWrapper>
   );
 }

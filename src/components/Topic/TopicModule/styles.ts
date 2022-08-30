@@ -6,8 +6,7 @@ export const TopicModuleWrapper = styled(Box)`
   flex-direction: column;
   align-items: left;
   gap: 1rem;
-
-  `;
+`;
 
 export const TopicModuleTitleWrapper = styled(Box)`
   display: flex;
@@ -21,5 +20,20 @@ export const TopicModuleTitle = styled.h4`
   color: #f6f6f6;
   font-weight: 400;
   letter-spacing: 0.4px;
-  text-align: center;
+  text-align: left;
+  ::first-letter {
+    text-transform: uppercase;
+    font-family: "New Rocker", cursive;
+    font-weight: bold;
+  }
+`;
+
+export const TopicContent = styled.p`
+  text-align: justify;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.5);
+  ::first-letter {
+    text-transform: uppercase;
+  }
 `;
