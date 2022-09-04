@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export const TopicWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   min-height: 100vh;
 `;
@@ -27,7 +28,8 @@ export const TopicHeader = styled(Box)`
   justify-content: space-between;
 `;
 
-export const TopicHeaderContent = styled(Box)`
+export const TopicHeaderContent = styled(Container)`
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +43,18 @@ export const TopicTitle = styled.h1`
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   text-align: center;
-  max-width: 50%;
+  width: 100%;
+  
+  @media (max-width: 1140px) {
+  }
+  @media (max-width: 960px) {
+  }
+  @media (max-width: 760px) {
+  }
+  @media (max-width: 480px) {
+  }
+  @media (max-width: 420px) {
+  }
 `;
 
 export const TopicBadges = styled(Box)`
@@ -53,8 +66,7 @@ export const TopicBadges = styled(Box)`
   margin-top: 1rem;
 `;
 
-export const TopicContent = styled(Box)`
-  padding: 0 20%;
+export const TopicContent = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 2rem;

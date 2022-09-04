@@ -62,7 +62,7 @@ export default function index() {
       <TopicHeaderWrapper>
         <TopicHeader>
           <Navbar page="topic" />
-          <TopicHeaderContent>
+          <TopicHeaderContent maxWidth="md">
             <BreadcrumbsWrapper
               topicId={topicId}
               topicType="Side Quest"
@@ -83,7 +83,7 @@ export default function index() {
           <BorderDivider />
         </TopicHeader>
       </TopicHeaderWrapper>
-      <TopicContent>
+      <TopicContent maxWidth="lg">
         {topicData?.topic?.modules?.map((module) => {
           return (
             <TopicModule
