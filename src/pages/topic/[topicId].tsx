@@ -24,13 +24,14 @@ import {
 } from "./styles";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../../config/firebaseConfig";
-import { topicData } from "../../types/user";
+import { topicData, userData } from "../../types/user";
 import { Label } from "../../components/Topic/Breadcrumbs/styles";
 
 export default function index() {
-  const topicId = useRouter().query.topicId;
   const [topicData, setTopicData] = useState({} as topicData);
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({} as userData);
+  const topicId = useRouter().query.topicId;
+  const userId = topicData?.userUID
 
   useEffect(() => {
     const fetchTopicData = async () => {
@@ -43,24 +44,18 @@ export default function index() {
   }, [topicId]);
 
   useEffect(() => {
-    console.log(topicData);
-  }, [topicData]);
+    console.log(userData);
+  }, [userData]);
 
   useEffect(() => {
-    const fetchUsersData = async () => {
-      let usersList = [];
-      try {
-        const queryUsersData = await getDocs(collection(db, "users"));
-        queryUsersData.forEach((doc) => {
-          usersList.push({ ...doc.data() });
-        });
-        setUserData(usersList);
-      } catch (e) {
-        console.log(e.message);
-      }
+    const fetchUserData = async () => {
+      const docRef = doc(db, "users", `${userId}`);
+      const docSnap = await getDoc(docRef);
+      // @ts-ignore
+      docSnap.exists() && setUserData(docSnap.data());
     };
-    fetchUsersData();
-  }, []);
+    fetchUserData();
+  }, [userId]);
 
   return (
     <TopicWrapper>
@@ -78,8 +73,8 @@ export default function index() {
             <TopicTitle>{topicData?.topic?.topictitle}</TopicTitle>
             <TopicBadges>
               <UserBadge
-                displayName="User"
-                photoURL="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+                displayName={userData?.displayName}
+                photoURL={userData.photoURL}
               />
               {/* <LikeBadge />
               <CommentBadge /> */}
