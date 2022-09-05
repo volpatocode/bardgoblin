@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Home from "./home/home";
 import Loading from "../components/Loading";
