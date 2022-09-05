@@ -1,22 +1,27 @@
 import styled from "@emotion/styled";
-import {Button, Stack, Breadcrumbs, Box } from "@mui/material";
-import RightIcon from '@mui/icons-material/KeyboardArrowRight';
-
-
-export const Breadcrumb = styled(Breadcrumbs)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
+import { Button, Stack, Breadcrumbs, Box } from "@mui/material";
+import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export const Wrapper = styled(Box)`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-gap: 0.5rem;
+  gap: 0.5rem;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+  
 `;
+
+export const Breadcrumb = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
 
 
 export const SectionButton = styled(Button)`
@@ -63,6 +68,4 @@ export const Label = styled(Button)`
   }
 `;
 
-export const ArrowRight = styled(RightIcon)`
-`;
-
+export const ArrowRight = styled(RightIcon)``;

@@ -1,23 +1,31 @@
-import React from "react";import {Breadcrumbs } from "@mui/material";
+import React, { useContext } from "react";
+import { Breadcrumbs } from "@mui/material";
 
-import { IDButton, SectionButton, Wrapper, Breadcrumb} from "./styles";
+import { IDButton, SectionButton, Wrapper, Breadcrumb } from "./styles";
+import { UserContext } from "../../../contexts/UserContext";
+import Link from "next/link";
 
 type breadcrumbType = {
-  topicType: "Build" | "Side Quest"
+  topicType: "Builds" | "Side Quest";
   labels: any;
   topicId: string | string[];
-}
+};
 
-export default function index({topicType, labels, topicId}: breadcrumbType) {
+export default function index({ topicType, labels, topicId }: breadcrumbType) {
+  const sections = {
+    "Side Quest": "/section/sidequests",
+    Builds: "/section/builds",
+  };
+
   return (
     <Wrapper>
-      <Breadcrumb separator=">" aria-label="breadcrumb">
-        <SectionButton>{topicType}</SectionButton>
+      <Breadcrumb>
+        <Link href={sections[topicType]}>
+          <SectionButton>{topicType}</SectionButton>
+        </Link>
       </Breadcrumb>
-      <Breadcrumb separator=">" aria-label="breadcrumb">
-        {labels}
-      </Breadcrumb>
-      <Breadcrumb separator=">" aria-label="breadcrumb">
+      <Breadcrumb>{labels}</Breadcrumb>
+      <Breadcrumb>
         <IDButton>{topicId}</IDButton>
       </Breadcrumb>
     </Wrapper>

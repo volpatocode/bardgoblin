@@ -20,9 +20,10 @@ export const TopicModuleTitle = styled.h4`
   color: #f6f6f6;
   font-weight: 400;
   letter-spacing: 0.4px;
-  text-align: center;
+  text-align: left;
   ::first-letter {
     text-transform: uppercase;
+    
   }
 `;
 

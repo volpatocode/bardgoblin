@@ -29,7 +29,6 @@ export const TopicHeader = styled(Box)`
 `;
 
 export const TopicHeaderContent = styled(Container)`
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,16 +43,9 @@ export const TopicTitle = styled.h1`
   font-weight: 700;
   text-align: center;
   width: 100%;
-  
-  @media (max-width: 1140px) {
-  }
-  @media (max-width: 960px) {
-  }
-  @media (max-width: 760px) {
-  }
-  @media (max-width: 480px) {
-  }
-  @media (max-width: 420px) {
+  margin: 1rem 0;
+  ::first-letter {
+    text-transform: uppercase;
   }
 `;
 
@@ -63,11 +55,11 @@ export const TopicBadges = styled(Box)`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 1rem;
 `;
 
 export const TopicContent = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin: 2.5rem 0;
 `;
