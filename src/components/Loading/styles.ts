@@ -7,81 +7,80 @@ export const PageWrapper = styled(Box)`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: url("/background.png") no-repeat center center / cover;
+  position: relative;
 `;
 
-export const DotPulse = styled.div`
-  position: relative;
-  left: -9999px;
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #dd3e0e;
-  color: #dd3e0e;
-  box-shadow: 9999px 0 0 -5px #dd3e0e;
-  animation: dotPulse 2.5s infinite linear;
-  animation-delay: 0.5s;
-
-  ::before,
-  ::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 5px;
-    background-color: #dd3e0e;
-    color: #dd3e0e;
+export const FireAnimation = styled.div`
+  width: 200px;
+  height: auto;
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  .mo-fire svg {
+    width: 100%;
+    height: auto;
+    position: relative;
   }
-
-  ::before {
-    box-shadow: 9984px 0 0 -5px #dd3e0e;
-    animation: dotPulseBefore 2.5s infinite linear;
-    animation-delay: 0s;
+  .flame {
+    animation-name: flamefly;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    opacity: 0;
+    transform-origin: 50% 50% 0;
   }
-
-  ::after {
-    box-shadow: 10014px 0 0 -5px #dd3e0e;
-    animation: dotPulseAfter 2.5s infinite linear;
+  .flame.one {
+    animation-delay: 1s;
+    animation-duration: 3s;
+  }
+  .flame3.two {
+    animation-duration: 5s;
     animation-delay: 1s;
   }
 
-  @keyframes dotPulseBefore {
-    0% {
-      box-shadow: 9984px 0 0 -5px #dd3e0e;
-    }
-    30% {
-      box-shadow: 9984px 0 0 2px #dd3e0e;
-    }
-    60%,
-    100% {
-      box-shadow: 9984px 0 0 -5px #dd3e0e;
+  .flame-main {
+    animation-name: flameWobble;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  .flame-main.one {
+    animation-duration: 4s;
+    animation-delay: 1s;
+  }
+  .flame-main.two {
+    animation-duration: 3s;
+    animation-delay: 2s;
+  }
+  .flame-main.three {
+    animation-duration: 2.1s;
+    animation-delay: 3s;
+  }
+  .flame-main.four {
+    animation-duration: 3.2s;
+    animation-delay: 4s;
+  }
+  .flame-main.five {
+    animation-duration: 2.5s;
+    animation-delay: 5s;
+  }
+  @keyframes flameWobble {
+    50% {
+      transform: scale(1, 1.2) translate(0, -30px) rotate(-2deg);
+      opacity: 0.7;
     }
   }
-
-  @keyframes dotPulse {
+  @keyframes flamefly {
     0% {
-      box-shadow: 9999px 0 0 -5px #dd3e0e;
+      transform: translate(0) rotate(180deg);
     }
-    30% {
-      box-shadow: 9999px 0 0 2px #dd3e0e;
+    50% {
+      opacity: 0.9;
     }
-    60%,
     100% {
-      box-shadow: 9999px 0 0 -5px #dd3e0e;
-    }
-  }
-
-  @keyframes dotPulseAfter {
-    0% {
-      box-shadow: 10014px 0 0 -5px #dd3e0e;
-    }
-    30% {
-      box-shadow: 10014px 0 0 2px #dd3e0e;
-    }
-    60%,
-    100% {
-      box-shadow: 10014px 0 0 -5px #dd3e0e;
+      transform: translate(-20px, -100px) rotate(180deg);
+      opacity: 0;
     }
   }
 `;
