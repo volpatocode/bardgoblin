@@ -6,7 +6,7 @@ import Footer from "../../components/Footer";
 import UserBadge from "../../components/UserBadge";
 import LikeBadge from "../../components/LikeBadge";
 import CommentBadge from "../../components/CommentBadge";
-import BreadcrumbsWrapper from "../../components/Topic/Breadcrumbs";
+import Breadcrumbs from "../../components/Topic/Breadcrumbs";
 import TopicIntroduction from "../../components/Topic/TopicIntroduction";
 import TopicModule from "../../components/Topic/TopicModule";
 import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
@@ -63,7 +63,7 @@ export default function index() {
         <TopicHeader>
           <Navbar page="topic" />
           <TopicHeaderContent maxWidth="md">
-            <BreadcrumbsWrapper
+            <Breadcrumbs
               topicId={topicId}
               topicType="Side Quest"
               labels={topicData?.topic?.labels.map((label) => {

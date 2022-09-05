@@ -70,5 +70,4 @@ export const TopicContent = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin: 2rem 0;
 `;
