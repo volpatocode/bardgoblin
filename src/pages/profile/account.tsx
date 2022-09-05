@@ -3,7 +3,7 @@ import { UserContext } from "../../contexts/UserContext";
 
 import Footer from "../../components/Footer";
 import ProfileInfo from "../../components/Profile/ProfileInfo";
-import Unauthorized from "../../components/UnauthorizedPage/index";
+import Unauthorized from "../../components/Unauthorized/index";
 import ProfileHeader from "../../components/Profile/ProfileHeader";
 
 import { ProfilePageWrapper, ProfilePageContent } from "./accountStyles";
