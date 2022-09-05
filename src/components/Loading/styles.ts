@@ -15,13 +15,18 @@ export const FireAnimation = styled.div`
   width: 200px;
   height: auto;
   position: absolute;
-  left: 50%;
+  left: 48%;
+  top: 32%;
   margin-left: -100px;
-  .mo-fire svg {
+  animation-name: switchPage;
+  animation-duration: 3s;
+
+  svg {
     width: 100%;
     height: auto;
     position: relative;
   }
+
   .flame {
     animation-name: flamefly;
     animation-duration: 2s;
@@ -80,6 +85,15 @@ export const FireAnimation = styled.div`
     }
     100% {
       transform: translate(-20px, -100px) rotate(180deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes switchPage {
+    80% {
+      opacity: 1;
+    }
+    100% {
       opacity: 0;
     }
   }

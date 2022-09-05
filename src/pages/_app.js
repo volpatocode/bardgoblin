@@ -1,11 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
-import { UserContextProvider } from "../contexts/UserContext";
+import { UserContext, UserContextProvider } from "../contexts/UserContext";
 import { TopicContextProvider } from "../contexts/TopicContext";
 import { theme } from "../theme/theme.ts";
 import { ThemeProvider } from "@mui/material";
 import Head from "next/head";
-
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -54,7 +53,7 @@ export default function App({ Component, pageProps }) {
         <UserContextProvider>
           <TopicContextProvider>
             <ThemeProvider theme={theme}>
-              <Component {...pageProps} />
+            <Component {...pageProps} />
             </ThemeProvider>
           </TopicContextProvider>
         </UserContextProvider>

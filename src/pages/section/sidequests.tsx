@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { UserModalContextProvider } from "../../contexts/UserModalContext";
-import { UserContextProvider } from "../../contexts/UserContext";
+import { UserContext, UserContextProvider } from "../../contexts/UserContext";
 
 import Navbar from "../../components/Navbar";
 import TopicListWrapper from "../../components/Topic/TopicListWrapper";

@@ -1,9 +1,10 @@
 import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import { db } from "../../../config/firebaseConfig";
 import { topicsData, usersData } from "../../../types/user";
 import UserBadge from "../../UserBadge";
+import Loading from "../../Loading";
 
 import {
   TopicListWrapper,
@@ -13,8 +14,10 @@ import {
   Labels,
   Label,
 } from "./styles";
+import { UserContext } from "../../../contexts/UserContext";
 
 export default function index() {
+  const { setIsLoading } = useContext(UserContext);
   const [topicsData, setTopicsData] = useState([] as topicsData);
   const [usersData, setUsersData] = useState([] as usersData);
 
@@ -22,12 +25,13 @@ export default function index() {
     const fetchTopicsData = async () => {
       let topicList = [];
       try {
+        setIsLoading(true);
         const queryTopicsData = await getDocs(collection(db, "topics"));
         queryTopicsData.forEach(async (doc) => {
           topicList.push({ uid: doc.id, ...doc.data() });
         });
-
         setTopicsData(topicList);
+        setIsLoading(false);
       } catch (e) {
         console.log(e.message);
       }
@@ -39,11 +43,13 @@ export default function index() {
     const fetchUsersData = async () => {
       let usersList = [];
       try {
+        setIsLoading(true);
         const queryUsersData = await getDocs(collection(db, "users"));
         queryUsersData.forEach((doc) => {
           usersList.push({ ...doc.data() });
         });
         setUsersData(usersList);
+        setIsLoading(false);
       } catch (e) {
         console.log(e.message);
       }
