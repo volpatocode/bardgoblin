@@ -15,7 +15,6 @@ import {
 
 export default function index() {
   return (
-    <>
       <HomeWrapper>
         <HomeMainContent>
           <Navbar page="home" />
@@ -32,6 +31,5 @@ export default function index() {
           <Footer />
         </HomeMainContent>
       </HomeWrapper>
-    </>
   );
 }

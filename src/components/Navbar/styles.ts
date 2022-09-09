@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
-import { navbarType } from "./index";
 import MenuIcona from "@mui/icons-material/Menu";
 import IconButtona from "@mui/material/IconButton";
 import CloseIcona from "@mui/icons-material/Close";
 
-export const Navbar = styled(Box)<navbarType>`
+export const Navbar = styled(Box)`
   width: 100vw;
   background: transparent;
   display: flex;

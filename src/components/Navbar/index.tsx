@@ -26,14 +26,15 @@ import {
   ModalButton,
 } from "./styles";
 
-export type navbarType = {
-  page: "home" | "section" | "topic" | "resetpassword";
-};
-
-export default function index({ page }: navbarType) {
+export default function index() {
   const { isAuthorized, logOut, screenSm } = useContext(UserContext);
-  const { handleUserModal, handleUserModalLogin, handleUserModalRegister, isMenuMobileOpen, handleMobileUserModal } =
-    useContext(UserModalContext);
+  const {
+    handleUserModal,
+    handleUserModalLogin,
+    handleUserModalRegister,
+    isMenuMobileOpen,
+    handleMobileUserModal,
+  } = useContext(UserModalContext);
 
   // prevent modal scrolling
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function index({ page }: navbarType) {
   }, [isMenuMobileOpen]);
 
   return (
-    <Navbar page={page}>
+    <Navbar>
       <NavLeftSide>
         <Logo variant={screenSm ? "icon" : "horizontal"} />
       </NavLeftSide>
@@ -96,7 +97,7 @@ export default function index({ page }: navbarType) {
                     <ModalButton
                       onClick={() => {
                         logOut();
-                        handleMobileUserModal() ;
+                        handleMobileUserModal();
                       }}
                     >
                       Logout
