@@ -8,3 +8,29 @@
 
 <h3 align="center"> Developed by João Volpato 🧡</h3>
 
+
+## About
+Bardgoblin is a roleplaying community, made for sharing ideas, stories, characters and more. On BardGoblin you will be able to create your account, edit your profile create topics about quests, builds, characters or whatever your creativity allows. Also, you can interact with other users through their topics, leaving your comment or liking it. Interaction is the keyword.
+<br/><br/>
+
+## Pages
+- Home
+- Profile
+- Sections (Builds, Side Quests, Characters)
+- Create Topic
+- Help (Email Sent, Reset password)
+- Topic
+- Error
+- Loading Page
+<br/><br/>
+
+## Technologies
+- React
+- Next
+- Typescript
+- Styled-components
+- MaterialUI
+- Firebase
+- Hook Form
+- Yup
+<br/><br/>
