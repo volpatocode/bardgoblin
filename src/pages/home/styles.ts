@@ -26,6 +26,19 @@ export const HomeContent = styled.div`
   align-items: center;
   gap: 1.3rem;
   padding-bottom: 10rem;
+  animation-name: slowLoad;
+  animation-duration: 1s;
+
+  @keyframes slowLoad {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+
 `;
 
 export const WrittenContent = styled.div`

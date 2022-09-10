@@ -1,10 +1,13 @@
 import React from "react";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 
 import { FireAnimation, PageWrapper } from "./styles";
 
 export default function index() {
   return (
     <PageWrapper>
+      <Navbar />
       <FireAnimation>
         <svg
           version="1.1"
@@ -70,6 +73,7 @@ export default function index() {
           />
         </svg>
       </FireAnimation>
+      <Footer />
     </PageWrapper>
   );
 }

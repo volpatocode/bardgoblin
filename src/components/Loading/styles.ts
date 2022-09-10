@@ -5,8 +5,8 @@ export const PageWrapper = styled(Box)`
   height: 100vh;
   width: 100vw;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   background: url("/background.png") no-repeat center center / cover;
   position: relative;
 `;
@@ -15,12 +15,12 @@ export const FireAnimation = styled.div`
   width: 200px;
   height: auto;
   position: absolute;
-  left: 48%;
+  left: 48.5%;
   top: 32%;
   margin-left: -100px;
+
   animation-name: switchPage;
   animation-duration: 3s;
-
   svg {
     width: 100%;
     height: auto;
