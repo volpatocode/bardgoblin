@@ -29,7 +29,7 @@ import {
   InputImage,
   EditDataValue,
 } from "./styles";
-import {doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 export type profileInfoType = {
   background?: "none";
@@ -57,21 +57,6 @@ export default function index() {
   } = useForm({
     resolver: yupResolver(editUserValidationSchema),
   });
-
-  // função pra pegar os dados - resolve o problema do topico
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const querySnapshot = await getDoc(doc(db, "users", currentUser?.uid));
-  //       querySnapshot && setUserData({ ...querySnapshot?.data() });
-  //     } catch (e) {
-  //       console.log(e.message);
-  //     }
-  //   };
-  //   fetchUserData();
-  // }, []);
-
-  // Edit user
 
   async function updateUserDisplayName(data: UserFormData) {
     await updateProfile(auth?.currentUser, {

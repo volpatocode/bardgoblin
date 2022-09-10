@@ -16,10 +16,16 @@ import {
 } from "./styles";
 import { UserContext } from "../../../contexts/UserContext";
 
-export default function index() {
+export default function index({}) {
   const { setIsLoading } = useContext(UserContext);
   const [topicsData, setTopicsData] = useState([] as topicsData);
   const [usersData, setUsersData] = useState([] as usersData);
+
+  const sections = {
+    "Side Quests": "sidequests",
+    "Builds": "builds",
+    "Characters": "characters",
+  };
 
   useEffect(() => {
     const fetchTopicsData = async () => {

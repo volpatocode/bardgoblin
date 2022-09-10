@@ -25,7 +25,7 @@ export default function index() {
     <SectionWrapper>
       <SectionHeaderWrapper>
         <SectionHeader section="builds">
-          <Navbar page="section" />
+          <Navbar />
           <SectionHeaderContent>
             <SectionTitle>Builds</SectionTitle>
             <SectionDescription>

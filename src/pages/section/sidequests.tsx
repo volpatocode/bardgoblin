@@ -27,7 +27,7 @@ export default function index() {
     <SectionWrapper>
       <SectionHeaderWrapper>
         <SectionHeader section="quest">
-          <Navbar page="section" />
+          <Navbar />
           <SectionHeaderContent>
             <SectionTitle>Side Quests</SectionTitle>
             <SectionDescription>

@@ -114,7 +114,6 @@ export const DataValue = styled(Box)<Pick<profileInfoType, "background">>`
   }
 `;
 
-
 export const EditButton = styled(Button)`
   color: #fff;
   text-transform: none;
@@ -137,7 +136,7 @@ export const EditButton = styled(Button)`
 export const UploadButton = styled(Button)`
   color: #fff;
   text-transform: none;
-  background:#dd3e0e;
+  background: #dd3e0e;
   font-size: 1.2rem;
   padding: 4px 8px;
   margin-top: 1rem;
@@ -156,7 +155,7 @@ export const UploadButton = styled(Button)`
 export const InputImage = styled.label`
   color: #fff;
   text-transform: none;
-  background: #dd3e0e;
+  background: transparent;
   font-size: 1.3rem;
   padding: 4px 8px;
   margin-top: 1rem;
@@ -170,10 +169,10 @@ export const InputImage = styled.label`
   line-height: 1.75;
   text-align: center;
   :disabled {
-    background: #c3c3c3;
+    color: #c3c3c3;
   }
   :hover {
-    background: #dd3e0e;
+    background: transparent;
   }
   @media (max-width: 560px) {
     font-size: 1.12rem;
