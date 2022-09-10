@@ -1,8 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { TopicContext } from "../../../contexts/TopicContext";
-import { UserContext } from "../../../contexts/UserContext";
 import InputError from "../../InputError";
-import { InputBox } from "../../UserModal/styles";
 
 import {
   NewModule,
@@ -20,7 +18,6 @@ export default function index() {
   const { modules, remove, registerTopic, formErrors } =
     useContext(TopicContext);
 
-    console.log(modules);
 
   return (
     <>
@@ -69,7 +66,10 @@ export default function index() {
                 />
               )}
             </ModuleContentBox>
-            {modules?.length > 1 && modules[modules.length -1] != modules[index] && <ModuleDivider />}
+            {modules?.length > 1 &&
+              modules[modules.length - 1] != modules[index] && (
+                <ModuleDivider />
+              )}
           </NewModule>
         );
       })}

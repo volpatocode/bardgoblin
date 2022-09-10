@@ -10,26 +10,23 @@ import {
   HomeTitle,
   HomeSubtitle,
   WrittenContent,
-  HomeMainContent,
 } from "./styles";
 
 export default function index() {
   return (
-      <HomeWrapper>
-        <HomeMainContent>
-          <Navbar page="home" />
-          <HomeContent>
-            <WrittenContent>
-              <HomeTitle>Speak friendly and enter dear traveler</HomeTitle>
-              <HomeSubtitle>
-                Find and share quests, builds, supplies and others for your
-                tabletop rpg
-              </HomeSubtitle>
-            </WrittenContent>
-            <MainSearchBar />
-          </HomeContent>
-          <Footer />
-        </HomeMainContent>
-      </HomeWrapper>
+    <HomeWrapper>
+      <Navbar />
+      <HomeContent>
+        <WrittenContent>
+          <HomeTitle>Speak friendly and enter dear traveler</HomeTitle>
+          <HomeSubtitle>
+            Find and share quests, builds, supplies and others for your tabletop
+            rpg
+          </HomeSubtitle>
+        </WrittenContent>
+        <MainSearchBar />
+      </HomeContent>
+      <Footer />
+    </HomeWrapper>
   );
 }

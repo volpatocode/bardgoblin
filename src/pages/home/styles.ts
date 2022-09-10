@@ -3,18 +3,25 @@ import styled from "@emotion/styled";
 export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const HomeMainContent = styled.div`
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
   min-height: 100vh;
   min-width: 100vw;
   background: url("/backgroundfull.png") no-repeat center center / cover;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+
+  animation-name: bgSlowLoad;
+  animation-duration: 1s;
+
+  @keyframes bgSlowLoad {
+    0% {
+      background: url("/background.png") no-repeat center center / cover;
+    }
+    80% {
+      background: url("/backgroundfull.png") no-repeat center center / cover;
+    }
+  }
 `;
 
 export const HomeContent = styled.div`
@@ -37,8 +44,6 @@ export const HomeContent = styled.div`
       opacity: 1;
     }
   }
-
-
 `;
 
 export const WrittenContent = styled.div`
