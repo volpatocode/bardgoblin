@@ -56,7 +56,10 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
       topic: {
         topictitle: "",
         labels: [],
-        modules: [{ moduletitle: "", modulecontent: "" }],
+        modules: [
+          { moduletitle: "", modulecontent: "" },
+          { moduletitle: "", modulecontent: "" },
+        ],
       },
     },
     resolver: yupResolver(topicCreateValidationSchema),
