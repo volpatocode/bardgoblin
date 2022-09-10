@@ -17,9 +17,10 @@ import {
 } from "./styles";
 
 export default function index() {
-
-    const { modules, remove, registerTopic, formErrors } =
+  const { modules, remove, registerTopic, formErrors } =
     useContext(TopicContext);
+
+    console.log(modules);
 
   return (
     <>
@@ -39,11 +40,13 @@ export default function index() {
                 />
                 {formErrors?.topic?.modules[index]?.moduletitle && (
                   <InputError
-                    error={formErrors?.topic?.modules[index]?.moduletitle?.message}
+                    error={
+                      formErrors?.topic?.modules[index]?.moduletitle?.message
+                    }
                   />
                 )}
               </ModuleTitleBox>
-              {modules.length > 1 && (
+              {modules.length > 2 && (
                 <ModuleRemoveButton onClick={() => remove(index)}>
                   <RemoveIcon fontSize="small" />
                 </ModuleRemoveButton>
@@ -60,11 +63,13 @@ export default function index() {
               />
               {formErrors?.topic?.modules[index]?.modulecontent && (
                 <InputError
-                  error={formErrors?.topic?.modules[index]?.modulecontent?.message}
+                  error={
+                    formErrors?.topic?.modules[index]?.modulecontent?.message
+                  }
                 />
               )}
             </ModuleContentBox>
-            {modules.length > 1 && <ModuleDivider />}
+            {modules?.length > 1 && modules[modules.length -1] != modules[index] && <ModuleDivider />}
           </NewModule>
         );
       })}
