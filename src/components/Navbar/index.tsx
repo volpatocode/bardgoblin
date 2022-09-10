@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect} from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
-import { Fade, useMediaQuery } from "@mui/material";
+import { Fade } from "@mui/material";
 
 import Logo from "../Logo";
 import AvatarIcon from "../AvatarIcon";
@@ -55,7 +55,7 @@ export default function index() {
           <TextButton href="/section/sidequests">Side Quests</TextButton>
           <TextButton href="/section/builds">Builds</TextButton>
           <TextButton>Tools</TextButton>
-          <TextButton>About</TextButton>
+          <TextButton href="/about">About</TextButton>
           {isAuthorized && (
             <ContainedButton href="/createtopic">
               Create Build / Quest
@@ -119,7 +119,7 @@ export default function index() {
                 <ModalButton href="/section/builds">Builds</ModalButton>
 
                 <ModalButton>Tools</ModalButton>
-                <ModalButton>About</ModalButton>
+                <ModalButton href="/about">About</ModalButton>
                 {isAuthorized && (
                   <ModalButton href="/createtopic">
                     Create Build / Quest
