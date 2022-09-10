@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import UserBadge from "../../components/UserBadge";
-import LikeBadge from "../../components/LikeBadge";
-import CommentBadge from "../../components/CommentBadge";
+
 import Breadcrumbs from "../../components/Topic/Breadcrumbs";
-import TopicIntroduction from "../../components/Topic/TopicIntroduction";
+
 import TopicModule from "../../components/Topic/TopicModule";
-import TopicHiddenInfo from "../../components/Topic/TopicHiddenInfo";
-import OptionalQuestAccordion from "../../components/Topic/OptionalQuestAccordion";
+
 import { BorderDivider } from "../section/sectionStyles";
 
 import {
@@ -22,16 +20,19 @@ import {
   TopicBadges,
   TopicContent,
 } from "./styles";
-import { collection, doc, getDoc, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebaseConfig";
 import { topicData, userData } from "../../types/user";
 import { Label } from "../../components/Topic/Breadcrumbs/styles";
+import ContinueBrowsing from "../../components/Topic/ContinueBrowsing";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function index() {
+  const { screenSm } = useContext(UserContext);
   const [topicData, setTopicData] = useState({} as topicData);
   const [userData, setUserData] = useState({} as userData);
   const topicId = useRouter().query.topicId;
-  const userId = topicData?.userUID
+  const userId = topicData?.userUID;
 
   useEffect(() => {
     const fetchTopicData = async () => {
@@ -61,11 +62,11 @@ export default function index() {
     <TopicWrapper>
       <TopicHeaderWrapper>
         <TopicHeader>
-          <Navbar page="topic" />
+          <Navbar />
           <TopicHeaderContent maxWidth="md">
             <Breadcrumbs
               topicId={topicId}
-              topicType="Side Quest"
+              topicType="Side Quests"
               labels={topicData?.topic?.labels.map((label) => {
                 return <Label key={label}>{label}</Label>;
               })}
@@ -96,7 +97,7 @@ export default function index() {
         {/* <TopicHiddenInfo />
         <OptionalQuestAccordion /> */}
       </TopicContent>
-      <Footer />
+      {screenSm ? <ContinueBrowsing section="Side Quests" /> : <Footer />}
     </TopicWrapper>
   );
 }

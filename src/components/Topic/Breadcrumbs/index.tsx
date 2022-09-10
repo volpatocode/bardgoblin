@@ -1,20 +1,19 @@
-import React, { useContext } from "react";
-import { Breadcrumbs } from "@mui/material";
+import React from "react";
 
 import { IDButton, SectionButton, Wrapper, Breadcrumb } from "./styles";
-import { UserContext } from "../../../contexts/UserContext";
 import Link from "next/link";
 
 type breadcrumbType = {
-  topicType: "Builds" | "Side Quest";
+  topicType: "Builds" | "Side Quests" | "Characters";
   labels: any;
   topicId: string | string[];
 };
 
 export default function index({ topicType, labels, topicId }: breadcrumbType) {
   const sections = {
-    "Side Quest": "/section/sidequests",
-    Builds: "/section/builds",
+    "Side Quests": "/section/sidequests",
+    "Builds": "/section/builds",
+    "Characters": "/section/characters",
   };
 
   return (

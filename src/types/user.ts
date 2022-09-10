@@ -69,3 +69,7 @@ export type FormValues = {
     }[];
   };
 };
+
+export type sectionType = {
+  section: "Builds" | "Side Quests" | "Characters";
+}
