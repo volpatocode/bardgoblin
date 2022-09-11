@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     
   }
    body{
@@ -48,6 +48,8 @@ export default function App({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Uncial+Antiqua&display=swap"
           rel="stylesheet"
         />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
+        
       </Head>
       <UserModalContextProvider>
         <UserContextProvider>

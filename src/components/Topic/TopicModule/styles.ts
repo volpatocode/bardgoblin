@@ -33,6 +33,7 @@ export const TopicContent = styled.p`
   letter-spacing: 0.2px;
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.5);
+  
   ::first-letter {
     text-transform: uppercase;
     font-family: "New Rocker", cursive;

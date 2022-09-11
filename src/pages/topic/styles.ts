@@ -39,7 +39,6 @@ export const TopicHeaderContent = styled(Container)`
 export const TopicTitle = styled.h1`
   font-size: 3rem;
   color: #fff;
-  font-family: "Roboto", sans-serif;
   font-weight: 700;
   text-align: center;
   width: 100%;
