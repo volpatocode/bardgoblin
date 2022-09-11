@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
@@ -53,9 +53,9 @@ export default function index() {
       <NavRightSide>
         <StyledStack>
           <TextButton href="/section/sidequests">Side Quests</TextButton>
-          <TextButton href="/section/builds">Builds</TextButton>
-          <TextButton>Tools</TextButton>
-          <TextButton href="/about">About</TextButton>
+          <TextButton className="comingSoon">Builds</TextButton>
+          <TextButton className="comingSoon">Tools</TextButton>
+          <TextButton className="comingSoon">About</TextButton>
           {isAuthorized && (
             <ContainedButton href="/createtopic">
               Create Build / Quest
@@ -116,10 +116,10 @@ export default function index() {
                 <ModalButton href="/section/sidequests">
                   Side quests
                 </ModalButton>
-                <ModalButton href="/section/builds">Builds</ModalButton>
+                <ModalButton className="comingSoon">Builds</ModalButton>
 
-                <ModalButton>Tools</ModalButton>
-                <ModalButton href="/about">About</ModalButton>
+                <ModalButton className="comingSoon">Tools</ModalButton>
+                <ModalButton className="comingSoon">About</ModalButton>
                 {isAuthorized && (
                   <ModalButton href="/createtopic">
                     Create Build / Quest
