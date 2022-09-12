@@ -12,7 +12,12 @@ import {
 import { LabelSelector, StyledFormControl, StyledInputLabel } from "./styles";
 import { TopicContext } from "../../contexts/TopicContext";
 
-export default function index() {
+type labelSelectorType = {
+  type: "Section" | "Labels";
+  section?: "Builds" | "Side Quests" | "Characters";
+};
+
+export default function index({ type, section }: labelSelectorType) {
   const { registerTopic } = useContext(TopicContext);
   const [label, setLabel] = useState([]);
 
@@ -32,7 +37,9 @@ export default function index() {
     },
   };
 
-  const possibleLabels = [
+  const sections = ["Side Quests", "Builds", "Characters"];
+
+  const sideQuestsLabels = [
     "#Cave",
     "#Forest",
     "#Mountain",
@@ -44,13 +51,28 @@ export default function index() {
     "#Jungle",
   ];
 
+  const buildsLabels = ["#Test1", "#Test2"];
+
+  const charactersLabels = ["Best1", "Best2"];
+
+  const selector = {
+    "Side Quests": sideQuestsLabels,
+    Builds: buildsLabels,
+    Characters: charactersLabels,
+    Section: sections,
+  };
+
   return (
     <LabelSelector>
       <StyledFormControl>
-        <StyledInputLabel id="labels">Labels</StyledInputLabel>
+        <StyledInputLabel>
+          {type == "Section" ? "Section" : "Labels"}
+        </StyledInputLabel>
         <Select
-          multiple
-          {...registerTopic("topic.labels" as const)}
+          multiple={type == "Section" ? false : true}
+          {...registerTopic(
+            type == "Section" ? "topic.section" : ("topic.labels" as const)
+          )}
           value={label}
           onChange={handleChange}
           input={
@@ -67,7 +89,7 @@ export default function index() {
           renderValue={(selected) => selected.join("  ")}
           MenuProps={MenuProps}
         >
-          {possibleLabels.map((name) => (
+          {selector[section || type]?.map((name) => (
             <MenuItem key={name} value={name}>
               <Checkbox
                 sx={{ color: "rgba(255, 255, 255, 0.75)" }}

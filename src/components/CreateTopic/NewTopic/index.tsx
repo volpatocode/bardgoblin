@@ -22,7 +22,8 @@ export default function index() {
           <InputError error={formErrors?.topic?.topictitle?.message} />
         )}
       </TopicTitleBox>
-      <LabelSelector />
+      <LabelSelector type="Section"/>
+      <LabelSelector type="Labels" section="Builds" />
     </NewTopic>
   );
 }
