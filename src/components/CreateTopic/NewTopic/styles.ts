@@ -22,6 +22,16 @@ export const NewTopic = styled(Box)`
   gap: 1.5rem;
 `;
 
+export const SelectorsBox = styled(Box)`
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+`;
+
 export const TopicTitleBox = styled(Box)`
   width: 100%;
 `;

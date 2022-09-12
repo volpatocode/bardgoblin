@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { TopicContext } from "../../../contexts/TopicContext";
-import { UserContext } from "../../../contexts/UserContext";
 import InputError from "../../InputError";
 import LabelSelector from "../../LabelSelector";
 
-import { NewTopic, TopicTitle, TopicTitleBox } from "./styles";
+import { NewTopic, SelectorsBox, TopicTitle, TopicTitleBox } from "./styles";
 
 export default function index() {
-  const { registerTopic, formErrors } = useContext(TopicContext);
+  const { registerTopic, formErrors, topicSection } = useContext(TopicContext);
 
   return (
     <NewTopic>
@@ -22,8 +21,18 @@ export default function index() {
           <InputError error={formErrors?.topic?.topictitle?.message} />
         )}
       </TopicTitleBox>
-      <LabelSelector type="Section"/>
-      <LabelSelector type="Labels" section="Builds" />
+      <SelectorsBox>
+        <LabelSelector type="Section" />
+        {topicSection?.includes("Side Quests") && (
+          <LabelSelector type="Labels" section="Side Quests" />
+        )}
+        {topicSection?.includes("Builds") && (
+          <LabelSelector type="Labels" section="Builds" />
+        )}
+        {topicSection?.includes("Characters") && (
+          <LabelSelector type="Labels" section="Characters" />
+        )}
+      </SelectorsBox>
     </NewTopic>
   );
 }
