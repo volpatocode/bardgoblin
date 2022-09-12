@@ -21,11 +21,15 @@ export default function index({ type, section }: labelSelectorType) {
   const { registerTopic, label, setLabel, topicSection, setTopicSection } =
     useContext(TopicContext);
 
-  const handleSection = (event: SelectChangeEvent<typeof topicSection>) => {
+  const handleSection = (
+    event: SelectChangeEvent<typeof topicSection>,
+    prev
+  ) => {
     const {
       target: { value },
     } = event;
     setTopicSection(value);
+    value != prev && setLabel([]);
   };
 
   const handleLabels = (event: SelectChangeEvent<typeof label>) => {

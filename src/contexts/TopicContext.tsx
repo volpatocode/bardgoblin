@@ -48,7 +48,7 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [topicError, setTopicError] = useState("");
   const [label, setLabel] = useState([]);
-  const [topicSection, setTopicSection] = useState("");
+  const [topicSection, setTopicSection] = useState("Side Quests");
 
   const {
     register: registerTopic,
