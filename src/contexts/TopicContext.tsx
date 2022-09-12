@@ -16,8 +16,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { topicCreateValidationSchema } from "../utils/validations";
 import { FormValues } from "../types/user";
 import { UserContext } from "./UserContext";
-import { firestore } from "firebase-admin";
-import { getAdditionalUserInfo, getAuth } from "firebase/auth";
 
 type TopicContextProps = {
   children: ReactNode;
@@ -35,6 +33,10 @@ type TopicContextType = {
   submitTopic: (data: FormValues) => void;
   formErrors: any;
   topicError: string;
+  label: any[];
+  setLabel: (newState) => void;
+  topicSection: string;
+  setTopicSection: (newState) => void;
 };
 
 export const TopicContext = createContext<TopicContextType>(
@@ -45,6 +47,8 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
   const { currentUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [topicError, setTopicError] = useState("");
+  const [label, setLabel] = useState([]);
+  const [topicSection, setTopicSection] = useState("");
 
   const {
     register: registerTopic,
@@ -105,6 +109,10 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
         submitTopic,
         formErrors,
         topicError,
+        label,
+        setLabel,
+        topicSection,
+        setTopicSection,
       }}
     >
       {children}

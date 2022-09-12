@@ -18,10 +18,17 @@ type labelSelectorType = {
 };
 
 export default function index({ type, section }: labelSelectorType) {
-  const { registerTopic } = useContext(TopicContext);
-  const [label, setLabel] = useState([]);
+  const { registerTopic, label, setLabel, topicSection, setTopicSection } =
+    useContext(TopicContext);
 
-  const handleChange = (event: SelectChangeEvent<typeof label>) => {
+  const handleSection = (event: SelectChangeEvent<typeof topicSection>) => {
+    const {
+      target: { value },
+    } = event;
+    setTopicSection(value);
+  };
+
+  const handleLabels = (event: SelectChangeEvent<typeof label>) => {
     const {
       target: { value },
     } = event;
@@ -59,47 +66,83 @@ export default function index({ type, section }: labelSelectorType) {
     "Side Quests": sideQuestsLabels,
     Builds: buildsLabels,
     Characters: charactersLabels,
-    Section: sections,
   };
 
-  return (
-    <LabelSelector>
-      <StyledFormControl>
-        <StyledInputLabel>
-          {type == "Section" ? "Section" : "Labels"}
-        </StyledInputLabel>
-        <Select
-          multiple={type == "Section" ? false : true}
-          {...registerTopic(
-            type == "Section" ? "topic.section" : ("topic.labels" as const)
-          )}
-          value={label}
-          onChange={handleChange}
-          input={
-            <OutlinedInput
-              sx={{
-                color: "rgba(255, 255, 255, 0.45)",
-                border: "1px solid rgba(29, 29, 29, 0.7)",
-                outline: "none",
-                "&:hover": { border: "1px solid rgba(29, 29, 29, 0.7)" },
-              }}
-              label="label"
-            />
-          }
-          renderValue={(selected) => selected.join("  ")}
-          MenuProps={MenuProps}
-        >
-          {selector[section || type]?.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox
-                sx={{ color: "rgba(255, 255, 255, 0.75)" }}
-                checked={label.indexOf(name) > -1}
+  if (type == "Section") {
+    return (
+      <LabelSelector>
+        <StyledFormControl>
+          <StyledInputLabel>Section</StyledInputLabel>
+          <Select
+            multiple={false}
+            {...registerTopic("topic.section" as const)}
+            value={topicSection}
+            onChange={handleSection}
+            input={
+              <OutlinedInput
+                sx={{
+                  color: "rgba(255, 255, 255, 0.45)",
+                  border: "1px solid rgba(29, 29, 29, 0.7)",
+                  outline: "none",
+                  "&:hover": { border: "1px solid rgba(29, 29, 29, 0.7)" },
+                }}
+                label="label"
               />
-              <ListItemText primary={name} />
-            </MenuItem>
-          ))}
-        </Select>
-      </StyledFormControl>
-    </LabelSelector>
-  );
+            }
+            renderValue={(selected) => selected}
+            MenuProps={MenuProps}
+          >
+            {sections?.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox
+                  sx={{ color: "rgba(255, 255, 255, 0.75)" }}
+                  checked={topicSection.indexOf(name) > -1}
+                />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </StyledFormControl>
+      </LabelSelector>
+    );
+  }
+
+  if (type == "Labels") {
+    return (
+      <LabelSelector>
+        <StyledFormControl>
+          <StyledInputLabel>Labels</StyledInputLabel>
+          <Select
+            multiple
+            {...registerTopic("topic.labels" as const)}
+            value={label}
+            onChange={handleLabels}
+            input={
+              <OutlinedInput
+                sx={{
+                  color: "rgba(255, 255, 255, 0.45)",
+                  border: "1px solid rgba(29, 29, 29, 0.7)",
+                  outline: "none",
+                  "&:hover": { border: "1px solid rgba(29, 29, 29, 0.7)" },
+                }}
+                label="label"
+              />
+            }
+            renderValue={(selected) => selected.join("  ")}
+            MenuProps={MenuProps}
+          >
+            {selector[section]?.map((name) => (
+              <MenuItem key={name} value={name}>
+                <Checkbox
+                  sx={{ color: "rgba(255, 255, 255, 0.75)" }}
+                  checked={label.indexOf(name) > -1}
+                />
+                <ListItemText primary={name} />
+              </MenuItem>
+            ))}
+          </Select>
+        </StyledFormControl>
+      </LabelSelector>
+    );
+  }
 }
