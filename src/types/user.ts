@@ -61,6 +61,7 @@ export type userData = {
 export type FormValues = {
   topic: {
     userUID: string;
+    section: string;
     topictitle?: string;
     labels?: [];
     modules?: {

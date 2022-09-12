@@ -54,6 +54,7 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
   } = useForm<FormValues>({
     defaultValues: {
       topic: {
+        section: "",
         topictitle: "",
         labels: [],
         modules: [
