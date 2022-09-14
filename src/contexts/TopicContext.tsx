@@ -4,6 +4,7 @@ import { db } from "../config/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 import {
   Control,
+  FieldError,
   useFieldArray,
   UseFieldArrayAppend,
   UseFieldArrayRemove,
@@ -25,13 +26,19 @@ type TopicContextType = {
   isLoading: boolean;
   setIsLoading: (newState: boolean) => void;
   modules: Record<"id", string>[];
-  append: UseFieldArrayAppend<FormValues, "topic.modules">;
+  append: UseFieldArrayAppend<FormValues, "modules">;
   remove: UseFieldArrayRemove;
   registerTopic: UseFormRegister<FormValues>;
   handleSubmitTopic: UseFormHandleSubmit<FormValues>;
   control: Control<FormValues, any>;
   submitTopic: (data: FormValues) => void;
-  formErrors: any;
+  formErrors: {
+      userUID?: FieldError;
+      section?: FieldError;
+      topictitle?: FieldError;
+      labels?: [];
+      modules?: { moduletitle?: FieldError; modulecontent?: FieldError }[];
+  };
   topicError: string;
   label: any[];
   setLabel: (newState) => void;
@@ -57,15 +64,13 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
     formState: { errors: formErrors },
   } = useForm<FormValues>({
     defaultValues: {
-      topic: {
-        section: "",
+        section: "Side Quests",
         topictitle: "",
         labels: [],
         modules: [
           { moduletitle: "", modulecontent: "" },
           { moduletitle: "", modulecontent: "" },
         ],
-      },
     },
     resolver: yupResolver(topicCreateValidationSchema),
   });
@@ -76,7 +81,7 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
     remove,
   } = useFieldArray({
     control,
-    name: "topic.modules",
+    name: "modules",
   });
 
   const submitTopic = async (data: FormValues) => {
