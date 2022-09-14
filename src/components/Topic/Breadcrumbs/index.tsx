@@ -4,7 +4,7 @@ import { IDButton, SectionButton, Wrapper, Breadcrumb } from "./styles";
 import Link from "next/link";
 
 type breadcrumbType = {
-  topicType: "Builds" | "Side Quests" | "Characters";
+  topicType: string;
   labels: any;
   topicId: string | string[];
 };
@@ -19,7 +19,7 @@ export default function index({ topicType, labels, topicId }: breadcrumbType) {
   return (
     <Wrapper>
       <Breadcrumb>
-        <Link href={sections[topicType]}>
+        <Link href={`${sections[topicType]}`}>
           <SectionButton>{topicType}</SectionButton>
         </Link>
       </Breadcrumb>
