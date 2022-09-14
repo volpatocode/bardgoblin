@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 import {
   OutlinedInput,
@@ -79,7 +79,7 @@ export default function index({ type, section }: labelSelectorType) {
           <StyledInputLabel>Section</StyledInputLabel>
           <Select
             multiple={false}
-            {...registerTopic("topic.section" as const)}
+            {...registerTopic("section" as const)}
             value={topicSection}
             onChange={handleSection}
             input={
@@ -100,7 +100,7 @@ export default function index({ type, section }: labelSelectorType) {
               <MenuItem key={name} value={name}>
                 <Checkbox
                   sx={{ color: "rgba(255, 255, 255, 0.75)" }}
-                  checked={topicSection.indexOf(name) > -1}
+                  checked={topicSection?.indexOf(name) > -1}
                 />
                 <ListItemText primary={name} />
               </MenuItem>
@@ -118,7 +118,7 @@ export default function index({ type, section }: labelSelectorType) {
           <StyledInputLabel>Labels</StyledInputLabel>
           <Select
             multiple
-            {...registerTopic("topic.labels" as const)}
+            {...registerTopic("labels" as const)}
             value={label}
             onChange={handleLabels}
             input={
@@ -139,7 +139,7 @@ export default function index({ type, section }: labelSelectorType) {
               <MenuItem key={name} value={name}>
                 <Checkbox
                   sx={{ color: "rgba(255, 255, 255, 0.75)" }}
-                  checked={label.indexOf(name) > -1}
+                  checked={label?.indexOf(name) > -1}
                 />
                 <ListItemText primary={name} />
               </MenuItem>
