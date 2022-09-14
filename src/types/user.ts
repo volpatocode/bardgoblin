@@ -23,22 +23,20 @@ export type topicFullType = {
 }[];
 
 export type topicsData = {
-  topic: {
-    topictitle: string;
-    modules: [moduletitle: string, modulecontent: string];
-    labels: [];
-  };
   uid: string;
+  section: string;
+  topictitle: string;
+  modules: [moduletitle: string, modulecontent: string];
+  labels: [];
   userUID: any;
 }[];
 
 export type topicData = {
-  topic: {
-    topictitle: string;
-    modules: { moduletitle: string; modulecontent: string }[];
-
-    labels: [];
-  };
+  uid: string;
+  section: string;
+  topictitle: string;
+  modules: { moduletitle: string; modulecontent: string }[];
+  labels: [];
   userUID: any;
 };
 
@@ -59,18 +57,16 @@ export type userData = {
 };
 
 export type FormValues = {
-  topic: {
-    userUID: string;
-    section: string;
-    topictitle?: string;
-    labels?: [];
-    modules?: {
-      moduletitle?: string;
-      modulecontent?: string;
-    }[];
-  };
+  userUID: string;
+  section: string;
+  topictitle?: string;
+  labels?: [];
+  modules?: {
+    moduletitle?: string;
+    modulecontent?: string;
+  }[];
 };
 
 export type sectionType = {
   section: "Builds" | "Side Quests" | "Characters";
-}
+};
