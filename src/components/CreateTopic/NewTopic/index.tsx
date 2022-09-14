@@ -15,10 +15,10 @@ export default function index() {
           name="topictitle"
           type="text"
           placeholder="Topic title"
-          {...registerTopic("topic.topictitle" as const)}
+          {...registerTopic("topictitle" as const)}
         />
-        {formErrors?.topic?.topictitle && (
-          <InputError error={formErrors?.topic?.topictitle?.message} />
+        {formErrors?.topictitle && (
+          <InputError error={formErrors?.topictitle?.message} />
         )}
       </TopicTitleBox>
       <SelectorsBox>

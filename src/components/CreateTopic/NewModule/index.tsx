@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { TopicContext } from "../../../contexts/TopicContext";
 import InputError from "../../InputError";
 
@@ -18,10 +18,13 @@ export default function index() {
   const { modules, remove, registerTopic, formErrors } =
     useContext(TopicContext);
 
+  useEffect(() => {
+    console.log(formErrors);
+  }, [formErrors]);
 
   return (
     <>
-      {modules.map((field, index) => {
+      {modules?.map((field, index) => {
         return (
           <NewModule key={field.id}>
             <ModuleHeader>
@@ -30,18 +33,14 @@ export default function index() {
                   name="moduletitle"
                   placeholder="Module title"
                   type="text"
-                  {...registerTopic(
-                    `topic.modules.${index}.moduletitle` as const
-                  )}
+                  {...registerTopic(`modules.${index}.moduletitle` as const)}
                   key={field.id}
                 />
-                {formErrors?.topic?.modules[index]?.moduletitle && (
+                {/* {formErrors?.modules[index]?.moduletitle && (
                   <InputError
-                    error={
-                      formErrors?.topic?.modules[index]?.moduletitle?.message
-                    }
+                    error={formErrors?.modules[index]?.moduletitle?.message}
                   />
-                )}
+                )} */}
               </ModuleTitleBox>
               {modules.length > 2 && (
                 <ModuleRemoveButton onClick={() => remove(index)}>
@@ -53,18 +52,14 @@ export default function index() {
               <ModuleContentInput
                 name="modulecontent"
                 placeholder="Insert module content here"
-                {...registerTopic(
-                  `topic.modules.${index}.modulecontent` as const
-                )}
+                {...registerTopic(`modules.${index}.modulecontent` as const)}
                 key={field.id}
               />
-              {formErrors?.topic?.modules[index]?.modulecontent && (
+              {/* {formErrors?.topic?.modules[index]?.modulecontent && (
                 <InputError
-                  error={
-                    formErrors?.topic?.modules[index]?.modulecontent?.message
-                  }
+                  error={formErrors?.topic?.modules[index]?.modulecontent?.message}
                 />
-              )}
+              )} */}
             </ModuleContentBox>
             {modules?.length > 1 &&
               modules[modules.length - 1] != modules[index] && (
