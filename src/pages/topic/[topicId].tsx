@@ -45,10 +45,6 @@ export default function index() {
   }, [topicId]);
 
   useEffect(() => {
-    console.log(userData);
-  }, [userData]);
-
-  useEffect(() => {
     const fetchUserData = async () => {
       const docRef = doc(db, "users", `${userId}`);
       const docSnap = await getDoc(docRef);
@@ -66,16 +62,16 @@ export default function index() {
           <TopicHeaderContent maxWidth="md">
             <Breadcrumbs
               topicId={topicId}
-              topicType="Side Quests"
-              labels={topicData?.topic?.labels.map((label) => {
+              topicType={topicData?.section}
+              labels={topicData?.labels?.map((label) => {
                 return <Label key={label}>{label}</Label>;
               })}
             />
-            <TopicTitle>{topicData?.topic?.topictitle}</TopicTitle>
+            <TopicTitle>{topicData?.topictitle}</TopicTitle>
             <TopicBadges>
               <UserBadge
                 displayName={userData?.displayName}
-                photoURL={userData.photoURL}
+                photoURL={userData?.photoURL}
               />
               {/* <LikeBadge />
               <CommentBadge /> */}
@@ -85,7 +81,7 @@ export default function index() {
         </TopicHeader>
       </TopicHeaderWrapper>
       <TopicContent maxWidth="lg">
-        {topicData?.topic?.modules?.map((module) => {
+        {topicData?.modules?.map((module) => {
           return (
             <TopicModule
               key={module?.moduletitle}
