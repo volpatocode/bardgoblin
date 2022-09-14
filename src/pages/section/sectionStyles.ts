@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export type sectionType = {
   section: "quest" | "builds";
@@ -91,19 +91,11 @@ export const SectionDescription = styled.h3`
   }
 `;
 
-export const SectionResults = styled(Box)`
+export const SectionResults = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin: 2rem 0;
-  padding: 0 15%;
-  @media (max-width: 960px) {
-    padding: 0.3rem 1.5rem 0rem 1.5rem;
-  }
-
-  @media (max-width: 400px) {
-    padding: 0.3rem 0.5rem 0rem 0.5rem;
-  }
+  margin: 2rem auto;
 `;
 
 export const TopicListTitle = styled.h4`

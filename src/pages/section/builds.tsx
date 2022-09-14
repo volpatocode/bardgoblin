@@ -35,7 +35,7 @@ export default function index() {
           <BorderDivider />
         </SectionHeader>
       </SectionHeaderWrapper>
-      <SectionResults>
+      <SectionResults maxWidth="lg">
         <TopicQueryInfo>
           <TopicListTitle>You are looking for "aaa"</TopicListTitle>
           <TopicFiltersWrapper>
