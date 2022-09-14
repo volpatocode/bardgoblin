@@ -49,19 +49,20 @@ export const Labels = styled(Box)`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
 `;
 
 export const Label = styled(Button)`
   color: rgba(255, 255, 255, 0.75);
   text-transform: none;
   background: none;
-  padding: 3px 8px 3px 8px;
+  padding: 3px 5px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.15rem;
   border-radius: 20px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   min-width: 0;
   transition: 200ms ease-in-out;
   :hover {

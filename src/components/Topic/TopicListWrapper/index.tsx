@@ -23,9 +23,17 @@ export default function index({}) {
 
   const sections = {
     "Side Quests": "sidequests",
-    "Builds": "builds",
-    "Characters": "characters",
+    Builds: "builds",
+    Characters: "characters",
   };
+
+  useEffect(() => {
+    console.log(
+      topicsData.map((topic) => {
+        return topic.uid;
+      })
+    );
+  }, [topicsData]);
 
   useEffect(() => {
     const fetchTopicsData = async () => {
@@ -34,7 +42,7 @@ export default function index({}) {
         setIsLoading(true);
         const queryTopicsData = await getDocs(collection(db, "topics"));
         queryTopicsData.forEach(async (doc) => {
-          topicList.push({ uid: doc.id, ...doc.data() });
+          topicList.push({ uid: doc?.id, ...doc.data() });
         });
         setTopicsData(topicList);
         setIsLoading(false);
@@ -83,10 +91,10 @@ export default function index({}) {
                     );
                   })}
 
-                  <TopicContent>{topic?.topic?.topictitle}</TopicContent>
+                  <TopicContent>{topic?.topictitle}</TopicContent>
                 </LeftSideTopic>
                 <Labels>
-                  {topic?.topic?.labels?.map((label, index) => (
+                  {topic?.labels?.map((label, index) => (
                     <Label key={index}>{label}</Label>
                   ))}
                 </Labels>
