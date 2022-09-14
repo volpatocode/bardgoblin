@@ -28,35 +28,35 @@ export const resetPasswordValidationSchema = yup.object({
 
 export const editUserValidationSchema = yup.object({
   email: yup
-    .string().required("Email is required")
+    .string()
+    .required("Email is required")
     .email("Invalid Email")
     .max(50, "Maximum of 50 characters"),
   username: yup
-    .string().required("Username is required")
+    .string()
+    .required("Username is required")
     .min(4, "Minimum of 4 characters")
     .max(20, "Maximum of 20 characters"),
 });
 
 export const topicCreateValidationSchema = yup.object({
-  topic: yup.object().shape({
-    topictitle: yup
-      .string()
-      .required("Topic title is required")
-      .min(6, "Minimum of 6 characters")
-      .max(50, "Maximum of 50 characters"),
-    modules: yup.array().of(
-      yup.object().shape({
-        moduletitle: yup
-          .string()
-          .required("Module title is required")
-          .min(6, "Minimum of 6 characters")
-          .max(50, "Maximum of 50 characters"),
-        modulecontent: yup
-          .string()
-          .required("Module content is required")
-          .min(150, "Minimum of 150 characters")
-          .max(1500, "Maximum of 1500 characters"),
-      })
-    ),
-  }),
+  topictitle: yup
+    .string()
+    .required("Topic title is required")
+    .min(6, "Minimum of 6 characters")
+    .max(50, "Maximum of 50 characters"),
+  modules: yup.array().of(
+    yup.object().shape({
+      moduletitle: yup
+        .string()
+        .required("Module title is required")
+        .min(6, "Minimum of 6 characters")
+        .max(50, "Maximum of 50 characters"),
+      modulecontent: yup
+        .string()
+        .required("Module content is required")
+        .min(150, "Minimum of 150 characters")
+        .max(1500, "Maximum of 1500 characters"),
+    })
+  ),
 });
