@@ -73,7 +73,7 @@ export default function index() {
           <MenuIcon />
         </OpenIconButton>
         {isMenuMobileOpen && (
-          <Fade in={isMenuMobileOpen}>
+          <Fade in={isMenuMobileOpen} >
             <BoxModal>
               <HeaderModal>
                 <CloseIconButton

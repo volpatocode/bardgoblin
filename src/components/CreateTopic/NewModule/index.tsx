@@ -42,7 +42,7 @@ export default function index() {
                   />
                 )} */}
               </ModuleTitleBox>
-              {modules.length > 2 && (
+              {modules?.length > 2 && (
                 <ModuleRemoveButton onClick={() => remove(index)}>
                   <RemoveIcon fontSize="small" />
                 </ModuleRemoveButton>
@@ -55,14 +55,14 @@ export default function index() {
                 {...registerTopic(`modules.${index}.modulecontent` as const)}
                 key={field.id}
               />
-              {/* {formErrors?.topic?.modules[index]?.modulecontent && (
+              {/* {formErrors?.modules[index]?.modulecontent && (
                 <InputError
-                  error={formErrors?.topic?.modules[index]?.modulecontent?.message}
+                  error={formErrors?.modules[index]?.modulecontent?.message}
                 />
               )} */}
             </ModuleContentBox>
             {modules?.length > 1 &&
-              modules[modules.length - 1] != modules[index] && (
+              modules[modules?.length - 1] != modules[index] && (
                 <ModuleDivider />
               )}
           </NewModule>

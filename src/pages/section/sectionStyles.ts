@@ -91,29 +91,6 @@ export const SectionDescription = styled.h3`
   }
 `;
 
-export const SectionResults = styled(Container)`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 2rem auto;
-`;
-
-export const TopicListTitle = styled.h4`
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.1px;
-  text-align: left;
-  font-weight: 400;
-`;
-
-export const TopicQueryInfo = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-`;
-
-export const TopicFiltersWrapper = styled(Box)``;
-
 export const BorderDivider = styled(Box)`
   border-bottom: 3px solid rgba(29, 29, 29, 1);
   width: 100%;

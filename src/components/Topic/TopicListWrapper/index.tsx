@@ -28,11 +28,7 @@ export default function index({}) {
   };
 
   useEffect(() => {
-    console.log(
-      topicsData.map((topic) => {
-        return topic.uid;
-      })
-    );
+    console.log(topicsData);
   }, [topicsData]);
 
   useEffect(() => {

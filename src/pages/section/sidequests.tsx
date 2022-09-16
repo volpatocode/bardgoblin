@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserModalContextProvider } from "../../contexts/UserModalContext";
 import { UserContext, UserContextProvider } from "../../contexts/UserContext";
 
 import Navbar from "../../components/Navbar";
-import TopicListWrapper from "../../components/Topic/TopicListWrapper";
 import Footer from "../../components/Footer";
-import TopicSearchBar from "../../components/Topic/TopicSearchBar";
-import TopicPagination from "../../components/Topic/TopicPagination";
+
 
 import {
   SectionWrapper,
@@ -15,14 +13,12 @@ import {
   SectionHeaderContent,
   SectionTitle,
   SectionDescription,
-  SectionResults,
-  TopicListTitle,
-  TopicQueryInfo,
-  TopicFiltersWrapper,
   BorderDivider,
 } from "./sectionStyles";
+import SectionResults from "../../components/Section/SectionResults";
 
 export default function index() {
+
   return (
     <SectionWrapper>
       <SectionHeaderWrapper>
@@ -37,16 +33,7 @@ export default function index() {
           <BorderDivider />
         </SectionHeader>
       </SectionHeaderWrapper>
-      <SectionResults maxWidth="lg">
-        <TopicQueryInfo>
-          <TopicListTitle>You are looking for "ssssa"</TopicListTitle>
-          <TopicFiltersWrapper>
-            <TopicSearchBar />
-          </TopicFiltersWrapper>
-        </TopicQueryInfo>
-        <TopicListWrapper />
-        <TopicPagination />
-      </SectionResults>
+      <SectionResults/>
       <Footer />
     </SectionWrapper>
   );

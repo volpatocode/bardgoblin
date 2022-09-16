@@ -1,7 +1,30 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Container, Box } from "@mui/material";
 
-export const TopicSearchBar = styled(Box)`
+export const SectionResults = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem auto;
+`;
+
+export const TopicListTitle = styled.h4`
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1px;
+  text-align: left;
+  font-weight: 400;
+`;
+
+export const TopicQueryInfo = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+`;
+
+export const TopicFiltersWrapper = styled(Box)``;
+
+export const TopicSearchBar = styled.form`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

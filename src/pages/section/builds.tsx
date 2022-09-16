@@ -1,10 +1,7 @@
 import React from "react";
 
 import Navbar from "../../components/Navbar";
-import TopicListWrapper from "../../components/Topic/TopicListWrapper";
 import Footer from "../../components/Footer";
-import TopicSearchBar from "../../components/Topic/TopicSearchBar";
-import TopicPagination from "../../components/Topic/TopicPagination";
 
 import {
   SectionWrapper,
@@ -13,12 +10,9 @@ import {
   SectionHeaderContent,
   SectionTitle,
   SectionDescription,
-  SectionResults,
-  TopicListTitle,
-  TopicQueryInfo,
-  TopicFiltersWrapper,
   BorderDivider,
 } from "./sectionStyles";
+import SectionResults from "../../components/Section/SectionResults";
 
 export default function index() {
   return (
@@ -35,16 +29,7 @@ export default function index() {
           <BorderDivider />
         </SectionHeader>
       </SectionHeaderWrapper>
-      <SectionResults maxWidth="lg">
-        <TopicQueryInfo>
-          <TopicListTitle>You are looking for "aaa"</TopicListTitle>
-          <TopicFiltersWrapper>
-            <TopicSearchBar />
-          </TopicFiltersWrapper>
-        </TopicQueryInfo>
-        <TopicListWrapper />
-        <TopicPagination />
-      </SectionResults>
+      <SectionResults />
       <Footer />
     </SectionWrapper>
   );

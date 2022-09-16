@@ -1,7 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
-import { UserContext, UserContextProvider } from "../contexts/UserContext";
+import { UserContextProvider } from "../contexts/UserContext";
 import { TopicContextProvider } from "../contexts/TopicContext";
+import { SearchContextProvider } from "../contexts/SearchContext";
 import { theme } from "../theme/theme.ts";
 import { ThemeProvider } from "@mui/material";
 import Head from "next/head";
@@ -48,15 +49,19 @@ export default function App({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Uncial+Antiqua&display=swap"
           rel="stylesheet"
         />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"/>
-        
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <UserModalContextProvider>
         <UserContextProvider>
           <TopicContextProvider>
-            <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-            </ThemeProvider>
+            <SearchContextProvider>
+              <ThemeProvider theme={theme}>
+                <Component {...pageProps} />
+              </ThemeProvider>
+            </SearchContextProvider>
           </TopicContextProvider>
         </UserContextProvider>
       </UserModalContextProvider>
