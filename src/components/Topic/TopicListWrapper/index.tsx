@@ -14,62 +14,17 @@ import {
   Labels,
   Label,
 } from "./styles";
-import { UserContext } from "../../../contexts/UserContext";
+import { SearchContext } from "../../../contexts/SearchContext";
 
-export default function index({}) {
-  const { setIsLoading } = useContext(UserContext);
-  const [topicsData, setTopicsData] = useState([] as topicsData);
-  const [usersData, setUsersData] = useState([] as usersData);
+export default function index({data}
+) {
 
-  const sections = {
-    "Side Quests": "sidequests",
-    Builds: "builds",
-    Characters: "characters",
-  };
+  const {usersData } = useContext(SearchContext);
 
-  useEffect(() => {
-    console.log(topicsData);
-  }, [topicsData]);
-
-  useEffect(() => {
-    const fetchTopicsData = async () => {
-      let topicList = [];
-      try {
-        setIsLoading(true);
-        const queryTopicsData = await getDocs(collection(db, "topics"));
-        queryTopicsData.forEach(async (doc) => {
-          topicList.push({ uid: doc?.id, ...doc.data() });
-        });
-        setTopicsData(topicList);
-        setIsLoading(false);
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    fetchTopicsData();
-  }, []);
-
-  useEffect(() => {
-    const fetchUsersData = async () => {
-      let usersList = [];
-      try {
-        setIsLoading(true);
-        const queryUsersData = await getDocs(collection(db, "users"));
-        queryUsersData.forEach((doc) => {
-          usersList.push({ ...doc.data() });
-        });
-        setUsersData(usersList);
-        setIsLoading(false);
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    fetchUsersData();
-  }, []);
 
   return (
     <>
-      {topicsData?.map((topic) => {
+      {data?.map((topic) => {
         return (
           <TopicListWrapper key={topic?.uid}>
             <Link href={`/topic/${topic?.uid}`}>
