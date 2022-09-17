@@ -15,12 +15,11 @@ import TopicListWrapper from "../../Topic/TopicListWrapper";
 import { SearchContext } from "../../../contexts/SearchContext";
 
 export default function index() {
-  const { setQuery, search, topicsData } = useContext(SearchContext);
+  const { setQuery, search, topicsData, query } = useContext(SearchContext);
 
   return (
     <SectionResults maxWidth="lg">
       <TopicQueryInfo>
-        <TopicListTitle>You are looking for "ssssa"</TopicListTitle>
         <TopicFiltersWrapper>
           <TopicSearchBar>
             <StyledInput
@@ -28,7 +27,7 @@ export default function index() {
               placeholder="Search..."
               onChange={(e) => setQuery(e.target.value)}
             />
-            <InputButton type="submit">
+            <InputButton>
               <SearchIcon />
             </InputButton>
           </TopicSearchBar>
