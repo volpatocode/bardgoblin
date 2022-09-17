@@ -21,15 +21,6 @@ export const theme = createTheme({
         },
       },
     },
-    // MuiOutlinedInput: {
-    //   styleOverrides: {
-    //     root: {
-    //       "&:hover": {
-    //         outline: "none"
-    //       }
-    //     }
-    //   }
-    // },
     MuiMenuItem: {
       styleOverrides: {
         root: {

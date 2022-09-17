@@ -1,11 +1,11 @@
 import React from "react";
 
 import Logo from "../../components/Logo";
-import { ResetPasswordImageBox } from "./resetpasswordstyles";
+import { ImageBox } from "./resetpasswordstyles";
 
 import {
-  EmailSent,
-  EmailSentBoxWrapper,
+  Wrapper,
+  EmailSentBox,
   BoxLogo,
   BoxContent,
   BoxInfo,
@@ -20,8 +20,8 @@ import {
 
 export default function index() {
   return (
-    <EmailSent>
-      <EmailSentBoxWrapper>
+    <Wrapper>
+      <EmailSentBox>
         <BoxLogo>
           <Logo variant="horizontal" />
         </BoxLogo>
@@ -42,12 +42,12 @@ export default function index() {
           <FooterInfo>
             Did not receive the email? Check your spam filter, or{" "}
             <InfoAnchor href="/help/resetpassword">
-              try another email adress
+              try another email address
             </InfoAnchor>
           </FooterInfo>
         </BoxFooter>
-      </EmailSentBoxWrapper>
-      <ResetPasswordImageBox />
-    </EmailSent>
+      </EmailSentBox>
+      <ImageBox />
+    </Wrapper>
   );
 }

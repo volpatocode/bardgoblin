@@ -5,17 +5,17 @@ import { Popover, Tooltip } from "@mui/material";
 import { HelpIcon } from "./styles";
 
 export default function index() {
-  const [anchor, setAnchor] = useState<HTMLButtonElement | null>(null);
+  const [anchor, setAnchor] = useState(null);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchor(event.currentTarget);
+  const handleClick = (e) => {
+    setAnchor(e.currentTarget);
   };
 
   const handleClose = () => {
     setAnchor(null);
   };
 
-  const open = Boolean(anchor);
+  const open = (anchor);
   const id = open ? "simple-popover" : undefined;
 
   return (

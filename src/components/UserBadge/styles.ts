@@ -18,17 +18,15 @@ export const UserBadge = styled(Button)`
 `;
 
 export const UserImage = styled.img`
-    border-radius: 50%;
-    width: 28px;
-    height: 28px;
-
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
 `;
 
 export const Username = styled.p`
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.9);
-    text-align: left;
-    letter-spacing: 0.1px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: left;
+  letter-spacing: 0.1px;
 `;
-

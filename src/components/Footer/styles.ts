@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Box} from "@mui/material";
 
-export const Footer = styled.div`
+export const Footer = styled(Box)`
 background: #1D1D1D;
 color: #8E8E8E;
 letter-spacing: 0.2px;

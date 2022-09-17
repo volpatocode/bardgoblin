@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Button, Stack, Breadcrumbs, Box } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import RightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export const Wrapper = styled(Box)`
@@ -11,7 +11,6 @@ export const Wrapper = styled(Box)`
   @media (max-width: 1000px) {
     flex-direction: column;
   }
-  
 `;
 
 export const Breadcrumb = styled(Box)`
@@ -21,8 +20,6 @@ export const Breadcrumb = styled(Box)`
   justify-content: center;
   flex-wrap: wrap;
 `;
-
-
 
 export const SectionButton = styled(Button)`
   color: #fff;

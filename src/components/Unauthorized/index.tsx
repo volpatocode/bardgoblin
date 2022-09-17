@@ -1,11 +1,10 @@
 import React from "react";
 
-import { PageWrapper, Title } from "./styles";
+import { PageWrapper } from "./styles";
 
 export default function index() {
   return (
     <PageWrapper>
-      <Title>Not today traveler</Title>
     </PageWrapper>
   );
 }

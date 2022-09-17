@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 
-export const HomeWrapper = styled.div`
+export const PageWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +25,7 @@ export const HomeWrapper = styled.div`
   }
 `;
 
-export const HomeContent = styled.div`
+export const Content = styled(Box)`
   width: 100%;
   height: 100%;
   display: flex;
@@ -35,7 +36,6 @@ export const HomeContent = styled.div`
   padding-bottom: 10rem;
   animation-name: slowLoad;
   animation-duration: 1s;
-
   @keyframes slowLoad {
     0% {
       opacity: 0;
@@ -46,7 +46,7 @@ export const HomeContent = styled.div`
   }
 `;
 
-export const WrittenContent = styled.div`
+export const WrittenContentBox = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +55,7 @@ export const WrittenContent = styled.div`
   width: 100%;
 `;
 
-export const HomeTitle = styled.h1`
+export const Title = styled.h1`
   font-size: 2.5rem;
   color: #fff;
   font-family: "New Rocker", cursive;
@@ -79,7 +79,7 @@ export const HomeTitle = styled.h1`
   }
 `;
 
-export const HomeSubtitle = styled.h2`
+export const Subtitle = styled.h2`
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.2px;

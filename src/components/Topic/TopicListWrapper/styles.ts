@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
-import { Box, Button} from "@mui/material";
+import { Box, Button } from "@mui/material";
 
-export const TopicListWrapper= styled(Box)`
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+export const TopicListWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 export const QueryTopic = styled(Box)`

@@ -2,11 +2,11 @@ import React from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 
-import { FireAnimation, PageWrapper } from "./styles";
+import { FireAnimation, Wrapper } from "./styles";
 
 export default function index() {
   return (
-    <PageWrapper>
+    <Wrapper>
       <Navbar />
       <FireAnimation>
         <svg
@@ -74,6 +74,6 @@ export default function index() {
         </svg>
       </FireAnimation>
       <Footer />
-    </PageWrapper>
+    </Wrapper>
   );
 }

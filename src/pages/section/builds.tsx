@@ -4,33 +4,30 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
 import {
-  SectionWrapper,
-  SectionHeaderWrapper,
+  PageWrapper,
   SectionHeader,
-  SectionHeaderContent,
-  SectionTitle,
-  SectionDescription,
+  HeaderContent,
+  HeaderTitle,
+  HeaderDescription,
   BorderDivider,
 } from "./sectionStyles";
 import SectionResults from "../../components/Section/SectionResults";
 
 export default function index() {
   return (
-    <SectionWrapper>
-      <SectionHeaderWrapper>
-        <SectionHeader section="builds">
-          <Navbar />
-          <SectionHeaderContent>
-            <SectionTitle>Builds</SectionTitle>
-            <SectionDescription>
-              Examples and combinations to explore your hidden creativity
-            </SectionDescription>
-          </SectionHeaderContent>
-          <BorderDivider />
-        </SectionHeader>
-      </SectionHeaderWrapper>
+    <PageWrapper>
+      <SectionHeader section="builds">
+        <Navbar />
+        <HeaderContent>
+          <HeaderTitle>Builds</HeaderTitle>
+          <HeaderDescription>
+            Examples and combinations to explore your hidden creativity
+          </HeaderDescription>
+        </HeaderContent>
+        <BorderDivider />
+      </SectionHeader>
       <SectionResults />
       <Footer />
-    </SectionWrapper>
+    </PageWrapper>
   );
 }

@@ -1,27 +1,19 @@
-import React, { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
+import React from "react";
 
 import Footer from "../../components/Footer";
 import ProfileInfo from "../../components/Profile/ProfileInfo";
-import Unauthorized from "../../components/Unauthorized/index";
-import ProfileHeader from "../../components/Profile/ProfileHeader";
+import Header from "../../components/Profile/ProfileHeader";
 
-import { ProfilePageWrapper, ProfilePageContent } from "./accountStyles";
+import { PageWrapper, Content } from "./accountStyles";
 
 export default function index() {
-  const { isAuthorized } = useContext(UserContext);
-
-  if (isAuthorized) {
-    return (
-      <ProfilePageWrapper>
-        <ProfileHeader />
-        <ProfilePageContent>
-          <ProfileInfo />
-        </ProfilePageContent>
-        <Footer />
-      </ProfilePageWrapper>
-    );
-  } else {
-    return <Unauthorized />;
-  }
+  return (
+    <PageWrapper>
+      <Header />
+      <Content>
+        <ProfileInfo />
+      </Content>
+      <Footer />
+    </PageWrapper>
+  );
 }

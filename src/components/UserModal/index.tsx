@@ -46,10 +46,8 @@ export default function index() {
     toggleLogin,
     toggleRegister,
   } = useContext(UserModalContext);
-  const { createUser, loginUser, isLoading, errorFirebase } =
+  const { createUser, loginUser, isLoading, errorFirebase, screenSm } =
     useContext(UserContext);
-
-  const screenSm = useMediaQuery("(max-width:600px)");
 
   const {
     register: registerRegister,
@@ -84,7 +82,7 @@ export default function index() {
                   size="medium"
                   edge="start"
                   aria-label="open-drawer"
-                  onClick={() => handleUserModal()}
+                  onClick={handleUserModal}
                 >
                   <CloseMenuIcon fontSize="large" />
                 </CloseIconButton>
@@ -95,7 +93,7 @@ export default function index() {
             </BoxLogo>
             <SelectButtonBox>
               <SelectButton
-                onClick={() => toggleLogin()}
+                onClick={toggleLogin}
                 sx={
                   isOnLogin
                     ? { borderBottom: "2px solid #ff9900" }
@@ -105,7 +103,7 @@ export default function index() {
                 Login
               </SelectButton>
               <SelectButton
-                onClick={() => toggleRegister()}
+                onClick={toggleRegister}
                 sx={
                   isOnRegister
                     ? { borderBottom: "2px solid #ff9900" }
@@ -211,7 +209,7 @@ export default function index() {
                     </BoxPassword>
                   </BoxInfo>
                   {errorFirebase && <InputError error={errorFirebase} />}
-                  <ButtonInfo onClick={() => toggleLogin()}>
+                  <ButtonInfo onClick={toggleLogin}>
                     Already have an account?
                   </ButtonInfo>
                   <FinishButton

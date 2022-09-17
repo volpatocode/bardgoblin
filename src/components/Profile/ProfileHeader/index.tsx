@@ -9,7 +9,7 @@ export default function index() {
   const { currentUser } = useContext(UserContext);
   return (
     <ProfileHeader>
-      <Navbar page="home" />
+      <Navbar/>
       <ProfileGreetings>
         Welcome, {currentUser?.displayName || "Traveler"}
       </ProfileGreetings>

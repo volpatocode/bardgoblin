@@ -49,6 +49,7 @@ export const SelectButton = styled(Select)`
   background-color: #fff;
   border-radius: 7.5px 0px 0px 7.5px;
   display: flex;
+  justify-content: center;
   height: 40px;
   align-items: center;
   color: #4f4f4f;

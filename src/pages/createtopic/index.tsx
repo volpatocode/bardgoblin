@@ -1,17 +1,10 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useMediaQuery } from "@mui/material";
-import { addDoc, collection } from "firebase/firestore";
-import React, { useContext, useEffect } from "react";
-import { useForm } from "react-hook-form";
+import React, { useContext } from "react";
 import NewModule from "../../components/CreateTopic/NewModule";
 import NewTopic from "../../components/CreateTopic/NewTopic";
-import InputError from "../../components/InputError";
 import Logo from "../../components/Logo";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
-import { db } from "../../config/firebaseConfig";
 import { TopicContext } from "../../contexts/TopicContext";
 import { UserContext } from "../../contexts/UserContext";
-import { topicCreateValidationSchema } from "../../utils/validations";
 
 import {
   PageWrapper,
@@ -21,7 +14,6 @@ import {
   MainHeader,
   MainHeaderInfo,
   MainContent,
-  MainFooter,
   MainTitle,
   MainSubtitle,
   AddIcon,
@@ -35,7 +27,7 @@ export default function index() {
   const { append, handleSubmitTopic, submitTopic, isLoading } =
     useContext(TopicContext);
 
-  const screenMd = useMediaQuery("(max-width:1000px)");
+  const { screenMd } = useContext(UserContext);
 
   return (
     <PageWrapper>
@@ -73,7 +65,7 @@ export default function index() {
               onClick={handleSubmitTopic(submitTopic)}
             >
               {isLoading ? (
-                <StyledCircularProgress size="25px" />
+                <StyledCircularProgress size="32px" />
               ) : (
                 <>
                   <DoneIcon fontSize="small" />
@@ -83,7 +75,6 @@ export default function index() {
             </SubmitButton>
           </BoxButtons>
         </MainContent>
-        <MainFooter></MainFooter>
       </MainBox>
     </PageWrapper>
   );

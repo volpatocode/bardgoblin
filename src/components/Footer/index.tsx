@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { useMediaQuery } from "@mui/material";
 
 import Logo from "../Logo";
 
 import { Footer } from "./styles";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function index() {
-  const screenSm = useMediaQuery("(max-width:600px)");
+  const { screenSm } = useContext(UserContext);
+
   return (
     <Footer>
       <Logo variant="icon2" />

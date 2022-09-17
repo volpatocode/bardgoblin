@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
-import GppMaybeIcon from '@mui/icons-material/GppMaybe';
-import PendingIcona from '@mui/icons-material/Pending';
+import MaybeIcon from '@mui/icons-material/GppMaybe';
 
 export const EmailStatus = styled(Box)`
 `;
@@ -25,7 +24,7 @@ export const NotVerified = styled(Box)`
   gap: 0.3rem;
 `;
 
-export const NotVerifiedIcon = styled(GppMaybeIcon)`
+export const NotVerifiedIcon = styled(MaybeIcon)`
     
 `;
 

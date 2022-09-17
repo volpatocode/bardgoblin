@@ -1,40 +1,33 @@
-import React, { useContext, useState } from "react";
-import { UserModalContextProvider } from "../../contexts/UserModalContext";
-import { UserContext, UserContextProvider } from "../../contexts/UserContext";
+import React from "react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 
-
 import {
-  SectionWrapper,
-  SectionHeaderWrapper,
+  PageWrapper,
   SectionHeader,
-  SectionHeaderContent,
-  SectionTitle,
-  SectionDescription,
+  HeaderContent,
+  HeaderTitle,
+  HeaderDescription,
   BorderDivider,
 } from "./sectionStyles";
 import SectionResults from "../../components/Section/SectionResults";
 
 export default function index() {
-
   return (
-    <SectionWrapper>
-      <SectionHeaderWrapper>
-        <SectionHeader section="quest">
-          <Navbar />
-          <SectionHeaderContent>
-            <SectionTitle>Side Quests</SectionTitle>
-            <SectionDescription>
-              Find the best answers to the most unexpected situations
-            </SectionDescription>
-          </SectionHeaderContent>
-          <BorderDivider />
-        </SectionHeader>
-      </SectionHeaderWrapper>
-      <SectionResults/>
+    <PageWrapper>
+      <SectionHeader section="quest">
+        <Navbar />
+        <HeaderContent>
+          <HeaderTitle>Side Quests</HeaderTitle>
+          <HeaderDescription>
+            Find the best answers to the most unexpected situations
+          </HeaderDescription>
+        </HeaderContent>
+        <BorderDivider />
+      </SectionHeader>
+      <SectionResults />
       <Footer />
-    </SectionWrapper>
+    </PageWrapper>
   );
 }

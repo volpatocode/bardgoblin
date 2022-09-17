@@ -10,12 +10,12 @@ import UserModal from "../UserModal";
 import { AvatarIcon, AccountAvatar } from "./styles";
 
 export default function index() {
-  const [anchor, setAnchor] = useState<null | HTMLElement>(null);
+  const [anchor, setAnchor] = useState(null);
   const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
   const { logOut, isAuthorized, photoURL } = useContext(UserContext);
 
-  const handleMenu = (e: React.MouseEvent<HTMLElement>) => {
+  const handleMenu = (e) => {
     setAnchor(e.currentTarget);
   };
 

@@ -17,7 +17,6 @@ export const BoxModal = styled(Box)`
   padding: 2.5rem 1rem;
   text-align: left;
   height: auto;
-
   @media (max-width: 600px) {
     width: 100vw;
     height: 100vh;

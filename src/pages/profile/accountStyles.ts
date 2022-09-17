@@ -1,14 +1,14 @@
 import styled from "@emotion/styled";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 
-export const ProfilePageWrapper = styled(Box)`
+export const PageWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
 `;
 
-export const ProfilePageContent = styled(Box)`
+export const Content = styled(Box)`
   display: flex;
   flex-direction: row;
   align-items: flex-start;

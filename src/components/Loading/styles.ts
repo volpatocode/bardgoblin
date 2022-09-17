@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 
-export const PageWrapper = styled(Box)`
+export const Wrapper = styled(Box)`
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -11,7 +11,7 @@ export const PageWrapper = styled(Box)`
   position: relative;
 `;
 
-export const FireAnimation = styled.div`
+export const FireAnimation = styled(Box)`
   width: 200px;
   height: auto;
   position: absolute;

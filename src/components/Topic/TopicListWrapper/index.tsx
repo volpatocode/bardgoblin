@@ -1,10 +1,7 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
-import { db } from "../../../config/firebaseConfig";
-import { topicsData, usersData } from "../../../types/user";
+
 import UserBadge from "../../UserBadge";
-import Loading from "../../Loading";
 
 import {
   TopicListWrapper,
@@ -16,11 +13,8 @@ import {
 } from "./styles";
 import { SearchContext } from "../../../contexts/SearchContext";
 
-export default function index({data}
-) {
-
-  const {usersData } = useContext(SearchContext);
-
+export default function index({ data }) {
+  const { usersData } = useContext(SearchContext);
 
   return (
     <>
@@ -34,9 +28,9 @@ export default function index({data}
                     return (
                       user?.uid == topic?.userUID && (
                         <UserBadge
+                          key={user?.uid}
                           displayName={user?.displayName}
                           photoURL={user?.photoURL}
-                          key={user?.uid}
                         />
                       )
                     );

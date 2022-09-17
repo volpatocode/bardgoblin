@@ -117,11 +117,9 @@ export default function index() {
           <UploadButton
             type="submit"
             disabled={isLoading}
-            onClick={() => {
-              handlePhotoUpload();
-            }}
+            onClick={handlePhotoUpload}
           >
-            {isLoading ? <StyledCircularProgress size="30px" /> : "Upload"}
+            {isLoading ? <StyledCircularProgress size="32px" /> : "Upload"}
           </UploadButton>
         ) : (
           <InputImage>
@@ -183,7 +181,6 @@ export default function index() {
             <InputError error={editUserErrors?.username?.message} />
           )}
         </ProfileDataBox>
-
         <ProfileData>
           <DataPlaceholder>Email verification</DataPlaceholder>
           <DataValue background="none">
@@ -197,7 +194,7 @@ export default function index() {
             disabled={isLoading}
             onClick={handleSubmit(handleEditUser)}
           >
-            {isLoading ? <StyledCircularProgress size="30px" /> : "Upload"}
+            {isLoading ? <StyledCircularProgress size="32px" /> : "Upload"}
           </UploadButton>
         ) : (
           <EditButton
@@ -206,7 +203,7 @@ export default function index() {
               setIsEditingUser(true);
             }}
           >
-            {isLoading ? <StyledCircularProgress size="30px" /> : "Edit"}
+            {isLoading ? <StyledCircularProgress size="32px" /> : "Edit"}
           </EditButton>
         )}
       </ProfileContentForm>

@@ -7,18 +7,17 @@ import UserBadge from "../../components/UserBadge";
 
 import Breadcrumbs from "../../components/Topic/Breadcrumbs";
 
-import TopicModule from "../../components/Topic/TopicModule";
+import Module from "../../components/Topic/Module";
 
 import { BorderDivider } from "../section/sectionStyles";
 
 import {
-  TopicWrapper,
-  TopicHeaderWrapper,
-  TopicHeader,
-  TopicHeaderContent,
-  TopicTitle,
-  TopicBadges,
-  TopicContent,
+  PageWrapper,
+  Header,
+  HeaderContent,
+  Title,
+  BoxBadges,
+  MainContent,
 } from "./styles";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebaseConfig";
@@ -55,11 +54,10 @@ export default function index() {
   }, [userId]);
 
   return (
-    <TopicWrapper>
-      <TopicHeaderWrapper>
-        <TopicHeader>
+    <PageWrapper>
+        <Header>
           <Navbar />
-          <TopicHeaderContent maxWidth="md">
+          <HeaderContent maxWidth="md">
             <Breadcrumbs
               topicId={topicId}
               topicType={topicData?.section}
@@ -67,23 +65,22 @@ export default function index() {
                 return <Label key={label}>{label}</Label>;
               })}
             />
-            <TopicTitle>{topicData?.topictitle}</TopicTitle>
-            <TopicBadges>
+            <Title>{topicData?.topictitle}</Title>
+            <BoxBadges>
               <UserBadge
                 displayName={userData?.displayName}
                 photoURL={userData?.photoURL}
               />
               {/* <LikeBadge />
               <CommentBadge /> */}
-            </TopicBadges>
-          </TopicHeaderContent>
+            </BoxBadges>
+          </HeaderContent>
           <BorderDivider />
-        </TopicHeader>
-      </TopicHeaderWrapper>
-      <TopicContent maxWidth="lg">
+        </Header>
+      <MainContent maxWidth="lg">
         {topicData?.modules?.map((module) => {
           return (
-            <TopicModule
+            <Module
               key={module?.moduletitle}
               title={module?.moduletitle}
               content={module?.modulecontent}
@@ -92,8 +89,8 @@ export default function index() {
         })}
         {/* <TopicHiddenInfo />
         <OptionalQuestAccordion /> */}
-      </TopicContent>
+      </MainContent>
       {screenSm ? <ContinueBrowsing section="Side Quests" /> : <Footer />}
-    </TopicWrapper>
+    </PageWrapper>
   );
 }

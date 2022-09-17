@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Container, Box } from "@mui/material";
+import { Container, Box, Button } from "@mui/material";
 
 export const SectionResults = styled(Container)`
   display: flex;
@@ -7,15 +7,6 @@ export const SectionResults = styled(Container)`
   gap: 1rem;
   margin: 2rem auto;
 `;
-
-export const TopicListTitle = styled.h4`
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.1px;
-  text-align: left;
-  font-weight: 400;
-`;
-
 export const TopicQueryInfo = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -49,7 +40,7 @@ export const StyledInput = styled.input`
   border-radius: 7.5px 0 0 7.5px;
 `;
 
-export const InputButton = styled.button`
+export const InputButton = styled(Button)`
   border: none;
   padding: 15px 10px 15px 10px;
   font-size: 0.85rem;
@@ -62,4 +53,7 @@ export const InputButton = styled.button`
   max-height: 40px;
   cursor: pointer;
   overflow-y: hidden;
+  :hover {
+    background-color: #141414;
+  }
 `;

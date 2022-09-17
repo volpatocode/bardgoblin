@@ -1,18 +1,18 @@
 import styled from "@emotion/styled";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 
 export type sectionType = {
   section: "quest" | "builds";
 };
 
-export const SectionWrapper = styled(Box)`
+export const PageWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
 `;
 
-export const SectionHeaderWrapper = styled(Box)`
+export const HeaderWrapper = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@ export const SectionHeader = styled(Box)<sectionType>`
   justify-content: space-between;
 `;
 
-export const SectionHeaderContent = styled(Box)`
+export const HeaderContent = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +49,7 @@ export const SectionHeaderContent = styled(Box)`
   width: 100%;
 `;
 
-export const SectionTitle = styled.h1`
+export const HeaderTitle = styled.h1`
   font-size: 3rem;
   color: #fff;
   font-family: "Uncial Antiqua", cursive;
@@ -70,7 +70,7 @@ export const SectionTitle = styled.h1`
   }
 `;
 
-export const SectionDescription = styled.h3`
+export const HeaderDescription = styled.h3`
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.75);
   letter-spacing: 0.2px;

@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import {
   MenuItem,
   FormControl,
-  SelectChangeEvent,
-  createTheme,
   ThemeProvider,
 } from "@mui/material/";
 
@@ -20,7 +18,7 @@ import { searchBarTheme } from "../../theme/theme";
 export default function index() {
   const [searchBarSection, setSearchBarSection] = useState("Side Quests");
 
-  const handleChange = (e: SelectChangeEvent) => {
+  const handleChange = (e) => {
     setSearchBarSection(e.target.value as string);
   };
 
@@ -32,7 +30,6 @@ export default function index() {
             id="select-section"
             value={searchBarSection}
             onChange={handleChange}
-            sx={{ display: "flex", justifyContent: "center" }}
             color="secondary"
           >
             <MenuItem value="Side Quests">Side Quests</MenuItem>

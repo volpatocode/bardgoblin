@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   SectionResults,
   TopicQueryInfo,
-  TopicListTitle,
   TopicFiltersWrapper,
   TopicSearchBar,
   StyledInput,
@@ -15,7 +14,7 @@ import TopicListWrapper from "../../Topic/TopicListWrapper";
 import { SearchContext } from "../../../contexts/SearchContext";
 
 export default function index() {
-  const { setQuery, search, topicsData, query } = useContext(SearchContext);
+  const { setQuery, search, topicsData} = useContext(SearchContext);
 
   return (
     <SectionResults maxWidth="lg">

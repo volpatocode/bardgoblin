@@ -5,28 +5,28 @@ import Footer from "../../components/Footer";
 import MainSearchBar from "../../components/MainSearchBar";
 
 import {
-  HomeWrapper,
-  HomeContent,
-  HomeTitle,
-  HomeSubtitle,
-  WrittenContent,
+  PageWrapper,
+  Content,
+  Title,
+  Subtitle,
+  WrittenContentBox,
 } from "./styles";
 
 export default function index() {
   return (
-    <HomeWrapper>
+    <PageWrapper>
       <Navbar />
-      <HomeContent>
-        <WrittenContent>
-          <HomeTitle>Speak friendly and enter dear traveler</HomeTitle>
-          <HomeSubtitle>
+      <Content>
+        <WrittenContentBox>
+          <Title>Speak friendly and enter dear traveler</Title>
+          <Subtitle>
             Find and share quests, builds, supplies and others for your tabletop
             rpg
-          </HomeSubtitle>
-        </WrittenContent>
+          </Subtitle>
+        </WrittenContentBox>
         <MainSearchBar />
-      </HomeContent>
+      </Content>
       <Footer />
-    </HomeWrapper>
+    </PageWrapper>
   );
 }

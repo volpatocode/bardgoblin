@@ -41,8 +41,6 @@ export const MainContent = styled.form`
   gap: 1.5rem;
 `;
 
-export const MainFooter = styled(Box)``;
-
 export const MainTitle = styled.h1`
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.85);
@@ -116,7 +114,7 @@ export const SideBox = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+
   @media (max-width: 1000px) {
     display: none;
   }

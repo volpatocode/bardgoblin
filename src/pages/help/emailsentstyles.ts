@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
 
-export const EmailSent = styled(Box)`
+export const Wrapper = styled(Box)`
   min-height: 100vh;
   min-width: 100vw;
   display: flex;
 `;
 
-export const EmailSentBoxWrapper = styled(Box)`
+export const EmailSentBox = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,7 +28,6 @@ export const EmailSentBoxWrapper = styled(Box)`
     text-align: center;
     width: 100vw;
   }
-
 `;
 
 export const BoxLogo = styled(Box)`
@@ -50,7 +49,6 @@ export const BoxInfo = styled(Box)`
   align-items: flex-start;
   flex-direction: column;
   gap: 1rem;
-
 `;
 
 export const InfoSubtitle = styled.p`

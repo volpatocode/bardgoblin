@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { TopicContext } from "../../../contexts/TopicContext";
 import InputError from "../../InputError";
 import LabelSelector from "../../LabelSelector";

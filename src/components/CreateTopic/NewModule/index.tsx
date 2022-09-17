@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext} from "react";
 import { TopicContext } from "../../../contexts/TopicContext";
 import InputError from "../../InputError";
 
@@ -17,10 +17,6 @@ import {
 export default function index() {
   const { modules, remove, registerTopic, formErrors } =
     useContext(TopicContext);
-
-  useEffect(() => {
-    console.log(formErrors);
-  }, [formErrors]);
 
   return (
     <>

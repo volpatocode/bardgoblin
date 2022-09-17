@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Container } from "@mui/material";
 
-export const TopicWrapper = styled(Box)`
+export const PageWrapper = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,15 +9,7 @@ export const TopicWrapper = styled(Box)`
   min-height: 100vh;
 `;
 
-export const TopicHeaderWrapper = styled(Box)`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-`;
-
-export const TopicHeader = styled(Box)`
+export const Header = styled(Box)`
   background: linear-gradient(rgba(29, 29, 29, 0.8), rgba(29, 29, 29, 0.8)),
     url("/background2.png") no-repeat center center / cover;
   width: 100vw;
@@ -28,7 +20,7 @@ export const TopicHeader = styled(Box)`
   justify-content: space-between;
 `;
 
-export const TopicHeaderContent = styled(Container)`
+export const HeaderContent = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +28,7 @@ export const TopicHeaderContent = styled(Container)`
   gap: 0.3rem;
 `;
 
-export const TopicTitle = styled.h1`
+export const Title = styled.h1`
   font-size: 3rem;
   color: #fff;
   font-weight: 700;
@@ -48,7 +40,7 @@ export const TopicTitle = styled.h1`
   }
 `;
 
-export const TopicBadges = styled(Box)`
+export const BoxBadges = styled(Box)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -56,7 +48,7 @@ export const TopicBadges = styled(Box)`
   gap: 1.5rem;
 `;
 
-export const TopicContent = styled(Container)`
+export const MainContent = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 2rem;
