@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import Loading from "../../components/Loading";
 import MainSearchBar from "../../components/MainSearchBar";
 
 import {
@@ -13,7 +14,18 @@ import {
 } from "./styles";
 
 export default function index() {
-  return (
+  const [homeIsLoading, setHomeIsLoading] = useState(false);
+
+  useEffect(() => {
+    setHomeIsLoading(true);
+    setTimeout(() => {
+      setHomeIsLoading(false);
+    }, 3000);
+  }, []);
+
+  return homeIsLoading ? (
+    <Loading />
+  ) : (
     <PageWrapper>
       <Navbar />
       <Content>
