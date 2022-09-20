@@ -10,7 +10,7 @@ import {
   registerValidationSchema,
 } from "../../utils/validations";
 
-import { Backdrop, Modal, Fade, useMediaQuery } from "@mui/material";
+import { Backdrop, Modal, Fade } from "@mui/material";
 
 import Logo from "../Logo";
 import InputError from "../InputError";
@@ -36,6 +36,7 @@ import {
   CloseIconButton,
   CloseMenuIcon,
 } from "./styles";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 export default function index() {
   const {
@@ -46,8 +47,10 @@ export default function index() {
     toggleLogin,
     toggleRegister,
   } = useContext(UserModalContext);
-  const { createUser, loginUser, isLoading, errorFirebase, screenSm } =
+  const { createUser, loginUser, isLoading, errorFirebase } =
     useContext(UserContext);
+
+  const { screenSm } = useContext(UtilsContext);
 
   const {
     register: registerRegister,
@@ -77,16 +80,18 @@ export default function index() {
     >
       <Fade in={isMenuOpen}>
         <BoxModal>
-          {screenSm && <BoxModalHeader>
-            <CloseIconButton
-                  size="medium"
-                  edge="start"
-                  aria-label="open-drawer"
-                  onClick={handleUserModal}
-                >
-                  <CloseMenuIcon fontSize="large" />
-                </CloseIconButton>
-            </BoxModalHeader>}
+          {screenSm && (
+            <BoxModalHeader>
+              <CloseIconButton
+                size="medium"
+                edge="start"
+                aria-label="open-drawer"
+                onClick={handleUserModal}
+              >
+                <CloseMenuIcon fontSize="large" />
+              </CloseIconButton>
+            </BoxModalHeader>
+          )}
           <BoxModalContent>
             <BoxLogo>
               <Logo variant={screenSm ? "horizontal" : "vertical"} />
@@ -227,7 +232,7 @@ export default function index() {
               </form>
             )}
           </BoxModalContent>
-          {screenSm && <ModalFooter/>}
+          {screenSm && <ModalFooter />}
         </BoxModal>
       </Fade>
     </Modal>

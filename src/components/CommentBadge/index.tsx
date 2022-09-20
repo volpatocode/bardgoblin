@@ -1,7 +1,6 @@
 import React from "react";
 
 import Icon from "@mui/icons-material/Comment";
-
 import { CommentBadge, Count} from "./styles";
 
 export default function index() {

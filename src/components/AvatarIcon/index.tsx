@@ -3,10 +3,9 @@ import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
 import Link from "next/link";
 
-import { IconButton, Menu, MenuItem } from "@mui/material";
-
 import UserModal from "../UserModal";
 
+import { IconButton, Menu, MenuItem } from "@mui/material";
 import { AvatarIcon, AccountAvatar } from "./styles";
 
 export default function index() {

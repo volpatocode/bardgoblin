@@ -22,6 +22,7 @@ import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
 import { useMediaQuery } from "@mui/material";
+import { UtilsContext } from "./UtilsContext";
 
 type UserContextProps = {
   children: ReactNode;
@@ -42,10 +43,6 @@ type UserContextType = {
   photo: boolean;
   photoURL: string;
   currentUser: any;
-  forceHome: () => void;
-  refreshPage: () => void;
-  screenSm: boolean;
-  screenMd: boolean;
 };
 
 export const UserContext = createContext<UserContextType>(
@@ -53,7 +50,10 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-  const { handleUserModal, handleMobileUserModal } = useContext(UserModalContext);
+  const { handleUserModal, handleMobileUserModal } =
+    useContext(UserModalContext);
+  const { screenSm, screenMd, forceHome, refreshPage } =
+    useContext(UtilsContext);
   const currentUser = auth?.currentUser;
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -64,18 +64,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   );
 
   const router = useRouter();
-
-  // Util functions
-  function forceHome() {
-    router.push("/");
-  }
-
-  function refreshPage() {
-    router.reload();
-  }
-
-  const screenSm = useMediaQuery("(max-width:600px)");
-  const screenMd = useMediaQuery("(max-width:1000px)");
 
   // User listener
 
@@ -212,10 +200,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         photo,
         currentUser,
         photoURL,
-        forceHome,
-        refreshPage,
-        screenMd,
-        screenSm
       }}
     >
       {children}

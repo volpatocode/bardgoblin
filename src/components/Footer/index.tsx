@@ -1,14 +1,12 @@
 import React, { useContext } from "react";
 
-import { useMediaQuery } from "@mui/material";
-
 import Logo from "../Logo";
 
 import { Footer } from "./styles";
-import { UserContext } from "../../contexts/UserContext";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 export default function index() {
-  const { screenSm } = useContext(UserContext);
+  const { screenSm } = useContext(UtilsContext);
 
   return (
     <Footer>

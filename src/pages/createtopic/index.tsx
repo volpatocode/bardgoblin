@@ -4,7 +4,7 @@ import NewTopic from "../../components/CreateTopic/NewTopic";
 import Logo from "../../components/Logo";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
 import { TopicContext } from "../../contexts/TopicContext";
-import { UserContext } from "../../contexts/UserContext";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 import {
   PageWrapper,
@@ -27,7 +27,7 @@ export default function index() {
   const { append, handleSubmitTopic, submitTopic, isLoading } =
     useContext(TopicContext);
 
-  const { screenMd } = useContext(UserContext);
+  const { screenMd } = useContext(UtilsContext);
 
   return (
     <PageWrapper>

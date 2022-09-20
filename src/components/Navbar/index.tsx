@@ -25,9 +25,10 @@ import {
   FooterModal,
   ModalButton,
 } from "./styles";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 export default function index() {
-  const { isAuthorized, logOut, screenSm } = useContext(UserContext);
+  const { isAuthorized, logOut } = useContext(UserContext);
   const {
     handleUserModal,
     handleUserModalLogin,
@@ -35,6 +36,8 @@ export default function index() {
     isMenuMobileOpen,
     handleMobileUserModal,
   } = useContext(UserModalContext);
+
+  const { screenSm } = useContext(UtilsContext);
 
   // prevent modal scrolling
   useEffect(() => {
@@ -73,7 +76,7 @@ export default function index() {
           <MenuIcon />
         </OpenIconButton>
         {isMenuMobileOpen && (
-          <Fade in={isMenuMobileOpen} >
+          <Fade in={isMenuMobileOpen}>
             <BoxModal>
               <HeaderModal>
                 <CloseIconButton

@@ -24,10 +24,10 @@ import { db } from "../../config/firebaseConfig";
 import { topicData, userData } from "../../types/user";
 import { Label } from "../../components/Topic/Breadcrumbs/styles";
 import ContinueBrowsing from "../../components/Topic/ContinueBrowsing";
-import { UserContext } from "../../contexts/UserContext";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 export default function index() {
-  const { screenSm } = useContext(UserContext);
+  const { screenSm } = useContext(UtilsContext);
   const [topicData, setTopicData] = useState({} as topicData);
   const [userData, setUserData] = useState({} as userData);
   const topicId = useRouter().query.topicId;
@@ -55,28 +55,28 @@ export default function index() {
 
   return (
     <PageWrapper>
-        <Header>
-          <Navbar />
-          <HeaderContent maxWidth="md">
-            <Breadcrumbs
-              topicId={topicId}
-              topicType={topicData?.section}
-              labels={topicData?.labels?.map((label) => {
-                return <Label key={label}>{label}</Label>;
-              })}
+      <Header>
+        <Navbar />
+        <HeaderContent maxWidth="md">
+          <Breadcrumbs
+            topicId={topicId}
+            topicType={topicData?.section}
+            labels={topicData?.labels?.map((label) => {
+              return <Label key={label}>{label}</Label>;
+            })}
+          />
+          <Title>{topicData?.topictitle}</Title>
+          <BoxBadges>
+            <UserBadge
+              displayName={userData?.displayName}
+              photoURL={userData?.photoURL}
             />
-            <Title>{topicData?.topictitle}</Title>
-            <BoxBadges>
-              <UserBadge
-                displayName={userData?.displayName}
-                photoURL={userData?.photoURL}
-              />
-              {/* <LikeBadge />
+            {/* <LikeBadge />
               <CommentBadge /> */}
-            </BoxBadges>
-          </HeaderContent>
-          <BorderDivider />
-        </Header>
+          </BoxBadges>
+        </HeaderContent>
+        <BorderDivider />
+      </Header>
       <MainContent maxWidth="lg">
         {topicData?.modules?.map((module) => {
           return (
