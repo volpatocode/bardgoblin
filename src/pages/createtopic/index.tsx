@@ -24,7 +24,7 @@ import {
 } from "./styles";
 
 export default function index() {
-  const { append, handleSubmitTopic, submitTopic, isLoading } =
+  const { modules, append, handleSubmitTopic, submitTopic, isLoading } =
     useContext(TopicContext);
 
   const { screenMd } = useContext(UtilsContext);
@@ -46,19 +46,21 @@ export default function index() {
           <NewTopic />
           <NewModule />
           <BoxButtons>
-            <AddModuleButton
-              disabled={isLoading}
-              type="button"
-              onClick={() => append({ moduletitle: "", modulecontent: "" })}
-            >
-              {isLoading ? (
-                <StyledCircularProgress size="25px" />
-              ) : (
-                <>
-                  <AddIcon fontSize="small" /> Module
-                </>
-              )}
-            </AddModuleButton>
+            {modules.length < 6 && (
+              <AddModuleButton
+                disabled={isLoading}
+                type="button"
+                onClick={() => append({ moduletitle: "", modulecontent: "" })}
+              >
+                {isLoading ? (
+                  <StyledCircularProgress size="25px" />
+                ) : (
+                  <>
+                    <AddIcon fontSize="small" /> Module
+                  </>
+                )}
+              </AddModuleButton>
+            )}
             <SubmitButton
               disabled={isLoading}
               type="submit"
