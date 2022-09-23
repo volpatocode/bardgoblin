@@ -7,7 +7,7 @@ import { CampfireAnimation, Wrapper, MessageTop, MessageBottom } from "./styles"
 export default function index() {
   return (
     <Wrapper>
-      <MessageTop>Oops,</MessageTop>
+      <MessageTop>Oops...</MessageTop>
       <CampfireAnimation />
       <MessageBottom>Looks like something went wrong</MessageBottom>
     </Wrapper>

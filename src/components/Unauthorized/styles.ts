@@ -8,19 +8,24 @@ export const Wrapper = styled(Box)`
   flex-direction: column;
   background: url("/background.png") no-repeat center center / cover;
   position: relative;
-
   animation: blur-text 2s infinite linear alternate;
   animation-delay: 1s;
 
   @keyframes blur-text {
-  0% {filter: blur(0px);}
-  50% {filter: blur(2px);}
-  100% {filter: blur(4px);}
- 
-}
+    0% {
+      filter: blur(0px);
+    }
+    50% {
+      filter: blur(2px);
+    }
+    100% {
+      filter: blur(4px);
+    }
+  }
 `;
 
 export const MessageTop = styled.h1`
+  font-family: "Secular One", sans-serif;
   color: rgba(255, 255, 255, 0.55);
   text-align: center;
   font-size: 3rem;
@@ -29,11 +34,10 @@ export const MessageTop = styled.h1`
   z-index: 9999;
   max-width: 500px;
   margin: 0 auto;
-
-  
 `;
 
 export const MessageBottom = styled.h1`
+  font-family: "Secular One", sans-serif;
   color: rgba(255, 255, 255, 0.55);
   text-align: center;
   font-size: 3rem;
