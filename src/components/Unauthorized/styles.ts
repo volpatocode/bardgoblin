@@ -4,14 +4,15 @@ import { Box } from "@mui/material";
 export const Wrapper = styled(Box)`
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
   background: url("/background.png") no-repeat center center / cover;
   position: relative;
-  animation: blur-text 2s infinite linear alternate;
-  animation-delay: 1s;
+  animation: blur 2s infinite linear alternate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  @keyframes blur-text {
+  @keyframes blur {
     0% {
       filter: blur(0px);
     }
@@ -29,7 +30,6 @@ export const MessageTop = styled.h1`
   color: rgba(255, 255, 255, 0.55);
   text-align: center;
   font-size: 3rem;
-  top: 340px;
   position: relative;
   z-index: 9999;
   max-width: 500px;
@@ -41,11 +41,19 @@ export const MessageBottom = styled.h1`
   color: rgba(255, 255, 255, 0.55);
   text-align: center;
   font-size: 3rem;
-  top: 497px;
   position: relative;
   z-index: 9999;
   max-width: 500px;
   margin: 0 auto;
+  line-height: 1.2;
+`;
+
+export const WrapperAnimation = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2.5rem;
+  height: 250px;
 `;
 
 export const CampfireAnimation = styled(Box)`
@@ -58,9 +66,26 @@ export const CampfireAnimation = styled(Box)`
     position: absolute;
     left: -541px;
     right: 0;
-    top: calc(50% - 140px);
+    top: calc(50% - 150px);
     transform: translateY(-50%);
     margin: auto;
+    animation: glitch 2s infinite linear alternate;
+  }
+
+  @keyframes gray-scale {
+    0% {
+      width: 4px;
+      height: 4px;
+    }
+    50% {
+      width: 4px;
+      height: 4px;
+      filter: grayscale(70%);
+    }
+    100% {
+      width: 4px;
+      height: 4px;
+    }
   }
 
   &::after {
