@@ -2,14 +2,14 @@ import React from "react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 
-import { CampfireAnimation, Wrapper } from "./styles";
+import { CampfireAnimation, Wrapper, MessageTop, MessageBottom } from "./styles";
 
 export default function index() {
   return (
     <Wrapper>
-      <Navbar />
-      <CampfireAnimation/>
-      <Footer />
+      <MessageTop>Oops,</MessageTop>
+      <CampfireAnimation />
+      <MessageBottom>Looks like something went wrong</MessageBottom>
     </Wrapper>
   );
 }
