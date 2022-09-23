@@ -1,10 +1,15 @@
 import React from "react";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 
-import { PageWrapper } from "./styles";
+import { CampfireAnimation, Wrapper } from "./styles";
 
 export default function index() {
   return (
-    <PageWrapper>
-    </PageWrapper>
+    <Wrapper>
+      <Navbar />
+      <CampfireAnimation/>
+      <Footer />
+    </Wrapper>
   );
 }
