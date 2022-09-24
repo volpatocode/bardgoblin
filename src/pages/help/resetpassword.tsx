@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { resetPasswordValidationSchema } from "../../utils/validations";
 
 import Logo from "../../components/Logo";
-import { StyledCircularProgress } from "../../components/UserModal/styles";
 import InputError from "../../components/InputError";
 
 import {
@@ -19,6 +18,7 @@ import {
   ImageBox,
   BoxLogo,
 } from "./resetpasswordstyles";
+import { StyledCircularProgress } from "../../components/UserModal/styles";
 
 export default function index() {
   const { resetPassword, isLoading, errorFirebase } = useContext(UserContext);

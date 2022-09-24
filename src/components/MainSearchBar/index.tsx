@@ -13,6 +13,7 @@ import {
   SelectButton,
   SearchIcon,
 } from "./styles";
+
 import { searchBarTheme } from "../../theme/theme";
 
 export default function index() {

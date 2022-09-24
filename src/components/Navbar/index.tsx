@@ -2,8 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
-import { Fade } from "@mui/material";
-
 import Logo from "../Logo";
 import AvatarIcon from "../AvatarIcon";
 import UserModal from "../UserModal";
@@ -26,6 +24,7 @@ import {
   ModalButton,
 } from "./styles";
 import { UtilsContext } from "../../contexts/UtilsContext";
+import { Fade } from "@mui/material";
 
 export default function index() {
   const { isAuthorized, logOut } = useContext(UserContext);

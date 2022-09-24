@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { UserModalContext } from "../../../contexts/UserModalContext";
 
 import { auth, db } from "../../../config/firebaseConfig";
-import { updateProfile, updatePassword, updateEmail } from "firebase/auth";
+import { updateProfile, updateEmail } from "firebase/auth";
+import { doc,updateDoc } from "firebase/firestore";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -12,7 +13,6 @@ import { UserFormData } from "../../../types/user";
 
 import EmailStatus from "../EmailStatus";
 import HelpPopover from "../../HelpPopover";
-import { StyledCircularProgress } from "../../UserModal/styles";
 import InputError from "../../InputError";
 
 import {
@@ -29,7 +29,7 @@ import {
   InputImage,
   EditDataValue,
 } from "./styles";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { StyledCircularProgress } from "../../UserModal/styles";
 
 export type profileInfoType = {
   background?: "none";

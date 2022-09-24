@@ -1,9 +1,9 @@
 import React from "react";
 
-import { PageWrapper, ContentWrapper } from "./styles";
-
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+
+import { PageWrapper, ContentWrapper } from "./styles";
 
 export default function index() {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
+import Link from "next/link";
 
 import { IDButton, SectionButton, Wrapper, Breadcrumb } from "./styles";
-import Link from "next/link";
 
 type breadcrumbType = {
   topicType: string;

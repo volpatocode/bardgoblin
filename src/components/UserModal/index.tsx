@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
+import Link from "next/link";
 import { UserModalContext } from "../../contexts/UserModalContext";
 import { UserContext } from "../../contexts/UserContext";
-import Link from "next/link";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,8 +10,6 @@ import {
   loginValidationSchema,
   registerValidationSchema,
 } from "../../utils/validations";
-
-import { Backdrop, Modal, Fade } from "@mui/material";
 
 import Logo from "../Logo";
 import InputError from "../InputError";
@@ -36,7 +35,8 @@ import {
   CloseIconButton,
   CloseMenuIcon,
 } from "./styles";
-import { UtilsContext } from "../../contexts/UtilsContext";
+
+import { Backdrop, Modal, Fade } from "@mui/material";
 
 export default function index() {
   const {

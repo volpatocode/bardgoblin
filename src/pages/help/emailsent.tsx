@@ -1,7 +1,6 @@
 import React from "react";
 
 import Logo from "../../components/Logo";
-import { ImageBox } from "./resetpasswordstyles";
 
 import {
   Wrapper,
@@ -17,6 +16,7 @@ import {
   FooterInfo,
   InfoAnchor,
 } from "./emailsentstyles";
+import { ImageBox } from "./resetpasswordstyles";
 
 export default function index() {
   return (

@@ -1,4 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { SearchContext } from "../../../contexts/SearchContext";
+
+import SearchIcon from "@mui/icons-material/Search";
+import TopicListWrapper from "../../Topic/TopicListWrapper";
 
 import {
   SectionResults,
@@ -9,9 +13,6 @@ import {
   InputButton,
 } from "./styles";
 
-import SearchIcon from "@mui/icons-material/Search";
-import TopicListWrapper from "../../Topic/TopicListWrapper";
-import { SearchContext } from "../../../contexts/SearchContext";
 
 export default function index() {
   const { setQuery, search, topicsData} = useContext(SearchContext);

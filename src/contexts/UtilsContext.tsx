@@ -1,5 +1,6 @@
-import { useRouter } from "next/router";
 import { createContext, ReactNode } from "react";
+
+import { useRouter } from "next/router";
 import { useMediaQuery } from "@mui/material";
 
 type UtilsContextProps = {

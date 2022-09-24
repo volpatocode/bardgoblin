@@ -1,4 +1,3 @@
-import { collection, getDocs } from "firebase/firestore";
 import {
   createContext,
   ReactNode,
@@ -6,6 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../config/firebaseConfig";
 import { topicsData, usersData } from "../types/user";
 import { UserContext } from "./UserContext";

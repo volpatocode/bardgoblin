@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import UserBadge from "../../components/UserBadge";
-
 import Breadcrumbs from "../../components/Topic/Breadcrumbs";
-
 import Module from "../../components/Topic/Module";
+import ContinueBrowsing from "../../components/Topic/ContinueBrowsing";
 
-import { BorderDivider } from "../section/sectionStyles";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../config/firebaseConfig";
+import { topicData, userData } from "../../types/user";
 
 import {
   PageWrapper,
@@ -19,12 +21,8 @@ import {
   BoxBadges,
   MainContent,
 } from "./styles";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../config/firebaseConfig";
-import { topicData, userData } from "../../types/user";
+import { BorderDivider } from "../section/sectionStyles";
 import { Label } from "../../components/Topic/Breadcrumbs/styles";
-import ContinueBrowsing from "../../components/Topic/ContinueBrowsing";
-import { UtilsContext } from "../../contexts/UtilsContext";
 
 export default function index() {
   const { screenSm } = useContext(UtilsContext);

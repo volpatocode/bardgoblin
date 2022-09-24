@@ -6,10 +6,13 @@ import {
   useContext,
 } from "react";
 import { useRouter } from "next/router";
+import { useMediaQuery } from "@mui/material";
 
 import { UserModalContext } from "./UserModalContext";
+import { UtilsContext } from "./UtilsContext";
 import { UserFormData } from "../types/user";
 
+import { auth, db, storage } from "../config/firebaseConfig";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -18,11 +21,8 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import { auth, db, storage } from "../config/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { addDoc, collection, doc, setDoc, updateDoc } from "firebase/firestore";
-import { useMediaQuery } from "@mui/material";
-import { UtilsContext } from "./UtilsContext";
+import { doc, setDoc, updateDoc } from "firebase/firestore";
 
 type UserContextProps = {
   children: ReactNode;

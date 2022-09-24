@@ -2,6 +2,7 @@ import React from "react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import SectionResults from "../../components/Section/SectionResults";
 
 import {
   PageWrapper,
@@ -11,7 +12,6 @@ import {
   HeaderDescription,
   BorderDivider,
 } from "./sectionStyles";
-import SectionResults from "../../components/Section/SectionResults";
 
 export default function index() {
   return (
