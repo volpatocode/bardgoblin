@@ -15,7 +15,7 @@ import {
 
 
 export default function index() {
-  const { setQuery, search, topicsData} = useContext(SearchContext);
+  const { query, setQuery, search, topicsData} = useContext(SearchContext);
 
   return (
     <SectionResults maxWidth="lg">
@@ -25,6 +25,7 @@ export default function index() {
             <StyledInput
               type="text"
               placeholder="Search..."
+              value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
             <InputButton>

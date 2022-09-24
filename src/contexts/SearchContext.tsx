@@ -22,7 +22,7 @@ type SearchContextType = {
   query: string;
   setQuery: (data: string) => void;
   keys: string[];
-  sections: {};
+  sectionLinks: {};
   search: (data: topicsData) => void;
 };
 
@@ -38,7 +38,7 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
 
   const keys = ["topictitle"];
 
-  const sections = {
+  const sectionLinks = {
     "Side Quests": "sidequests",
     Builds: "builds",
     Characters: "characters",
@@ -98,7 +98,7 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
         setQuery,
         keys,
         search,
-        sections,
+        sectionLinks,
       }}
     >
       {children}

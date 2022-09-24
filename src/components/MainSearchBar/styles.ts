@@ -40,6 +40,10 @@ export const StyledInput = styled.input`
   }
 `;
 
+export const InputWrapper = styled.form`
+  
+`;
+
 export const InputButton = styled(Button)`
   border: none;
   padding: 15px 10px 15px 10px;

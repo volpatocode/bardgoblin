@@ -20,7 +20,7 @@ export const UtilsContext = createContext<UtilsContextType>(
 
 export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
   const router = useRouter();
-
+  
   function forceHome() {
     router.push("/");
   }
