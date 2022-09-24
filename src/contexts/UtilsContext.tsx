@@ -1,7 +1,7 @@
 import { createContext, ReactNode } from "react";
 
 import { useRouter } from "next/router";
-import { useMediaQuery } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type UtilsContextProps = {
   children: ReactNode;
@@ -20,7 +20,7 @@ export const UtilsContext = createContext<UtilsContextType>(
 
 export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
   const router = useRouter();
-  
+
   function forceHome() {
     router.push("/");
   }

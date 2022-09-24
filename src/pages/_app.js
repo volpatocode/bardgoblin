@@ -5,6 +5,7 @@ import { UserModalContextProvider } from "../contexts/UserModalContext";
 import { UserContextProvider } from "../contexts/UserContext";
 import { TopicContextProvider } from "../contexts/TopicContext";
 import { SearchContextProvider } from "../contexts/SearchContext";
+import { UtilsContextProvider } from "../contexts/UtilsContext";
 import { theme } from "../theme/theme.ts";
 import { ThemeProvider } from "@mui/material";
 
@@ -44,7 +45,6 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Bard Goblin</title>
         <link rel="shortcut icon" href="/icon-logo.png" />
-
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -64,9 +64,11 @@ export default function App({ Component, pageProps }) {
         <UserContextProvider>
           <TopicContextProvider>
             <SearchContextProvider>
-              <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
-              </ThemeProvider>
+              <UtilsContextProvider>
+                <ThemeProvider theme={theme}>
+                  <Component {...pageProps} />
+                </ThemeProvider>
+              </UtilsContextProvider>
             </SearchContextProvider>
           </TopicContextProvider>
         </UserContextProvider>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import NewModule from "../../components/CreateTopic/NewModule";
 import NewTopic from "../../components/CreateTopic/NewTopic";
 import Logo from "../../components/Logo";
@@ -28,6 +28,10 @@ export default function index() {
     useContext(TopicContext);
 
   const { screenMd } = useContext(UtilsContext);
+
+  useEffect(() => {
+    console.log(screenMd);
+  }, []);
 
   return (
     <PageWrapper>
