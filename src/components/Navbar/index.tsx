@@ -26,11 +26,10 @@ import {
 import { UtilsContext } from "../../contexts/UtilsContext";
 import { Fade } from "@mui/material";
 
-
 export type navbarType = {
   animation?: boolean;
-}
-export default function index({animation}: navbarType) {
+};
+export default function index({ animation }: navbarType) {
   const { isAuthorized, logOut } = useContext(UserContext);
   const {
     handleUserModal,
@@ -59,9 +58,9 @@ export default function index({animation}: navbarType) {
       <NavRightSide>
         <StyledStack>
           <TextButton href="/section/sidequests">Side Quests</TextButton>
-          <TextButton className="comingSoon">Builds</TextButton>
-          <TextButton className="comingSoon">Tools</TextButton>
-          <TextButton className="comingSoon">About</TextButton>
+          <TextButton href="/section/builds">Builds</TextButton>
+          <TextButton href="/section/characters">Characters</TextButton>
+          <TextButton href="/about">About</TextButton>
           {isAuthorized && (
             <ContainedButton href="/createtopic">
               Create Build / Quest
@@ -122,10 +121,10 @@ export default function index({animation}: navbarType) {
                 <ModalButton href="/section/sidequests">
                   Side quests
                 </ModalButton>
-                <ModalButton className="comingSoon">Builds</ModalButton>
+                <ModalButton href="/section/builds">Builds</ModalButton>
 
-                <ModalButton className="comingSoon">Tools</ModalButton>
-                <ModalButton className="comingSoon">About</ModalButton>
+                <ModalButton href="/section/characters">Characters</ModalButton>
+                <ModalButton href="/about">About</ModalButton>
                 {isAuthorized && (
                   <ModalButton href="/createtopic">
                     Create Build / Quest

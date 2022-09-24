@@ -23,11 +23,6 @@ export const Navbar = styled(Box)<navbarType>`
     transition: 0.2s ease-in-out;
     padding: 0.3rem 0.5rem 0rem 0.5rem;
   }
-
-  .comingSoon {
-    cursor: not-allowed;
-  }
-
 `;
 
 export const NavLeftSide = styled(Box)`
