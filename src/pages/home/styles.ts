@@ -12,15 +12,19 @@ export const PageWrapper = styled(Box)`
   min-width: 100vw;
   background: url("/backgroundfull.png") no-repeat center center / cover;
 
-  animation-name: bgSlowLoad;
-  animation-duration: 1s;
+  animation-name: slowLoad;
+  animation-duration: 1.5s;
 
-  @keyframes bgSlowLoad {
+  @keyframes slowLoad {
     0% {
       background: url("/background.png") no-repeat center center / cover;
+      opacity: 0;
     }
     80% {
       background: url("/backgroundfull.png") no-repeat center center / cover;
+    }
+    100% {
+      opacity: 1;
     }
   }
 `;
@@ -34,16 +38,7 @@ export const Content = styled(Box)`
   align-items: center;
   gap: 1.3rem;
   padding-bottom: 10rem;
-  animation-name: slowLoad;
-  animation-duration: 1s;
-  @keyframes slowLoad {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+
 `;
 
 export const WrittenContentBox = styled(Box)`

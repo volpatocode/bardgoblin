@@ -20,14 +20,14 @@ export default function index() {
     setHomeIsLoading(true);
     setTimeout(() => {
       setHomeIsLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
   return homeIsLoading ? (
     <Loading />
   ) : (
     <PageWrapper>
-      <Navbar />
+      <Navbar/>
       <Content>
         <WrittenContentBox>
           <Title>Speak friendly and enter dear traveler</Title>

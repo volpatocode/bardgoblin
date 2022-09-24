@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { SearchContext } from "../../../contexts/SearchContext";
 import Link from "next/link";
 
 import UserBadge from "../../UserBadge";
@@ -11,7 +12,6 @@ import {
   Labels,
   Label,
 } from "./styles";
-import { SearchContext } from "../../../contexts/SearchContext";
 
 export default function index({ data }) {
   const { usersData } = useContext(SearchContext);

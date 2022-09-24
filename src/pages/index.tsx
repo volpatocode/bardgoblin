@@ -5,5 +5,5 @@ import Unauthorized from "../components/Unauthorized";
 
 export default function index() {
   
-  return <Unauthorized/>
+  return <Home/>
 }

@@ -26,7 +26,11 @@ import {
 import { UtilsContext } from "../../contexts/UtilsContext";
 import { Fade } from "@mui/material";
 
-export default function index() {
+
+export type navbarType = {
+  animation?: boolean;
+}
+export default function index({animation}: navbarType) {
   const { isAuthorized, logOut } = useContext(UserContext);
   const {
     handleUserModal,
@@ -48,7 +52,7 @@ export default function index() {
   }, [isMenuMobileOpen]);
 
   return (
-    <Navbar>
+    <Navbar animation={animation}>
       <NavLeftSide>
         <Logo variant={screenSm ? "icon" : "horizontal"} />
       </NavLeftSide>

@@ -8,7 +8,6 @@ import { FireAnimation, Wrapper } from "./styles";
 export default function index() {
   return (
     <Wrapper>
-      <Navbar />
       <FireAnimation>
         <svg
           version="1.1"
@@ -74,7 +73,6 @@ export default function index() {
           />
         </svg>
       </FireAnimation>
-      <Footer />
     </Wrapper>
   );
 }

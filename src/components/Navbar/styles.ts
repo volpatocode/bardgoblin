@@ -3,8 +3,9 @@ import { Box, Button } from "@mui/material";
 import MenuIcona from "@mui/icons-material/Menu";
 import IconButtona from "@mui/material/IconButton";
 import CloseIcona from "@mui/icons-material/Close";
+import { navbarType } from ".";
 
-export const Navbar = styled(Box)`
+export const Navbar = styled(Box)<navbarType>`
   width: 100vw;
   background: transparent;
   display: flex;
@@ -26,6 +27,7 @@ export const Navbar = styled(Box)`
   .comingSoon {
     cursor: not-allowed;
   }
+
 `;
 
 export const NavLeftSide = styled(Box)`
