@@ -27,7 +27,7 @@ export default function index() {
     <Loading />
   ) : (
     <PageWrapper>
-      <Navbar/>
+      <Navbar />
       <Content>
         <WrittenContentBox>
           <Title>Speak friendly and enter dear traveler</Title>

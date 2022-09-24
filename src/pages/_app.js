@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import { createGlobalStyle } from "styled-components";
 import { UserModalContextProvider } from "../contexts/UserModalContext";
 import { UserContextProvider } from "../contexts/UserContext";
@@ -5,7 +7,7 @@ import { TopicContextProvider } from "../contexts/TopicContext";
 import { SearchContextProvider } from "../contexts/SearchContext";
 import { theme } from "../theme/theme.ts";
 import { ThemeProvider } from "@mui/material";
-import Head from "next/head";
+
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -53,8 +55,10 @@ export default function App({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
           rel="stylesheet"
         />
-<link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet"></link>
-
+        <link
+          href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+          rel="stylesheet"
+        ></link>
       </Head>
       <UserModalContextProvider>
         <UserContextProvider>

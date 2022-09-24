@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useContext, useEffect } from "react";
 import { TopicContext } from "../../../contexts/TopicContext";
 
 import InputError from "../../InputError";
@@ -32,12 +32,14 @@ export default function index() {
                   type="text"
                   {...registerTopic(`modules.${index}.moduletitle` as const)}
                   key={field.id}
+                  
                 />
-                {/* {formErrors?.modules[index]?.moduletitle && (
-                  <InputError
-                    error={formErrors?.modules[index]?.moduletitle?.message}
-                  />
-                )} */}
+                {formErrors?.modules &&
+                  formErrors?.modules[index]?.moduletitle && (
+                    <InputError
+                      error={formErrors?.modules[index]?.moduletitle?.message}
+                    />
+                  )}
               </ModuleTitleBox>
               {modules?.length > 2 && (
                 <ModuleRemoveButton onClick={() => remove(index)}>
@@ -52,11 +54,12 @@ export default function index() {
                 {...registerTopic(`modules.${index}.modulecontent` as const)}
                 key={field.id}
               />
-              {/* {formErrors?.modules[index]?.modulecontent && (
-                <InputError
-                  error={formErrors?.modules[index]?.modulecontent?.message}
-                />
-              )} */}
+              {formErrors?.modules &&
+                formErrors?.modules[index]?.modulecontent && (
+                  <InputError
+                    error={formErrors?.modules[index]?.modulecontent?.message}
+                  />
+                )}
             </ModuleContentBox>
             {modules?.length > 1 &&
               modules[modules?.length - 1] != modules[index] && (
