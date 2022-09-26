@@ -29,10 +29,6 @@ export default function index() {
 
   const { screenMd } = useContext(UtilsContext);
 
-  useEffect(() => {
-    console.log(screenMd);
-  }, []);
-
   return (
     <PageWrapper>
       <SideBox>

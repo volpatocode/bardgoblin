@@ -50,10 +50,13 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-  const { handleUserModal, handleMobileUserModal } =
-    useContext(UserModalContext);
-  const { screenSm, screenMd, forceHome, refreshPage } =
-    useContext(UtilsContext);
+  const {
+    handleUserModal,
+    handleMobileUserModal,
+    setIsMenuOpen,
+    setIsMenuMobileOpen,
+  } = useContext(UserModalContext);
+  const { screenMd, forceHome, refreshPage } = useContext(UtilsContext);
   const currentUser = auth?.currentUser;
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -91,7 +94,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       uid: res?.user?.uid,
     })
       .then(() => {
-        screenMd ? handleMobileUserModal() : handleUserModal();
+        setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
         console.log(" Cadastrado com sucesso!");
         forceHome();
       })
@@ -105,7 +108,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await signInWithEmailAndPassword(auth, data.email, data.password)
       .then((value) => {
-        screenMd ? handleMobileUserModal() : handleUserModal();
+        setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
         console.log("Logado com sucesso!");
         forceHome();
       })
@@ -119,6 +122,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await signOut(auth)
       .then(() => {
+        setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
         console.log("Deslogado com sucesso!");
         forceHome();
       })
