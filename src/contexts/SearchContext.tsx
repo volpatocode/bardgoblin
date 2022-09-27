@@ -5,7 +5,13 @@ import {
   useEffect,
   useState,
 } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  where,
+  getDocs,
+  query as fireQuery,
+} from "firebase/firestore";
+
 import { db } from "../config/firebaseConfig";
 import { topicsData, usersData } from "../types/user";
 import { UserContext } from "./UserContext";
@@ -18,12 +24,19 @@ type SearchContextType = {
   topicsData: topicsData;
   setTopicsData: (data: topicsData) => void;
   usersData: usersData;
-  setUsersData: (data: usersData) => void;
+  setUsersData: (data: topicsData) => void;
+  setQuestsData: (data: topicsData) => void;
+  questsData: topicsData;
+  setBuildsData: (data: topicsData) => void;
+  buildsData: topicsData;
+  setCharactersData: (data: topicsData) => void;
+  charactersData: topicsData;
   query: string;
   setQuery: (data: string) => void;
   keys: string[];
   sectionLinks: {};
-  search: (data: topicsData) => void;
+  sectionData: {};
+  search: (data) => void;
 };
 
 export const SearchContext = createContext<SearchContextType>(
@@ -33,6 +46,9 @@ export const SearchContext = createContext<SearchContextType>(
 export const SearchContextProvider = ({ children }: SearchContextProps) => {
   const { setIsLoading } = useContext(UserContext);
   const [topicsData, setTopicsData] = useState([] as topicsData);
+  const [buildsData, setBuildsData] = useState([] as topicsData);
+  const [questsData, setQuestsData] = useState([] as topicsData);
+  const [charactersData, setCharactersData] = useState([] as topicsData);
   const [usersData, setUsersData] = useState([] as usersData);
   const [query, setQuery] = useState("");
 
@@ -44,22 +60,81 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
     Characters: "characters",
   };
 
+  const sectionData = {
+    "Side Quests": questsData,
+    Builds: buildsData,
+    Characters: charactersData,
+  };
+
+  
+
   useEffect(() => {
-    const fetchTopicsData = async () => {
-      let topicList = [];
+    const fetchQuestsData = async () => {
+      let questsList = [];
       try {
         setIsLoading(true);
-        const queryTopicsData = await getDocs(collection(db, "topics"));
-        queryTopicsData.forEach(async (doc) => {
-          topicList.push({ uid: doc?.id, ...doc.data() });
+        const queryQuestsData = await getDocs(
+          fireQuery(
+            collection(db, "topics"),
+            where("section", "==", "Side Quests")
+          )
+        );
+        queryQuestsData.forEach(async (doc) => {
+          questsList.push({ uid: doc?.id, ...doc.data() });
         });
-        setTopicsData(topicList);
+        setQuestsData(questsList);
         setIsLoading(false);
       } catch (e) {
         console.log(e.message);
       }
     };
-    fetchTopicsData();
+    fetchQuestsData();
+  }, []);
+
+  useEffect(() => {
+    const fetchBuildsData = async () => {
+      let buildsList = [];
+      try {
+        setIsLoading(true);
+        const queryBuildsData = await getDocs(
+          fireQuery(
+            collection(db, "topics"),
+            where("section", "==", "Builds")
+          )
+        );
+        queryBuildsData.forEach(async (doc) => {
+          buildsList.push({ uid: doc?.id, ...doc.data() });
+        });
+        setBuildsData(buildsList);
+        setIsLoading(false);
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+    fetchBuildsData();
+  }, []);
+
+  useEffect(() => {
+    const fetchCharactersData = async () => {
+      let charactersList = [];
+      try {
+        setIsLoading(true);
+        const queryCharactersData = await getDocs(
+          fireQuery(
+            collection(db, "topics"),
+            where("section", "==", "Characters")
+          )
+        );
+        queryCharactersData.forEach(async (doc) => {
+          charactersList.push({ uid: doc?.id, ...doc.data() });
+        });
+        setCharactersData(charactersList);
+        setIsLoading(false);
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+    fetchCharactersData();
   }, []);
 
   useEffect(() => {
@@ -80,12 +155,11 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
     fetchUsersData();
   }, []);
 
-  const search = (data:topicsData) => {
+  const search = (data: topicsData) => {
     return data?.filter((topic) =>
-      keys.some((key) =>  topic[key].toLowerCase().includes(query.toLowerCase()))
+      keys.some((key) => topic[key].toLowerCase().includes(query.toLowerCase()))
     );
   };
-
 
   return (
     <SearchContext.Provider
@@ -99,6 +173,13 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
         keys,
         search,
         sectionLinks,
+        sectionData,
+        buildsData,
+        charactersData,
+        questsData,
+        setBuildsData,
+        setCharactersData,
+        setQuestsData,
       }}
     >
       {children}

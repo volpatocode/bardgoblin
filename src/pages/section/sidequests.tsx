@@ -16,7 +16,7 @@ import {
 export default function index() {
   return (
     <PageWrapper>
-      <SectionHeader section="quest">
+      <SectionHeader section="Side Quests">
         <Navbar />
         <HeaderContent>
           <HeaderTitle>Side Quests</HeaderTitle>
@@ -26,7 +26,7 @@ export default function index() {
         </HeaderContent>
         <BorderDivider />
       </SectionHeader>
-      <SectionResults />
+      <SectionResults section="Side Quests" />
       <Footer />
     </PageWrapper>
   );

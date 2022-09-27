@@ -16,17 +16,17 @@ import {
 export default function index() {
   return (
     <PageWrapper>
-      <SectionHeader section="Builds">
+      <SectionHeader section="Characters">
         <Navbar />
         <HeaderContent>
-          <HeaderTitle>Builds</HeaderTitle>
+          <HeaderTitle>Characters</HeaderTitle>
           <HeaderDescription>
-            Examples and combinations to explore your hidden creativity
+          Are you looking for a deaf and lame goblin? This is the right place.
           </HeaderDescription>
         </HeaderContent>
         <BorderDivider />
       </SectionHeader>
-      <SectionResults section="Builds" />
+      <SectionResults section="Characters" />
       <Footer />
     </PageWrapper>
   );

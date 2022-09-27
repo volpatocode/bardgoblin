@@ -1,9 +1,6 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
-
-export type sectionType = {
-  section: "quest" | "builds";
-};
+import { sectionType } from "../../types/user";
 
 export const PageWrapper = styled(Box)`
   display: flex;
@@ -24,10 +21,12 @@ export const SectionHeader = styled(Box)<sectionType>`
   background: linear-gradient(rgba(29, 29, 29, 0.6), rgba(29, 29, 29, 0.6)),
     ${(props) => {
       switch (props.section) {
-        case "quest":
+        case "Side Quests":
           return `url("/quests.png") no-repeat center center / cover`;
-        case "builds":
+        case "Builds":
           return `url("/builds.png") no-repeat center center / cover`;
+        case "Characters":
+          return `url("/characters.jpg") no-repeat center center / cover`;
         default:
           return `url("/background2.png") no-repeat center center / cover`;
       }

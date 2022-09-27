@@ -1,8 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { SearchContext } from "../../../contexts/SearchContext";
 
 import SearchIcon from "@mui/icons-material/Search";
 import TopicListWrapper from "../../Topic/TopicListWrapper";
+
+import { sectionType } from "../../../types/user";
 
 import {
   SectionResults,
@@ -13,10 +15,9 @@ import {
   InputButton,
 } from "./styles";
 
-
-export default function index() {
-  const { query, setQuery, search, topicsData} = useContext(SearchContext);
-
+export default function index({ section }: sectionType) {
+  const { query, setQuery, search, topicsData, sectionData} = useContext(SearchContext);
+ 
   return (
     <SectionResults maxWidth="lg">
       <TopicQueryInfo>
@@ -34,7 +35,7 @@ export default function index() {
           </TopicSearchBar>
         </TopicFiltersWrapper>
       </TopicQueryInfo>
-      <TopicListWrapper data={search(topicsData)} />
+      <TopicListWrapper data={search(sectionData[section])} />
       {/* <TopicPagination /> */}
     </SectionResults>
   );
