@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import { UserModalContext } from "../../../contexts/UserModalContext";
+import { UtilsContext } from "../../../contexts/UtilsContext";
 
 import { auth, db } from "../../../config/firebaseConfig";
 import { updateProfile, updateEmail } from "firebase/auth";
-import { doc,updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -46,6 +47,7 @@ export default function index() {
     photoURL,
   } = useContext(UserContext);
   const { handleUserModal } = useContext(UserModalContext);
+  const { refreshPage } = useContext(UtilsContext);
 
   const [isEditingUser, setIsEditingUser] = useState(false);
   const [errorFirebase, setErrorFirebase] = useState("");
@@ -58,44 +60,40 @@ export default function index() {
     resolver: yupResolver(editUserValidationSchema),
   });
 
-  async function updateUserDisplayName(data: UserFormData) {
-    await updateProfile(auth?.currentUser, {
-      displayName: data?.username,
-    })
+  function updateUserDisplayName(data: UserFormData) {
+    Promise.all([
+      updateProfile(auth?.currentUser, {
+        displayName: data?.username,
+      }),
+      updateDoc(doc(db, "users", auth?.currentUser?.uid), {
+        displayName: data?.username,
+      }),
+    ])
       .then(() => {
-        console.log("Trocou o username");
+        console.log("sucesso");
+        refreshPage();
       })
       .catch((error) => {
+        console.log(error.message);
         setErrorFirebase(error.message);
-        handleUserModal();
       });
-    await updateDoc(doc(db, "users", auth?.currentUser?.uid), {
-      displayName: data?.username,
-    })
-      .then(() => {
-        console.log(" Trocou o username fake");
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => {});
   }
 
-  async function updateUserEmail(data: UserFormData) {
-    await updateEmail(auth?.currentUser, data?.email)
+  function updateUserEmail(data: UserFormData) {
+    Promise.all([
+      updateEmail(auth?.currentUser, data?.email),
+      updateDoc(doc(db, "users", auth?.currentUser?.uid), {
+        email: data?.email,
+      }),
+    ])
       .then(() => {
-        console.log("Trocou o email");
+        console.log("sucesso");
+        refreshPage();
       })
       .catch((error) => {
+        console.log(error.message);
         setErrorFirebase(error.message);
-        handleUserModal();
       });
-    await updateDoc(doc(db, "users", auth?.currentUser?.uid), {
-      email: data?.email,
-    })
-      .then(() => {
-        console.log(" Trocou o email fake");
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => {});
   }
 
   const handleEditUser = async (data: UserFormData) => {
