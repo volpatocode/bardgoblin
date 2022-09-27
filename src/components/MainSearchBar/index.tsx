@@ -63,7 +63,7 @@ export default function index() {
             onChange={(e) => setQuery(e.target.value)}
           />
         </InputWrapper>
-        <InputButton onSubmit={handleSubmit(onSubmit)} type="submit">
+        <InputButton onClick={handleSubmit(onSubmit)} type="submit">
           <SearchIcon />
         </InputButton>
       </MainSearchBar>
