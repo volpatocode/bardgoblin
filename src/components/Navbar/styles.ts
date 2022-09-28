@@ -49,9 +49,6 @@ export const StyledStack = styled(Box)`
   justify-content: flex-end;
   align-items: center;
   gap: 0.75rem;
-  @media (max-width: 1000px) {
-    display: none;
-  }
 `;
 
 export const TextButton = styled(Button)`
@@ -77,10 +74,6 @@ export const ContainedButton = styled(Button)`
 
 export const OpenIconButton = styled(IconButtona)`
   color: #fff;
-  display: none;
-  @media (max-width: 1000px) {
-    display: block;
-  }
   padding-right: 0;
 `;
 
@@ -154,17 +147,6 @@ export const MenuModal = styled(Box)`
   @media (max-width: 400px) {
     width: 100%;
   }
-`;
-
-export const ModalButton = styled(Button)`
-  color: #fff;
-  text-transform: uppercase;
-  :hover {
-    background: none;
-  }
-  padding: 4px 8px;
-  border-radius: 0px;
-  font-size: 2rem;
 `;
 
 export const FooterModal = styled(Box)`

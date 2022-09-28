@@ -10,6 +10,7 @@ type UtilsContextProps = {
 type UtilsContextType = {
   screenSm: boolean;
   screenMd: boolean;
+  screenLg: boolean;
   forceHome: () => void;
   refreshPage: () => void;
 };
@@ -31,10 +32,12 @@ export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
 
   const screenSm = useMediaQuery("(max-width:600px)");
   const screenMd = useMediaQuery("(max-width:1000px)");
+  const screenLg = useMediaQuery("(max-width:1500px)");
+
 
   return (
     <UtilsContext.Provider
-      value={{ screenMd, screenSm, refreshPage, forceHome }}
+      value={{ screenMd, screenSm, screenLg, refreshPage, forceHome }}
     >
       {children}
     </UtilsContext.Provider>
