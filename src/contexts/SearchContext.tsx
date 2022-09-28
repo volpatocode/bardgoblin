@@ -21,8 +21,6 @@ type SearchContextProps = {
 };
 
 type SearchContextType = {
-  topicsData: topicsData;
-  setTopicsData: (data: topicsData) => void;
   usersData: usersData;
   setUsersData: (data: topicsData) => void;
   setQuestsData: (data: topicsData) => void;
@@ -45,7 +43,6 @@ export const SearchContext = createContext<SearchContextType>(
 
 export const SearchContextProvider = ({ children }: SearchContextProps) => {
   const { setIsLoading } = useContext(UserContext);
-  const [topicsData, setTopicsData] = useState([] as topicsData);
   const [buildsData, setBuildsData] = useState([] as topicsData);
   const [questsData, setQuestsData] = useState([] as topicsData);
   const [charactersData, setCharactersData] = useState([] as topicsData);
@@ -65,8 +62,6 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
     Builds: buildsData,
     Characters: charactersData,
   };
-
-  
 
   useEffect(() => {
     const fetchQuestsData = async () => {
@@ -97,10 +92,7 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
       try {
         setIsLoading(true);
         const queryBuildsData = await getDocs(
-          fireQuery(
-            collection(db, "topics"),
-            where("section", "==", "Builds")
-          )
+          fireQuery(collection(db, "topics"), where("section", "==", "Builds"))
         );
         queryBuildsData.forEach(async (doc) => {
           buildsList.push({ uid: doc?.id, ...doc.data() });
@@ -164,8 +156,6 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
   return (
     <SearchContext.Provider
       value={{
-        topicsData,
-        setTopicsData,
         usersData,
         setUsersData,
         query,

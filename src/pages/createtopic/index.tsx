@@ -1,9 +1,13 @@
 import React, { useContext, useEffect } from "react";
+
 import NewModule from "../../components/CreateTopic/NewModule";
 import NewTopic from "../../components/CreateTopic/NewTopic";
 import Logo from "../../components/Logo";
+import Unauthorized from "../../components/Unauthorized";
+
 import { StyledCircularProgress } from "../../components/UserModal/styles";
 import { TopicContext } from "../../contexts/TopicContext";
+import { UserContext } from "../../contexts/UserContext";
 import { UtilsContext } from "../../contexts/UtilsContext";
 
 import {
@@ -24,60 +28,64 @@ import {
 } from "./styles";
 
 export default function index() {
+  const { currentUser } = useContext(UserContext);
   const { modules, append, handleSubmitTopic, submitTopic, isLoading } =
     useContext(TopicContext);
-
   const { screenMd } = useContext(UtilsContext);
 
-  return (
-    <PageWrapper>
-      <SideBox>
-        <Logo variant="icon2" /> <SideFooter>- bardgoblin 2k22</SideFooter>
-      </SideBox>
-      <MainBox>
-        <MainHeader>
-          <MainHeaderInfo>
-            <MainTitle>Set up your topic</MainTitle>
-            <MainSubtitle>Create your topic however you want</MainSubtitle>
-          </MainHeaderInfo>
-          {screenMd && <Logo variant="icon2" />}
-        </MainHeader>
-        <MainContent onSubmit={handleSubmitTopic(submitTopic)}>
-          <NewTopic />
-          <NewModule />
-          <BoxButtons>
-            {modules.length < 6 && (
-              <AddModuleButton
+  if (currentUser) {
+    return (
+      <PageWrapper>
+        <SideBox>
+          <Logo variant="icon2" /> <SideFooter>- bardgoblin 2k22</SideFooter>
+        </SideBox>
+        <MainBox>
+          <MainHeader>
+            <MainHeaderInfo>
+              <MainTitle>Set up your topic</MainTitle>
+              <MainSubtitle>Create your topic however you want</MainSubtitle>
+            </MainHeaderInfo>
+            {screenMd && <Logo variant="icon2" />}
+          </MainHeader>
+          <MainContent onSubmit={handleSubmitTopic(submitTopic)}>
+            <NewTopic />
+            <NewModule />
+            <BoxButtons>
+              {modules.length < 6 && (
+                <AddModuleButton
+                  disabled={isLoading}
+                  type="button"
+                  onClick={() => append({ moduletitle: "", modulecontent: "" })}
+                >
+                  {isLoading ? (
+                    <StyledCircularProgress size="25px" />
+                  ) : (
+                    <>
+                      <AddIcon fontSize="small" /> Module
+                    </>
+                  )}
+                </AddModuleButton>
+              )}
+              <SubmitButton
                 disabled={isLoading}
-                type="button"
-                onClick={() => append({ moduletitle: "", modulecontent: "" })}
+                type="submit"
+                onClick={handleSubmitTopic(submitTopic)}
               >
                 {isLoading ? (
-                  <StyledCircularProgress size="25px" />
+                  <StyledCircularProgress size="32px" />
                 ) : (
                   <>
-                    <AddIcon fontSize="small" /> Module
+                    <DoneIcon fontSize="small" />
+                    Submit
                   </>
                 )}
-              </AddModuleButton>
-            )}
-            <SubmitButton
-              disabled={isLoading}
-              type="submit"
-              onClick={handleSubmitTopic(submitTopic)}
-            >
-              {isLoading ? (
-                <StyledCircularProgress size="32px" />
-              ) : (
-                <>
-                  <DoneIcon fontSize="small" />
-                  Submit
-                </>
-              )}
-            </SubmitButton>
-          </BoxButtons>
-        </MainContent>
-      </MainBox>
-    </PageWrapper>
-  );
+              </SubmitButton>
+            </BoxButtons>
+          </MainContent>
+        </MainBox>
+      </PageWrapper>
+    );
+  } else {
+    return <Unauthorized />;
+  }
 }
