@@ -59,6 +59,8 @@ export const WrapperAnimation = styled(Box)`
     justify-content: space-between;
     gap: 2.15rem;
     height: 270px;
+    cursor: pointer;
+    border-radius: 50%;
 `;
 
 export const CampfireAnimation = styled(Box)`
