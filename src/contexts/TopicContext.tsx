@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import { useRouter } from "next/router";
 import { UserContext } from "./UserContext";
+import { UtilsContext } from "./UtilsContext";
 
 import { db } from "../config/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
@@ -18,8 +20,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { topicCreateValidationSchema } from "../utils/validations";
 import { FormValues } from "../types/user";
 
-
-
 type TopicContextProps = {
   children: ReactNode;
 };
@@ -35,11 +35,11 @@ type TopicContextType = {
   control: Control<FormValues, any>;
   submitTopic: (data: FormValues) => void;
   formErrors: {
-      userUID?: FieldError;
-      section?: FieldError;
-      topictitle?: FieldError;
-      labels?: [];
-      modules?: { moduletitle?: FieldError; modulecontent?: FieldError }[];
+    userUID?: FieldError;
+    section?: FieldError;
+    topictitle?: FieldError;
+    labels?: [];
+    modules?: { moduletitle?: FieldError; modulecontent?: FieldError }[];
   };
   topicError: string;
   label: any[];
@@ -54,10 +54,19 @@ export const TopicContext = createContext<TopicContextType>(
 
 export const TopicContextProvider = ({ children }: TopicContextProps) => {
   const { currentUser } = useContext(UserContext);
+  const { refreshPage } = useContext(UtilsContext);
   const [isLoading, setIsLoading] = useState(false);
   const [topicError, setTopicError] = useState("");
   const [label, setLabel] = useState([]);
   const [topicSection, setTopicSection] = useState("Side Quests");
+
+  const router = useRouter();
+
+  const sectionLinks = {
+    "Side Quests": "sidequests",
+    Builds: "builds",
+    Characters: "characters",
+  };
 
   const {
     register: registerTopic,
@@ -66,13 +75,13 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
     formState: { errors: formErrors },
   } = useForm<FormValues>({
     defaultValues: {
-        section: "Side Quests",
-        topictitle: "",
-        labels: [],
-        modules: [
-          { moduletitle: "", modulecontent: "" },
-          { moduletitle: "", modulecontent: "" },
-        ],
+      section: "Side Quests",
+      topictitle: "",
+      labels: [],
+      modules: [
+        { moduletitle: "", modulecontent: "" },
+        { moduletitle: "", modulecontent: "" },
+      ],
     },
     resolver: yupResolver(topicCreateValidationSchema),
   });
@@ -92,7 +101,9 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
       userUID: currentUser?.uid,
       ...data,
     })
-      .then(() => console.log("Cadastrado com sucesso!"))
+      .then(() => {
+        router.push(`/section/${sectionLinks[data?.section]}`);
+      })
       .catch((error) => {
         setTopicError(error.message);
         console.log(error.message);

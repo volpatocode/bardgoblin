@@ -72,7 +72,7 @@ export default function index() {
                 onClick={handleSubmitTopic(submitTopic)}
               >
                 {isLoading ? (
-                  <StyledCircularProgress size="32px" />
+                  <StyledCircularProgress size="25px" />
                 ) : (
                   <>
                     <DoneIcon fontSize="small" />
