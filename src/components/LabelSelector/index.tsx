@@ -59,9 +59,14 @@ export default function index({ type, section }: labelSelectorType) {
     "#Jungle",
   ];
 
-  const buildsLabels = ["#Test1", "#Test2"];
+  const buildsLabels = [
+    "#OP, #Balanced, #Funny",
+    "#Support",
+    "#Mage",
+    "#Warrior",
+  ];
 
-  const charactersLabels = ["Best1", "Best2"];
+  const charactersLabels = ["#Touching", "#Interesting", "#Funniest, #Exotic"];
 
   const selector = {
     "Side Quests": sideQuestsLabels,
