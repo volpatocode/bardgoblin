@@ -22,28 +22,30 @@ export default function index({ data }) {
         return (
           <TopicListWrapper key={topic?.uid}>
             <Link href={`/topic/${topic?.uid}`}>
-              <QueryTopic>
-                <LeftSideTopic>
-                  {usersData?.map((user) => {
-                    return (
-                      user?.uid == topic?.userUID && (
-                        <UserBadge
-                          key={user?.uid}
-                          displayName={user?.displayName}
-                          photoURL={user?.photoURL}
-                        />
-                      )
-                    );
-                  })}
+              <a>
+                <QueryTopic>
+                  <LeftSideTopic>
+                    {usersData?.map((user) => {
+                      return (
+                        user?.uid == topic?.userUID && (
+                          <UserBadge
+                            key={user?.uid}
+                            displayName={user?.displayName}
+                            photoURL={user?.photoURL}
+                          />
+                        )
+                      );
+                    })}
 
-                  <TopicContent>{topic?.topictitle}</TopicContent>
-                </LeftSideTopic>
-                <Labels>
-                  {topic?.labels?.map((label, index) => (
-                    <Label key={index}>{label}</Label>
-                  ))}
-                </Labels>
-              </QueryTopic>
+                    <TopicContent>{topic?.topictitle}</TopicContent>
+                  </LeftSideTopic>
+                  <Labels>
+                    {topic?.labels?.map((label, index) => (
+                      <Label key={index}>{label}</Label>
+                    ))}
+                  </Labels>
+                </QueryTopic>
+              </a>
             </Link>
           </TopicListWrapper>
         );

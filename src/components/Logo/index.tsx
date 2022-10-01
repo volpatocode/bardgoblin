@@ -9,7 +9,6 @@ export type logoType = {
 };
 
 export default function index({ variant }: logoType) {
-
   const logo = {
     horizontal: "/horizontal-logo.png",
     vertical: "/vertical-logo.png",
@@ -34,10 +33,12 @@ export default function index({ variant }: logoType) {
   return (
     <Logo>
       <Link href="/">
-        <img
-          style={{ width: logoWidth[variant], height: logoHeight[variant] }}
-          src={logo[variant]}
-        />
+        <a>
+          <img
+            style={{ width: logoWidth[variant], height: logoHeight[variant] }}
+            src={logo[variant]}
+          />
+        </a>
       </Link>
     </Logo>
   );

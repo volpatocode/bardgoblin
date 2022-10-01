@@ -54,7 +54,7 @@ export default function index() {
             disabled={isLoading}
             onClick={handleSubmit(resetPassword)}
           >
-            {isLoading ? <StyledCircularProgress size="32px" /> : "Send email"}
+            {isLoading ? <StyledCircularProgress size="25px" /> : "Send email"}
           </FinishButton>
         </ResetPasswordBox>
         <ImageBox />

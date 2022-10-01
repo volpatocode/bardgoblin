@@ -24,7 +24,9 @@ export default function index() {
 
   const authorizedMenu = [
     <Link href="/profile/account">
-      <MenuItem onClick={handleClose}>My account</MenuItem>
+      <a>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+      </a>
     </Link>,
     <MenuItem onClick={logOut}>Log out</MenuItem>,
   ];
