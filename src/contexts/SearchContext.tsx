@@ -13,7 +13,7 @@ import {
 } from "firebase/firestore";
 
 import { db } from "../config/firebaseConfig";
-import { topicsData, usersData } from "../types/user";
+import { topicsData, usersData } from "../types/types";
 import { UserContext } from "./UserContext";
 
 type SearchContextProps = {

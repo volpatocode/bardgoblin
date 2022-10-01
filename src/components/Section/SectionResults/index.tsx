@@ -4,7 +4,7 @@ import { SearchContext } from "../../../contexts/SearchContext";
 import SearchIcon from "@mui/icons-material/Search";
 import TopicListWrapper from "../../Topic/TopicListWrapper";
 
-import { sectionType } from "../../../types/user";
+import { sectionType } from "../../../types/types";
 
 import {
   SectionResults,
@@ -16,7 +16,7 @@ import {
 } from "./styles";
 
 export default function index({ section }: sectionType) {
-  const { query, setQuery, search, topicsData, sectionData} = useContext(SearchContext);
+  const { query, setQuery, search, sectionData} = useContext(SearchContext);
  
   return (
     <SectionResults maxWidth="lg">

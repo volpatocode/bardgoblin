@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { sectionType } from "../../../types/user";
+import { sectionType } from "../../../types/types";
 
 import { ArrowRight, ContinueBrowsing } from "./styles";
 

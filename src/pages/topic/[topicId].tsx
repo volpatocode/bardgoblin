@@ -11,7 +11,7 @@ import ContinueBrowsing from "../../components/Topic/ContinueBrowsing";
 
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../config/firebaseConfig";
-import { topicData, userData } from "../../types/user";
+import { topicData, userData } from "../../types/types";
 
 import {
   PageWrapper,

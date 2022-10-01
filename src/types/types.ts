@@ -6,22 +6,6 @@ export type UserFormData = {
   photoURL?: string;
 };
 
-export type topicFullType = {
-  topic: {
-    topictitle: string;
-    modules: [moduletitle: string, modulecontent: string];
-    labels: [];
-    uid: string;
-  };
-  user: {
-    displayName?: string;
-    email?: string;
-    password?: string;
-    photoURL?: string;
-    uid: string;
-  };
-}[];
-
 export type topicsData = {
   uid: string;
   section: string;

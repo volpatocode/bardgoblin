@@ -10,7 +10,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { editUserValidationSchema } from "../../../utils/validations";
-import { UserFormData } from "../../../types/user";
+import { UserFormData } from "../../../types/types";
 
 import EmailStatus from "../EmailStatus";
 import HelpPopover from "../../HelpPopover";
@@ -46,7 +46,6 @@ export default function index() {
     photo,
     photoURL,
   } = useContext(UserContext);
-  const { handleUserModal } = useContext(UserModalContext);
   const { refreshPage } = useContext(UtilsContext);
 
   const [isEditingUser, setIsEditingUser] = useState(false);

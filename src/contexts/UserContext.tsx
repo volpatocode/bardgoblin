@@ -6,11 +6,10 @@ import {
   useContext,
 } from "react";
 import { useRouter } from "next/router";
-import { useMediaQuery } from "@mui/material";
 
 import { UserModalContext } from "./UserModalContext";
 import { UtilsContext } from "./UtilsContext";
-import { UserFormData } from "../types/user";
+import { UserFormData } from "../types/types";
 
 import { auth, db, storage } from "../config/firebaseConfig";
 import {
@@ -51,8 +50,6 @@ export const UserContext = createContext<UserContextType>(
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
   const {
-    handleUserModal,
-    handleMobileUserModal,
     setIsMenuOpen,
     setIsMenuMobileOpen,
   } = useContext(UserModalContext);
@@ -90,7 +87,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     );
     await setDoc(doc(db, "users", res?.user?.uid), {
       email: data?.email,
-      password: data?.password,
       uid: res?.user?.uid,
     })
       .then(() => {
@@ -107,7 +103,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   async function loginUser(data: UserFormData) {
     setIsLoading(true);
     await signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((value) => {
+      .then(() => {
         setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
         console.log("Logado com sucesso!");
         forceHome();
@@ -134,7 +130,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   async function resetPassword(data: UserFormData) {
     setIsLoading(true);
     await sendPasswordResetEmail(auth, data.email)
-      .then((value) => {
+      .then(() => {
         router.push("/help/emailsent");
         console.log("Email enviado com sucesso!");
       })

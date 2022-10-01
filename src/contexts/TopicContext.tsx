@@ -18,7 +18,7 @@ import {
 } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { topicCreateValidationSchema } from "../utils/validations";
-import { FormValues } from "../types/user";
+import { FormValues } from "../types/types";
 
 type TopicContextProps = {
   children: ReactNode;
