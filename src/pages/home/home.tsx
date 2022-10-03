@@ -5,14 +5,15 @@ import Footer from "../../components/Footer";
 import Loading from "../../components/Loading";
 import MainSearchBar from "../../components/MainSearchBar";
 import AboutAnchor from "../../components/AboutAnchor";
+import About from "../../components/About";
 
 import {
   PageWrapper,
-  MainContent,
+  Content,
   Title,
   Subtitle,
   WrittenContentBox,
-  AboutContent,
+  MainView,
 } from "./styles";
 
 export default function index() {
@@ -30,19 +31,20 @@ export default function index() {
   ) : (
     <PageWrapper>
       <Navbar />
-      <MainContent>
-        <WrittenContentBox>
-          <Title>Speak friendly and enter dear traveler</Title>
-          <Subtitle>
-            Find and share quests, builds, supplies and others for your tabletop
-            rpg
-          </Subtitle>
-        </WrittenContentBox>
-        <MainSearchBar />
-      </MainContent>
-      <AboutContent>
+      <MainView>
+        <Content>
+          <WrittenContentBox>
+            <Title>Speak friendly and enter dear traveler</Title>
+            <Subtitle>
+              Find and share quests, builds, supplies and others for your
+              tabletop rpg
+            </Subtitle>
+          </WrittenContentBox>
+          <MainSearchBar />
+        </Content>
         <AboutAnchor />
-      </AboutContent>
+      </MainView>
+      <About />
     </PageWrapper>
   );
 }

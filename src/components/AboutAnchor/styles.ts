@@ -12,7 +12,7 @@ export const Wrapper = styled(Box)`
   @media (max-width: 600px) {
     width: 25%;
   }
-  margin-bottom: 6rem;
+  margin-bottom: 5rem;
 `;
 
 export const AboutAnchor = styled(Box)`
@@ -30,7 +30,7 @@ export const AboutAnchor = styled(Box)`
       background-color: rgba(255, 255, 255, 0.25);
     }
     50% {
-      background-color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(255, 255, 255, 0.5);
     }
     100% {
       background-color: rgba(255, 255, 255, 0.25);

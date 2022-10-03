@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
 export const PageWrapper = styled(Box)`
   display: flex;
@@ -7,11 +7,17 @@ export const PageWrapper = styled(Box)`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
-  min-width: 100vw;
-  background: url("/backgroundfull.png") no-repeat center center / cover;
+`;
 
+export const MainView = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 95vh;
+  min-width: 100vw;
+
+  background: url("/backgroundfull.png") no-repeat center center / cover;
   animation-name: slowLoad;
   animation-duration: 1.5s;
 
@@ -29,7 +35,7 @@ export const PageWrapper = styled(Box)`
   }
 `;
 
-export const MainContent = styled(Box)`
+export const Content = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -37,6 +43,7 @@ export const MainContent = styled(Box)`
   align-items: center;
   gap: 1.3rem;
   padding-bottom: 6rem;
+  min-height: 86vh;
 `;
 
 export const WrittenContentBox = styled(Box)`
@@ -93,38 +100,3 @@ export const Subtitle = styled.h2`
     font-size: 0.8rem;
   }
 `;
-
-export const AboutContent = styled(Box)`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.3rem;
-`;
-
-// export const AboutAnchor = styled(Box)`
-//   cursor: pointer;
-//   height: 2px;
-//   width: 15%;
-//   background-color: rgba(255, 255, 255, 0.25);
-//   border-radius: 5px;
-//   margin-bottom: 6rem;
-//   animation: anchor-color-changing 2s infinite linear alternate;
-
-//   @media (max-width: 600px) {
-//     width: 25%;
-//   }
-
-//   @keyframes anchor-color-changing {
-//     0% {
-//       background-color: rgba(255, 255, 255, 0.25);
-//     }
-//     50% {
-//       background-color: rgba(255, 255, 255, 0.4);
-//     }
-//     100% {
-//       background-color: rgba(255, 255, 255, 0.25);
-//     }
-//   }
-// `;
