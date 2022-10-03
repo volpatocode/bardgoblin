@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 import Logo from "../Logo";
 import AvatarIcon from "../AvatarIcon";
@@ -23,8 +24,6 @@ import {
   HeaderModal,
   FooterModal,
 } from "./styles";
-import { UtilsContext } from "../../contexts/UtilsContext";
-import { Fade } from "@mui/material";
 
 export type navbarType = {
   animation?: boolean;
@@ -88,59 +87,54 @@ export default function index({ animation }: navbarType) {
             <MenuIcon />
           </OpenIconButton>
           {isMenuMobileOpen && (
-            <Fade in={isMenuMobileOpen}>
-              <BoxModal>
-                <HeaderModal>
-                  <CloseIconButton
-                    size="medium"
-                    edge="start"
-                    aria-label="open-drawer"
-                    onClick={handleMobileUserModal}
-                  >
-                    <CloseMenuIcon fontSize="large" />
-                  </CloseIconButton>
-                </HeaderModal>
-                <MenuModal>
-                  {isAuthorized ? (
-                    <>
-                      <ModalAnchor
-                        onClick={handleMobileUserModal}
-                        href="/profile/account"
-                        text=" My account"
-                      />
-                      <ModalAnchor
-                        onClick={() => {
-                          logOut();
-                          handleMobileUserModal();
-                        }}
-                        text="Logout"
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <ModalAnchor
-                        onClick={handleUserModalLogin}
-                        text="Login"
-                      />
-                      <ModalAnchor
-                        onClick={handleUserModalRegister}
-                        text="Register"
-                      />
-                    </>
-                  )}
-                  <ModalAnchor href="/section/sidequests" text="Side Quests" />
-                  <ModalAnchor href="/section/builds" text="Builds" />
-                  <ModalAnchor href="/section/characters" text="Characters" />
-                  <ModalAnchor href="/about" text="About" />
-                  {isAuthorized && (
-                    <ModalAnchor href="/createtopic" text="Create a Topic" />
-                  )}
-                  {handleUserModal && <UserModal />}
-                </MenuModal>
-                <FooterModal />
-              </BoxModal>
-            </Fade>
+            <BoxModal>
+              <HeaderModal>
+                <CloseIconButton
+                  size="medium"
+                  edge="start"
+                  aria-label="open-drawer"
+                  onClick={handleMobileUserModal}
+                >
+                  <CloseMenuIcon fontSize="large" />
+                </CloseIconButton>
+              </HeaderModal>
+              <MenuModal>
+                {isAuthorized ? (
+                  <>
+                    <ModalAnchor
+                      onClick={handleMobileUserModal}
+                      href="/profile/account"
+                      text=" My account"
+                    />
+                    <ModalAnchor
+                      onClick={() => {
+                        logOut();
+                        handleMobileUserModal();
+                      }}
+                      text="Logout"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <ModalAnchor onClick={handleUserModalLogin} text="Login" />
+                    <ModalAnchor
+                      onClick={handleUserModalRegister}
+                      text="Register"
+                    />
+                  </>
+                )}
+                <ModalAnchor href="/section/sidequests" text="Side Quests" />
+                <ModalAnchor href="/section/builds" text="Builds" />
+                <ModalAnchor href="/section/characters" text="Characters" />
+                <ModalAnchor href="/about" text="About" />
+                {isAuthorized && (
+                  <ModalAnchor href="/createtopic" text="Create a Topic" />
+                )}
+              </MenuModal>
+              <FooterModal />
+            </BoxModal>
           )}
+          {handleUserModal && <UserModal />}
         </NavRightSide>
       </Navbar>
     );

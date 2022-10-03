@@ -22,6 +22,7 @@ export const BoxModal = styled(Box)`
     height: 100vh;
     justify-content: space-between;
     padding: 0.3rem 1.5rem 0rem 1.5rem;
+    transition: 0.2s ease-in-out;
   }
 
   @media (max-width: 400px) {
@@ -46,7 +47,6 @@ export const ModalFooter = styled(Box)`
   margin-bottom: 3rem;
   width: 60%;
   margin: 0 auto 3rem auto;
-  transition: 200ms ease-in-out;
   :hover {
     background-color: #dd3e0e;
   }

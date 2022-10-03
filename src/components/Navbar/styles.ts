@@ -105,19 +105,17 @@ export const BoxModal = styled(Box)`
   height: 100vh;
   background-color: #141414;
   padding: 0.3rem 2.5rem 0rem 2.5rem;
+  transition: 0.2s ease-in-out;
 
   @media (max-width: 1000px) {
-    transition: 0.2s ease-in-out;
     padding: 0.3rem 2.5rem 0rem 2.5rem;
   }
 
   @media (max-width: 600px) {
-    transition: 0.2s ease-in-out;
     padding: 0.3rem 1.5rem 0rem 1.5rem;
   }
 
   @media (max-width: 400px) {
-    transition: 0.2s ease-in-out;
     padding: 0.3rem 0.5rem 0rem 0.5rem;
   }
 `;
