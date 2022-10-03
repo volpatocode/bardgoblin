@@ -5,7 +5,7 @@ import { PageWrapper, About, Title, Typography } from "./styles";
 export default function index() {
   return (
     <PageWrapper>
-      <About maxWidth="lg">
+      <About id="about" maxWidth="lg">
         <Title>What is Bard Goblin?</Title>
         <Typography>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo nostrum

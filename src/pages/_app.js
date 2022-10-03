@@ -18,8 +18,9 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
     text-decoration: none;
-    
+    scroll-behavior: smooth;
   }
+
    body{
     background-color: #131313;
     overflow-x: hidden;
