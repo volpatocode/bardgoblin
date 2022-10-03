@@ -153,8 +153,17 @@ export const FooterModal = styled(Box)`
   border-radius: 5px;
   margin-bottom: 3rem;
   width: 60%;
-  transition: 200ms ease-in-out;
-  :hover {
-    background-color: #dd3e0e;
+  animation: navfooter-color 2s infinite linear alternate;
+
+  @keyframes navfooter-color {
+    0% {
+      background-color: #ff9900;
+    }
+    50% {
+      background-color: #dd3e0e;
+    }
+    100% {
+      background-color: #ff9900;
+    }
   }
 `;

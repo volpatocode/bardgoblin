@@ -4,13 +4,15 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Loading from "../../components/Loading";
 import MainSearchBar from "../../components/MainSearchBar";
+import AboutAnchor from "../../components/AboutAnchor";
 
 import {
   PageWrapper,
-  Content,
+  MainContent,
   Title,
   Subtitle,
   WrittenContentBox,
+  AboutContent,
 } from "./styles";
 
 export default function index() {
@@ -28,7 +30,7 @@ export default function index() {
   ) : (
     <PageWrapper>
       <Navbar />
-      <Content>
+      <MainContent>
         <WrittenContentBox>
           <Title>Speak friendly and enter dear traveler</Title>
           <Subtitle>
@@ -37,8 +39,10 @@ export default function index() {
           </Subtitle>
         </WrittenContentBox>
         <MainSearchBar />
-      </Content>
-      <Footer />
+      </MainContent>
+      <AboutContent>
+        <AboutAnchor />
+      </AboutContent>
     </PageWrapper>
   );
 }

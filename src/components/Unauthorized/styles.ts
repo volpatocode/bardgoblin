@@ -6,14 +6,11 @@ export const Wrapper = styled(Box)`
   width: 100vw;
   background: url("/background.png") no-repeat center center / cover;
   position: relative;
-  animation:
-    blur 2s infinite linear alternate;
-    display: flex;
+  animation: blur 2s infinite linear alternate;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-
 
   @keyframes blur {
     0% {

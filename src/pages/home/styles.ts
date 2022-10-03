@@ -29,16 +29,14 @@ export const PageWrapper = styled(Box)`
   }
 `;
 
-export const Content = styled(Box)`
+export const MainContent = styled(Box)`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.3rem;
-  padding-bottom: 10rem;
-
+  padding-bottom: 6rem;
 `;
 
 export const WrittenContentBox = styled(Box)`
@@ -95,3 +93,38 @@ export const Subtitle = styled.h2`
     font-size: 0.8rem;
   }
 `;
+
+export const AboutContent = styled(Box)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3rem;
+`;
+
+// export const AboutAnchor = styled(Box)`
+//   cursor: pointer;
+//   height: 2px;
+//   width: 15%;
+//   background-color: rgba(255, 255, 255, 0.25);
+//   border-radius: 5px;
+//   margin-bottom: 6rem;
+//   animation: anchor-color-changing 2s infinite linear alternate;
+
+//   @media (max-width: 600px) {
+//     width: 25%;
+//   }
+
+//   @keyframes anchor-color-changing {
+//     0% {
+//       background-color: rgba(255, 255, 255, 0.25);
+//     }
+//     50% {
+//       background-color: rgba(255, 255, 255, 0.4);
+//     }
+//     100% {
+//       background-color: rgba(255, 255, 255, 0.25);
+//     }
+//   }
+// `;
