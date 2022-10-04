@@ -1,14 +1,16 @@
 import React from "react";
 import Link from "next/link";
 
-import { Wrapper, AboutAnchor } from "./styles";
+import { Wrapper, AnchorWrapper, Anchor } from "./styles";
 
 export default function index() {
   return (
-    <Link href="#about">
-      <Wrapper>
-        <AboutAnchor />
-      </Wrapper>
-    </Link>
+    <Wrapper>
+      <Link href="#about">
+        <AnchorWrapper>
+          <Anchor />
+        </AnchorWrapper>
+      </Link>
+    </Wrapper>
   );
 }

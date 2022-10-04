@@ -3,10 +3,8 @@ import { Box, Container } from "@mui/material";
 
 export const PageWrapper = styled(Box)`
   width: 100%;
-  background-color: #161616;
-  height: 20vh;
+  background-color: #131313;
 `;
-
 
 export const About = styled(Container)`
   width: 100%;
@@ -14,8 +12,8 @@ export const About = styled(Container)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.3rem;
-  padding: 3rem 0;
+  gap: 3rem;
+  padding: 5rem 0;
 `;
 
 export const Title = styled.h1`
@@ -24,7 +22,6 @@ export const Title = styled.h1`
   text-transform: uppercase;
   letter-spacing: 0.2px;
   text-align: center;
-
 `;
 
 export const Typography = styled.p`
@@ -32,11 +29,13 @@ export const Typography = styled.p`
   color: rgba(255, 255, 255, 0.5);
   text-align: left;
   font-weight: 400;
-
 `;
 
-
-
-
-
-
+export const ContentBox = styled(Box)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.3rem;
+`;

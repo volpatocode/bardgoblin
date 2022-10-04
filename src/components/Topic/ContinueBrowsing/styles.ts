@@ -6,10 +6,10 @@ import ArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 export const ContinueBrowsing = styled(Button)`
   color: #fff;
   text-transform: none;
-  background: #1D1D1D;
+  background: #dd3e0e;
   transition: 200ms ease-in-out;
   :hover {
-    background: #dd3e0e;
+    background: #1D1D1D; 
   }
   display: flex;
   align-items: center;

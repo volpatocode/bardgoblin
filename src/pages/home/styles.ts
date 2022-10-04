@@ -13,8 +13,8 @@ export const MainView = styled(Box)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 95vh;
+  justify-content: space-between;
+  min-height: 100vh;
   min-width: 100vw;
 
   background: url("/backgroundfull.png") no-repeat center center / cover;

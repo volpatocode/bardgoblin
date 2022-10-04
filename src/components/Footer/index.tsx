@@ -11,7 +11,7 @@ export default function index() {
   return (
     <Footer>
       <Logo variant="icon2" />
-      {screenSm ? " BardGoblin" : "BardGoblin 2022 | Developed with 🧡"}
+      {screenSm ? "Bard Goblin" : "Bard Goblin 2022 | Developed with 🧡"}
     </Footer>
   );
 }

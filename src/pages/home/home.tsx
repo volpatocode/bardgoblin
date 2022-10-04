@@ -30,8 +30,8 @@ export default function index() {
     <Loading />
   ) : (
     <PageWrapper>
-      <Navbar />
       <MainView>
+        <Navbar />
         <Content>
           <WrittenContentBox>
             <Title>Speak friendly and enter dear traveler</Title>
@@ -45,6 +45,7 @@ export default function index() {
         <AboutAnchor />
       </MainView>
       <About />
+      <Footer/>
     </PageWrapper>
   );
 }
