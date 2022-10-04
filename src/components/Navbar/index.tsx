@@ -60,11 +60,14 @@ export default function index({ animation }: navbarType) {
             <TextButton href="/section/sidequests">Side Quests</TextButton>
             <TextButton href="/section/builds">Builds</TextButton>
             <TextButton href="/section/characters">Characters</TextButton>
-            {isAuthorized && (
-              <ContainedButton href="/createtopic">
-                Create a Topic
-              </ContainedButton>
-            )}
+
+            <ContainedButton
+              href={isAuthorized && "/createtopic"}
+              onClick={!isAuthorized && handleUserModal}
+            >
+              Create a Topic
+            </ContainedButton>
+
             <AvatarIcon />
           </StyledStack>
         </NavRightSide>
@@ -125,9 +128,11 @@ export default function index({ animation }: navbarType) {
                 <ModalAnchor href="/section/sidequests" text="Side Quests" />
                 <ModalAnchor href="/section/builds" text="Builds" />
                 <ModalAnchor href="/section/characters" text="Characters" />
-                {isAuthorized && (
-                  <ModalAnchor href="/createtopic" text="Create a Topic" />
-                )}
+                <ModalAnchor
+                  href={isAuthorized && "/createtopic"}
+                  onClick={!isAuthorized && handleUserModal}
+                  text="Create a Topic"
+                />
               </MenuModal>
               <FooterModal />
             </BoxModal>
