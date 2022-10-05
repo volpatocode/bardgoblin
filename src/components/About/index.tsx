@@ -18,27 +18,40 @@ export default function index() {
           </Typography>
         </ContentBox>
         <ContentBox>
-          <Title>About</Title>
+          <Title>How it works</Title>
           <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-            nostrum molestiae libero. Quasi modi quisquam voluptates deleniti
-            sit quo iusto debitis excepturi aliquid quod illo, vitae tenetur
-            assumenda accusantium eius? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Nemo nostrum molestiae libero. Quasi modi quisquam
-            voluptates deleniti sit quo iusto debitis excepturi aliquid quod
-            illo, vitae tenetur assumenda accusantium eius?
+            With the main objective being interaction, Bard Goblin was made to
+            be a controlled and organized environment. You can leave your name
+            in Bard Goblin by -creating your own topic- with its modules or
+            reuse modules already made, but -what are topics and modules?-
           </Typography>
         </ContentBox>
         <ContentBox>
-          <Title>Create your topics</Title>
+          <Title>First steps</Title>
           <Typography>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-            nostrum molestiae libero. Quasi modi quisquam voluptates deleniti
-            sit quo iusto debitis excepturi aliquid quod illo, vitae tenetur
-            assumenda accusantium eius? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Nemo nostrum molestiae libero. Quasi modi quisquam
-            voluptates deleniti sit quo iusto debitis excepturi aliquid quod
-            illo, vitae tenetur assumenda accusantium eius?
+            To take your first steps in Bard Goblin, follow the numerous
+            following steps: - -Create your account-: In order for you to
+            interact with most of the site, you must have an account. Thats it!
+            Already having an account means you can interact in all ways.
+          </Typography>
+        </ContentBox>
+        <ContentBox>
+          <Title>Topic and Module</Title>
+          <Typography>
+            Modules: are excerpts from a story or post where the user seeks to
+            develop the topic as a whole, making use of some modules to maintain
+            a timeline or nest information. -Example of a Module:- Topic: you
+            can understand as any type of post that a user creates, regardless
+            of the content. A topic is usually made up of modules, trying to
+            tell a story or make sense of its timeline. -Example of a Topic:-
+          </Typography>
+        </ContentBox>
+        <ContentBox>
+          <Title>Coming soon</Title>
+          <Typography>
+            - Reuse modules; - Search by filters; - Comments section; - Like
+            topics; - Tag characters inside modules; - Show your activity
+            through your profile; - Delete you unwanted topic;
           </Typography>
         </ContentBox>
       </About>
