@@ -5,6 +5,7 @@ import HiperLink from "../Topic/Hiperlink";
 
 import { PageWrapper, About, Title, Typography, ContentBox } from "./styles";
 import ExampleStretch, { moduleExample } from "../Topic/ExampleStretch";
+import { autocompleteClasses } from "@mui/material";
 
 export default function index() {
   const { handleUserModal } = useContext(UserModalContext);
@@ -62,8 +63,8 @@ export default function index() {
             development of the story. Last but not least, it will also be
             possible to add hidden information, which can be useful as a bonus
             depending on the context.
-            <img src="./comingsoon.png" />
           </Typography>
+          <img className="exampleImage" src="./comingsoon.png" />
         </ContentBox>
       </About>
     </PageWrapper>
