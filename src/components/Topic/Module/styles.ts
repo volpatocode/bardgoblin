@@ -25,7 +25,7 @@ export const Content = styled.p`
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);
   ::first-letter {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     text-transform: uppercase;
     font-family: "New Rocker", cursive;
   }
