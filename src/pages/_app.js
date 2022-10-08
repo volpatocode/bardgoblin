@@ -9,8 +9,6 @@ import { UtilsContextProvider } from "../contexts/UtilsContext";
 import { theme } from "../theme/theme.ts";
 import { ThemeProvider } from "@mui/material";
 
-import { ToastContainer } from "react-toastify";
-
 const GlobalStyle = createGlobalStyle`
   *{
     margin: 0;
@@ -77,7 +75,6 @@ export default function App({ Component, pageProps }) {
           </UserContextProvider>
         </UtilsContextProvider>
       </UserModalContextProvider>
-      <ToastContainer />
     </>
   );
 }
