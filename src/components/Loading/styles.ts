@@ -17,7 +17,7 @@ export const FireAnimation = styled(Box)`
   position: absolute;
   left: 48.5%;
   top: 34%;
-  margin-left: -80px;
+  margin-left: -98px;
 
   animation-name: switchPage;
   animation-duration: 2s;

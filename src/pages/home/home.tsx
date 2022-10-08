@@ -45,7 +45,7 @@ export default function index() {
         <AboutAnchor />
       </MainView>
       <About />
-      <Footer/>
+      <Footer />
     </PageWrapper>
   );
 }
