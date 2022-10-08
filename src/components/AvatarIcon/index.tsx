@@ -6,6 +6,7 @@ import Link from "next/link";
 import UserModal from "../UserModal";
 
 import { IconButton, Menu, MenuItem } from "@mui/material";
+
 import { AvatarIcon, AccountAvatar } from "./styles";
 
 export default function index() {
