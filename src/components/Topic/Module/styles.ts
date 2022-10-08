@@ -20,7 +20,6 @@ export const Title = styled.h4`
 `;
 
 export const Content = styled.p`
-  text-align: justify;
   font-size: 1rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);

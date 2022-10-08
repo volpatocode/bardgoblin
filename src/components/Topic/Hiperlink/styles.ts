@@ -6,4 +6,11 @@ export const HiperLink = styled.a`
   color: rgba(255, 255, 255, 0.5);
   font-weight: 400;
   text-decoration: underline dotted #ff9900;
+
+  transition: 200ms ease-in-out;
+  :hover {
+    text-decoration: none;
+    color: #ff9900;
+
+  }
 `;

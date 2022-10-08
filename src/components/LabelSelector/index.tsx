@@ -60,13 +60,20 @@ export default function index({ type, section }: labelSelectorType) {
   ];
 
   const buildsLabels = [
-    "#OP, #Balanced, #Funny",
+    "#OP",
+    "#Balanced",
+    "#Funny",
     "#Support",
     "#Mage",
     "#Warrior",
   ];
 
-  const charactersLabels = ["#Touching", "#Interesting", "#Funniest, #Exotic"];
+  const charactersLabels = [
+    "#Touching",
+    "#Interesting",
+    "#Funniest",
+    "#Exotic",
+  ];
 
   const selector = {
     "Side Quests": sideQuestsLabels,

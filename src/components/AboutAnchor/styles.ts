@@ -14,11 +14,20 @@ export const AnchorWrapper = styled(Box)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15%;
+  width: 16%;
   padding: 1rem;
   cursor: pointer;
+  transition: 200ms ease-in-out;
+
+  :hover {
+    width: 12%;
+  }
+
   @media (max-width: 600px) {
-    width: 25%;
+    width: 32%;
+    :hover {
+      width: 25%;
+    }
   }
 `;
 
@@ -28,7 +37,6 @@ export const Anchor = styled(Box)`
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 5px;
   animation: anchor-color-changing 2s infinite linear alternate;
-
   @keyframes anchor-color-changing {
     0% {
       background-color: rgba(255, 255, 255, 0.25);
