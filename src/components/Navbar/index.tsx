@@ -63,7 +63,7 @@ export default function index({ animation }: navbarType) {
 
             <ContainedButton
               href={isAuthorized && "/createtopic"}
-              onClick={!isAuthorized && handleUserModal}
+              onClick={() => !isAuthorized && handleUserModal()}
             >
               Create a Topic
             </ContainedButton>
@@ -130,7 +130,7 @@ export default function index({ animation }: navbarType) {
                 <ModalAnchor href="/section/characters" text="Characters" />
                 <ModalAnchor
                   href={isAuthorized && "/createtopic"}
-                  onClick={!isAuthorized && handleUserModal}
+                  onClick={() => !isAuthorized && handleUserModal()}
                   text="Create a Topic"
                 />
               </MenuModal>
