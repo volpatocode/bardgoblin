@@ -102,7 +102,9 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
       ...data,
     })
       .then(() => {
-        router.push(`/section/${sectionLinks[data?.section]}`);
+        router.push(`/section/${sectionLinks[data?.section]}`).then(() => {
+          router.reload();
+        });
       })
       .catch((error) => {
         setTopicError(error.message);
