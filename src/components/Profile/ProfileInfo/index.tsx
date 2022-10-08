@@ -40,6 +40,7 @@ export type profileInfoType = {
 export default function index() {
   const {
     isLoading,
+    setIsLoading,
     handlePhoto,
     handlePhotoUpload,
     currentUser,
@@ -60,6 +61,7 @@ export default function index() {
   });
 
   function updateUserDisplayName(data: UserFormData) {
+    setIsLoading(true);
     Promise.all([
       updateProfile(auth?.currentUser, {
         displayName: data?.username,
@@ -69,16 +71,19 @@ export default function index() {
       }),
     ])
       .then(() => {
-        console.log("sucesso");
         refreshPage();
       })
       .catch((error) => {
-        console.log(error.message);
+
         setErrorFirebase(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
   function updateUserEmail(data: UserFormData) {
+    setIsLoading(true);
     Promise.all([
       updateEmail(auth?.currentUser, data?.email),
       updateDoc(doc(db, "users", auth?.currentUser?.uid), {
@@ -86,12 +91,13 @@ export default function index() {
       }),
     ])
       .then(() => {
-        console.log("sucesso");
         refreshPage();
       })
       .catch((error) => {
-        console.log(error.message);
         setErrorFirebase(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }
 
