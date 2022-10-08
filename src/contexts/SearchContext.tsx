@@ -5,6 +5,8 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useRouter } from "next/router";
+
 import {
   collection,
   where,
@@ -49,6 +51,8 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
   const [usersData, setUsersData] = useState([] as usersData);
   const [query, setQuery] = useState("");
 
+  const router = useRouter();
+
   const keys = ["topictitle"];
 
   const sectionLinks = {
@@ -80,7 +84,7 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
         setQuestsData(questsList);
         setIsLoading(false);
       } catch (e) {
-        console.log(e.message);
+        router.push("/");
       }
     };
     fetchQuestsData();
@@ -100,7 +104,7 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
         setBuildsData(buildsList);
         setIsLoading(false);
       } catch (e) {
-        console.log(e.message);
+        router.push("/");
       }
     };
     fetchBuildsData();
@@ -123,7 +127,7 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
         setCharactersData(charactersList);
         setIsLoading(false);
       } catch (e) {
-        console.log(e.message);
+        router.push("/");
       }
     };
     fetchCharactersData();
@@ -141,7 +145,7 @@ export const SearchContextProvider = ({ children }: SearchContextProps) => {
         setUsersData(usersList);
         setIsLoading(false);
       } catch (e) {
-        console.log(e.message);
+        router.push("/");
       }
     };
     fetchUsersData();

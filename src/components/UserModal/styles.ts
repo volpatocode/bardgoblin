@@ -130,6 +130,9 @@ export const ButtonInfo = styled(Button)`
   cursor: pointer;
   padding: 6px 8px 6px 0;
   margin-top: 1rem;
+  :hover {
+    background: transparent;
+  }
 `;
 
 export const FinishButton = styled(Button)`

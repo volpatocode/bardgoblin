@@ -60,6 +60,7 @@ export const InputBox = styled(Box)`
 `;
 
 export const InputInfo = styled.input`
+  width: 100%;
   padding: 0.5rem 0.5rem 0.5rem 0;
   text-align: left;
   border: none;

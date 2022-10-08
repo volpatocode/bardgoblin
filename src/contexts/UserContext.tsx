@@ -91,7 +91,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     })
       .then(() => {
         setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
-        console.log(" Cadastrado com sucesso!");
         forceHome();
       })
       .catch((error) => setErrorFirebase(error.message))
@@ -105,7 +104,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     await signInWithEmailAndPassword(auth, data.email, data.password)
       .then(() => {
         setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
-        console.log("Logado com sucesso!");
         forceHome();
       })
       .catch((error) => setErrorFirebase(error.message))
@@ -119,7 +117,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     await signOut(auth)
       .then(() => {
         setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
-        console.log("Deslogado com sucesso!");
         forceHome();
       })
       .finally(() => {
@@ -132,7 +129,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     await sendPasswordResetEmail(auth, data.email)
       .then(() => {
         router.push("/help/emailsent");
-        console.log("Email enviado com sucesso!");
       })
       .catch((error) => setErrorFirebase(error.message))
       .finally(() => setIsLoading(false));

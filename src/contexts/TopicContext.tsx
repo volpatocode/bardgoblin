@@ -108,7 +108,7 @@ export const TopicContextProvider = ({ children }: TopicContextProps) => {
       })
       .catch((error) => {
         setTopicError(error.message);
-        console.log(error.message);
+
       })
       .finally(() => {
         setIsLoading(false);
