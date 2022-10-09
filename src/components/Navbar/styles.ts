@@ -88,8 +88,8 @@ export const CloseIconButton = styled(IconButtona)`
   padding-right: 0;
   padding: 0;
   position: absolute;
-  top: 36px;
-  right: 21px;
+  top: 38px;
+  right: 14px;
 `;
 
 export const CloseMenuIcon = styled(CloseIcona)`
