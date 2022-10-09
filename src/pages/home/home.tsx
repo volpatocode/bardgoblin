@@ -17,10 +17,9 @@ import {
 } from "../../styles/homestyles";
 
 export default function index() {
-  const [homeIsLoading, setHomeIsLoading] = useState(false);
+  const [homeIsLoading, setHomeIsLoading] = useState(true);
 
   useEffect(() => {
-    setHomeIsLoading(true);
     setTimeout(() => {
       setHomeIsLoading(false);
     }, 2000);
