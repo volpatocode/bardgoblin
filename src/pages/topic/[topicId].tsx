@@ -20,8 +20,8 @@ import {
   Title,
   BoxBadges,
   MainContent,
-} from "./styles";
-import { BorderDivider } from "../section/sectionStyles";
+} from "../../styles/topicstyles";
+import { BorderDivider } from "../../styles/sectionstyles";
 import { Label } from "../../components/Topic/Breadcrumbs/styles";
 
 export default function index() {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 import NewModule from "../../components/CreateTopic/NewModule";
 import NewTopic from "../../components/CreateTopic/NewTopic";
@@ -25,7 +25,7 @@ import {
   SubmitButton,
   BoxButtons,
   DoneIcon,
-} from "./styles";
+} from "../../styles/createtopicstyles";
 
 export default function index() {
   const { currentUser } = useContext(UserContext);

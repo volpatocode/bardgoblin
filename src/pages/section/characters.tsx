@@ -11,7 +11,7 @@ import {
   HeaderTitle,
   HeaderDescription,
   BorderDivider,
-} from "./sectionStyles";
+} from "../../styles/sectionstyles";
 
 export default function index() {
   return (

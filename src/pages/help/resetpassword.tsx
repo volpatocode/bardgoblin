@@ -17,7 +17,7 @@ import {
   FinishButton,
   ImageBox,
   BoxLogo,
-} from "./resetpasswordstyles";
+} from "../../styles/resetpasswordstyles";
 import { StyledCircularProgress } from "../../components/UserModal/styles";
 
 export default function index() {

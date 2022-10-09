@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import Navbar from "../../Navbar";
 
-import { BorderDivider } from "../../../pages/section/sectionStyles";
+import { BorderDivider } from "../../../styles/sectionstyles";
 import { ProfileHeader, ProfileGreetings } from "./styles";
 import { UserContext } from "../../../contexts/UserContext";
 

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { Box } from "@mui/material";
-import { sectionType } from "../../types/types";
+import { sectionType } from "../types/types";
 
 export const PageWrapper = styled(Box)`
   display: flex;

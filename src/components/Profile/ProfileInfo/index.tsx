@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
-import { UserModalContext } from "../../../contexts/UserModalContext";
 import { UtilsContext } from "../../../contexts/UtilsContext";
 
 import { auth, db } from "../../../config/firebaseConfig";

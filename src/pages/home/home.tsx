@@ -14,7 +14,7 @@ import {
   Subtitle,
   WrittenContentBox,
   MainView,
-} from "./styles";
+} from "../../styles/homestyles";
 
 export default function index() {
   const [homeIsLoading, setHomeIsLoading] = useState(false);

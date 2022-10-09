@@ -6,7 +6,7 @@ import ProfileInfo from "../../components/Profile/ProfileInfo";
 import Header from "../../components/Profile/ProfileHeader";
 import Unauthorized from "../../components/Unauthorized";
 
-import { PageWrapper, Content } from "./accountStyles";
+import { PageWrapper, Content } from "../../styles/accountstyles";
 
 export default function index() {
   const { currentUser } = useContext(UserContext);

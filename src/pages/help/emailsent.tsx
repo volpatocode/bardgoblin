@@ -15,8 +15,8 @@ import {
   BoxFooter,
   FooterInfo,
   InfoAnchor,
-} from "./emailsentstyles";
-import { ImageBox } from "./resetpasswordstyles";
+} from "../../styles/emailsentstyles";
+import { ImageBox } from "../../styles/resetpasswordstyles";
 
 export default function index() {
   return (
