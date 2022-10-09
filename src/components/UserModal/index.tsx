@@ -29,7 +29,7 @@ import {
   BoxLogin,
   BoxRegister,
   StyledCircularProgress,
-  BoxModalHeader,
+  HeaderModal,
   BoxModalContent,
   ModalFooter,
   CloseIconButton,
@@ -240,7 +240,7 @@ export default function index() {
       >
         <Fade in={isMenuOpen}>
           <BoxModal>
-            <BoxModalHeader>
+            <HeaderModal>
               <CloseIconButton
                 size="medium"
                 edge="start"
@@ -249,7 +249,7 @@ export default function index() {
               >
                 <CloseMenuIcon fontSize="large" />
               </CloseIconButton>
-            </BoxModalHeader>
+            </HeaderModal>
             <BoxModalContent>
               <BoxLogo>
                 <Logo variant="horizontal" />

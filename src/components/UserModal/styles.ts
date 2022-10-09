@@ -31,11 +31,12 @@ export const BoxModal = styled(Box)`
   }
 `;
 
-export const BoxModalHeader = styled(Box)`
+export const HeaderModal = styled(Box)`
   width: 100%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  height: 60px;
 `;
 
 export const BoxModalContent = styled(Box)``;
