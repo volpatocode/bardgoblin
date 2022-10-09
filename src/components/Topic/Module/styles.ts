@@ -6,6 +6,7 @@ export const Module = styled(Box)`
   flex-direction: column;
   align-items: left;
   gap: 1rem;
+  max-width: 100%;
 `;
 
 export const Title = styled.h4`
@@ -20,10 +21,11 @@ export const Title = styled.h4`
 `;
 
 export const Content = styled.p`
+  text-align: justify;
+  word-break: break-all;
   font-size: 1rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);
-  text-align: justify;
   ::first-letter {
     font-size: 1.1rem;
     text-transform: uppercase;

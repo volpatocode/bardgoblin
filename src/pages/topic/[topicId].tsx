@@ -88,7 +88,7 @@ export default function index() {
         {/* <TopicHiddenInfo />
         <OptionalQuestAccordion /> */}
       </MainContent>
-      {screenSm ? <ContinueBrowsing section="Side Quests" /> : <Footer />}
+      {screenSm ? <ContinueBrowsing text="Side Quests" /> : <Footer />}
     </PageWrapper>
   );
 }

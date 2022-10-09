@@ -105,7 +105,6 @@ export const BoxModal = styled(Box)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   background-color: #141414;
   padding: 0.3rem 2.5rem 0rem 2.5rem;
   transition: 0.2s ease-in-out;
