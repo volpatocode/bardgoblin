@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
 
 import HiperLink from "../Topic/Hiperlink";
@@ -7,6 +8,7 @@ import { PageWrapper, About, Title, Typography, ContentBox } from "./styles";
 import ExampleStretch, { moduleExample } from "../Topic/ExampleStretch";
 
 export default function index() {
+  const { isAuthorized } = useContext(UserContext);
   const { handleUserModal } = useContext(UserModalContext);
 
   return (
@@ -29,7 +31,14 @@ export default function index() {
             With the main objective being interaction, Bard Goblin was made to
             be a controlled and organized environment. You can leave your name
             in Bard Goblin by{" "}
-            <HiperLink href="/createtopic" text="creating your own topic" />{" "}
+            {isAuthorized ? (
+              <HiperLink text="creating your own topic" href="/createtopic" />
+            ) : (
+              <HiperLink
+                text="creating your own topic"
+                onClick={handleUserModal}
+              />
+            )}{" "}
             with its modules or reuse modules already made. To take your first
             steps in Bard Goblin, follow the numerous following steps:{" "}
             <HiperLink onClick={handleUserModal} text="Create your account" />:
