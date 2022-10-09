@@ -87,6 +87,9 @@ export const CloseIconButton = styled(IconButtona)`
   color: #fff;
   padding-right: 0;
   padding: 0;
+  position: absolute;
+  top: 19px;
+  right: 21px;
 `;
 
 export const CloseMenuIcon = styled(CloseIcona)`
