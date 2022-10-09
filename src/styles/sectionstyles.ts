@@ -37,6 +37,19 @@ export const SectionHeader = styled(Box)<sectionType>`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 960px) {
+    height: 60vh;
+  }
+  @media (max-width: 760px) {
+    height: 55vh;
+  }
+  @media (max-width: 480px) {
+    height: 50vh;
+  }
+  @media (max-width: 420px) {
+    height: 45vh;
+  }
 `;
 
 export const HeaderContent = styled(Box)`

@@ -33,10 +33,22 @@ export const Title = styled.h1`
   color: #fff;
   font-weight: 700;
   text-align: center;
-  width: 100%;
   margin: 1rem 0;
+  max-width: 80%;
   ::first-letter {
     text-transform: uppercase;
+  }
+  @media (max-width: 960px) {
+    font-size: 2.5rem;
+  }
+  @media (max-width: 760px) {
+    font-size: 2.2rem;
+  }
+  @media (max-width: 480px) {
+    max-width: 90%;
+  }
+  @media (max-width: 420px) {
+    font-size: 1.8rem;
   }
 `;
 

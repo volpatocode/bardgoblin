@@ -70,6 +70,11 @@ export const FireAnimation = styled(Box)`
     animation-duration: 2.5s;
     animation-delay: 5s;
   }
+
+  @media (max-width: 600px) {
+    top: 28%;
+  }
+
   @keyframes flameWobble {
     50% {
       transform: scale(1, 1.2) translate(0, -30px) rotate(-2deg);

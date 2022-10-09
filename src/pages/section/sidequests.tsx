@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UtilsContext } from "../../contexts/UtilsContext";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -12,8 +13,11 @@ import {
   HeaderDescription,
   BorderDivider,
 } from "../../styles/sectionstyles";
+import ContinueBrowsing from "../../components/Topic/ContinueBrowsing";
 
 export default function index() {
+  const { screenSm } = useContext(UtilsContext);
+
   return (
     <PageWrapper>
       <SectionHeader section="Side Quests">
@@ -27,7 +31,7 @@ export default function index() {
         <BorderDivider />
       </SectionHeader>
       <SectionResults section="Side Quests" />
-      <Footer />
+      {screenSm ? <ContinueBrowsing text="Home" /> : <Footer />}
     </PageWrapper>
   );
 }

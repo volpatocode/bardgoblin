@@ -75,19 +75,23 @@ export const ContainedButton = styled(Button)`
 export const OpenIconButton = styled(IconButtona)`
   color: #fff;
   padding-right: 0;
+  padding: 0;
+`;
+
+export const MenuIcon = styled(MenuIcona)`
+  color: #fff;
+  padding: 0;
 `;
 
 export const CloseIconButton = styled(IconButtona)`
   color: #fff;
   padding-right: 0;
+  padding: 0;
 `;
 
 export const CloseMenuIcon = styled(CloseIcona)`
   color: #fff;
-`;
-
-export const MenuIcon = styled(MenuIcona)`
-  color: #fff;
+  padding: 0;
 `;
 
 export const BoxModal = styled(Box)`
@@ -125,13 +129,13 @@ export const HeaderModal = styled(Box)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  height: 60px;
 `;
 
 export const MenuModal = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  margin-bottom: 3rem;
   width: 50%;
   @media (max-width: 1000px) {
     width: 60%;

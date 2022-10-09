@@ -52,5 +52,9 @@ export type FormValues = {
 };
 
 export type sectionType = {
-  section: "Builds" | "Side Quests" | "Characters";
+  section: "Builds" | "Side Quests" | "Characters" ;
+};
+
+export type browsingRefType = {
+  text: "Builds" | "Side Quests" | "Characters";
 };

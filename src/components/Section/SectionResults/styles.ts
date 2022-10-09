@@ -5,7 +5,7 @@ export const SectionResults = styled(Container)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin: 2rem auto;
+  margin: 3rem auto;
 `;
 export const TopicQueryInfo = styled(Box)`
   display: flex;

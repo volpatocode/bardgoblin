@@ -15,12 +15,19 @@ export const UserBadge = styled(Button)`
   :hover {
     background: #dd3e0e;
   }
+
+  @media (max-width: 760px) {
+    padding: 3px 14px 3px 6px;
+  }
+  @media (max-width: 400px) {
+    padding: 2px 12px 2px 4px;
+  }
 `;
 
 export const UserImage = styled.img`
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 `;
 
 export const Username = styled.p`
