@@ -1,8 +1,5 @@
 import React from "react";
 
-import Navbar from "../Navbar";
-import Footer from "../Footer";
-
 import { FireAnimation, Wrapper } from "./styles";
 
 export default function index() {

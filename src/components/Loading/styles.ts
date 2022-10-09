@@ -95,7 +95,7 @@ export const FireAnimation = styled(Box)`
   }
 
   @keyframes switchPage {
-    50% {
+  50% {
       opacity: 1;
     }
     100% {

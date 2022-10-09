@@ -20,9 +20,10 @@ export default function index() {
   const [homeIsLoading, setHomeIsLoading] = useState(true);
 
   useEffect(() => {
+    
     setTimeout(() => {
       setHomeIsLoading(false);
-    }, 2000);
+    }, 1800);
   }, []);
 
   return homeIsLoading ? (
