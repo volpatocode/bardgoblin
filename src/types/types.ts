@@ -56,5 +56,5 @@ export type sectionType = {
 };
 
 export type browsingRefType = {
-  text: "Builds" | "Side Quests" | "Characters";
+  text: "Builds" | "Side Quests" | "Characters" | "Home";
 };
