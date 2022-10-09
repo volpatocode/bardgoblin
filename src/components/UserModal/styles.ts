@@ -16,17 +16,17 @@ export const BoxModal = styled(Box)`
   flex-direction: column;
   padding: 2.5rem 1rem;
   text-align: left;
-  overflow: hidden;
+  transition: 0.2s ease-in-out;
   @media (max-width: 600px) {
     width: 100vw;
     height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
     justify-content: space-between;
     padding: 0.3rem 1.5rem 0rem 1.5rem;
-    transition: 0.2s ease-in-out;
   }
 
   @media (max-width: 400px) {
-    transition: 0.2s ease-in-out;
     padding: 0.3rem 0.5rem 0rem 0.5rem;
   }
 `;

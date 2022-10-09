@@ -105,19 +105,17 @@ export const BoxModal = styled(Box)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw;
-  height: 100vh;
+
   background-color: #141414;
   padding: 0.3rem 2.5rem 0rem 2.5rem;
   transition: 0.2s ease-in-out;
-  overflow: hidden;
-
-  @media (max-width: 1000px) {
-    padding: 0.3rem 2.5rem 0rem 2.5rem;
-  }
 
   @media (max-width: 600px) {
     padding: 0.3rem 1.5rem 0rem 1.5rem;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
   }
 
   @media (max-width: 400px) {
