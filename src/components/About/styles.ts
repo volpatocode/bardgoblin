@@ -40,7 +40,7 @@ export const Title = styled.h1`
 export const Typography = styled.p`
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.5);
-  text-align: left;
+  text-align: justify;
   font-weight: 400;
   
 `;

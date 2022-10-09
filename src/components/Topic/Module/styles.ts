@@ -23,6 +23,7 @@ export const Content = styled.p`
   font-size: 1rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.5);
+  text-align: justify;
   ::first-letter {
     font-size: 1.1rem;
     text-transform: uppercase;
