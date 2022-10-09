@@ -110,6 +110,7 @@ export const BoxModal = styled(Box)`
   background-color: #141414;
   padding: 0.3rem 2.5rem 0rem 2.5rem;
   transition: 0.2s ease-in-out;
+  overflow: hidden;
 
   @media (max-width: 1000px) {
     padding: 0.3rem 2.5rem 0rem 2.5rem;

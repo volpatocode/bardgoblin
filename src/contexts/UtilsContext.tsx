@@ -1,7 +1,8 @@
-import { createContext, ReactNode } from "react";
-
+import { createContext, ReactNode, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { UserModalContext } from "./UserModalContext";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 type UtilsContextProps = {
   children: ReactNode;
@@ -20,6 +21,8 @@ export const UtilsContext = createContext<UtilsContextType>(
 );
 
 export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
+  const { isMenuOpen, isMenuMobileOpen } = useContext(UserModalContext);
+
   const router = useRouter();
 
   function forceHome() {
@@ -34,6 +37,14 @@ export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
   const screenMd = useMediaQuery("(max-width:1000px)");
   const screenLg = useMediaQuery("(max-width:1500px)");
 
+  // prevent modal scrolling
+  useEffect(() => {
+    if (isMenuMobileOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "initial";
+    }
+  }, [isMenuMobileOpen, isMenuOpen]);
 
   return (
     <UtilsContext.Provider

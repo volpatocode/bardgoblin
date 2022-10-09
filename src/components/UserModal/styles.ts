@@ -16,7 +16,7 @@ export const BoxModal = styled(Box)`
   flex-direction: column;
   padding: 2.5rem 1rem;
   text-align: left;
-  height: auto;
+  overflow: hidden;
   @media (max-width: 600px) {
     width: 100vw;
     height: 100vh;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { UserModalContext } from "../../contexts/UserModalContext";
 import { UtilsContext } from "../../contexts/UtilsContext";
@@ -39,15 +39,6 @@ export default function index({ animation }: navbarType) {
   } = useContext(UserModalContext);
 
   const { screenSm } = useContext(UtilsContext);
-
-  // prevent modal scrolling
-  useEffect(() => {
-    if (isMenuMobileOpen) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "initial";
-    }
-  }, [isMenuMobileOpen]);
 
   if (!screenSm) {
     return (
