@@ -20,7 +20,7 @@ export const FireAnimation = styled(Box)`
   margin-left: -98px;
 
   animation-name: switchPage;
-  animation-duration: 2s;
+  animation-duration: 3s;
   svg {
     width: 100%;
     height: auto;
@@ -95,7 +95,10 @@ export const FireAnimation = styled(Box)`
   }
 
   @keyframes switchPage {
-  50% {
+    0% {
+      opacity: 0;
+    }
+    30% {
       opacity: 1;
     }
     100% {

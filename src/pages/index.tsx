@@ -23,7 +23,7 @@ export default function index() {
     
     setTimeout(() => {
       setHomeIsLoading(false);
-    }, 1800);
+    }, 2000);
   }, []);
 
   return homeIsLoading ? (
