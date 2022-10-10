@@ -1,6 +1,3 @@
-
-
-![bardgoblin vercel app_ (1)](https://user-images.githubusercontent.com/102267019/194907677-14f02a4c-1e6b-4f83-bb4b-a81854862a99.png)
 ![bardgoblin vercel app_](https://user-images.githubusercontent.com/102267019/194907679-c803fcf3-8cf3-415c-8e03-1a1226837af1.png)
 ![bardgoblin vercel app_section_sidequests](https://user-images.githubusercontent.com/102267019/194907673-5b4007c3-67cb-4fbc-86c1-deb0ea3d53be.png)
 ![bardgoblin vercel app_createtopic (1)](https://user-images.githubusercontent.com/102267019/194907663-e9b3140d-4974-4205-b48a-b5c41f8e4cc5.png)
