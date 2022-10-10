@@ -1,25 +1,27 @@
-<h3 align="center"> # 🚧 Building... 🚧 </h3>
 
-![localhost_3000_home](https://user-images.githubusercontent.com/102267019/180316822-150808e6-639c-4e51-aa66-7a410ad51a8f.png)
-![localhost_3000_section_builds](https://user-images.githubusercontent.com/102267019/180316804-f38de89f-ea30-4335-ae3e-73bbd6d78cbe.png)
-![localhost_3000_forgotpassword](https://user-images.githubusercontent.com/102267019/180316810-16abd890-1f14-487f-970c-83002bdff328.png)
-![Loading](https://user-images.githubusercontent.com/102267019/189509928-3690aff3-87df-4728-9287-576c6e30b7f3.png)
-![localhost_3000_profile](https://user-images.githubusercontent.com/102267019/180316814-57072f05-6c96-4bca-ac06-94ec449b0d86.png)
-![localhost_3000_createtopic](https://user-images.githubusercontent.com/102267019/180316823-a91d197d-34b4-4a83-a7f8-0c23b9cecce1.png)
 
+![bardgoblin vercel app_ (1)](https://user-images.githubusercontent.com/102267019/194907677-14f02a4c-1e6b-4f83-bb4b-a81854862a99.png)
+![bardgoblin vercel app_](https://user-images.githubusercontent.com/102267019/194907679-c803fcf3-8cf3-415c-8e03-1a1226837af1.png)
+![bardgoblin vercel app_section_sidequests](https://user-images.githubusercontent.com/102267019/194907673-5b4007c3-67cb-4fbc-86c1-deb0ea3d53be.png)
+![bardgoblin vercel app_createtopic (1)](https://user-images.githubusercontent.com/102267019/194907663-e9b3140d-4974-4205-b48a-b5c41f8e4cc5.png)
+![bardgoblin vercel app_createtopic](https://user-images.githubusercontent.com/102267019/194907667-f415336b-2f23-4db3-b2b0-137d7c85c204.png)
 <h3 align="center"> Developed by João Volpato 🧡</h3>
 
+## See the project
+<a href="https://bardgoblin.vercel.app"> Bard Goblin </a>
+<br/><br/>
 
 ## About
 Bardgoblin is a roleplaying community, made for sharing ideas, stories, characters and more. On BardGoblin you will be able to create your account, edit your profile create topics about quests, builds, characters or whatever your creativity allows. Also, you can interact with other users through their topics, leaving your comment or liking it. Interaction is the keyword.
 <br/><br/>
+
 
 ## Pages
 - Home
 - Profile
 - Sections (Builds, Side Quests, Characters)
 - Create Topic
-- Help (Email Sent, Reset password)
+- Help (Email Sent, Reset Password)
 - Topic
 - Error
 - Loading Page
@@ -29,9 +31,14 @@ Bardgoblin is a roleplaying community, made for sharing ideas, stories, characte
 - React
 - Next
 - Typescript
-- Styled-components
+- Styled-Components
 - MaterialUI
 - Firebase
 - Hook Form
 - Yup
+<br/><br/>
+
+## Contact me
+  <a href="https://www.linkedin.com/in/joaovolpatocode/"><img align="center" alt="code-Linkedin" height="30" width="110" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+  <a href="mailto:volpatocode@gmail.com"><img align="center" height="30" alt="EMAIL" src="https://camo.githubusercontent.com/c2084ea08158c801f97554d2e2bcc38da2cd1cd845932eeeb8244adb3309cf3b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d456d61696c2d6331343433383f7374796c653d666f722d7468652d6261646765266c6f676f3d476d61696c266c6f676f436f6c6f723d7768697465266c696e6b3d6d61696c746f3a6f694076696e7061632e696f"/>
 <br/><br/>
