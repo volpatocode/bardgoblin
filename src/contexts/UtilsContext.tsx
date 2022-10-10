@@ -26,7 +26,9 @@ export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
   const router = useRouter();
 
   function forceHome() {
-    router.push("/");
+    router.push("/").then(() => {
+      router.reload();
+    });
   }
 
   function refreshPage() {
