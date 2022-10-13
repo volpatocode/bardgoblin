@@ -9,7 +9,9 @@
 <br/><br/>
 
 ## About
-Bardgoblin is a roleplaying community, made for sharing ideas, stories, characters and more. On BardGoblin you will be able to create your account, edit your profile create topics about quests, builds, characters or whatever your creativity allows. Also, you can interact with other users through their topics, leaving your comment or liking it. Interaction is the keyword.
+🇺🇸 Bardgoblin is a roleplaying community, made for sharing ideas, stories, characters and more. On BardGoblin you will be able to create your account, edit your profile create topics about quests, builds, characters or whatever your creativity allows. Also, you can interact with other users through their topics, leaving your comment or liking it. Interaction is the keyword.
+<br/><br/>
+🇧🇷 Bardgoblin é uma comunidade de RPG, feita para compartilhar ideias, histórias, personagens e muito mais. No BardGoblin você poderá criar sua conta, editar seu perfil criar tópicos sobre quests, builds, personagens ou o que sua criatividade permitir. Além disso, você pode interagir com outros usuários através de seus tópicos, deixando seu comentário ou curtindo. Interação é a palavra-chave.
 <br/><br/>
 
 
