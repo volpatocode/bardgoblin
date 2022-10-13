@@ -55,7 +55,10 @@ export const ModalFooter = styled(Box)`
 
 export const CloseIconButton = styled(IconButtona)`
   color: #fff;
-  padding-right: 0;
+  padding: 0;
+  position: absolute;
+  top: 38px;
+  right: 14px;
 `;
 
 export const CloseMenuIcon = styled(CloseIcona)`
