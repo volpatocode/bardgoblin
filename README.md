@@ -8,6 +8,12 @@
 <a href="https://bardgoblin.vercel.app"> Bard Goblin </a>
 <br/><br/>
 
+## Contact me
+  <a href="https://www.linkedin.com/in/joaovolpatocode/"><img align="center" alt="code-Linkedin" height="30" width="110" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+  <a href="mailto:volpatocode@gmail.com"><img align="center" height="30" alt="EMAIL" src="https://camo.githubusercontent.com/c2084ea08158c801f97554d2e2bcc38da2cd1cd845932eeeb8244adb3309cf3b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d456d61696c2d6331343433383f7374796c653d666f722d7468652d6261646765266c6f676f3d476d61696c266c6f676f436f6c6f723d7768697465266c696e6b3d6d61696c746f3a6f694076696e7061632e696f"/>
+<br/><br/>
+
+
 ## About
 🇺🇸 Bardgoblin is a roleplaying community, made for sharing ideas, stories, characters and more. On BardGoblin you will be able to create your account, edit your profile create topics about quests, builds, characters or whatever your creativity allows. Also, you can interact with other users through their topics, leaving your comment or liking it. Interaction is the keyword.
 <br/><br/>
@@ -37,7 +43,14 @@
 - Yup
 <br/><br/>
 
-## Contact me
-  <a href="https://www.linkedin.com/in/joaovolpatocode/"><img align="center" alt="code-Linkedin" height="30" width="110" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
-  <a href="mailto:volpatocode@gmail.com"><img align="center" height="30" alt="EMAIL" src="https://camo.githubusercontent.com/c2084ea08158c801f97554d2e2bcc38da2cd1cd845932eeeb8244adb3309cf3b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d456d61696c2d6331343433383f7374796c653d666f722d7468652d6261646765266c6f676f3d476d61696c266c6f676f436f6c6f723d7768697465266c696e6b3d6d61696c746f3a6f694076696e7061632e696f"/>
+## Coming soon
+- [ ] improve coming soon section
+- [ ] improve loading screen ux
+- [ ] search by filter
+- [ ] search by topic creator
+- [ ] display created topics section on user profile
+    - [ ] delete topics
+- [ ] skeleton animation
+<br/>
+...
 <br/><br/>
