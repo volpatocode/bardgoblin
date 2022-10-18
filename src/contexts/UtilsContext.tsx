@@ -41,7 +41,7 @@ export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
 
   // prevent modal scrolling
   useEffect(() => {
-    if ((screenSm && isMenuMobileOpen) || (screenSm && isMenuOpen)) {
+    if (isMenuMobileOpen || isMenuOpen) {
       document.body.style.overflowY = "hidden";
     } else {
       document.body.style.overflowY = "auto";
