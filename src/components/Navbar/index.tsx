@@ -92,12 +92,17 @@ export default function index({ animation }: navbarType) {
                 </CloseIconButton>
               </HeaderModal>
               <MenuModal>
+                <ModalAnchor
+                  onClick={handleMobileUserModal}
+                  href="https://www.linkedin.com/in/joaovolpatocode/"
+                  text="Contact"
+                />
                 {isAuthorized ? (
                   <>
                     <ModalAnchor
                       onClick={handleMobileUserModal}
                       href="/profile/account"
-                      text=" My account"
+                      text="My account"
                     />
                     <ModalAnchor
                       onClick={() => {

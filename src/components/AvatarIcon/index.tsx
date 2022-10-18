@@ -24,6 +24,11 @@ export default function index() {
   };
 
   const authorizedMenu = [
+    <Link href="https://www.linkedin.com/in/joaovolpatocode/">
+      <a>
+        <MenuItem onClick={handleClose}>Contact</MenuItem>
+      </a>
+    </Link>,
     <Link href="/profile/account">
       <a>
         <MenuItem onClick={handleClose}>My account</MenuItem>
@@ -33,6 +38,11 @@ export default function index() {
   ];
 
   const unauthorizedMenu = [
+    <Link href="https://www.linkedin.com/in/joaovolpatocode/">
+      <a>
+        <MenuItem onClick={handleClose}>Contact</MenuItem>
+      </a>
+    </Link>,
     <MenuItem
       onClick={() => {
         handleUserModalLogin();
