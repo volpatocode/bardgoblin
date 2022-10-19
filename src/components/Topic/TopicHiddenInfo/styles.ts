@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Box } from "@mui/material";
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
-export const TopicHiddenInfoWrapper = styled(Box)`
+export const TopicHiddenInfo = styled(Box)`
   background-color: #232323;
   border-radius: 8px;
   display: flex;
@@ -10,6 +10,7 @@ export const TopicHiddenInfoWrapper = styled(Box)`
   align-items: left;
   gap: 1rem;
   padding: 1rem;
+  margin: 1rem 0;
 `;
 
 export const TopicHiddenInfoTitleWrapper = styled(Box)`
@@ -21,7 +22,7 @@ export const TopicHiddenInfoTitleWrapper = styled(Box)`
 
 export const TopicHiddenInfoTitle = styled.h4`
   font-size: 1rem;
-  color: #ffffff;
+  color: #f6f6f6;
   font-weight: 400;
   letter-spacing: 0.4px;
   text-align: center;

@@ -3,8 +3,8 @@ import React from "react";
 import { Module, Title, Content } from "./styles";
 
 type moduleType = {
-  title: string;
-  content: string;
+  title: any;
+  content: any;
 };
 
 export default function index({ title, content }: moduleType) {

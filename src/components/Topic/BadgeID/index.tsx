@@ -2,6 +2,9 @@ import React from "react";
 
 import { BadgeID } from "./styles";
 
-export default function index() {
-  return <BadgeID>B4445231</BadgeID>;
+type badgeIDType = {
+  id: string;
+};
+export default function index({ id }: badgeIDType) {
+  return <BadgeID>{id}</BadgeID>;
 }

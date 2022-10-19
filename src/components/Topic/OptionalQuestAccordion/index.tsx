@@ -25,7 +25,7 @@ export default function index() {
           <OptionalQuestTitle>
             <StyledVisibilityIcon />
             Fighting the Orc
-            <BadgeID />
+            <BadgeID id="BG4564122247" />
           </OptionalQuestTitle>
         </StyledAccordionSummary>
         <StyledAccordionDetails>
@@ -33,7 +33,10 @@ export default function index() {
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo.
+            dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus
+            error sit voluptatem accusantium doloremque laudantium, totam rem
+            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo.
           </OptionalQuestInfo>
         </StyledAccordionDetails>
       </StyledAccordion>
@@ -46,7 +49,7 @@ export default function index() {
           <OptionalQuestTitle>
             <StyledVisibilityIcon />
             Helping the Orc
-            <BadgeID />
+            <BadgeID id="BG7411122247" />
           </OptionalQuestTitle>
         </StyledAccordionSummary>
         <StyledAccordionDetails>
@@ -54,7 +57,10 @@ export default function index() {
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo.
+            dicta sunt explicabo. Sed ut perspiciatis unde omnis iste natus
+            error sit voluptatem accusantium doloremque laudantium, totam rem
+            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo.
           </OptionalQuestInfo>
         </StyledAccordionDetails>
       </StyledAccordion>

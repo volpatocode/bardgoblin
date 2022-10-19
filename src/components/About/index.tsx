@@ -5,7 +5,10 @@ import { UserModalContext } from "../../contexts/UserModalContext";
 import HiperLink from "../Topic/Hiperlink";
 
 import { PageWrapper, About, Title, Typography, ContentBox } from "./styles";
-import ExampleStretch, { moduleExample } from "../Topic/ExampleStretch";
+import ExampleStretch, {
+  moduleExample,
+  comingSoonExample,
+} from "../Topic/ExampleStretch";
 
 export default function index() {
   const { isAuthorized } = useContext(UserContext);
@@ -52,11 +55,11 @@ export default function index() {
           <Typography>
             Modules: are excerpts from a story or post where the user seeks to
             develop the topic as a whole, making use of some modules to maintain
-            a timeline or nest information.{" "}
-            <ExampleStretch content={moduleExample} /> Topic: you can understand
-            as any type of post that a user creates, regardless of the content.
-            A topic is usually made up of modules, trying to tell a story or
-            make sense of its timeline.{" "}
+            a timeline or nest information.
+            <br />
+            Topic: you can understand as any type of post that a user creates,
+            regardless of the content. A topic is usually made up of modules,
+            trying to tell a story or make sense of its timeline.
           </Typography>
         </ContentBox>
         <ContentBox>
@@ -72,7 +75,7 @@ export default function index() {
             possible to add hidden information, which can be useful as a bonus
             depending on the context.
           </Typography>
-          <img className="exampleImage" src="./comingsoon.png" />
+          <ExampleStretch content={comingSoonExample} />
         </ContentBox>
       </About>
     </PageWrapper>

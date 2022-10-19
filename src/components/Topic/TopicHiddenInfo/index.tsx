@@ -1,34 +1,31 @@
 import React from "react";
 
 import {
-  TopicHiddenInfoWrapper,
+  TopicHiddenInfo,
   TopicHiddenInfoTitleWrapper,
   TopicHiddenInfoTitle,
   TopicHiddenInfoContent,
   DangerIcon,
 } from "./styles";
 
-export default function index() {
+
+type hiddenType = {
+  title: string;
+  content: string;
+}
+
+export default function index({title, content}: hiddenType) {
   return (
-    <TopicHiddenInfoWrapper>
+    <TopicHiddenInfo>
       <TopicHiddenInfoTitleWrapper>
         <DangerIcon fontSize="small" />
         <TopicHiddenInfoTitle>
-          Hidden Info: When the group find the elf
+          Hidden Info: {title}
         </TopicHiddenInfoTitle>
       </TopicHiddenInfoTitleWrapper>
       <TopicHiddenInfoContent>
-        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab
-        illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-        explicabo. Perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium doloremque laudantium, totam rem aperiam. Sed ut
-        perspiciatis unde omnis iste natus error sit voluptatem accusantium
-        doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-        inventore veritatis et quasi architecto beatae vitae dicta sunt
-        explicabo. Perspiciatis unde omnis iste natus error sit voluptatem
-        accusantium doloremque laudantium, totam rem aperiam.
+        {content}
       </TopicHiddenInfoContent>
-    </TopicHiddenInfoWrapper>
+    </TopicHiddenInfo>
   );
 }

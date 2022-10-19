@@ -2,6 +2,10 @@ import React from "react";
 
 import { BadgeOption } from "./styles";
 
-export default function index() {
-  return <BadgeOption>fight the orc</BadgeOption>;
+type optionType = {
+  option: string;
+}
+
+export default function index({option} : optionType) {
+  return <BadgeOption>{option}</BadgeOption>;
 }

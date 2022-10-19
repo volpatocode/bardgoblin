@@ -18,12 +18,12 @@ export const StyledAccordion = styled(Accordion)`
 `;
 
 export const StyledAccordionSummary = styled(AccordionSummary)`
-  background-color: #171717;
+  background-color: #232323;
   border-radius: 10px 10px 0 0;
 `;
 
 export const StyledAccordionDetails = styled(AccordionDetails)`
-  background-color: #171717;
+  background-color: #232323;
 `;
 
 export const OptionalQuestTitle = styled.h4`
@@ -42,7 +42,7 @@ export const OptionalQuestInfo = styled.p`
   text-align: justify;
   font-size: 1rem;
   letter-spacing: 0.2px;
-  color: #f6f6f6;
+  color: rgba(255, 255, 255, 0.8);
 `;
 
 export const StyledVisibilityIcon = styled(VisibilityIcon)`

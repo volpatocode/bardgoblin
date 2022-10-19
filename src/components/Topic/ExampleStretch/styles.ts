@@ -8,3 +8,9 @@ export const ExampleStretch = styled(Box)`
   border-radius: 10px;
   margin: 1rem auto;
 `;
+
+export const ContentWrapper = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
