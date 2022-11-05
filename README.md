@@ -44,7 +44,7 @@
 <br/><br/>
 
 ## Coming soon
-- [ ] improve coming soon section
+- [x] improve coming soon section
 - [ ] improve loading screen ux
 - [ ] search by filter
 - [ ] search by topic creator
