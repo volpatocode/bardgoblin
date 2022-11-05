@@ -15,7 +15,7 @@ export default function index() {
           width="150px"
           height="189.864px"
           viewBox="0 0 150 189.864"
-          enable-background="new 0 0 150 189.864"
+          enableBackground="new 0 0 150 189.864"
         >
           <path
             className="flame-main"
