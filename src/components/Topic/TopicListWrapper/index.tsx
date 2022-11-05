@@ -11,6 +11,8 @@ import {
   TopicContent,
   Labels,
   Label,
+  Wrapper,
+  LoadingIcon,
 } from "./styles";
 
 export default function index({ data }) {
@@ -18,38 +20,44 @@ export default function index({ data }) {
 
   return (
     <>
-      {data?.map((topic) => {
-        return (
-          <TopicListWrapper key={topic?.uid}>
-            <Link href={`/topic/${topic?.uid}`}>
-              <a>
-                <QueryTopic>
-                  <LeftSideTopic>
-                    {usersData?.map((user) => {
-                      return (
-                        user?.uid == topic?.userUID && (
-                          <UserBadge
-                            key={user?.uid}
-                            displayName={user?.displayName}
-                            photoURL={user?.photoURL}
-                          />
-                        )
-                      );
-                    })}
+      {data.length !== 0 ? (
+        data?.map((topic) => {
+          return (
+            <TopicListWrapper key={topic?.uid}>
+              <Link href={`/topic/${topic?.uid}`}>
+                <a>
+                  <QueryTopic>
+                    <LeftSideTopic>
+                      {usersData?.map((user) => {
+                        return (
+                          user?.uid == topic?.userUID && (
+                            <UserBadge
+                              key={user?.uid}
+                              displayName={user?.displayName}
+                              photoURL={user?.photoURL}
+                            />
+                          )
+                        );
+                      })}
 
-                    <TopicContent>{topic?.topictitle}</TopicContent>
-                  </LeftSideTopic>
-                  <Labels>
-                    {topic?.labels?.map((label, index) => (
-                      <Label key={index}>{label}</Label>
-                    ))}
-                  </Labels>
-                </QueryTopic>
-              </a>
-            </Link>
-          </TopicListWrapper>
-        );
-      })}
+                      <TopicContent>{topic?.topictitle}</TopicContent>
+                    </LeftSideTopic>
+                    <Labels>
+                      {topic?.labels?.map((label, index) => (
+                        <Label key={index}>{label}</Label>
+                      ))}
+                    </Labels>
+                  </QueryTopic>
+                </a>
+              </Link>
+            </TopicListWrapper>
+          );
+        })
+      ) : (
+        <Wrapper>
+          <LoadingIcon size="64px" />
+        </Wrapper>
+      )}
     </>
   );
 }

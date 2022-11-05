@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Button } from "@mui/material";
+import { StyledCircularProgress } from "../../UserModal/styles";
 
 export const TopicListWrapper = styled(Box)`
   display: flex;
@@ -69,4 +70,17 @@ export const Label = styled(Button)`
     background: none;
     color: #ff9900;
   }
+`;
+
+export const Wrapper = styled(Box)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+`;
+
+export const LoadingIcon = styled(StyledCircularProgress)`
+  color: #4f4f4f;
+  
 `;

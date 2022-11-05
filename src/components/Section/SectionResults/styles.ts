@@ -6,6 +6,7 @@ export const SectionResults = styled(Container)`
   flex-direction: column;
   gap: 1rem;
   margin: 3rem auto;
+  min-height: 50vh;
 `;
 export const TopicQueryInfo = styled(Box)`
   display: flex;
