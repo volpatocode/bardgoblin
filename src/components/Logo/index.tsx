@@ -10,9 +10,9 @@ export type logoType = {
 
 export default function index({ variant }: logoType) {
   const logo = {
-    horizontal: "/horizontal-logo.png",
-    vertical: "/vertical-logo.png",
-    icon: "/icon-logo.png",
+    horizontal: "/horizontal-logo.svg",
+    vertical: "/vertical-logo.svg",
+    icon: "/icon-logo.svg",
     icon2: "/icon-logo2.svg",
   };
 

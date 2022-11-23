@@ -26,7 +26,7 @@ export const SectionHeader = styled(Box)<sectionType>`
         case "Builds":
           return `url("/builds.png") no-repeat center center / cover`;
         case "Characters":
-          return `url("/characters.jpg") no-repeat center center / cover`;
+          return `url("/characters.png") no-repeat center center / cover`;
         default:
           return `url("/background2.png") no-repeat center center / cover`;
       }

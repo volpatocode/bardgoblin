@@ -43,7 +43,7 @@ export const ProfileGreetings = styled.h4`
 
 export const ProfileHeader = styled(Box)`
   background: linear-gradient(rgba(29, 29, 29, 0.6), rgba(29, 29, 29, 0.6)),
-    url("/profile.jpg") no-repeat center center / cover;
+    url("/profile.png") no-repeat center center / cover;
   width: 100vw;
   height: 45vh;
   display: flex;
