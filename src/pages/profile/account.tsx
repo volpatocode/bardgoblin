@@ -9,9 +9,9 @@ import Unauthorized from "../../components/Unauthorized";
 import { PageWrapper, Content } from "../../styles/accountstyles";
 
 export default function index() {
-  const { currentUser } = useContext(UserContext);
+  const { isAuthorized, isUserLoading } = useContext(UserContext);
 
-  if (currentUser) {
+  if (isUserLoading || isAuthorized) {
     return (
       <PageWrapper>
         <Header />
@@ -21,7 +21,6 @@ export default function index() {
         <Footer />
       </PageWrapper>
     );
-  } else {
-    return <Unauthorized />;
   }
+  return <Unauthorized />;
 }

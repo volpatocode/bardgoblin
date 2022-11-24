@@ -28,12 +28,12 @@ import {
 } from "../../styles/createtopicstyles";
 
 export default function index() {
-  const { currentUser } = useContext(UserContext);
+  const { isUserLoading, isAuthorized } = useContext(UserContext);
   const { modules, append, handleSubmitTopic, submitTopic, isLoading } =
     useContext(TopicContext);
   const { screenMd } = useContext(UtilsContext);
 
-  if (currentUser) {
+  if (isUserLoading || isAuthorized) {
     return (
       <PageWrapper>
         <SideBox>
@@ -85,7 +85,6 @@ export default function index() {
         </MainBox>
       </PageWrapper>
     );
-  } else {
-    return <Unauthorized />;
   }
+  return <Unauthorized />;
 }
