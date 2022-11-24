@@ -5,10 +5,7 @@ import { UserModalContext } from "../../contexts/UserModalContext";
 import HiperLink from "../Topic/Hiperlink";
 
 import { PageWrapper, About, Title, Typography, ContentBox } from "./styles";
-import ExampleStretch, {
-  moduleExample,
-  comingSoonExample,
-} from "../Topic/ExampleStretch";
+import ExampleStretch, { comingSoonExample } from "../Topic/ExampleStretch";
 
 export default function index() {
   const { isAuthorized } = useContext(UserContext);

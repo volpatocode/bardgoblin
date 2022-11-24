@@ -32,6 +32,8 @@ type UserContextType = {
   setIsAuthorized: (newState: boolean) => void;
   isLoading: boolean;
   setIsLoading: (newState: boolean) => void;
+  isUserLoading: boolean;
+  setIsUserLoading: (newState: boolean) => void;
   createUser: (data: UserFormData) => void;
   loginUser: (data: UserFormData) => void;
   logOut: () => void;
@@ -49,14 +51,12 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-  const {
-    setIsMenuOpen,
-    setIsMenuMobileOpen,
-  } = useContext(UserModalContext);
+  const { setIsMenuOpen, setIsMenuMobileOpen } = useContext(UserModalContext);
   const { screenMd, forceHome, refreshPage } = useContext(UtilsContext);
   const currentUser = auth?.currentUser;
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isUserLoading, setIsUserLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [errorFirebase, setErrorFirebase] = useState("");
   const [photoURL, setPhotoURL] = useState(
@@ -68,14 +68,19 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   // User listener
 
   useEffect(() => {
+    setIsUserLoading(true);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsAuthorized(true);
+        setIsUserLoading(false);
       } else {
         setIsAuthorized(false);
+        setIsUserLoading(false);
       }
     });
   }, []);
+
+  console.log(auth);
 
   // User Login/register functions
   async function createUser(data: UserFormData) {
@@ -186,6 +191,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         setIsAuthorized,
         isLoading,
         setIsLoading,
+        isUserLoading, setIsUserLoading,
         createUser,
         loginUser,
         logOut,

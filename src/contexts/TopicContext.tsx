@@ -54,7 +54,6 @@ export const TopicContext = createContext<TopicContextType>(
 
 export const TopicContextProvider = ({ children }: TopicContextProps) => {
   const { currentUser } = useContext(UserContext);
-  const { refreshPage } = useContext(UtilsContext);
   const [isLoading, setIsLoading] = useState(false);
   const [topicError, setTopicError] = useState("");
   const [label, setLabel] = useState([]);

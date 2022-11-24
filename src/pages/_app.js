@@ -46,9 +46,9 @@ export default function App({ Component, pageProps }) {
       <GlobalStyle />
       <Head>
         <title>Bard Goblin</title>
-        <link rel="shortcut icon" href="/icon-logo.png" />
+        <link rel="shortcut icon" href="/icon-logo.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link
           href="https://fonts.googleapis.com/css2?family=New+Rocker&family=Uncial+Antiqua&display=swap"
           rel="stylesheet"
