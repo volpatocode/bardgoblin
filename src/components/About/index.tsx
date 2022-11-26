@@ -9,7 +9,7 @@ import ExampleStretch, { comingSoonExample } from "../Topic/ExampleStretch";
 
 export default function index() {
   const { isAuthorized } = useContext(UserContext);
-  const { handleUserModal } = useContext(UserModalContext);
+  const { handleUserMenu } = useContext(UserModalContext);
 
   return (
     <PageWrapper>
@@ -36,12 +36,12 @@ export default function index() {
             ) : (
               <HiperLink
                 text="creating your own topic"
-                onClick={handleUserModal}
+                onClick={handleUserMenu}
               />
             )}{" "}
             with its modules or reuse modules already made. To take your first
             steps in Bard Goblin, follow the numerous following steps:{" "}
-            <HiperLink onClick={handleUserModal} text="Create your account" />:
+            <HiperLink onClick={handleUserMenu} text="Create your account" />:
             In order for you to interact with most of the site, you must have an
             account. Thats it! Already having an account means you can interact
             in all ways. So, what are topics and modules?

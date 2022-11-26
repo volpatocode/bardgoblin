@@ -40,8 +40,8 @@ import { Backdrop, Modal, Fade } from "@mui/material";
 
 export default function index() {
   const {
-    isMenuOpen,
-    handleUserModal,
+    isUserMenuOpen,
+    handleUserMenu,
     isOnLogin,
     isOnRegister,
     toggleLogin,
@@ -71,15 +71,15 @@ export default function index() {
   if (!screenSm) {
     return (
       <Modal
-        open={isMenuOpen}
-        onClose={handleUserModal}
+        open={isUserMenuOpen}
+        onClose={handleUserMenu}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={isMenuOpen}>
+        <Fade in={isUserMenuOpen}>
           <BoxModal>
             <BoxModalContent>
               <BoxLogo>
@@ -230,22 +230,22 @@ export default function index() {
   } else {
     return (
       <Modal
-        open={isMenuOpen}
-        onClose={handleUserModal}
+        open={isUserMenuOpen}
+        onClose={handleUserMenu}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={isMenuOpen}>
+        <Fade in={isUserMenuOpen}>
           <BoxModal>
             <HeaderModal>
               <CloseIconButton
                 size="medium"
                 edge="start"
                 aria-label="open-drawer"
-                onClick={handleUserModal}
+                onClick={handleUserMenu}
               >
                 <CloseMenuIcon fontSize="large" />
               </CloseIconButton>

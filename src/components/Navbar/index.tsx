@@ -31,11 +31,11 @@ export type navbarType = {
 export default function index({ animation }: navbarType) {
   const { isAuthorized, logOut } = useContext(UserContext);
   const {
-    handleUserModal,
+    handleUserMenu,
     handleUserModalLogin,
     handleUserModalRegister,
     isNavbarMenuOpen,
-    handleMobileUserModal,
+    handleNavbarMenu,
   } = useContext(UserModalContext);
 
   const { screenSm } = useContext(UtilsContext);
@@ -54,7 +54,7 @@ export default function index({ animation }: navbarType) {
 
             <ContainedButton
               href={isAuthorized && "/createtopic"}
-              onClick={() => !isAuthorized && handleUserModal()}
+              onClick={() => !isAuthorized && handleUserMenu()}
             >
               Create a Topic
             </ContainedButton>
@@ -75,7 +75,7 @@ export default function index({ animation }: navbarType) {
             size="large"
             edge="start"
             aria-label="open-drawer"
-            onClick={handleMobileUserModal}
+            onClick={handleNavbarMenu}
           >
             <MenuIcon />
           </OpenIconButton>
@@ -86,28 +86,28 @@ export default function index({ animation }: navbarType) {
                   size="medium"
                   edge="start"
                   aria-label="open-drawer"
-                  onClick={handleMobileUserModal}
+                  onClick={handleNavbarMenu}
                 >
                   <CloseMenuIcon fontSize="large" />
                 </CloseIconButton>
               </HeaderModal>
               <MenuModal>
                 <ModalAnchor
-                  onClick={handleMobileUserModal}
+                  onClick={handleNavbarMenu}
                   href="https://www.linkedin.com/in/joaovolpatocode/"
                   text="Contact"
                 />
                 {isAuthorized ? (
                   <>
                     <ModalAnchor
-                      onClick={handleMobileUserModal}
+                      onClick={handleNavbarMenu}
                       href="/profile/account"
                       text="My account"
                     />
                     <ModalAnchor
                       onClick={() => {
                         logOut();
-                        handleMobileUserModal();
+                        handleNavbarMenu();
                       }}
                       text="Logout"
                     />
@@ -126,14 +126,14 @@ export default function index({ animation }: navbarType) {
                 <ModalAnchor href="/section/characters" text="Characters" />
                 <ModalAnchor
                   href={isAuthorized && "/createtopic"}
-                  onClick={() => !isAuthorized && handleUserModal()}
+                  onClick={() => !isAuthorized && handleUserMenu()}
                   text="Create a Topic"
                 />
               </MenuModal>
               <FooterModal />
             </BoxModal>
           )}
-          {handleUserModal && <UserModal />}
+          {handleUserMenu && <UserModal />}
         </NavRightSide>
       </Navbar>
     );

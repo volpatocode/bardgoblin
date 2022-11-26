@@ -11,7 +11,7 @@ import { AvatarIcon, AccountAvatar } from "./styles";
 
 export default function index() {
   const [anchor, setAnchor] = useState(null);
-  const { handleUserModal, handleUserModalLogin, handleUserModalRegister } =
+  const { handleUserMenu, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
   const { logOut, isAuthorized, photoURL } = useContext(UserContext);
 
@@ -95,7 +95,7 @@ export default function index() {
         }}
       >
         {isAuthorized ? authorizedMenu : unauthorizedMenu}
-        {handleUserModal && <UserModal />}
+        {handleUserMenu && <UserModal />}
       </Menu>
     </AvatarIcon>
   );

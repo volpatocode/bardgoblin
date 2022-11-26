@@ -21,7 +21,7 @@ export const UtilsContext = createContext<UtilsContextType>(
 );
 
 export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
-  const { isMenuOpen, isNavbarMenuOpen } = useContext(UserModalContext);
+  const { isNavbarMenuOpen } = useContext(UserModalContext);
 
   const router = useRouter();
 

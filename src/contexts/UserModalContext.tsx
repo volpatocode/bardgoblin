@@ -5,16 +5,16 @@ type UserModalContextProps = {
 };
 
 type UserModalContextType = {
-  isMenuOpen: boolean;
-  setIsMenuOpen: (newState: boolean) => void;
+  isUserMenuOpen: boolean;
+  setIsUserMenuOpen: (newState: boolean) => void;
   isNavbarMenuOpen: boolean;
   setIsNavbarMenuOpen: (newState: boolean) => void;
   isOnLogin: boolean;
   setIsOnLogin: (newState: boolean) => void;
   isOnRegister: boolean;
   setIsOnRegister: (newState: boolean) => void;
-  handleUserModal: () => void;
-  handleMobileUserModal: () => void;
+  handleUserMenu: () => void;
+  handleNavbarMenu: () => void;
   handleUserModalLogin: () => void;
   handleUserModalRegister: () => void;
   toggleLogin: () => void;
@@ -29,20 +29,20 @@ export const UserModalContextProvider = ({
   children,
 }: UserModalContextProps) => {
   const [isNavbarMenuOpen, setIsNavbarMenuOpen] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isOnRegister, setIsOnRegister] = useState(false);
   const [isOnLogin, setIsOnLogin] = useState(true);
 
-  const handleUserModal = () => setIsMenuOpen(!isMenuOpen);
+  const handleUserMenu = () => setIsUserMenuOpen(!isUserMenuOpen);
 
-  const handleMobileUserModal = () => setIsNavbarMenuOpen(!isNavbarMenuOpen);
+  const handleNavbarMenu = () => setIsNavbarMenuOpen(!isNavbarMenuOpen);
 
   const handleUserModalLogin = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsUserMenuOpen(!isUserMenuOpen);
     toggleLogin();
   };
   const handleUserModalRegister = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsUserMenuOpen(!isUserMenuOpen);
     toggleRegister();
   };
 
@@ -59,12 +59,12 @@ export const UserModalContextProvider = ({
   return (
     <UserModalContext.Provider
       value={{
-        isMenuOpen,
-        setIsMenuOpen,
+        isUserMenuOpen,
+        setIsUserMenuOpen,
         isNavbarMenuOpen,
         setIsNavbarMenuOpen,
-        handleUserModal,
-        handleMobileUserModal,
+        handleUserMenu,
+        handleNavbarMenu,
         handleUserModalLogin,
         handleUserModalRegister,
         isOnLogin,
