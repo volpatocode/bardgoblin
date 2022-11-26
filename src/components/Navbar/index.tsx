@@ -34,7 +34,7 @@ export default function index({ animation }: navbarType) {
     handleUserModal,
     handleUserModalLogin,
     handleUserModalRegister,
-    isMenuMobileOpen,
+    isNavbarMenuOpen,
     handleMobileUserModal,
   } = useContext(UserModalContext);
 
@@ -79,7 +79,7 @@ export default function index({ animation }: navbarType) {
           >
             <MenuIcon />
           </OpenIconButton>
-          {isMenuMobileOpen && (
+          {isNavbarMenuOpen && (
             <BoxModal>
               <HeaderModal>
                 <CloseIconButton

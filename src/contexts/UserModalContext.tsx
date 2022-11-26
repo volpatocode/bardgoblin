@@ -7,8 +7,8 @@ type UserModalContextProps = {
 type UserModalContextType = {
   isMenuOpen: boolean;
   setIsMenuOpen: (newState: boolean) => void;
-  isMenuMobileOpen: boolean;
-  setIsMenuMobileOpen: (newState: boolean) => void;
+  isNavbarMenuOpen: boolean;
+  setIsNavbarMenuOpen: (newState: boolean) => void;
   isOnLogin: boolean;
   setIsOnLogin: (newState: boolean) => void;
   isOnRegister: boolean;
@@ -28,14 +28,14 @@ export const UserModalContext = createContext<UserModalContextType>(
 export const UserModalContextProvider = ({
   children,
 }: UserModalContextProps) => {
+  const [isNavbarMenuOpen, setIsNavbarMenuOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMenuMobileOpen, setIsMenuMobileOpen] = useState(false);
   const [isOnRegister, setIsOnRegister] = useState(false);
   const [isOnLogin, setIsOnLogin] = useState(true);
 
   const handleUserModal = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleMobileUserModal = () => setIsMenuMobileOpen(!isMenuMobileOpen);
+  const handleMobileUserModal = () => setIsNavbarMenuOpen(!isNavbarMenuOpen);
 
   const handleUserModalLogin = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -61,8 +61,8 @@ export const UserModalContextProvider = ({
       value={{
         isMenuOpen,
         setIsMenuOpen,
-        isMenuMobileOpen,
-        setIsMenuMobileOpen,
+        isNavbarMenuOpen,
+        setIsNavbarMenuOpen,
         handleUserModal,
         handleMobileUserModal,
         handleUserModalLogin,

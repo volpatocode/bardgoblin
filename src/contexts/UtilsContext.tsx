@@ -21,7 +21,7 @@ export const UtilsContext = createContext<UtilsContextType>(
 );
 
 export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
-  const { isMenuOpen, isMenuMobileOpen } = useContext(UserModalContext);
+  const { isMenuOpen, isNavbarMenuOpen } = useContext(UserModalContext);
 
   const router = useRouter();
 
@@ -41,12 +41,12 @@ export const UtilsContextProvider = ({ children }: UtilsContextProps) => {
 
   // prevent modal scrolling
   useEffect(() => {
-    if (isMenuMobileOpen || isMenuOpen) {
+    if (isNavbarMenuOpen) {
       document.body.style.overflowY = "hidden";
     } else {
       document.body.style.overflowY = "auto";
     }
-  }, [isMenuMobileOpen, isMenuOpen]);
+  }, [isNavbarMenuOpen]);
 
   return (
     <UtilsContext.Provider

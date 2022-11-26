@@ -51,7 +51,7 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-  const { setIsMenuOpen, setIsMenuMobileOpen } = useContext(UserModalContext);
+  const { setIsMenuOpen, setIsNavbarMenuOpen } = useContext(UserModalContext);
   const { screenMd, forceHome, refreshPage } = useContext(UtilsContext);
   const currentUser = auth?.currentUser;
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -95,7 +95,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       uid: res?.user?.uid,
     })
       .then(() => {
-        setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
+        setIsMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
         forceHome();
       })
       .catch((error) => setErrorFirebase(error.message))
@@ -108,7 +108,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await signInWithEmailAndPassword(auth, data.email, data.password)
       .then(() => {
-        setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
+        setIsMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
         forceHome();
       })
       .catch((error) => setErrorFirebase(error.message))
@@ -121,7 +121,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     setIsLoading(true);
     await signOut(auth)
       .then(() => {
-        setIsMenuOpen(false), screenMd && setIsMenuMobileOpen(false);
+        setIsMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
         forceHome();
       })
       .finally(() => {
