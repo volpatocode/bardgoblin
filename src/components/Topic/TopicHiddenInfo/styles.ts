@@ -18,6 +18,9 @@ export const TopicHiddenInfoTitleWrapper = styled(Box)`
   flex-direction: row;
   gap: 0.3rem;
   align-items: center;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const TopicHiddenInfoTitle = styled.h4`
@@ -30,11 +33,16 @@ export const TopicHiddenInfoTitle = styled.h4`
 
 export const TopicHiddenInfoContent = styled.p`
   text-align: justify;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
+  word-break: break-all;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
 `;
 
 export const DangerIcon = styled(ReportProblemIcon)`
   color: #FF9900;
 `;
+
+
+
 

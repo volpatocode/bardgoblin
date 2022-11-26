@@ -10,7 +10,6 @@ export const BadgeCharacter = styled(Button)`
   border-radius: 5px;
   line-height: normal;
   letter-spacing: 0.4px;
-  font-weight: 500;
   :hover {
     background: #232323;
   }
