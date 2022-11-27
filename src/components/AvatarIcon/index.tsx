@@ -13,7 +13,8 @@ export default function index() {
   const [anchor, setAnchor] = useState(null);
   const { handleUserMenu, handleUserModalLogin, handleUserModalRegister } =
     useContext(UserModalContext);
-  const { logOut, isAuthorized, photoURL } = useContext(UserContext);
+  const { currentUser, logOut, isAuthorized, photoURL } =
+    useContext(UserContext);
 
   const handleMenu = (e) => {
     setAnchor(e.currentTarget);
@@ -71,7 +72,11 @@ export default function index() {
         onClick={handleMenu}
         sx={{ color: "white" }}
       >
-        <AccountAvatar src={photoURL} />
+        {typeof currentUser?.photoURL == "string" ? (
+          <AccountAvatar src={photoURL} />
+        ) : (
+          photoURL
+        )}
       </IconButton>
       <Menu
         id="menu-appbar"

@@ -22,6 +22,7 @@ import {
 } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { doc, setDoc, updateDoc } from "firebase/firestore";
+import { AccountCircle } from "../components/AvatarIcon/styles";
 
 type UserContextProps = {
   children: ReactNode;
@@ -42,7 +43,7 @@ type UserContextType = {
   handlePhoto: (e: any) => void;
   handlePhotoUpload: () => void;
   photo: boolean;
-  photoURL: string;
+  photoURL: any;
   currentUser: any;
 };
 
@@ -51,7 +52,8 @@ export const UserContext = createContext<UserContextType>(
 );
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
-  const { setIsUserMenuOpen, setIsNavbarMenuOpen } = useContext(UserModalContext);
+  const { setIsUserMenuOpen, setIsNavbarMenuOpen } =
+    useContext(UserModalContext);
   const { screenMd, forceHome, refreshPage } = useContext(UtilsContext);
   const currentUser = auth?.currentUser;
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -59,9 +61,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [isUserLoading, setIsUserLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [errorFirebase, setErrorFirebase] = useState("");
-  const [photoURL, setPhotoURL] = useState(
-    "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-  );
+  const [photoURL, setPhotoURL] = useState(<AccountCircle />);
 
   const router = useRouter();
 
@@ -79,8 +79,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       }
     });
   }, []);
-
-  console.log(auth);
 
   // User Login/register functions
   async function createUser(data: UserFormData) {
@@ -143,13 +141,12 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
 
   useEffect(() => {
     if (currentUser?.photoURL) {
+      //@ts-ignore
       setPhotoURL(currentUser?.photoURL);
     } else {
-      setPhotoURL(
-        "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-      );
+      setPhotoURL(<AccountCircle />);
     }
-  }, [currentUser, currentUser?.photoURL, photoURL]);
+  }, [currentUser?.photoURL]);
 
   async function upload(file, currentUser, loading) {
     setIsLoading(true);
@@ -191,7 +188,8 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         setIsAuthorized,
         isLoading,
         setIsLoading,
-        isUserLoading, setIsUserLoading,
+        isUserLoading,
+        setIsUserLoading,
         createUser,
         loginUser,
         logOut,
