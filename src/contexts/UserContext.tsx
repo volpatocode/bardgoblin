@@ -80,61 +80,72 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     });
   }, []);
 
-  // User Login/register functions
   async function createUser(data: UserFormData) {
     setIsLoading(true);
-    const res = await createUserWithEmailAndPassword(
-      auth,
-      data?.email,
-      data?.password
-    );
-    await setDoc(doc(db, "users", res?.user?.uid), {
-      email: data?.email,
-      uid: res?.user?.uid,
-    })
-      .then(() => {
-        setIsUserMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
-        forceHome();
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => {
-        setIsLoading(false);
-      });
+    try {
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        data?.email,
+        data?.password
+      );
+      try {
+        await setDoc(doc(db, "users", res?.user?.uid), {
+          email: data?.email,
+          uid: res?.user?.uid,
+        }).then(() => {
+          setIsUserMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
+          forceHome();
+        });
+      } catch (error) {
+        setErrorFirebase(error.message);
+      }
+    } catch (error) {
+      setErrorFirebase(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   async function loginUser(data: UserFormData) {
     setIsLoading(true);
-    await signInWithEmailAndPassword(auth, data.email, data.password)
-      .then(() => {
-        setIsUserMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
-        forceHome();
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => {
-        setIsLoading(false);
-      });
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password).then(
+        () => {
+          setIsUserMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
+          forceHome();
+        }
+      );
+    } catch (error) {
+      setErrorFirebase(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   async function logOut() {
     setIsLoading(true);
-    await signOut(auth)
-      .then(() => {
+    try {
+      await signOut(auth).then(() => {
         setIsUserMenuOpen(false), screenMd && setIsNavbarMenuOpen(false);
         forceHome();
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
+    } catch (error) {
+      setErrorFirebase(error.message);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   async function resetPassword(data: UserFormData) {
     setIsLoading(true);
-    await sendPasswordResetEmail(auth, data.email)
-      .then(() => {
+    try {
+      await sendPasswordResetEmail(auth, data.email).then(() => {
         router.push("/help/emailsent");
-      })
-      .catch((error) => setErrorFirebase(error.message))
-      .finally(() => setIsLoading(false));
+      });
+    } catch (error) {
+      setErrorFirebase(error.message);
+    } finally {
+    }
   }
 
   // Profile picture
