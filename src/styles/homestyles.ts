@@ -18,7 +18,7 @@ export const MainView = styled(Box)`
   min-width: 100vw;
 
   background: url("/backgroundfull.png") no-repeat center center / cover;
-  animation-name: slowLoad;
+  /* animation-name: slowLoad;
   animation-duration: 1.5s;
 
   @keyframes slowLoad {
@@ -32,7 +32,7 @@ export const MainView = styled(Box)`
     100% {
       opacity: 1;
     }
-  }
+  } */
 `;
 
 export const Content = styled(Box)`

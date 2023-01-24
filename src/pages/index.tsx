@@ -17,18 +17,16 @@ import {
 } from "../styles/homestyles";
 
 export default function index() {
-  const [homeIsLoading, setHomeIsLoading] = useState(true);
+  // const [homeIsLoading, setHomeIsLoading] = useState(true);
 
-  useEffect(() => {
-    
-    setTimeout(() => {
-      setHomeIsLoading(false);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
 
-  return homeIsLoading ? (
-    <Loading />
-  ) : (
+  //   setTimeout(() => {
+  //     setHomeIsLoading(false);
+  //   }, 2000);
+  // }, []);
+
+  return (
     <PageWrapper>
       <MainView>
         <Navbar />
