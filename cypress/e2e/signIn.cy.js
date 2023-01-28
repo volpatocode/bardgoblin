@@ -1,9 +1,10 @@
 /// <reference types="cypress" />
 
-describe("create a account", () => {
+describe("sign in paths", () => {
   beforeEach(() => {
     cy.visit("/");
     cy.clearCookies();
+    cy.clearAllLocalStorage();
   });
 
   it("sign in in bardgoblin", () => {
