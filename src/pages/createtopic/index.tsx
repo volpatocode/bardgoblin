@@ -56,6 +56,7 @@ export default function index() {
                   disabled={isLoading}
                   type="button"
                   onClick={() => append({ moduletitle: "", modulecontent: "" })}
+                  data-test="add-module-button"
                 >
                   {isLoading ? (
                     <StyledCircularProgress size="25px" />
@@ -70,6 +71,7 @@ export default function index() {
                 disabled={isLoading}
                 type="submit"
                 onClick={handleSubmitTopic(submitTopic)}
+                data-test="submit-button"
               >
                 {isLoading ? (
                   <StyledCircularProgress size="25px" />

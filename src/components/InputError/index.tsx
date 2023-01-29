@@ -7,5 +7,5 @@ export type errorType = {
 };
 
 export default function index({ error }: errorType) {
-  return error && <InputError>{error}</InputError>;
+  return error && <InputError data-test="input-error">{error}</InputError>;
 }

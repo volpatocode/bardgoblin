@@ -108,7 +108,10 @@ export default function index() {
                 </SelectButton>
               </SelectButtonBox>
               {isOnLogin && (
-                <form onSubmit={handleSubmitLogin(loginUser)}>
+                <form
+                  data-test="login-form"
+                  onSubmit={handleSubmitLogin(loginUser)}
+                >
                   <BoxLogin>
                     <BoxInfo>
                       <BoxEmail>
@@ -146,6 +149,8 @@ export default function index() {
                       type="submit"
                       onClick={handleSubmitLogin(loginUser)}
                       disabled={isLoading}
+                      id="login-finish"
+                      data-test="login-finish"
                     >
                       {isLoading ? (
                         <StyledCircularProgress size="25px" />
@@ -157,7 +162,10 @@ export default function index() {
                 </form>
               )}
               {isOnRegister && (
-                <form onSubmit={handleSubmitRegister(createUser)}>
+                <form
+                  data-test="register-form"
+                  onSubmit={handleSubmitRegister(createUser)}
+                >
                   <BoxRegister>
                     <BoxInfo>
                       <BoxEmail>
@@ -212,6 +220,7 @@ export default function index() {
                       type="submit"
                       onClick={handleSubmitRegister(createUser)}
                       disabled={isLoading}
+                      data-test="register-finish"
                     >
                       {isLoading ? (
                         <StyledCircularProgress size="25px" />

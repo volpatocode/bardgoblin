@@ -94,9 +94,14 @@ export default function index({ type, section }: labelSelectorType) {
             input={<StyledOutlinedInput />}
             renderValue={(selected) => selected}
             MenuProps={MenuProps}
+            data-test="section-selector"
           >
-            {sections?.map((name) => (
-              <MenuItem key={name} value={name}>
+            {sections?.map((name, index) => (
+              <MenuItem
+                data-test={`section-selector-item${index}`}
+                key={name}
+                value={name}
+              >
                 <StyledCheckbox checked={topicSection?.indexOf(name) > -1} />
                 <ListItemText primary={name} />
               </MenuItem>
@@ -120,9 +125,14 @@ export default function index({ type, section }: labelSelectorType) {
             input={<StyledOutlinedInput />}
             renderValue={(selected) => selected.join("  ")}
             MenuProps={MenuProps}
+            data-test="labels-selector"
           >
-            {selector[section]?.map((name) => (
-              <MenuItem key={name} value={name}>
+            {selector[section]?.map((name, index) => (
+              <MenuItem
+                data-test={`section-selector-item${index}`}
+                key={name}
+                value={name}
+              >
                 <StyledCheckbox checked={label?.indexOf(name) > -1} />
                 <ListItemText primary={name} />
               </MenuItem>

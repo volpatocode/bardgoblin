@@ -32,7 +32,7 @@ export default function index() {
                   type="text"
                   {...registerTopic(`modules.${index}.moduletitle` as const)}
                   key={field.id}
-                  
+                  data-test={`module-title${index}`}
                 />
                 {formErrors?.modules &&
                   formErrors?.modules[index]?.moduletitle && (
@@ -53,6 +53,7 @@ export default function index() {
                 placeholder="Insert module content here"
                 {...registerTopic(`modules.${index}.modulecontent` as const)}
                 key={field.id}
+                data-test={`module-content${index}`}
               />
               {formErrors?.modules &&
                 formErrors?.modules[index]?.modulecontent && (

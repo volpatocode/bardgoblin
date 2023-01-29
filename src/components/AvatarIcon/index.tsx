@@ -27,24 +27,33 @@ export default function index() {
   const authorizedMenu = [
     <Link href="https://www.linkedin.com/in/joaovolpatocode/">
       <a>
-        <MenuItem onClick={handleClose}>Contact</MenuItem>
+        <MenuItem data-test="menu-list-item1" onClick={handleClose}>
+          Contact
+        </MenuItem>
       </a>
     </Link>,
     <Link href="/profile/account">
       <a>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem data-test="menu-list-item2" onClick={handleClose}>
+          My account
+        </MenuItem>
       </a>
     </Link>,
-    <MenuItem onClick={logOut}>Log out</MenuItem>,
+    <MenuItem data-test="menu-list-item3" onClick={logOut}>
+      Log out
+    </MenuItem>,
   ];
 
   const unauthorizedMenu = [
     <Link href="https://www.linkedin.com/in/joaovolpatocode/">
       <a>
-        <MenuItem onClick={handleClose}>Contact</MenuItem>
+        <MenuItem data-test="menu-list-item1" onClick={handleClose}>
+          Contact
+        </MenuItem>
       </a>
     </Link>,
     <MenuItem
+      data-test="menu-list-item2"
       onClick={() => {
         handleUserModalLogin();
         handleClose();
@@ -53,6 +62,7 @@ export default function index() {
       Login
     </MenuItem>,
     <MenuItem
+      data-test="menu-list-item3"
       onClick={() => {
         handleUserModalRegister();
         handleClose();
@@ -65,6 +75,7 @@ export default function index() {
   return (
     <AvatarIcon>
       <IconButton
+        data-test="navbar-avatar"
         size="large"
         aria-label="account of current user"
         aria-controls="menu-appbar"

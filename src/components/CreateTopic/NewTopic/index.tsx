@@ -17,6 +17,7 @@ export default function index() {
           type="text"
           placeholder="Topic title"
           {...registerTopic("topictitle" as const)}
+          data-test="topic-title"
         />
         {formErrors?.topictitle && (
           <InputError error={formErrors?.topictitle?.message} />
