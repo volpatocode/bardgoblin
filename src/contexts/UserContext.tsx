@@ -42,7 +42,7 @@ type UserContextType = {
   errorFirebase: string;
   handlePhoto: (e: any) => void;
   handlePhotoUpload: () => void;
-  photo: boolean;
+  photo: any;
   photoURL: any;
   currentUser: any;
 };
@@ -61,7 +61,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [isUserLoading, setIsUserLoading] = useState(false);
   const [photo, setPhoto] = useState(null);
   const [errorFirebase, setErrorFirebase] = useState("");
-  const [photoURL, setPhotoURL] = useState(<AccountCircle />);
+  const [photoURL, setPhotoURL] = useState(<AccountCircle size="sm" />);
 
   const router = useRouter();
 
@@ -145,6 +145,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     } catch (error) {
       setErrorFirebase(error.message);
     } finally {
+      setIsLoading(false);
     }
   }
 
@@ -155,7 +156,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
       //@ts-ignore
       setPhotoURL(currentUser?.photoURL);
     } else {
-      setPhotoURL(<AccountCircle />);
+      setPhotoURL(<AccountCircle size="sm" />);
     }
   }, [currentUser?.photoURL]);
 

@@ -28,12 +28,13 @@ import {
   UploadButton,
   InputImage,
   EditDataValue,
+  AccountCircle,
 } from "./styles";
 import { StyledCircularProgress } from "../../UserModal/styles";
 
 export type profileInfoType = {
   background?: "none";
-  src: string;
+  src: any;
 };
 
 export default function index() {
@@ -73,7 +74,6 @@ export default function index() {
         refreshPage();
       })
       .catch((error) => {
-
         setErrorFirebase(error.message);
       })
       .finally(() => {
@@ -114,7 +114,11 @@ export default function index() {
   return (
     <ProfileInfo>
       <ProfileImageBox>
-        <ProfileImage src={photoURL} />
+        {typeof photoURL == "string" ? (
+          <ProfileImage src={photoURL} />
+        ) : (
+          <AccountCircle size="full" />
+        )}
         {photo ? (
           <UploadButton
             type="submit"

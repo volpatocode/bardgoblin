@@ -27,19 +27,19 @@ export default function index() {
   const authorizedMenu = [
     <Link href="https://www.linkedin.com/in/joaovolpatocode/">
       <a>
-        <MenuItem data-test="menu-list-item1" onClick={handleClose}>
+        <MenuItem data-test="menu-list-item0" onClick={handleClose}>
           Contact
         </MenuItem>
       </a>
     </Link>,
     <Link href="/profile/account">
       <a>
-        <MenuItem data-test="menu-list-item2" onClick={handleClose}>
+        <MenuItem data-test="menu-list-item1" onClick={handleClose}>
           My account
         </MenuItem>
       </a>
     </Link>,
-    <MenuItem data-test="menu-list-item3" onClick={logOut}>
+    <MenuItem data-test="menu-list-item2" onClick={logOut}>
       Log out
     </MenuItem>,
   ];
@@ -47,13 +47,13 @@ export default function index() {
   const unauthorizedMenu = [
     <Link href="https://www.linkedin.com/in/joaovolpatocode/">
       <a>
-        <MenuItem data-test="menu-list-item1" onClick={handleClose}>
+        <MenuItem data-test="menu-list-item0" onClick={handleClose}>
           Contact
         </MenuItem>
       </a>
     </Link>,
     <MenuItem
-      data-test="menu-list-item2"
+      data-test="menu-list-item1"
       onClick={() => {
         handleUserModalLogin();
         handleClose();
@@ -62,7 +62,7 @@ export default function index() {
       Login
     </MenuItem>,
     <MenuItem
-      data-test="menu-list-item3"
+      data-test="menu-list-item2"
       onClick={() => {
         handleUserModalRegister();
         handleClose();

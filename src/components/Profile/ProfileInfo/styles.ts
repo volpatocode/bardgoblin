@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Box, Button } from "@mui/material";
 import { profileInfoType } from "./index";
+
+type avatarType = {
+  size: "sm" | "full";
+};
 
 export const ProfileInfo = styled(Box)`
   width: 70%;
@@ -176,5 +181,17 @@ export const InputImage = styled.label`
   }
   @media (max-width: 560px) {
     font-size: 1.12rem;
+  }
+`;
+
+export const AccountCircle = styled(AccountCircleIcon)<avatarType>`
+  color: #ff9900;
+  font-size: 32px;
+  display: grid;
+  place-items: center;
+
+  font-size: ${(props) => (props.size == "full" ? "15vw" : "32px")};
+  @media (max-width: 960px) {
+    font-size: ${(props) => (props.size == "full" ? "30vw" : "32px")};
   }
 `;
