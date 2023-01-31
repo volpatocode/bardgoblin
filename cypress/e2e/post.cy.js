@@ -3,18 +3,50 @@
 describe("posting paths", () => {
   beforeEach(() => {
     cy.visit("/");
-    cy.clearCookies();
-    cy.clearAllLocalStorage();
-  });
-
-  it("create a post", () => {
     cy.getByData("navbar-avatar").click();
-    cy.getByData("menu-list-item2").contains("Login").click();
+    cy.getByData("menu-list-item1").contains("Login").click();
     cy.get("#login-email").type("fake@gmail.com");
     cy.get("#login-password").type("123456");
     cy.getByData("login-finish").click().wait(2000);
     cy.getByData("navbar-avatar").click();
-    cy.getByData("menu-list-item2").contains("account");
+    cy.getByData("menu-list-item1").contains("account");
+  });
+
+  it("write wrong in any input", () => {
+    cy.visit("/createtopic");
+    cy.getByData("topic-title").type("Title");
+    cy.getByData("section-selector").click();
+    cy.getByData("section-selector-item0").click();
+    cy.getByData("module-title0").type("That is a test module title");
+    cy.getByData("module-content0").type(
+      "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
+    );
+    cy.getByData("module-title1").type("That is a test module title");
+    cy.getByData("module-content1").type(
+      "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
+    );
+    cy.getByData("submit-button").click();
+    cy.getByData("input-error").should("exist").should("have.length", 1);
+  });
+
+  it("create a post", () => {
+    cy.visit("/createtopic");
+    cy.getByData("topic-title").type("That is a test topic title");
+    cy.getByData("section-selector").click();
+    cy.getByData("section-selector-item0").click();
+    cy.getByData("module-title0").type("That is a test module title");
+    cy.getByData("module-content0").type(
+      "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
+    );
+    cy.getByData("module-title1").type("That is a test module title");
+    cy.getByData("module-content1").type(
+      "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
+    );
+    cy.getByData("submit-button").click();
+    //checar se url vai pra sidequests
+  });
+
+  it("create a post with more than 2 modules", () => {
     cy.visit("/createtopic");
     cy.getByData("topic-title").type("That is a test topic title");
     cy.getByData("section-selector").click();
@@ -38,4 +70,25 @@ describe("posting paths", () => {
       );
     cy.getByData("submit-button").click();
   });
+
+  // it.only("create a post with labels", () => {
+  //   cy.visit("/createtopic");
+  //   cy.getByData("topic-title").type("That is a test topic title");
+  //   cy.getByData("section-selector").click();
+  //   cy.getByData("section-selector-item0").click();
+  //   cy.getByData("labels-selector").click();
+  //   cy.getByData("labels-selector-item0").click();
+  //   cy.getByData("labels-selector-item1").click();
+  //   cy.getByData("labels-selector").click();
+  //   cy.getByData("module-title0").type("That is a test module title");
+  //   cy.getByData("module-content0").type(
+  //     "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
+  //   );
+  //   cy.getByData("module-title1").type("That is a test module title");
+  //   cy.getByData("module-content1").type(
+  //     "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
+  //   );
+  //   cy.getByData("submit-button").click();
+  //   //checar se url vai pra sidequests
+  // });
 });
