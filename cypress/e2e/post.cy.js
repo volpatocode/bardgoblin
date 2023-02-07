@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("posting paths", () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit("/");
     cy.getByData("navbar-avatar").click();
     cy.getByData("menu-list-item1").contains("Login").click();
@@ -12,8 +12,11 @@ describe("posting paths", () => {
     cy.getByData("menu-list-item1").contains("account");
   });
 
-  it("write wrong in any input", () => {
+  beforeEach(() => {
     cy.visit("/createtopic");
+  });
+
+  it("write wrong in any input", () => {
     cy.getByData("topic-title").type("Title");
     cy.getByData("section-selector").click();
     cy.getByData("section-selector-item0").click();
@@ -30,7 +33,6 @@ describe("posting paths", () => {
   });
 
   it("create a post", () => {
-    cy.visit("/createtopic");
     cy.getByData("topic-title").type("That is a test topic title");
     cy.getByData("section-selector").click();
     cy.getByData("section-selector-item0").click();
@@ -43,11 +45,10 @@ describe("posting paths", () => {
       "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
     );
     cy.getByData("submit-button").click();
-    //checar se url vai pra sidequests
+    cy.url().should("include", "/section/sidequests");
   });
 
   it("create a post with more than 2 modules", () => {
-    cy.visit("/createtopic");
     cy.getByData("topic-title").type("That is a test topic title");
     cy.getByData("section-selector").click();
     cy.getByData("section-selector-item0").click();
@@ -69,10 +70,10 @@ describe("posting paths", () => {
         "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
       );
     cy.getByData("submit-button").click();
+    cy.url().should("include", "/section/sidequests");
   });
 
   // it.only("create a post with labels", () => {
-  //   cy.visit("/createtopic");
   //   cy.getByData("topic-title").type("That is a test topic title");
   //   cy.getByData("section-selector").click();
   //   cy.getByData("section-selector-item0").click();
@@ -89,6 +90,7 @@ describe("posting paths", () => {
   //     "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum  Lorem ipsum Lorem ipsum"
   //   );
   //   cy.getByData("submit-button").click();
-  //   //checar se url vai pra sidequests
+  // cy.url().should("include", "/section/sidequests");
+  //
   // });
 });
