@@ -19,6 +19,7 @@ import {
   sendPasswordResetEmail,
   onAuthStateChanged,
   updateProfile,
+  deleteUser as deleteFirebaseUser,
 } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { doc, setDoc, updateDoc } from "firebase/firestore";
@@ -141,6 +142,19 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
     try {
       await sendPasswordResetEmail(auth, data.email).then(() => {
         router.push("/help/emailsent");
+      });
+    } catch (error) {
+      setErrorFirebase(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function deleteUser(currentUser) {
+    setIsLoading(true);
+    try {
+      deleteFirebaseUser(currentUser).then(() => {
+        forceHome();
       });
     } catch (error) {
       setErrorFirebase(error.message);
