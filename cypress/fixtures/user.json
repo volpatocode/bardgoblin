@@ -1,0 +1,6 @@
+{
+  "email": "fake@gmail.com",
+  "wrongEmail": "fakegmail.com",
+  "password": "123456",
+  "wrongPassword": "1234567"
+}
